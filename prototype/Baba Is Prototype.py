@@ -89,9 +89,34 @@ randomWall1 = turtle.Turtle()
 randomWall1Coordinate = randomWallCoordinate("h")
 randomWall1.penup()
 randomWall1.shape("square")
-randomWall1.color("grey")
+randomWall1.color("blue")
 randomWall1.goto(randomWall1Coordinate, 0)
-randomWall1.shapesize(stretch_wid = 10, stretch_len = 1)
+randomWall1.shapesize(stretch_wid = 10, stretch_len = 2)
+
+# Flag
+flag = turtle.Turtle()
+flag.color("yellow")
+flag.shape("square")
+flag.penup()
+flag.goto(150, 250)
+
+# Rule
+rule1 = turtle.Turtle()
+rule1.speed(0)
+rule1.color("white")
+rule1.penup()
+rule1.hideturtle()
+rule1.goto(0, 240)
+rule1.write("River Is Die", align="center", font=("Sans comic", 12, "normal"))
+
+rule2 = turtle.Turtle()
+rule2.speed(0)
+rule2.color("white")
+rule2.penup()
+rule2.hideturtle()
+rule2.goto(0, -240)
+rule2.write("Gold Is Win", align="center", font=("Sans comic", 12, "normal"))
+
 
 # Baba movement
 wn.listen()
@@ -103,9 +128,12 @@ wn.onkeypress(baba_move_up, "Up")
 wn.onkeypress(baba_move_down, "Down")
 wn.onkeypress(baba_move_left, "Left")
 wn.onkeypress(baba_move_right, "Right")
+
 while True:
 	wn.update()
 
-	# Collision Checking
-	if Baba.ycor() >= -100 and Baba.ycor() <= 100 and Baba.xcor() >= -randomWall1Coordinate and Baba.xcor() <= randomWall1Coordinate:
-		Baba.setx(randomWall1Coordinate)
+	if Baba.xcor() <= 160 and Baba.xcor() >= 140 and Baba.ycor() <= 260 and Baba.ycor() >= 240:
+		turtle.bye()
+
+	elif Baba.xcor() <= randomWall1Coordinate + 10 and Baba.xcor() >= randomWall1Coordinate - 10 and Baba.ycor() <= 100 and Baba.ycor() >= -100:
+		Baba.goto(0,0)
