@@ -1,5 +1,5 @@
 # BabaIsYou
-this repository  is for the IT project : " BabaIsYou " 
+This repository is for the CS Project : "BabaIsYou" 
 
 Ce dépot servira d'endroit pour déposer le code du jeu. Ce sera plus simple que de se l'envoyer par discord.
 
