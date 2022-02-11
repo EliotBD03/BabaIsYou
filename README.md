@@ -1,7 +1,7 @@
 # BabaIsYou
 This repository is for the CS Project : "BabaIsYou" 
 
-Ce dépot servira d'endroit pour déposer le code du jeu. Ce sera plus simple que de se l'envoyer par discord.
+Ce dépôt servira d'espace pour mettre à jour le code source de manière simple et efficace.
 
 Il y a ces deux videos qui sont pas mals pour apprendre le fonctionnement de GIT. Il y en a une qui est plus longue que l'autre (j'ai pas encore regardé ^^). Vous prenez celles que vous 
 voulez.
