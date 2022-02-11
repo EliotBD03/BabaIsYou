@@ -3,7 +3,7 @@ This repository is for the CS Project : "BabaIsYou"
 
 Ce dépôt servira d'espace pour mettre à jour le code source de manière simple et efficace.
 
-Il y a ces deux videos qui sont pas mals pour apprendre le fonctionnement de GIT.
+Il y a deux vidéos ci-dessous qui sont bien faites pour apprendre le fonctionnement de GIT.
 
 1) https://www.youtube.com/watch?v=gp_k0UVOYMw
 
