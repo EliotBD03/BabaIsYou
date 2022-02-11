@@ -7,4 +7,5 @@ Il y a ces deux videos qui sont pas mals pour apprendre le fonctionnement de GIT
 voulez.
 
 https://www.youtube.com/watch?v=gp_k0UVOYMw
+
 https://www.youtube.com/watch?v=CEb_JM_hsFw (la plus longue)
