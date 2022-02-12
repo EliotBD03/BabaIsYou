@@ -132,7 +132,8 @@ wn.onkeypress(baba_move_right, "Right")
 while True:
 	wn.update()
 
-	if Baba.xcor() <= 160 and Baba.xcor() >= 140 and Baba.ycor() <= 260 and Baba.ycor() >= 240:
+	if Baba.xcor() <= 165 and Baba.xcor() >= 135 and Baba.ycor() <= 265 and Baba.ycor() >= 235:
+		wn.bgcolor("green")
 		turtle.bye()
 
 	elif Baba.xcor() <= randomWall1Coordinate + 15 and Baba.xcor() >= randomWall1Coordinate - 15 and Baba.ycor() <= 100 and Baba.ycor() >= -100:
