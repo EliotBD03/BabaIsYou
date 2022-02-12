@@ -135,5 +135,5 @@ while True:
 	if Baba.xcor() <= 160 and Baba.xcor() >= 140 and Baba.ycor() <= 260 and Baba.ycor() >= 240:
 		turtle.bye()
 
-	elif Baba.xcor() <= randomWall1Coordinate + 10 and Baba.xcor() >= randomWall1Coordinate - 10 and Baba.ycor() <= 100 and Baba.ycor() >= -100:
+	elif Baba.xcor() <= randomWall1Coordinate + 15 and Baba.xcor() >= randomWall1Coordinate - 15 and Baba.ycor() <= 100 and Baba.ycor() >= -100:
 		Baba.goto(0,0)
