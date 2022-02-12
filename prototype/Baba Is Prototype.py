@@ -28,7 +28,7 @@ def randomWallCoordinate(wallPosition):
 		Limit = verticalLimit
 	randomWallCoordinate = random.randrange(-Limit, Limit )
 	if randomWallCoordinate < Limit // 4 and randomWallCoordinate > Limit * (-1) // 4:
-		randomWallCoordinate()
+		randomWallCoordinate(wallPosition)
 	return randomWallCoordinate
 
 def baba_move_up():
