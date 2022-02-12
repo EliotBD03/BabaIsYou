@@ -25,7 +25,6 @@ def generate_corps(length, height, generated_level):
             bordure_OE.append(" ")
     return bordure_OE
 
-
 def print_level(level):
     for j in level:
         line = ""
