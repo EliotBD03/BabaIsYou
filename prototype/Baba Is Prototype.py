@@ -137,3 +137,11 @@ while True:
 
 	elif Baba.xcor() <= randomWall1Coordinate + 15 and Baba.xcor() >= randomWall1Coordinate - 15 and Baba.ycor() <= 100 and Baba.ycor() >= -100:
 		Baba.goto(0,0)
+	elif Baba.xcor() <= -379:
+		Baba.setx(-378)
+	elif Baba.xcor() >= 370:
+		Baba.setx(369)
+	elif Baba.ycor() >= 280:
+		Baba.sety(279)
+	elif Baba.ycor() <= -270:
+		Baba.sety(-269)
