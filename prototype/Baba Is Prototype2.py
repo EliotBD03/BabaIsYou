@@ -32,7 +32,22 @@ def generate_corps(length, height, generated_level):
         else:
             bordure_OE.append(" ")
     return bordure_OE
+def print_baba():    
+    baba1 = "  _    _"
+    baba2 = " / |__/ |_________"
+    baba3 = "/ O               \\"
+    baba4 = "|    O             \\"
+    baba5 = "\\  ___  ___   _  __|"
+    baba6 = " | | / /   | | \\ \\"
+    baba7 = " |_|/_/    |_|  \\_\\"
 
+    print(baba1)
+    print(baba2)
+    print(baba3)
+    print(baba4)
+    print(baba5)
+    print(baba6)
+    print(baba7)
 
 def print_level(level):
     for j in level:
@@ -77,6 +92,7 @@ def play(generated_level, height, length, objective_height, objective_length, pl
             player_length -= 1
             if generated_level[player_height][player_length] == '@':
                 generated_level[player_height][player_length] = 'O'
+                print_baba()
                 print("Well played, you won the game!")
                 game_state = "Stop"
             generated_level[player_height][player_length] = 'O'
@@ -88,6 +104,7 @@ def play(generated_level, height, length, objective_height, objective_length, pl
             player_length += 1
             if generated_level[player_height][player_length] == '@':
                 generated_level[player_height][player_length] = 'O'
+                print_baba()
                 print("Well played, you won the game!")
                 game_state = "Stop"
             generated_level[player_height][player_length] = 'O'
@@ -99,6 +116,7 @@ def play(generated_level, height, length, objective_height, objective_length, pl
             player_height -= 1
             if generated_level[player_height][player_length] == '@':
                 generated_level[player_height][player_length] = 'O'
+                print_baba()
                 print("Well played, you won the game!")
                 game_state = "Stop"
             generated_level[player_height][player_length] = 'O'
@@ -110,6 +128,7 @@ def play(generated_level, height, length, objective_height, objective_length, pl
             player_height += 1
             if generated_level[player_height][player_length] == '@':
                 generated_level[player_height][player_length] = 'O'
+                print_baba()
                 print("Well played, you won the game!")
                 game_state = "Stop"
             generated_level[player_height][player_length] = 'O'
