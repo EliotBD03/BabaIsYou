@@ -55,8 +55,8 @@ def generate_objective(length, height, generated_level):
     if generated_level[random_objective_height][random_objective_length] != " ":
         return generate_objective(length, height, generated_level)
     generated_level[random_objective_height][random_objective_length] = "@"
-    test_message = "Objective Coordinates : (" + str(random_objective_height) + ", " + str(random_objective_length) + ")"
-    print(test_message)
+#    test_message = "Objective Coordinates : (" + str(random_objective_height) + ", " + str(random_objective_length) + ")"
+#    print(test_message)
     return generated_level, random_objective_height, random_objective_length
 
 def generate_player(length, height, generated_level):
@@ -65,12 +65,12 @@ def generate_player(length, height, generated_level):
     if generated_level[random_player_height][random_player_length] != " ":
         return generate_player(length, height, generated_level)
     generated_level[random_player_height][random_player_length] = "O"
-    test_message = "Player Coordinates : (" + str(random_player_height) + ", " + str(random_player_length) + ")"
-    print(test_message)
+#    test_message = "Player Coordinates : (" + str(random_player_height) + ", " + str(random_player_length) + ")"
+#    print(test_message)
     return generated_level, random_player_height, random_player_length
 
 def play(generated_level, height, length, objective_height, objective_length, player_height, player_length, game_state):
-    move = input("Q: Gauche D: Droite Z: Avancer S: Reculer")
+    move = input("Q: Gauche D: Droite Z: Avancer S: Reculer: ")
     if move == "q" or move == "Q":
         if player_length >= 2 and (generated_level[player_height][player_length - 1] == ' ' or generated_level[player_height][player_length - 1] == '@'):
             generated_level[player_height][player_length] = ' '
@@ -80,7 +80,9 @@ def play(generated_level, height, length, objective_height, objective_length, pl
                 print("Well played, you won the game!")
                 game_state = "Stop"
             generated_level[player_height][player_length] = 'O'
-    if move == "d" or move == "D":
+        else:
+            print("Wrong Move Command or Impossible To Move")
+    elif move == "d" or move == "D":
         if player_length <= length - 2  and (generated_level[player_height][player_length + 1] == ' ' or generated_level[player_height][player_length + 1] == '@'):
             generated_level[player_height][player_length] = ' '
             player_length += 1
@@ -89,7 +91,9 @@ def play(generated_level, height, length, objective_height, objective_length, pl
                 print("Well played, you won the game!")
                 game_state = "Stop"
             generated_level[player_height][player_length] = 'O'
-    if move == "z" or move == "Z":
+        else:
+            print("Wrong Move Command or Impossible To Move")
+    elif move == "z" or move == "Z":
         if player_height >= 2 and (generated_level[player_height - 1][player_length] == ' ' or generated_level[player_height - 1][player_length] == '@'):
             generated_level[player_height][player_length] = ' '
             player_height -= 1
@@ -98,7 +102,9 @@ def play(generated_level, height, length, objective_height, objective_length, pl
                 print("Well played, you won the game!")
                 game_state = "Stop"
             generated_level[player_height][player_length] = 'O'
-    if move == "s" or move == "S":
+        else:
+            print("Wrong Move Command or Impossible To Move")
+    elif move == "s" or move == "S":
         if player_height <= height - 2 and (generated_level[player_height + 1][player_length] == ' ' or generated_level[player_height + 1][player_length] == '@'):
             generated_level[player_height][player_length] = ' '
             player_height += 1
@@ -107,8 +113,8 @@ def play(generated_level, height, length, objective_height, objective_length, pl
                 print("Well played, you won the game!")
                 game_state = "Stop"
             generated_level[player_height][player_length] = 'O'
-    else:
-        print("You're a fucking moron.")
+        else:
+            print("Wrong Move Command or Impossible To Move")
     return player_height, player_length, game_state
 
 """def find_player_coordinates(generated_level):
@@ -134,9 +140,9 @@ if __name__ == '__main__':
     player_height = level_1[5]
     player_length = level_1[6]
     game_state = "Continue"
-    print_level(generated_level)
+#    print_level(generated_level)
     while game_state == "Continue":
-        print(game_state)
+#        print(game_state)
         if game_state == "Continue":
             print_level(generated_level)
         current_game = play(generated_level, height, length, objective_height, objective_length, player_height, player_length, game_state)
