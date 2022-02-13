@@ -7,7 +7,7 @@ carte = ["x","x","x","x","x","x","x","x","x","x"
         ,"x"," "," "," "," "," "," "," "," ","x"
         ,"x"," "," ","&"," "," "," "," "," ","x"
         ,"x"," ","@","&"," "," "," "," "," ","x"
-        ,"x","&","&","&"," "," "," "," "," ","x"
+        ,"x","&","&","&"," "," ","W"," "," ","x"
         ,"x"," "," "," "," "," "," "," "," ","x"
         ,"x"," "," "," "," "," "," "," "," ","x"
         ,"x"," "," "," "," "," "," "," "," ","x"
@@ -15,13 +15,13 @@ carte = ["x","x","x","x","x","x","x","x","x","x"
         ,"x","x","x","x","x","x","x","x","x","x"]
 
 def placement(entre,mid,carte):
-    if mouvement == 'z' and avancer(mid) > 10 and carte[avancer(mid)] != "&" :
+    if mouvement == 'z' and avancer(mid) > 10 and carte[avancer(mid)] != wall :
         return avancer(mid)
-    elif mouvement == 's' and reculer(mid) < 90 and carte[reculer(mid)] != "&":
+    elif mouvement == 's' and reculer(mid) < 90 and carte[reculer(mid)] != wall:
         return reculer(mid)
-    elif mouvement == 'q' and gauche(mid)  % 10 != 0 and carte[gauche(mid)] != "&":
+    elif mouvement == 'q' and gauche(mid)  % 10 != 0 and carte[gauche(mid)] != wall:
         return gauche(mid)
-    elif mouvement == 'd' and (droite(mid) -9) % 10 != 0 and carte[droite(mid)] != "&":
+    elif mouvement == 'd' and (droite(mid) -9) % 10 != 0 and carte[droite(mid)] != wall:
         return droite(mid)
     else:
         raise ValueError
@@ -46,12 +46,12 @@ def listetostr(carte):
         indice += 1 
         if indice % 10 == 0:
             res += '\n'
-    return res    
-
+    return res 
 
 if __name__ == "__main__":
     player = 'O'
     goal = '@'
+    wall = '&'
     mid = 54
     temp = copy.copy(carte)
     while True:
