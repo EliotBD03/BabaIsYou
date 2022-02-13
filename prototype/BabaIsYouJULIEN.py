@@ -58,15 +58,15 @@ if __name__ == "__main__":
         try:
             temp[mid] = player
             print(listetostr(temp) + "\nWallIsStop(&)\nFlagIsWin(@)")
-            mouvement = input("\n z:avancer s:reculer q:aller à gauche d:aller à droite ")
+            mouvement = input("\n Z:Avancer S:Reculer Q:Gauche D:Droite ")
             mid = placement(mouvement,mid,temp)
             temp = copy.copy(carte)
             if temp[mid] == goal:
-                print("bravo !")  
+                print("Bravo, vous avez capturé le drapeau !")  
                 print(listetostr(temp))
                 break    
             print("\t" *  1000)
             
         except ValueError:
-            print("Commande non valide ou bloque contre un mur")
+            print("Commande non valide ou bloqué par un mur")
 
