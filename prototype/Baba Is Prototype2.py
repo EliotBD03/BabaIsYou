@@ -69,32 +69,47 @@ def generate_player(length, height, generated_level):
     print(test_message)
     return generated_level, random_player_height, random_player_length
 
-def play(generated_level, height, length, objective_height, objective_length, player_height, player_length):
+def play(generated_level, height, length, objective_height, objective_length, player_height, player_length, game_state):
     move = input("Q: Gauche D: Droite Z: Avancer S: Reculer")
     if move == "q" or move == "Q":
         if player_length >= 2 and (generated_level[player_height][player_length - 1] == ' ' or generated_level[player_height][player_length - 1] == '@'):
             generated_level[player_height][player_length] = ' '
             player_length -= 1
+            if generated_level[player_height][player_length] == '@':
+                generated_level[player_height][player_length] = 'O'
+                print("Well played, you won the game!")
+                game_state = "Stop"
             generated_level[player_height][player_length] = 'O'
     if move == "d" or move == "D":
         if player_length <= length - 2  and (generated_level[player_height][player_length + 1] == ' ' or generated_level[player_height][player_length + 1] == '@'):
             generated_level[player_height][player_length] = ' '
             player_length += 1
+            if generated_level[player_height][player_length] == '@':
+                generated_level[player_height][player_length] = 'O'
+                print("Well played, you won the game!")
+                game_state = "Stop"
             generated_level[player_height][player_length] = 'O'
     if move == "z" or move == "Z":
         if player_height >= 2 and (generated_level[player_height - 1][player_length] == ' ' or generated_level[player_height - 1][player_length] == '@'):
             generated_level[player_height][player_length] = ' '
             player_height -= 1
+            if generated_level[player_height][player_length] == '@':
+                generated_level[player_height][player_length] = 'O'
+                print("Well played, you won the game!")
+                game_state = "Stop"
             generated_level[player_height][player_length] = 'O'
     if move == "s" or move == "S":
         if player_height <= height - 2 and (generated_level[player_height + 1][player_length] == ' ' or generated_level[player_height + 1][player_length] == '@'):
             generated_level[player_height][player_length] = ' '
             player_height += 1
+            if generated_level[player_height][player_length] == '@':
+                generated_level[player_height][player_length] = 'O'
+                print("Well played, you won the game!")
+                game_state = "Stop"
             generated_level[player_height][player_length] = 'O'
     else:
         print("You're a fucking moron.")
-    print_level(generated_level)
-    return play(generated_level, length, height, player_height, player_length, objective_height, objective_length)
+    return player_height, player_length, game_state
 
 """def find_player_coordinates(generated_level):
     player_height = "No Player Height Found"
@@ -118,6 +133,13 @@ if __name__ == '__main__':
     objective_length = level_1[4]
     player_height = level_1[5]
     player_length = level_1[6]
+    game_state = "Continue"
     print_level(generated_level)
-    while True:
-        play(generated_level, height, length, objective_height, objective_length, player_height, player_length)
+    while game_state == "Continue":
+        print(game_state)
+        if game_state == "Continue":
+            print_level(generated_level)
+        current_game = play(generated_level, height, length, objective_height, objective_length, player_height, player_length, game_state)
+        player_height = current_game[0]
+        player_length = current_game[1]
+        game_state = current_game[2]
