@@ -4,17 +4,30 @@ public class Main
     {
         Map envi = new Map();
         String[] map = envi.map;
+
+        Goal goal = new Goal();
+        map[goal.position] = goal.skin;
+
         Player player = new Player();
         Input input = new Input();
 
         boolean flag = true;
         while(flag)
         {
-            map[player.position] = player.skin_player;
+            map[player.position] = player.skin;
             System.out.println(envi.getMap());
             String letter = input.get_Input();
             map[player.position] = " ";
-            player.position = player.mouvement(letter);
+            if (letter.equals("e"))
+                break;
+            else
+            {
+                int move = player.mouvement(letter);
+                if (move == -1)
+                    flag = false;
+                else
+                    player.position = move;
+            }
         }
     }
 }

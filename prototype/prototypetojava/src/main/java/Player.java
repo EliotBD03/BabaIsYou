@@ -1,23 +1,53 @@
 public class Player
 {
-    public String skin_player = "O";
+    public String skin = "O";
     public int position = 55;
 
     public int mouvement(String letter)
     {
-        Input input = new Input();
-        String response = input.get_Input();
         Wall wall = new  Wall();
-        if (response.equals("z")  && !(wall.iswall(this.position - 10)))
+        Goal goal = new Goal();
+
+        if (letter.equals("z")  && !(wall.iswall(this.position - 10)))
+        {
+            if (goal.isgoal(this.position - 10))
+            {
+                System.out.println("SUCCES !");
+                return -1;
+            }
             return this.position - 10;
-        if (response.equals("s") && !(wall.iswall(this.position + 10)))
+        }
+        if (letter.equals("s") && !(wall.iswall(this.position + 10)))
+        {
+            if (goal.isgoal(this.position + 10))
+            {
+                System.out.println("SUCCES !");
+                return -1;
+            }
             return this.position + 10;
-        if (response.equals("q") && !(wall.iswall(this.position - 1)))
+        }
+        if (letter.equals("q") && !(wall.iswall(this.position - 1)))
+        {
+            if (goal.isgoal(this.position - 1))
+            {
+                System.out.println("SUCCES !");
+                return -1;
+            }
             return this.position - 1;
-        if (response.equals("d") && !(wall.iswall(this.position + 1)))
+        }
+        if (letter.equals("d") && !(wall.iswall(this.position + 1)))
+        {
+            if (goal.isgoal(this.position + 1))
+            {
+                System.out.println("SUCCES !");
+                return -1;
+            }
             return this.position + 1;
+        }
         else
+            {
             System.out.println("you re stuck to a wall or invalid input");
             return position;
+            }
     }
 }
