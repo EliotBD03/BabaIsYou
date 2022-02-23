@@ -7,6 +7,7 @@ public class Player
     {
         Wall wall = new  Wall();
         Goal goal = new Goal();
+        Rock rock = new Rock();
 
         if (letter.equals("z")  && !(wall.iswall(this.position - 10)))
         {
@@ -15,6 +16,10 @@ public class Player
                 System.out.println("SUCCES !");
                 return -1;
             }
+
+            if (rock.isrock(this.position - 10))
+                return ;
+
             return this.position - 10;
         }
         if (letter.equals("s") && !(wall.iswall(this.position + 10)))
@@ -24,6 +29,10 @@ public class Player
                 System.out.println("SUCCES !");
                 return -1;
             }
+
+            if (rock.isrock(this.position + 10))
+                rock.pushed(+10);
+
             return this.position + 10;
         }
         if (letter.equals("q") && !(wall.iswall(this.position - 1)))
@@ -33,6 +42,10 @@ public class Player
                 System.out.println("SUCCES !");
                 return -1;
             }
+
+            if (rock.isrock(this.position - 1))
+                rock.pushed(-1);
+
             return this.position - 1;
         }
         if (letter.equals("d") && !(wall.iswall(this.position + 1)))
@@ -42,6 +55,10 @@ public class Player
                 System.out.println("SUCCES !");
                 return -1;
             }
+
+            if (rock.isrock(this.position + 1))
+                rock.pushed(+1);
+
             return this.position + 1;
         }
         else

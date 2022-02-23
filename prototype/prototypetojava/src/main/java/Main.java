@@ -8,12 +8,17 @@ public class Main
         Goal goal = new Goal();
         map[goal.position] = goal.skin;
 
+        Rock rock = new Rock();
+        int rockposition = rock.getPosition();
+        String rockskin = rock.getskin();
+
         Player player = new Player();
         Input input = new Input();
 
         boolean flag = true;
         while(flag)
         {
+            map[rockposition] = rockskin;
             map[player.position] = player.skin;
             System.out.println(envi.getMap());
             String letter = input.get_Input();
