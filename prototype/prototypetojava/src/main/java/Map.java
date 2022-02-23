@@ -15,11 +15,11 @@ public class Map
     public String getMap()
     {
         String res = "";
-        for(byte i = 0; i < map.length; i++)
+        for(byte i = 0; i < this.map.length; i++)
         {
             if (i % 10 == 0)
                 res += "\n";
-            res += map[i];
+            res += this.map[i];
         }
         return res;
     }

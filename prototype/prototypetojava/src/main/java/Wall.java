@@ -1,11 +1,10 @@
-public class Wall
+public class Wall extends Map
 {
     private String wall = "X";
 
     public boolean iswall(int position)
     {
-        String[] map = new Map().map;
-        if(map[position].equals(wall))
+        if(super.map[position].equals(this.wall))
             return true;
         return false;
     }

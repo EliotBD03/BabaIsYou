@@ -1,4 +1,4 @@
-public class Goal
+public class Goal extends Map
 {
     public final String skin = "@";
     public final int position = 22;

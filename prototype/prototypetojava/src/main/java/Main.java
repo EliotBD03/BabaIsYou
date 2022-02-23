@@ -2,37 +2,37 @@ public class Main
 {
     public static void main(String[] args)
     {
-        Map envi = new Map();
-        String[] map = envi.map;
 
         Goal goal = new Goal();
-        map[goal.position] = goal.skin;
-
-        Rock rock = new Rock();
-        int rockposition = rock.getPosition();
-        String rockskin = rock.getskin();
-
         Player player = new Player();
+
+        player.map[goal.position] = goal.skin;
+
         Input input = new Input();
 
+
         boolean flag = true;
-        while(flag)
-        {
-            map[rockposition] = rockskin;
-            map[player.position] = player.skin;
-            System.out.println(envi.getMap());
+        while(flag) {
+            player.map[player.getPlayerPosition()] = player.getPlayerskin();
+            player.map[player.getRockPosition()] = player.getRockskin();
+
+            System.out.println(player.getMap());
+
+            player.map[player.getPlayerPosition()] = " ";
+
             String letter = input.get_Input();
-            map[player.position] = " ";
+
             if (letter.equals("e"))
                 break;
-            else
-            {
-                int move = player.mouvement(letter);
-                if (move == -1)
+            else {
+                player.mouvement(letter);
+                if (goal.isgoal(player.getPlayerPosition())) {
                     flag = false;
-                else
-                    player.position = move;
+                    System.out.println("SUCCES !");
+                }
+
             }
+
         }
     }
 }

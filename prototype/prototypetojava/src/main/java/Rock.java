@@ -1,31 +1,25 @@
-public class Rock
+public class Rock extends  Wall
 {
-    private final String skin = "#";
+    private final String rockskin = "#";
     private int position = 33;
 
 
-    public int getPosition()
+    public int getRockPosition(){return this.position;}
+    public String getRockskin()
     {
-        return this.position;
-    }
-
-    public String getskin()
-    {
-        return this.skin;
+        return this.rockskin;
     }
 
     public boolean isrock(int position)
     {
-        String[] map = new Map().map;
-        if (map[position].equals(this.skin))
+        if (this.position == position)
             return true;
         return false;
     }
 
     public void pushed(int move)
     {
-        Wall wall = new Wall();
-        if (!(wall.iswall(this.position + move)))
+        if (!(super.iswall(this.position + move)))
            this.position += move;
     }
 }

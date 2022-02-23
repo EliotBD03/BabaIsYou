@@ -1,70 +1,64 @@
-public class Player
+public class Player extends Rock
 {
-    public String skin = "O";
-    public int position = 55;
+    private String playerskin = "O";
+    private int playerposition = 55;
 
-    public int mouvement(String letter)
+    public String getPlayerskin(){return this.playerskin;}
+    public int getPlayerPosition(){return this.playerposition;}
+
+
+    public void mouvement(String letter)
     {
-        Wall wall = new  Wall();
-        Goal goal = new Goal();
-        Rock rock = new Rock();
-
-        if (letter.equals("z")  && !(wall.iswall(this.position - 10)))
+        if (letter.equals("z")  && !(super.iswall(this.playerposition - 10)))
         {
-            if (goal.isgoal(this.position - 10))
+            if (super.isrock(this.playerposition - 10))
             {
-                System.out.println("SUCCES !");
-                return -1;
+                super.pushed(- 10);
+                if (super.getRockPosition() != this.playerposition - 10)
+                    this.playerposition -= 10;
             }
+            else
+                this.playerposition -= 10;
 
-            if (rock.isrock(this.position - 10))
-                return ;
-
-            return this.position - 10;
         }
-        if (letter.equals("s") && !(wall.iswall(this.position + 10)))
+        else if (letter.equals("s") && !(super.iswall(this.playerposition + 10)))
         {
-            if (goal.isgoal(this.position + 10))
+            if (super.isrock(this.playerposition + 10))
             {
-                System.out.println("SUCCES !");
-                return -1;
+                super.pushed(+ 10);
+                if(super.getRockPosition() != this.playerposition + 10)
+                    this.playerposition += 10;
             }
+            else
+                this.playerposition += 10;
 
-            if (rock.isrock(this.position + 10))
-                rock.pushed(+10);
-
-            return this.position + 10;
         }
-        if (letter.equals("q") && !(wall.iswall(this.position - 1)))
+        else if (letter.equals("q") && !(super.iswall(this.playerposition - 1)))
         {
-            if (goal.isgoal(this.position - 1))
+            if (super.isrock(this.playerposition - 1))
             {
-                System.out.println("SUCCES !");
-                return -1;
+                super.pushed(- 1);
+                if(super.getRockPosition() != this.playerposition - 1)
+                    this.playerposition -=1;
             }
+            else
+                this.playerposition -= 1;
 
-            if (rock.isrock(this.position - 1))
-                rock.pushed(-1);
-
-            return this.position - 1;
         }
-        if (letter.equals("d") && !(wall.iswall(this.position + 1)))
+        else if (letter.equals("d") && !(super.iswall(this.playerposition + 1)))
         {
-            if (goal.isgoal(this.position + 1))
+            if (super.isrock(this.playerposition + 1))
             {
-                System.out.println("SUCCES !");
-                return -1;
+                super.pushed(+ 1);
+                if (super.getRockPosition() != this.playerposition + 1)
+                    this.playerposition += 1;
             }
-
-            if (rock.isrock(this.position + 1))
-                rock.pushed(+1);
-
-            return this.position + 1;
+            else
+                this.playerposition += 1;
         }
         else
             {
-            System.out.println("you re stuck to a wall or invalid input");
-            return position;
+                System.out.println("you re stuck to a wall or invalid input");
             }
     }
 }
