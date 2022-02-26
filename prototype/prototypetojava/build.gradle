@@ -1,6 +1,8 @@
 plugins {
-    id 'java'
+    id 'java' // Utilise le plugin Java
+    id 'application' // On développe une application
 }
+
 
 group 'org.example'
 version '1.0-SNAPSHOT'
@@ -16,4 +18,13 @@ dependencies {
 
 test {
     useJUnitPlatform()
+}
+
+application{
+    // Classe principale à exécuter
+    mainClassName = 'Main'
+}
+
+run {
+    standardInput = System.in
 }
