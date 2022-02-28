@@ -1,0 +1,15 @@
+  Classes:
+
+    Map:
+      - Charger une carte de taille x * y à partir d'un fichier texte
+    Entity:
+      - Ajouter d'autres entitées comme : Eau, Lave, Os, Keke
+    babaIsYou/main:
+      - Ajouter la boucle du jeu
+
+Classes todo:
+
+  PlayerAction:
+    - Ajouter des actions: Mouvements
+  Rules:
+    - Ajouter les règles
