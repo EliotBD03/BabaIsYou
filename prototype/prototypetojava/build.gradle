@@ -28,3 +28,7 @@ application{
 run {
     standardInput = System.in
 }
+
+task myJavadocs(type: Javadoc){
+    source = 'Prototypetojava.src.java'
+}

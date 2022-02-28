@@ -1,0 +1,13 @@
+-classpath 'C:\\Users\\julie\\OneDrive\\Bureau\\BabaIsYou\\prototype\\prototypetojava\\build\\classes\\java\\main;C:\\Users\\julie\\OneDrive\\Bureau\\BabaIsYou\\prototype\\prototypetojava\\build\\resources\\main'
+-d 'C:\\Users\\julie\\OneDrive\\Bureau\\BabaIsYou\\prototype\\prototypetojava\\build\\docs\\javadoc'
+-doctitle 'prototypetojava 1.0-SNAPSHOT API'
+-notimestamp 
+-quiet 
+-windowtitle 'prototypetojava 1.0-SNAPSHOT API'
+'C:\\Users\\julie\\OneDrive\\Bureau\\BabaIsYou\\prototype\\prototypetojava\\src\\main\\java\\Goal.java'
+'C:\\Users\\julie\\OneDrive\\Bureau\\BabaIsYou\\prototype\\prototypetojava\\src\\main\\java\\Input.java'
+'C:\\Users\\julie\\OneDrive\\Bureau\\BabaIsYou\\prototype\\prototypetojava\\src\\main\\java\\Main.java'
+'C:\\Users\\julie\\OneDrive\\Bureau\\BabaIsYou\\prototype\\prototypetojava\\src\\main\\java\\Map.java'
+'C:\\Users\\julie\\OneDrive\\Bureau\\BabaIsYou\\prototype\\prototypetojava\\src\\main\\java\\Player.java'
+'C:\\Users\\julie\\OneDrive\\Bureau\\BabaIsYou\\prototype\\prototypetojava\\src\\main\\java\\Rock.java'
+'C:\\Users\\julie\\OneDrive\\Bureau\\BabaIsYou\\prototype\\prototypetojava\\src\\main\\java\\Wall.java'

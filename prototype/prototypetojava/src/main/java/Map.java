@@ -12,6 +12,10 @@ public class Map
             "X","X","X","X","X","X","X","X","X","X"
     };
 
+    /**
+     * permet d'afficher la carte dans la console
+     * @return la carte à afficher
+     */
     public String getMap()
     {
         String res = "";
