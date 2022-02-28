@@ -7,9 +7,12 @@
     babaIsYou/main:
       - Ajouter la boucle du jeu
 
-Classes todo:
+  Classes todo:
 
-  PlayerAction:
-    - Ajouter des actions: Mouvements
-  Rules:
-    - Ajouter les règles
+    PlayerAction:
+      - Ajouter des actions: Mouvements
+    Rules:
+      - Ajouter les règles
+
+
+
