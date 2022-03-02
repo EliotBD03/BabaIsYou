@@ -37,3 +37,7 @@ B1.place(x= 200, y=200)
 fen.resizable(width=False, height = False)	
 Fichimg= PhotoImage(file="baba.gif")
 fen.mainloop()
+
+
+#baba.gif est ici
+#file:///Users/romaineloy/Downloads/baba.gif
