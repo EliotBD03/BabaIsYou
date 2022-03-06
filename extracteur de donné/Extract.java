@@ -24,11 +24,23 @@ public class Extract
 
         try
         {
-            BufferedReader reader = new BufferedReader(new FileReader("test.txt"));
+            BufferedReader r1 = new BufferedReader(new FileReader("test.txt"));
             String line;
-            while((line = reader.readLine()) != null)
-                System.out.println(line);
-            reader.close();
+            int i = 0;
+            while((line = r1.readLine()) != null)
+                ++i;
+            String[] res = new String[i];
+            i = 0;
+            r1.close();
+            BufferedReader r2 = new BufferedReader(new FileReader("test.txt"));
+            while((line = r2.readLine()) != null){
+                res[i] = line;
+                ++i;
+            }
+            r2.close();
+            for(i = 0; i <= res.length - 1; ++i)
+                System.out.println(res[i]);
+
         }
         catch(IOException error)
         {
