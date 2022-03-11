@@ -32,6 +32,7 @@ public class Extract
     public void setDataList(String map){
         try
         {
+
             //on effectue les intanciations necessaires
             FileReader file = new FileReader(map); BufferedReader r1 = new BufferedReader(file);
             String line;
@@ -42,7 +43,8 @@ public class Extract
                 ++i;
 
             //on instancie ce le tableau de String
-            String[][] res = new String[i][3];
+            String[][] res = new String[i][4];
+
             r1.close();
 
             //on instancie une deuxieme fois pour "réouvrir" le fichier
@@ -50,19 +52,22 @@ public class Extract
 
             int k = 0; // la ligne de res
             //tant qu'on a pas atteint la fin de notre fichier
+            boolean flag = true;
             while((line = r2.readLine()) != null)
             {
                 int j = 0; // evaluer la longueur de la chaine de la ligne "line" de notre fichier map
                 int l = 0; //la colonne de res
-                res[k][0] = ""; res[k][1] = ""; res[k][2] = ""; // on efface les valeurs null dans notre tableau
+                res[k][0] = ""; res[k][1] = ""; res[k][2] = ""; res[k][3] = ""; // on efface les valeurs null dans notre tableau
                 //tant qu'on a pas atteint la fin de la ligne ET que l'indice de notre sous tableau <= 2
-                while(j <= line.length() - 1 && l <= 2)
+                while(j <= line.length() - 1 && l <= 3)
                 {
                     res[k][l] += line.charAt(j);
                     if(line.charAt(j) == ' ')
                         l++;
                     j++;
                 }
+                if (res[k][3] == "")
+                    res[k][3] += "0";
                 k++;
             }
             r2.close();
