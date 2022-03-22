@@ -1,0 +1,8 @@
+11 11
+baba 6 6 2
+text_baba 3 5
+is 3 6
+you 3 7
+text_flag 8 7
+is 8 8
+win 8 9
