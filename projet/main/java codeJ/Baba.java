@@ -35,8 +35,8 @@ public class Baba extends  Map implements Entity
                     }
                     else if(babaIsPushingY(-1))
                     {
-                        this.posY--;
-                        babaPushY(-1);
+                        severalPushY(-1);
+                        //this.posY--;
                         System.out.println("je pousse");
                     }
                     super.actualiseInstance(Baba.class, posY, posX);
@@ -49,7 +49,7 @@ public class Baba extends  Map implements Entity
                     }
                     else if(babaIsPushingY(1))
                     {
-                        babaPushY(1);
+                        severalPushY(1);
                         this.posY++;
                         System.out.println("je pousse");
                     }
@@ -156,18 +156,42 @@ public class Baba extends  Map implements Entity
     }
 
     //travaille dessus...
-/*
+
     public void severalPushY(int y)
     {
-        int i = 0;
-        while(mapO[0][posX] == null)
-            i++;
-        int temp = posY;
-        while(i != 0 && )
+        switch (y)
         {
+            case -1:
+                int i = posY;
+                while(mapO[i][posX] != null)
+                    i--;
+                int first_entity = i;
+                while(i <= posY && first_entity - 1 >= 0)
+                {
+                    System.out.println("je passe");
+                    mapO[i - 1][posX] = mapO[i][posX];
+                    mapO[i][posX] = null;
+                    i++;
+                }
+                if(mapO[posY - 1][posX] == null)
+                    posY --;
+                break;
+            case 1:
+                int u = posY;
+                while(mapO[u][posX] != null)
+                    u++;
+                int last_entity = u;
+                    while(u >= posY && last_entity + 1 < super.getLength() - 1)
+                    {
+                        System.out.println("je passe");
+                        mapO[u + 1][posX] = mapO[u][posX];
+                        mapO[u][posX] = null;
+                        u--;
+                    }
+                break;
 
         }
 
     }
-*/
+
 }

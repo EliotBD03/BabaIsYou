@@ -175,6 +175,12 @@ public class BigAlgorithm extends Map
     {
         setTab(mapO);
         findPerm(findIS());
+        int i = 0;
+        while(tabperm[i][0] != null)
+        {
+            System.out.println(tabperm[i][0] + " " + tabperm[i][1]);
+            i++;
+        }
     }
 
 /*
