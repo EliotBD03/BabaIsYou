@@ -36,7 +36,6 @@ public class Baba extends  Map implements Entity
                     else if(babaIsPushingY(-1))
                     {
                         severalPushY(-1);
-                        //this.posY--;
                         System.out.println("je pousse");
                     }
                     super.actualiseInstance(Baba.class, posY, posX);
@@ -50,7 +49,6 @@ public class Baba extends  Map implements Entity
                     else if(babaIsPushingY(1))
                     {
                         severalPushY(1);
-                        this.posY++;
                         System.out.println("je pousse");
                     }
                     super.actualiseInstance(Baba.class, posY, posX);
@@ -63,8 +61,7 @@ public class Baba extends  Map implements Entity
                     }
                     else if(babaIsPushingX(-1))
                     {
-                        babaPushX(-1);
-                        this.posX --;
+                        severalPushX(-1);
                         System.out.println("je pousse");
                     }
                     super.actualiseInstance(Baba.class, posY, posX);
@@ -77,8 +74,7 @@ public class Baba extends  Map implements Entity
                     }
                     else if(babaIsPushingX(1))
                     {
-                        this.posX ++;
-                        babaPushX(1);
+                        severalPushX(1);
                         System.out.println("je pousse");
                     }
                     super.actualiseInstance(Baba.class, posY, posX);
@@ -117,7 +113,7 @@ public class Baba extends  Map implements Entity
             if(tabperm[i][0] == Rules.BABA && tabperm[i][1] == Rules.YOU)
                 return true;
         }
-        System.out.println("BabaIsYou = false");
+        System.out.println("BabaIsYou = false, peux plus bouger");
         return false;
     }
 
@@ -166,9 +162,8 @@ public class Baba extends  Map implements Entity
                 while(mapO[i][posX] != null)
                     i--;
                 int first_entity = i;
-                while(i <= posY && first_entity - 1 >= 0)
+                while(i < posY  && first_entity - 1 >= 0)
                 {
-                    System.out.println("je passe");
                     mapO[i - 1][posX] = mapO[i][posX];
                     mapO[i][posX] = null;
                     i++;
@@ -181,17 +176,52 @@ public class Baba extends  Map implements Entity
                 while(mapO[u][posX] != null)
                     u++;
                 int last_entity = u;
-                    while(u >= posY && last_entity + 1 < super.getLength() - 1)
+                    while(u > posY && last_entity + 1 <= super.getLength() - 1)
                     {
-                        System.out.println("je passe");
                         mapO[u + 1][posX] = mapO[u][posX];
                         mapO[u][posX] = null;
                         u--;
                     }
+                    if(mapO[posY + 1][posX] == null)
+                        posY ++;
                 break;
 
         }
 
+    }
+    public void severalPushX(int x)
+    {
+        switch (x)
+        {
+            case -1:
+                int i = posX;
+                while(mapO[posY][i] != null)
+                    i--;
+                int first_entity = i;
+                while(i < posX  && first_entity - 1 >= 0)
+                {
+                    mapO[posY][i - 1] = mapO[posY][i];
+                    mapO[posY][i] = null;
+                    i++;
+                }
+                if(mapO[posY][posX - 1] == null)
+                    posX --;
+                break;
+            case 1:
+                int u = posX;
+                while(mapO[posY][u] != null)
+                    u++;
+                int last_entity = u;
+                while(u > posX  && last_entity + 1 <= super.getWidth() - 1)
+                {
+                    mapO[posY][u + 1] = mapO[posY][u];
+                    mapO[posY][u] = null;
+                    u--;
+                }
+                if(mapO[posY][posX + 1] == null)
+                    posX ++;
+                break;
+        }
     }
 
 }
