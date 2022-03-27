@@ -80,11 +80,13 @@ public class BigAlgorithm extends Map
         {
             if (is[0] > 0)
                 {
+                    //on cherche s'il n'y a pas un "personnage" (ex : baba, flag, ect) au dessus du is
                     for (int i = 0; i <= character.length - 1; i++)
                     {
                         if (tabloc[is[0] - 1][is[1]] == character[i])
                         {
                             tabperm[k][0] = character[i];
+                            System.out.println("perso : " + tabperm[k][0] + "pos : " + k + " " + 0);
                             k++;
                         }
                     }
@@ -92,25 +94,27 @@ public class BigAlgorithm extends Map
 
             if (is[1] > 0)
                 {
+                    //on cherche s'il n' y a pas un "personnage" (ex: baba, flag, wall, ect) à gauche du is
                     for (int i = 0; i <= character.length - 1; i++)
                     {
                         if (tabloc[is[0]][is[1] - 1] == character[i])
                         {
                             tabperm[k][0] = character[i];
+                            System.out.println("perso : " + tabperm[k][0] + "pos : " + k + " " + 0);
                             k++;
-
                         }
                     }
                 }
 
             if(is[0] < tabloc[0].length - 1)
             {
-                // à faire
+                // on cherche s'il n 'y a pas une action (ex : you, win, ect) en dessous du is
                 for (int j = 0; j <= actions.length - 1; j++)
                 {
-                    if (tabloc[is[0] + 1][is[1]] == actions[j])
+                    if (tabloc[is[0] + 1][is[1]] == actions[j] && tabperm[l][0] != null)
                     {
                         tabperm[l][1] = actions[j];
+                        System.out.println("action : " + tabperm[l][1] + "pos : " + l + " " + 1);
                         l++;
                     }
                 }
@@ -118,16 +122,20 @@ public class BigAlgorithm extends Map
 
             if(is[1] < tabloc[0].length - 1)
             {
+                // on cherche s'il n 'y a pas une action (ex : you, win, ect) à droite du is
                 for(int j = 0; j <= actions.length - 1; j++)
                 {
-                    if(tabloc[is[0]][is[1] + 1] == actions[j])
+                    if(tabloc[is[0]][is[1] + 1] == actions[j] && tabperm[l][0] != null)
                     {
                         tabperm[l][1] = actions[j];
+                        System.out.println("action : " + tabperm[l][1] + "pos : " + l + " " + 1);
                         l++;
                     }
                 }
             }
         }
+        for(int i = 0; i <= tabperm.length - 1; i++)
+            System.out.println(tabperm[i][0] + " " + tabperm[i][1]);
     }
 
     /**
@@ -156,7 +164,7 @@ public class BigAlgorithm extends Map
         else if (TextBaba.class.equals(thing)) {
             return Rules.BABA;
         }
-        else if (Flag.class.equals(thing)) {
+        else if (TextFlag.class.equals(thing)) {
             return Rules.FLAG;
         }
         else if (You.class.equals(thing)) {
