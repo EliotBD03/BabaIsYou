@@ -1,8 +1,8 @@
 11 11
 baba 6 6 2
-text_baba 3 6
+text_baba 2 7
 is 3 7
-you 3 8
+you 4 7
 text_flag 8 7
 is 8 8
 win 8 9
