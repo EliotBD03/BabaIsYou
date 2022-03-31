@@ -43,6 +43,12 @@ public class BigAlgorithm extends Map {
                 } else
                     tabloc[i][j] = Rules.NONE;
     }
+
+    /**
+     * rassemble les tableaux de permisions en x et en y dans un même tableau
+     * @param tabpermX issue de la methode findPermX
+     * @param tabpermY issue de la methode findPermY
+     */
     public void setTabperm(Enum[][] tabpermX, Enum[][] tabpermY)
     {
         tabperm = new Enum[20][2];
@@ -83,11 +89,10 @@ public class BigAlgorithm extends Map {
     }
 
     /**
-     * cree un tableau à double dimensions representant l'objet (ex: Baba) et sa regle (ex: You)
-     *
-     * @param isLoc le tableau cree par la methode "findIs()"
+     * cree un tableau representant toutes les regles issue de blocs de regles aligné en Y
+     * @param isLoc la position des blocs Is issue de la methode findIs()
+     * @return tableau à deux dimensions : pour chacun des sous tableaux, on des objets de type Rules(Enum)
      */
-
     public Enum[][] findPermY(int[][] isLoc) {
         Enum[][] tabpermY = new Enum[10][2];
         int k = 0;
@@ -126,6 +131,12 @@ public class BigAlgorithm extends Map {
         }
         return tabpermY;
     }
+
+    /**
+     * cree un tableau representant toutes les regles issue de blocs de regles aligné en X
+     * @param isLoc la position des blocs Is issue de la methode findIs()
+     * @return tableau à deux dimensions : pour chacun des sous tableaux, on des objets de type Rules(Enum)
+     */
 
     public Enum[][] findPermX(int[][] isLoc)
     {

@@ -6,10 +6,18 @@ public class Baba extends  Map implements Entity
     private String skin = "O";
     //accesseur
 
+    /**
+     * constructeur servant à la mise en place d'instance dans "mapO" dans la classe "Map"
+     * @param flag permet de savoir si on est instancié via "mapO
+     */
     public Baba(boolean flag)
     {
 
     }
+
+    /**
+     * constucteur ayant comme coordonnés x et y : la position de l'instance dans "mapO"
+     */
     public Baba()
     {
         int[] position = super.searchtype(Baba.class);
@@ -17,10 +25,19 @@ public class Baba extends  Map implements Entity
         this.posX = position[1];
     }
 
+    /**
+     * permet de reconnaitre baba dans "map" dans la class "Map"
+     * @return un string permettant d'identifier baba
+     */
+
     @Override
     public String getSkin(){return skin;}
 
-    // bouger
+    /**
+     * change la position de baba (et des objets s'il pousse) en fonction des entrées de l'utilisateur
+     * @param input entrée de l'utilisateur
+     */
+
     public void move(String input)
     {
         if(babaYou(BigAlgorithm.getTabperm()))
@@ -30,81 +47,87 @@ public class Baba extends  Map implements Entity
                 case 'z':
                     if (canMoveY(this.posY - 1))
                     {
-                        System.out.println("je bouge");
                         this.posY --;
                     }
                     else if(babaIsPushingY(-1))
                     {
                         severalPushY(-1);
-                        System.out.println("je pousse");
                     }
                     super.actualiseInstance(Baba.class, posY, posX);
                     break;
                 case 's':
                     if (canMoveY( this.posY + 1))
                     {
-                        System.out.println("je bouge");
                         this.posY ++;
                     }
                     else if(babaIsPushingY(1))
                     {
                         severalPushY(1);
-                        System.out.println("je pousse");
                     }
                     super.actualiseInstance(Baba.class, posY, posX);
                     break;
                 case 'q':
                     if (canMoveX(this.posX - 1))
                     {
-                        System.out.println("je bouge");
                         this.posX --;
                     }
                     else if(babaIsPushingX(-1))
                     {
                         severalPushX(-1);
-                        System.out.println("je pousse");
                     }
                     super.actualiseInstance(Baba.class, posY, posX);
                     break;
                 case 'd':
                     if (canMoveX( this.posX + 1))
                     {
-                        System.out.println("je bouge");
                         this.posX ++;
                     }
                     else if(babaIsPushingX(1))
                     {
                         severalPushX(1);
-                        System.out.println("je pousse");
                     }
                     super.actualiseInstance(Baba.class, posY, posX);
                     break;
             }
         }
-        //System.out.println(posX + " " + posY);
     }
 
+    /**
+     * permet de savoir en fonction de la position et des regles de savoir si baba peut changer de position
+     * @param posx compris en 1 et -1 et permettant de bouger en X
+     * @return un booleen "true" si les condionts ne sont pas respectés "false" sinon
+     */
     public boolean canMoveX(int posx)
     {
         //if((posX + x < getWidth() - 1) && (super.mapO[this.posY][this.posX + x] == null) && (posX + x > 0))
         if(posx >= getWidth() - 1 || posx <= 0 || !(babaYou(BigAlgorithm.getTabperm())) || mapO[posY][posx] != null)
         {
-            System.out.println("peux pas bouger en x");
             return false;
         }
         return true;
     }
+
+    /**
+     * permet de savoir en fonction de la position et des regles de savoir si baba peut changer de position
+     * @param posy compris en 1 et -1 et permettant de bouger en Y
+     * @return un booleen "true" si les condionts ne sont pas respectés "false" sinon
+     */
 
     public boolean canMoveY(int posy)
     {
         //if((posY + y < getLength() - 1) && (super.mapO[this.posY + y][this.posX] == null) && (posY + y > 0))
         if(posy >= getLength() - 1 || posy <= 0 || !(babaYou(BigAlgorithm.getTabperm())) || mapO[posy][posX] != null)
         {
-            System.out.println("peux pas bouger en y");
             return false;
         }
         return true;
     }
+
+    /**
+     * permet de savoir si la règle "BabaIsYou" est respecté
+     * @param tabperm le tableau des permissions issue de "BigAlgorithm.java"
+     * @return un booleen "true" si on a "BABA,YOU" dans un des sous-tableaux de "tabperm", "false" sinon
+     */
 
     public boolean babaYou(Enum[][] tabperm)
     {
@@ -113,17 +136,10 @@ public class Baba extends  Map implements Entity
             if(tabperm[i][0] == Rules.BABA && tabperm[i][1] == Rules.YOU)
                 return true;
         }
-        System.out.println("BabaIsYou = false, peux plus bouger");
         return false;
     }
 
-    public void babaPushX(int x)
-    {
-        Entity temp = mapO[posY][posX + x];
-        mapO[posY][posX + x] = mapO[posY][posX];
-        mapO[posY][posX] = null;
-        mapO[posY][posX + x + x] = temp;
-    }
+
     public boolean babaIsPushingX(int x)
     {
         if(mapO[posY][posX + x] != null && mapO[posY][posX + x].canBePushed() && posX + x + x < getWidth() - 1 && posX + x +x > 0)
@@ -136,14 +152,6 @@ public class Baba extends  Map implements Entity
         if(mapO[posY + y][posX] != null && mapO[posY + y][posX].canBePushed() && posY + y + y < getLength() - 1 && posY + y + y > 0)
             return true;
         return false;
-    }
-
-    public void babaPushY(int y)
-    {
-        Entity temp = mapO[posY + y][posX];
-        mapO[posY + y][posX] = mapO[posY][posX];
-        mapO[posY][posX] = null;
-        mapO[posY + y + y][posX] = temp;
     }
 
     public boolean canBePushed()
