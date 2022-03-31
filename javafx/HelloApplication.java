@@ -6,6 +6,7 @@ import javafx.scene.Parent;
 import javafx.scene.input.KeyEvent;
 import javafx.event.EventHandler;
 import javafx.scene.Scene;
+import javafx.scene.paint.Color;
 import javafx.stage.Stage;
 
 
@@ -16,7 +17,7 @@ public class HelloApplication extends Application {
         try {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("hello-view.fxml"));
             Parent root = loader.load();
-            Scene scene = new Scene(root);
+            Scene scene = new Scene(root, Color.BLACK);
             Controller controller = loader.getController();
             stage.setScene(scene);
             stage.show();
@@ -47,3 +48,4 @@ public class HelloApplication extends Application {
         launch(args);
     }
 }
+
