@@ -4,7 +4,7 @@ public class Main
 {
     public static void main(String[] args)
     {
-        Extract extract = new Extract("C:\\Users\\julie\\OneDrive\\Bureau\\BabaIsYou\\projet1\\src\\main\\java\\logic\\level1.txt");
+        Extract extract = new Extract("test.txt");
         Map map = new Map();
         map.setMap(extract.getDataList());
         BigAlgorithm rules = new BigAlgorithm();

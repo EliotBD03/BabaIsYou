@@ -171,7 +171,7 @@ public class Baba extends  Map implements Entity
                 int i = posY;
                 while(mapO[i][posX] != null)
                     i--;
-                int first_entity = i;
+                int first_entity = i++;
                 while(i < posY  && first_entity - 1 >= 0)
                 {
                     mapO[i - 1][posX] = mapO[i][posX];
@@ -185,7 +185,7 @@ public class Baba extends  Map implements Entity
                 int u = posY;
                 while(mapO[u][posX] != null)
                     u++;
-                int last_entity = u;
+                int last_entity = u -- ;
                     while(u > posY && last_entity + 1 <= super.getLength() - 1)
                     {
                         mapO[u + 1][posX] = mapO[u][posX];
@@ -207,7 +207,7 @@ public class Baba extends  Map implements Entity
                 int i = posX;
                 while(mapO[posY][i] != null)
                     i--;
-                int first_entity = i;
+                int first_entity = i ++;
                 while(i < posX  && first_entity - 1 >= 0)
                 {
                     mapO[posY][i - 1] = mapO[posY][i];
@@ -221,7 +221,7 @@ public class Baba extends  Map implements Entity
                 int u = posX;
                 while(mapO[posY][u] != null)
                     u++;
-                int last_entity = u;
+                int last_entity = u --;
                 while(u > posX  && last_entity + 1 <= super.getWidth() - 1)
                 {
                     mapO[posY][u + 1] = mapO[posY][u];

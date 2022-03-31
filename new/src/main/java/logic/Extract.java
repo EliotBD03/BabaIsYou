@@ -15,6 +15,7 @@ import java.io.IOException;
 /**
  * cette classe a pour but d'extraire les donnees d'un fichier texte
  */
+import java.io.File;
 
 public class Extract {
     private String[][] dataList;
@@ -39,7 +40,7 @@ public class Extract {
         try {
 
             //on effectue les intanciations necessaires
-            FileReader file = new FileReader(map);
+            FileReader file = new FileReader(new File(map));
             BufferedReader r1 = new BufferedReader(file);
             String line;
 
