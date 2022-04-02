@@ -42,51 +42,51 @@ public class Baba extends  Map implements Entity
 
     public void move(String input)
     {
-        if(babaYou(BigAlgorithm.getTabperm()))
+        if(thingIsYou(BigAlgorithm.getTabperm()))
         {
             switch (input.charAt(0))
             {
                 case 'z':
                     if (canMoveY(this.posY - 1))
                     {
-                        this.posY --;
+                        Action.up(posY);
                     }
                     else if(babaIsPushingY(-1))
                     {
-                        severalPushY(-1);
+                        Action.pushY(-1, posX, posY, mapO);
                     }
                     super.actualiseInstance(Baba.class, posY, posX);
                     break;
                 case 's':
                     if (canMoveY( this.posY + 1))
                     {
-                        this.posY ++;
+                        Action.down(posY);
                     }
                     else if(babaIsPushingY(1))
                     {
-                        severalPushY(1);
+                        Action.pushY(1, posX, posY, mapO);
                     }
                     super.actualiseInstance(Baba.class, posY, posX);
                     break;
                 case 'q':
                     if (canMoveX(this.posX - 1))
                     {
-                        this.posX --;
+                        Action.left(posX);
                     }
                     else if(babaIsPushingX(-1))
                     {
-                        severalPushX(-1);
+                        Action.pushX(-1, posX, posY, mapO);
                     }
                     super.actualiseInstance(Baba.class, posY, posX);
                     break;
                 case 'd':
                     if (canMoveX( this.posX + 1))
                     {
-                        this.posX ++;
+                        Action.right(posX);
                     }
                     else if(babaIsPushingX(1))
                     {
-                        severalPushX(1);
+                        Action.pushX(1, posX, posY, mapO);
                     }
                     super.actualiseInstance(Baba.class, posY, posX);
                     break;
@@ -131,7 +131,7 @@ public class Baba extends  Map implements Entity
      * @return un booleen "true" si on a "BABA,YOU" dans un des sous-tableaux de "tabperm", "false" sinon
      */
 
-    public boolean babaYou(Enum[][] tabperm)
+    public boolean thingIsYou(Enum[][] tabperm)
     {
         for(int i = 0; i <= tabperm.length - 1; i ++)
         {
@@ -161,9 +161,8 @@ public class Baba extends  Map implements Entity
         return false;
     }
 
-    //travaille dessus...
 
-    public void severalPushY(int y)
+    public void PushY(int y)
     {
         switch (y)
         {
@@ -199,7 +198,7 @@ public class Baba extends  Map implements Entity
         }
 
     }
-    public void severalPushX(int x)
+    public void PushX(int x)
     {
         switch (x)
         {
