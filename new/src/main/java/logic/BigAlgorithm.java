@@ -186,23 +186,23 @@ public class BigAlgorithm extends Map {
      */
 
     private Enum whatobj(Class<?> thing) {
-        if (Is.class.equals(thing)) {
+        if (BlockRules.Is.class.equals(thing)) {
             return Rules.IS;
-        } else if (Stop.class.equals(thing)) {
+        } else if (BlockRules.Stop.class.equals(thing)) {
             return Rules.STOP;
-        } else if (Push.class.equals(thing)) {
+        } else if (BlockRules.Push.class.equals(thing)) {
             return Rules.PUSH;
-        } else if (TextWall.class.equals(thing)) {
+        } else if (BlockRules.TextWall.class.equals(thing)) {
             return Rules.WALL;
-        } else if (TextRock.class.equals(thing)) {
+        } else if (BlockRules.TextRock.class.equals(thing)) {
             return Rules.ROCK;
-        } else if (TextBaba.class.equals(thing)) {
+        } else if (BlockRules.TextBaba.class.equals(thing)) {
             return Rules.BABA;
-        } else if (TextFlag.class.equals(thing)) {
+        } else if (BlockRules.TextFlag.class.equals(thing)) {
             return Rules.FLAG;
-        } else if (You.class.equals(thing)) {
+        } else if (BlockRules.You.class.equals(thing)) {
             return Rules.YOU;
-        } else if (Win.class.equals(thing)) {
+        } else if (BlockRules.Win.class.equals(thing)) {
             return Rules.WIN;
         }
         return Rules.NONE;

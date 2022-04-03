@@ -79,11 +79,11 @@ public class Map {
             switch (thing)
             {
                 case "is":
-                    return new Is();
+                    return new BlockRules.Is();
                 case "stop":
-                    return new Stop();
+                    return new BlockRules.Stop();
                 case "push":
-                    return new Push();
+                    return new BlockRules.Push();
                 case "wall":
                     return new Wall();
                 case "rock":
@@ -93,51 +93,23 @@ public class Map {
                 case "flag":
                     return new Flag();
                 case "you":
-                    return new You();
+                    return new BlockRules.You();
                 case "win":
-                    return new Win();
+                    return new BlockRules.Win();
                 case "text_wall":
-                    return new TextWall();
+                    return new BlockRules.TextWall();
                 case "text_baba":
-                    return new TextBaba();
+                    return new BlockRules.TextBaba();
                 case "text_flag":
-                    return new TextFlag();
+                    return new BlockRules.TextFlag();
                 case "text_rock":
-                    return new TextRock();
+                    return new BlockRules.TextRock();
             }
             return null;
         }
         /**
          * affiche la map
          */
-
-        public int[] searchtype(Class<?> thing)
-        {
-            int x = -1 ; int y = -1;
-            int[] res = new int[2];
-
-            for(int i = 0; i <= mapO.length - 1; i++)
-                for(int j = 0; j <= mapO[i].length - 1; j++)
-                        if (thing.isInstance(mapO[i][j]))
-                            {
-                                y = i; x = j;
-                            }
-            res[0] = y; res[1] = x;
-            return res;
-        }
-// comprend pas pq qd je fais y ou x + 1, ça passe deux fois dans le if
-        public void actualiseInstance(Class<?> thing, int posY, int posX)
-        {
-            for(int i = 0; i <= mapO.length - 1; i++)
-                for(int j = 0; j <= mapO[i].length - 1; j++)
-                    if (thing.isInstance(mapO[i][j]))
-                    {
-                        Entity temp = mapO[i][j];
-                        mapO[i][j] = null ;
-                        mapO[posY][posX] = temp;
-                        //System.out.println("c'est actualise");
-                    }
-        }
 
         @Override
         public String toString() {

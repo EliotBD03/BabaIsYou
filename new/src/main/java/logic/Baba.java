@@ -1,6 +1,6 @@
 package logic;
 
-public class Baba extends  Map implements Entity
+public class Baba extends  Item implements Entity
 {
     //position de baba
     private int posX = 0;
@@ -32,7 +32,7 @@ public class Baba extends  Map implements Entity
      * @return un string permettant d'identifier baba
      */
 
-    @Override
+
     public String getSkin(){return skin;}
 
     /**
@@ -49,44 +49,44 @@ public class Baba extends  Map implements Entity
                 case 'z':
                     if (canMoveY(this.posY - 1))
                     {
-                        Action.up(posY);
+                        Actions.up(posY);
                     }
                     else if(babaIsPushingY(-1))
                     {
-                        Action.pushY(-1, posX, posY, mapO);
+                        Actions.pushY(-1, posX, posY, mapO);
                     }
                     super.actualiseInstance(Baba.class, posY, posX);
                     break;
                 case 's':
                     if (canMoveY( this.posY + 1))
                     {
-                        Action.down(posY);
+                        Actions.down(posY);
                     }
                     else if(babaIsPushingY(1))
                     {
-                        Action.pushY(1, posX, posY, mapO);
+                        Actions.pushY(1, posX, posY, mapO);
                     }
                     super.actualiseInstance(Baba.class, posY, posX);
                     break;
                 case 'q':
                     if (canMoveX(this.posX - 1))
                     {
-                        Action.left(posX);
+                        Actions.left(posX);
                     }
                     else if(babaIsPushingX(-1))
                     {
-                        Action.pushX(-1, posX, posY, mapO);
+                        Actions.pushX(-1, posX, posY, mapO);
                     }
                     super.actualiseInstance(Baba.class, posY, posX);
                     break;
                 case 'd':
                     if (canMoveX( this.posX + 1))
                     {
-                        Action.right(posX);
+                        Actions.right(posX);
                     }
                     else if(babaIsPushingX(1))
                     {
-                        Action.pushX(1, posX, posY, mapO);
+                        Actions.pushX(1, posX, posY, mapO);
                     }
                     super.actualiseInstance(Baba.class, posY, posX);
                     break;
@@ -156,10 +156,7 @@ public class Baba extends  Map implements Entity
         return false;
     }
 
-    public boolean canBePushed()
-    {
-        return false;
-    }
+
 
 
     public void PushY(int y)

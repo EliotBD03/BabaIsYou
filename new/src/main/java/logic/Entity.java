@@ -2,14 +2,12 @@ package logic;
 
 interface Entity
 {
-    String getSkin();
+    static String getSkin(){return " ";};
 
-    boolean canBePushed();
-    boolean canMoveX(int posx);
-    boolean canMoveY(int posy);
-    boolean thingIsYou(Enum[][] tabperm, Entity thing);
-    boolean thingIsPushing(byte x);
-    boolean babaIsPushingY(byte y);
-    void PushX(byte x);
-    void PushY(byte y);
+    static boolean canBePushed(Enum[][] tabperm){return true;}
+    static boolean canMoveX(int posx){return true;}
+    static boolean canMoveY(int posy){return true;}
+    static boolean thingIsYou(Enum[][] tabperm, Entity thing){return true;}
+    static boolean thingIsPushingX(int x){return true;}
+    static boolean thingIsPushingY(int y){return true;}
     }

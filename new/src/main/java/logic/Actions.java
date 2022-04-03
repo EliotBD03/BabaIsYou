@@ -1,6 +1,6 @@
 package logic;
 
-public class Action
+public class Actions
 {
     /**
      * decremente de 1 la position d'un objet en y
