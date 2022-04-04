@@ -10,12 +10,21 @@ public class Main
         BigAlgorithm rules = new BigAlgorithm();
 
         Baba baba = new Baba();
+        Flag flag = new Flag();
+        Rock rock = new Rock();
+        Wall wall = new Wall();
+
         System.out.println(map);
 
         while(true)
         {
             String input = Input.get_Input();
+
             baba.move(input);
+            flag.move(input);
+            rock.move(input);
+            wall.move(input);
+
             map.actualiseMap();
             rules.actualise();
             System.out.println(map);

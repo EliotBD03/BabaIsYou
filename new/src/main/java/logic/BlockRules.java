@@ -8,12 +8,12 @@ package logic;
 public abstract class BlockRules implements Entity
 {
 
-    public boolean canBePushed(Enum[][] tabperm){return true;}
-    public boolean canMoveX(int posx){return false;}
-    public boolean canMoveY(int posy){return false;}
-    public boolean thingIsYou(Enum[][] tabperm, Entity thing){return false;}
-    public boolean thingIsPushingX(int x){return false;}
-    public boolean thingIsPushingY(int y){return false;}
+    public boolean canBePushed(Enum[][] tabperm, Rules object){return true;}
+    private boolean canMoveX(int posx){return false;}
+    private boolean canMoveY(int posy){return false;}
+    private boolean thingIsYou(Enum[][] tabperm, Entity thing){return false;}
+    private boolean thingIsPushingX(int x){return false;}
+    private boolean thingIsPushingY(int y){return false;}
 
     public static class TextFlag extends BlockRules
     {

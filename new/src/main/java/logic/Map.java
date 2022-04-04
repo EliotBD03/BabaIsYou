@@ -85,13 +85,13 @@ public class Map {
                 case "push":
                     return new BlockRules.Push();
                 case "wall":
-                    return new Wall();
+                    return new Wall(true);
                 case "rock":
-                    return new Rock();
+                    return new Rock(true);
                 case "baba":
                     return new Baba(true);
                 case "flag":
-                    return new Flag();
+                    return new Flag(true);
                 case "you":
                     return new BlockRules.You();
                 case "win":
@@ -121,4 +121,19 @@ public class Map {
             }
             return res;
         }
+
+    protected int[] searchtype(Class<?> thing)
+    {
+        int x = -1 ; int y = -1;
+        int[] res = new int[2];
+
+        for(int i = 0; i <= mapO.length - 1; i++)
+            for(int j = 0; j <= mapO[i].length - 1; j++)
+                if (thing.isInstance(mapO[i][j]))
+                {
+                    y = i; x = j;
+                }
+        res[0] = y; res[1] = x;
+        return res;
+    }
     }

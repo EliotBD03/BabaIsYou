@@ -208,6 +208,32 @@ public class BigAlgorithm extends Map {
         return Rules.NONE;
     }
 
+    private Entity wichItem(Enum item)
+    {
+        if(item == Rules.WALL)
+        {
+            int[] pos = searchtype(Wall.class);
+            return  mapO[pos[0]][pos[1]];
+        }
+        else if (item == Rules.FLAG)
+        {
+            int[] pos = searchtype(Flag.class);
+            return  mapO[pos[0]][pos[1]];
+        }
+        else if (item == Rules.BABA)
+        {
+            int[] pos = searchtype(Baba.class);
+            return  mapO[pos[0]][pos[1]];
+        }
+        else if (item == Rules.ROCK)
+        {
+            int[] pos = searchtype(Rock.class);
+            return  mapO[pos[0]][pos[1]];
+        }
+        else
+            return null;
+    }
+
     /**
      * permet d'actualiser le tableau de permissions après changement de position d'une instance dans le tableau d'objet
      */
@@ -217,62 +243,12 @@ public class BigAlgorithm extends Map {
         setTabperm(findPermX(current_is), findPermY(current_is));
         int i = 0;
     }
+
+    public Entity searchThingYou()
+    {
+        for(int i = 0; i<= tabperm.length - 1; i++)
+            if(tabperm[i][1] == Rules.YOU && tabperm[i][0] != null)
+                return wichItem(tabperm[i][0]);
+        return null;
+    }
 }
-
-/*
-    public static void actualiseX(Enum thing, int x)
-    {
-        switch (x)
-        {
-            case 1:
-                for(int i = 0; i <= tabloc.length - 1; i++)
-                    for(int j = 0; j <= tabloc[i].length - 1; j++)
-                        if(tabloc[i][j] == thing && j + 1 < getWidth() - 1)
-                        {
-                            Enum temp = tabloc[i][j];
-                            tabloc[i][j] = null;
-                            tabloc[i][j+ 1] = temp;
-                        }
-            case -1:
-                for(int i = 0; i <= tabloc.length - 1; i++)
-                    for(int j = 0; j <= tabloc[i].length - 1; j++)
-                        if(tabloc[i][j] == thing && j - 1 > 0)
-                        {
-                            Enum temp = tabloc[i][j];
-                            tabloc[i][j] = null;
-                            tabloc[i][j- 1] = temp;
-                        }
-        }
-
-    }
-
-    public static void actualiseY(Enum thing, int y)
-    {
-        switch (y)
-        {
-            case 1:
-                for(int i = 0; i <= tabloc.length - 1; i++)
-                    for(int j = 0; j <= tabloc[i].length - 1; j++)
-                        if(tabloc[i][j] == thing && i + 1 < getLength() - 1)
-                        {
-                            Enum temp = tabloc[i][j];
-                            tabloc[i][j] = null;
-                            tabloc[i + 1][j] = temp;
-                        }
-            case -1:
-                for(int i = 0; i <= tabloc.length - 1; i++)
-                    for(int j = 0; j <= tabloc[i].length - 1; j++)
-                        if(tabloc[i][j] == thing && i - 1 > 0)
-                        {
-                            Enum temp = tabloc[i][j];
-                            tabloc[i][j] = null;
-                            tabloc[i - 1][j] = temp;
-                        }
-        }
-    }
-*/
-    /**
-     * actualise le tableau findperm après déplacement
-     */
-
-
