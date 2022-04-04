@@ -52,7 +52,7 @@ public class Actions
             case -1:
                     while(map_object[posY][temp] != null)
                         temp--;
-                    int first_entity = temp + 1;
+                    int first_entity = temp;
                     while(temp < posX && first_entity - 1 >= 0)
                     {
                         map_object[posY][temp - 1] = map_object[posY][temp];
@@ -60,12 +60,12 @@ public class Actions
                         temp ++;
                     }
                     if(map_object[posY][posX - 1] == null)
-                         return posX --;
+                         return -- posX;
                     break;
             case 1:
                     while(map_object[posY][temp] != null)
                         temp ++;
-                    int last_entity = temp - 1;
+                    int last_entity = temp;
                     while(temp > posX  && last_entity + 1 <= map_object[posY].length - 1)
                     {
                             map_object[posY][temp + 1] = map_object[posY][temp];
@@ -73,7 +73,7 @@ public class Actions
                             temp--;
                     }
                     if(map_object[posY][posX + 1] == null)
-                        return posX ++;
+                        return  ++posX;
                     break;
         }
         return  posX;
@@ -103,7 +103,9 @@ public class Actions
                     temp ++;
                 }
                 if(map_object[posY - 1][posX] == null)
-                    return posY --;
+                {
+                    return -- posY;
+                }
                 break;
             case 1:
                 while(map_object[temp][posX] != null)
@@ -116,7 +118,7 @@ public class Actions
                     temp--;
                 }
                 if(map_object[posY + 1][posX] == null)
-                    return posY ++;
+                    return ++ posY;
                 break;
         }
         return posY;

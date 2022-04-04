@@ -2,9 +2,6 @@ package logic;
 
 public class Flag extends Item
 {
-    private int posX = -1;
-    private int posy = -1;
-
     private String skin = "@";
 
     public String getSkin(){return skin;}
@@ -17,14 +14,33 @@ public class Flag extends Item
     public Flag()
     {
         int[] position = super.searchtype(Flag.class);
-        this.posY = position[0];
-        this.posX = position[1];
+        super.posY = position[0];
+        super.posX = position[1];
+        super.pushstatus = canBePushed(BigAlgorithm.getTabperm());
+    }
+
+
+    public boolean canBePushed(Enum[][] tabperm)
+    {
+        for(int i = 0; i <= tabperm.length - 1; i++)
+        {
+            if(tabperm[i][0] ==  Rules.FLAG && tabperm[i][1] == Rules.PUSH)
+            {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    private void actualiseInstance()
+    {
+        actualiseInstance(Flag.class, posY, posX);
     }
 
     @Override
     public void move(String input)
     {
         super.move(input, Rules.FLAG);
+        actualiseInstance();
     }
-
 }

@@ -4,7 +4,8 @@ interface Entity
 {
     String getSkin();
 
-    boolean canBePushed(Enum[][] tabperm, Rules object);
+    boolean canBePushed(Enum[][] tabperm);
+    int[] getPos();
     static boolean canMoveX(int posx){return false;}
     static boolean canMoveY(int posy){return false;}
     static boolean thingIsYou(Enum[][] tabperm, Entity thing){return false;}

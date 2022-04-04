@@ -7,8 +7,8 @@ package logic;
 public class BigAlgorithm extends Map {
     public static Enum[][] tabloc = new Enum[getLength()][getWidth()];
     private static Enum[][] tabperm;
-    private Enum[] character = {Rules.BABA, Rules.ROCK, Rules.FLAG, Rules.WALL};
-    private Enum[] actions = {Rules.YOU, Rules.STOP, Rules.WIN, Rules.PUSH};
+    private static final Enum[] character = {Rules.BABA, Rules.ROCK, Rules.FLAG, Rules.WALL};
+    private static final Enum[] actions = {Rules.YOU, Rules.STOP, Rules.WIN, Rules.PUSH};
 
 
     /**
@@ -108,7 +108,6 @@ public class BigAlgorithm extends Map {
                     if (tabloc[is[0] - 1][is[1]] == character[i])
                     {
                         tabpermY[k][0] = character[i];
-                        System.out.println("perso : " + tabpermY[k][0] + " pos : " + k + " " + 0 + " instruc 1");
                     }
                 }
 
@@ -124,7 +123,6 @@ public class BigAlgorithm extends Map {
                         if (tabloc[is[0] + 1][is[1]] == actions[j])
                         {
                             tabpermY[k][1] = actions[j];
-                            System.out.println("action : " + tabpermY[k][1] + " pos : " + k + " " + 1 + " instruc 3");
                             k++;
                         }
                     }
@@ -154,7 +152,6 @@ public class BigAlgorithm extends Map {
                     if (tabloc[is[0]][is[1] - 1] == character[i])
                     {
                         tabpermX[k][0] = character[i];
-                        System.out.println("perso : " + tabpermX[k][0] + " pos : " + k + " " + 0 + " instruc 2");
                     }
                 }
             }
@@ -168,7 +165,6 @@ public class BigAlgorithm extends Map {
                         if (tabloc[is[0]][is[1] + 1] == actions[j])
                         {
                             tabpermX[k][1] = actions[j];
-                            System.out.println("action : " + tabpermX[k][1] + " pos : " + k + " " + 1 + " instruc 4");
                             k++;
                         }
                     }
@@ -185,7 +181,7 @@ public class BigAlgorithm extends Map {
      * @return l'objet de type "Rules" (voir Rules.java) representant un objet ou une regle
      */
 
-    private Enum whatobj(Class<?> thing) {
+    public static Enum whatobj(Class<?> thing) {
         if (BlockRules.Is.class.equals(thing)) {
             return Rules.IS;
         } else if (BlockRules.Stop.class.equals(thing)) {
@@ -208,31 +204,6 @@ public class BigAlgorithm extends Map {
         return Rules.NONE;
     }
 
-    private Entity wichItem(Enum item)
-    {
-        if(item == Rules.WALL)
-        {
-            int[] pos = searchtype(Wall.class);
-            return  mapO[pos[0]][pos[1]];
-        }
-        else if (item == Rules.FLAG)
-        {
-            int[] pos = searchtype(Flag.class);
-            return  mapO[pos[0]][pos[1]];
-        }
-        else if (item == Rules.BABA)
-        {
-            int[] pos = searchtype(Baba.class);
-            return  mapO[pos[0]][pos[1]];
-        }
-        else if (item == Rules.ROCK)
-        {
-            int[] pos = searchtype(Rock.class);
-            return  mapO[pos[0]][pos[1]];
-        }
-        else
-            return null;
-    }
 
     /**
      * permet d'actualiser le tableau de permissions après changement de position d'une instance dans le tableau d'objet
@@ -244,6 +215,7 @@ public class BigAlgorithm extends Map {
         int i = 0;
     }
 
+    /*
     public Entity searchThingYou()
     {
         for(int i = 0; i<= tabperm.length - 1; i++)
@@ -251,4 +223,6 @@ public class BigAlgorithm extends Map {
                 return wichItem(tabperm[i][0]);
         return null;
     }
+
+     */
 }
