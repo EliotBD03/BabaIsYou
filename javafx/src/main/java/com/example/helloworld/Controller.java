@@ -8,28 +8,44 @@ import javafx.scene.image.ImageView;
 public class Controller {
     @FXML
     private ImageView monImageView;
-    private double x = 278.0;
-    private double y = 165.0;
+    private double x = 250.0;
+    private double y = 150.0;
 
 
     public void up()
     {
-        System.out.println("UP");
         monImageView.setLayoutY(y=y-50);
-    }
+        System.out.println("y"+y);
+        if (y<100){
+            System.out.println("bord de map en y:"+y);
+            monImageView.setLayoutY(y=50);
+        }
+        }
     public void down()
     {
-        System.out.println("DOWN");
         monImageView.setLayoutY(y=y+50);
+        System.out.println("y"+y);
+        if (y>250){
+            System.out.println("bord de map en y:"+y);
+            monImageView.setLayoutY(y=300);
+        }
     }
     public void left()
     {
-        System.out.println("LEFT");
         monImageView.setLayoutX(x=x-50);
+        System.out.println("x"+x);
+        if (x<100){
+            System.out.println("bord de map en x:"+x);
+            monImageView.setLayoutX(x=50);
+        }
     }
     public void right()
     {
-        System.out.println("RIGHT");
         monImageView.setLayoutX(x=x+50);
+        System.out.println("x"+x);
+        if (x>450){
+            System.out.println("bord de map en x:"+x);
+            monImageView.setLayoutX(x=450);
+        }
     }
 }
