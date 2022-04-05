@@ -2,6 +2,8 @@ package logic;
 
 public class Baba extends Item
 {
+
+
     //position de baba
     private String skin = "O";
     //accesseur
@@ -19,8 +21,8 @@ public class Baba extends Item
     public Baba()
     {
         int[] position = super.searchtype(Baba.class);
-        super.posY = position[0];
-        super.posX = position[1];
+        posY = position[0];
+        posX = position[1];
         super.pushstatus =  canBePushed(BigAlgorithm.getTabperm());
     }
 
@@ -37,15 +39,13 @@ public class Baba extends Item
         return false;
     }
 
-    private void actualiseInstance()
-    {
-        actualiseInstance(Baba.class, posY, posX);
-    }
 
     @Override
     public void move(String input)
     {
+        System.out.println("avant posx = " + posX + " posy = " + posY);
         super.move(input, Rules.BABA);
-        actualiseInstance();
+        actualiseInstance(Baba.class, posX, posY);
+        System.out.println("apres posx = " + posX + " posy = " + posY);
     }
 }

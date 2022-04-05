@@ -22,11 +22,6 @@ public class Main
 
             baba.move(input);
 
-            flag.move(input);
-
-            rock.move(input);
-
-            wall.move(input);
 
             rules.actualise();
             map.actualiseMap();

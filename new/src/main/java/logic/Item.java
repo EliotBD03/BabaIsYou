@@ -2,33 +2,21 @@ package logic;
 
 public abstract class Item extends Map implements Entity
 {
-    protected int posX;
-    protected int posY;
+    public int posX;
+    public int posY;
+
     protected String skin;
     protected boolean pushstatus = false;
 
-
     public int[] getPos()
     {
-        int[] pos = {posY, posX};
+        System.out.println(posY + " " + posX);
+        int[] pos = {this.posY, this.posX};
         return pos;
     }
 
 
     // comprend pas pq qd je fais y ou x + 1, ça passe deux fois dans le if
-    private void actualiseInstance(){};
-    protected void actualiseInstance(Class<?> thing, int posY, int posX)
-    {
-        for(int i = 0; i <= mapO.length - 1; i++)
-            for(int j = 0; j <= mapO[i].length - 1; j++)
-                if (thing.isInstance(mapO[i][j]))
-                {
-                    Entity temp = mapO[i][j];
-                    mapO[i][j] = null ;
-                    mapO[posY][posX] = temp;
-                    //System.out.println("c'est actualise");
-                }
-    }
 
     protected boolean thingIsYou(Enum[][] tabperm, Rules object)
     {
