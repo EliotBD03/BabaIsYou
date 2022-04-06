@@ -25,6 +25,9 @@ public class Controller {
             System.out.println("bord de map en y:"+y);
             monImageView.setLayoutY(y=50);
         }
+        if (y2<100){
+            monImageView2.setLayoutY(y2=50);
+        }
         }
     public void down()
     {
@@ -34,6 +37,9 @@ public class Controller {
         if (y>550){
             System.out.println("bord de map en y:"+y);
             monImageView.setLayoutY(y=550);
+        }
+        if (y2>550){
+            monImageView2.setLayoutY(y2=550);
         }
     }
     public void left()
@@ -47,6 +53,9 @@ public class Controller {
             System.out.println("bord de map en x:"+x);
             monImageView.setLayoutX(x=50);
         }
+        if (x2<100){
+            monImageView2.setLayoutX(x2=50);
+        }
     }
     public void right()
     {
@@ -57,6 +66,9 @@ public class Controller {
         if (x>350){
             System.out.println("bord de map en x:"+x);
             monImageView.setLayoutX(x=350);
+        }
+        if (x2>350){
+            monImageView2.setLayoutX(x2=350);
         }
     }
 }
