@@ -8,13 +8,18 @@ import javafx.scene.image.ImageView;
 public class Controller {
     @FXML
     private ImageView monImageView;
-    private double x = 250.0;
-    private double y = 150.0;
+    @FXML
+    private ImageView monImageView2;
+    private double x = 203.0;
+    private double y = 277.0;
+    private double x2 = 203.0;
+    private double y2 = 277.0;
 
 
     public void up()
     {
         monImageView.setLayoutY(y=y-50);
+        monImageView2.setLayoutY(y2=y2-50);
         System.out.println("y"+y);
         if (y<100){
             System.out.println("bord de map en y:"+y);
@@ -24,15 +29,19 @@ public class Controller {
     public void down()
     {
         monImageView.setLayoutY(y=y+50);
+        monImageView2.setLayoutY(y2=y2+50);
         System.out.println("y"+y);
-        if (y>250){
+        if (y>550){
             System.out.println("bord de map en y:"+y);
-            monImageView.setLayoutY(y=300);
+            monImageView.setLayoutY(y=550);
         }
     }
     public void left()
     {
         monImageView.setLayoutX(x=x-50);
+        monImageView2.setLayoutX(x2=x2-50);
+        monImageView2.setOpacity(1);
+
         System.out.println("x"+x);
         if (x<100){
             System.out.println("bord de map en x:"+x);
@@ -42,10 +51,12 @@ public class Controller {
     public void right()
     {
         monImageView.setLayoutX(x=x+50);
+        monImageView2.setLayoutX(x2=x2+50);
+        monImageView2.setOpacity(0);
         System.out.println("x"+x);
-        if (x>450){
+        if (x>350){
             System.out.println("bord de map en x:"+x);
-            monImageView.setLayoutX(x=450);
+            monImageView.setLayoutX(x=350);
         }
     }
 }
