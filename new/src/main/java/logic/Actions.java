@@ -1,10 +1,16 @@
 package logic;
 
+/**
+ * cette classe statique contient méthodes permettant d'effectuer une action dans le jeu
+ */
 public class Actions
 {
     /**
-     * decremente de 1 la position d'un objet en y
-     * @param posY la position en y d'un objet
+     * cette methode permet d'incrementer la position en y de l'instance qui l'utilise dans le tableau d'objet
+     * @param map_object le tableau d'objet de type Entity issu de la classe "Entity"
+     * @param posY la position de l'instance en y dans le tableau
+     * @param posX la position de l'istance en x dans le tableau
+     * @return la position en y qui a été décrémenté de 1
      */
     public static  int up(Entity[][] map_object, int posY, int posX)
     {
@@ -14,8 +20,11 @@ public class Actions
          return  posY;
     }
     /**
-     * incremente de 1 la position d'un objet en y
-     * @param posY la position en y d'un objet
+     * cette methode permet décrémenter la position en y de l'instance qui l'utilise dans le tableau d'objet
+     * @param map_object le tableau d'objet de type Entity issu de la classe "Entity"
+     * @param posY la position de l'instance en y dans le tableau
+     * @param posX la position de l'istance en x dans le tableau
+     * @return la position en y qui a été incrémenté de 1
      */
     public static int down(Entity[][] map_object, int posY, int posX)
     {
@@ -26,8 +35,11 @@ public class Actions
     }
 
     /**
-     * decremente de 1 la position d'un objet en x
-     * @param posX la position en x d'un objet
+     * cette methode permet décrémenter la position en x de l'instance qui l'utilise dans le tableau d'objet
+     * @param map_object le tableau d'objet de type Entity issu de la classe "Entity"
+     * @param posY la position de l'instance en y dans le tableau
+     * @param posX la position de l'istance en x dans le tableau
+     * @return la position en x qui a été décrémenté de 1
      */
     public static int left(Entity[][] map_object, int posY, int posX)
     {
@@ -38,9 +50,13 @@ public class Actions
     }
 
     /**
-     * incremente de 1 la position d'un objet en x
-     * @param posX la position en x d'un objet
+     * cette methode permet incrémenter la position en x de l'instance qui l'utilise dans le tableau d'objet
+     * @param map_object le tableau d'objet de type Entity issu de la classe "Entity"
+     * @param posY la position de l'instance en y dans le tableau
+     * @param posX la position de l'istance en x dans le tableau
+     * @return la position en x qui a été incrémenté de 1
      */
+
     public static  int right(Entity[][] map_object, int posY, int posX)
     {
         map_object[posY][posX + 1] = map_object[posY][posX];
@@ -50,12 +66,15 @@ public class Actions
     }
 
     /**
-     *  la methode permet de pousser un ou plusieurs elements en x
-     * @param map_object  le tableau à deux dimensions représentant la position des objets de type Entity
-     * @param posX la position en x de l'objet de type entity qui pousse les autres objets de type Entity
-     * @param posY la position en y de l'objet de type entity qui pousse les autres objets de type Entity
-     * @param x entier compris entre 1 et -1 correspondant à l'incrementation(1)/decrementation(-1) de la position x des objets se situant dans l'alignement et proche de l'objet en position (posX,posY)
+     * cette méthode permet de déplacer plusieurs éléments en x en fonction de la position de l'instance qu'il l'utilise
+     * et de son "orientation"
+     * @param x l'orientation de l'instance. Autrement dit, si l'instance compte aller à droite (+1) ou à gauche du tableau (-1)
+     * @param posY la position de l'instance en y dans le tableau
+     * @param posX la position de l'instance en x dans le tableau
+     * @param map_object le tableau d'objet de type Entity issu de la classe "Entity"
+     * @return
      */
+
     public static  int pushX(int x, int posY,int posX, Entity[][] map_object)
     {
         int temp = posX;
@@ -92,11 +111,13 @@ public class Actions
     }
 
     /**
-     *  la methode permet de pousser un ou plusieurs elements en y
-     * @param map_object  le tableau à deux dimensions représentant la position des objets de type Entity
-     * @param posX la position en x de l'objet de type entity qui pousse les autres objets de type Entity
-     * @param posY la position en y de l'objet de type entity qui pousse les autres objets de type Entity
-     * @param y entier compris entre 1 et -1 correspondant à l'incrementation(1)/decrementation(-1) de la position y des objets se situant dans l'alignement et proche de l'objet en position (posX,posY)
+     * cette méthode permet de déplacer plusieurs éléments en y en fonction de la position de l'instance qu'il l'utilise
+     * et de son "orientation"
+     * @param y l'orientation de l'instance. Autrement dit, si l'instance compte aller vers le bas (+1) ou en haut du tableau (-1)
+     * @param posY la position de l'instance en y dans le tableau
+     * @param posX la position de l'instance en x dans le tableau
+     * @param map_object le tableau d'objet de type Entity issu de la classe "Entity"
+     * @return
      */
 
     public static  int pushY(int y, int posY, int posX, Entity[][] map_object)
