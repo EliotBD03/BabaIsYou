@@ -10,7 +10,8 @@ public class Actions
     {
          map_object[posY - 1][posX] = map_object[posY][posX];
          map_object[posY][posX] = null;
-         return -- posY;
+         posY -= 1;
+         return  posY;
     }
     /**
      * incremente de 1 la position d'un objet en y
@@ -20,7 +21,8 @@ public class Actions
     {
         map_object[posY  + 1][posX] = map_object[posY][posX];
         map_object[posY][posX] = null;
-        return ++ posY;
+        posY += 1;
+        return posY;
     }
 
     /**
@@ -31,7 +33,8 @@ public class Actions
     {
         map_object[posY][posX - 1] = map_object[posY][posX];
         map_object[posY][posX] = null;
-        return -- posX;
+        posX -= 1;
+        return posX;
     }
 
     /**
@@ -42,7 +45,8 @@ public class Actions
     {
         map_object[posY][posX + 1] = map_object[posY][posX];
         map_object[posY][posX] = null;
-        return ++ posX;
+        posX += 1;
+        return posX;
     }
 
     /**
@@ -52,7 +56,7 @@ public class Actions
      * @param posY la position en y de l'objet de type entity qui pousse les autres objets de type Entity
      * @param x entier compris entre 1 et -1 correspondant à l'incrementation(1)/decrementation(-1) de la position x des objets se situant dans l'alignement et proche de l'objet en position (posX,posY)
      */
-    public static final  int pushX(int x, int posY,int posX, Entity[][] map_object)
+    public static  int pushX(int x, int posY,int posX, Entity[][] map_object)
     {
         int temp = posX;
         switch(x)
@@ -68,6 +72,7 @@ public class Actions
                         map_object[posY][temp] = null;
                         temp ++;
                     }
+                    temp --;
                     break;
             case 1:
                     while(map_object[posY][temp] != null)
@@ -80,6 +85,7 @@ public class Actions
                             map_object[posY][temp] = null;
                             temp--;
                     }
+                    temp += 2;
                     break;
         }
         return  temp;
@@ -112,6 +118,7 @@ public class Actions
                     map_object[temp][posX] = null;
                     temp ++;
                 }
+                temp -= 2;
                 break;
             case 1:
                 while(map_object[temp][posX] != null)
@@ -124,6 +131,7 @@ public class Actions
                     map_object[temp][posX] = null;
                     temp--;
                 }
+                temp += 2;
                 break;
         }
         return temp;

@@ -6,6 +6,7 @@ public abstract class Item extends Map implements Entity
     protected int posY;
     protected String skin;
     protected boolean pushstatus = false;
+    private static boolean winstatus = false;
 
 
     public int[] getPos()
@@ -114,7 +115,8 @@ public abstract class Item extends Map implements Entity
                                 {
                                     posY = Actions.down(mapO, i, j);
                                 }
-
+                                if(thingHasWin(BigAlgorithm.getTabperm(), i+ 1, posX))
+                                    winstatus = true;
                                 else if(thingIsPushingY(BigAlgorithm.getTabperm(),i + 1, j))
                                 {
                                     posY = Actions.pushY(1, i, j, mapO);
@@ -146,17 +148,22 @@ public abstract class Item extends Map implements Entity
 
                                 else if(thingIsPushingX(BigAlgorithm.getTabperm(),i, j + 1))
                                     posX = Actions.pushX(1, i, j, mapO);
+
+                                if(thingHasWin(BigAlgorithm.getTabperm(), i, j))
+                                    winstatus = true;
                             }
                     break;
             }
+            System.out.print(posX + " ");
+            System.out.print(posY);
         }
     }
 
-    protected boolean thingHasWin(Enum[][] tabperm)
+    private boolean thingHasWin(Enum[][] tabperm, int i, int j)
     {
         Enum win_object = whichItem(Rules.WIN);
         int[] wichinstance = whichPosition(win_object);
-        if(posY == wichinstance[0] && posX == wichinstance[1])
+        if(wichinstance != null && i == wichinstance[0] && j == wichinstance[1])
             return true;
         return false;
     }
@@ -195,5 +202,8 @@ public abstract class Item extends Map implements Entity
             return null;
     }
 
-
+    public static boolean win()
+    {
+        return winstatus;
+    }
 }
