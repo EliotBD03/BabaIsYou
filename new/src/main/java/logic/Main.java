@@ -20,11 +20,11 @@ public class Main
         {
             String input = Input.get_Input();
 
-            //baba.move(input);
+            baba.move(input);
 
-            //flag.move(input);
+            flag.move(input);
 
-            //rock.move(input);
+            rock.move(input);
 
             wall.move(input);
 

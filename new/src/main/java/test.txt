@@ -3,9 +3,10 @@ text_wall 8 7
 is 9 7
 you 10 7
 wall 5 5
-wall 5 6
-wall 5 7
 flag 5 4
+flag 5 2
+flag 5 1
 text_flag 3 8
 is 4 8
 push 5 8
+you 5 9
