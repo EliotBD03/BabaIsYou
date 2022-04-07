@@ -6,35 +6,43 @@ public class Actions
      * decremente de 1 la position d'un objet en y
      * @param posY la position en y d'un objet
      */
-    public static  int up(int posY)
+    public static  int up(Entity[][] map_object, int posY, int posX)
     {
-        return --posY;
+         map_object[posY - 1][posX] = map_object[posY][posX];
+         map_object[posY][posX] = null;
+         return -- posY;
     }
     /**
      * incremente de 1 la position d'un objet en y
      * @param posY la position en y d'un objet
      */
-    public static int down(int posY)
+    public static int down(Entity[][] map_object, int posY, int posX)
     {
-       return ++posY ;
+        map_object[posY  + 1][posX] = map_object[posY][posX];
+        map_object[posY][posX] = null;
+        return ++ posY;
     }
 
     /**
      * decremente de 1 la position d'un objet en x
      * @param posX la position en x d'un objet
      */
-    public static int left(int posX)
+    public static int left(Entity[][] map_object, int posY, int posX)
     {
-        return --posX;
+        map_object[posY][posX - 1] = map_object[posY][posX];
+        map_object[posY][posX] = null;
+        return -- posX;
     }
 
     /**
      * incremente de 1 la position d'un objet en x
      * @param posX la position en x d'un objet
      */
-    public static  int right(int posX)
+    public static  int right(Entity[][] map_object, int posY, int posX)
     {
-        return ++posX ;
+        map_object[posY][posX + 1] = map_object[posY][posX];
+        map_object[posY][posX] = null;
+        return ++ posX;
     }
 
     /**
@@ -55,6 +63,7 @@ public class Actions
                     int first_entity = temp;
                     while(temp < posX && first_entity - 1 >= 0)
                     {
+                        System.out.println("je passe dans la boucle");
                         map_object[posY][temp - 1] = map_object[posY][temp];
                         map_object[posY][temp] = null;
                         temp ++;
@@ -87,24 +96,24 @@ public class Actions
      * @param y entier compris entre 1 et -1 correspondant à l'incrementation(1)/decrementation(-1) de la position y des objets se situant dans l'alignement et proche de l'objet en position (posX,posY)
      */
 
-    public static final int pushY(int y, int posX, int posY, Entity[][] map_object)
+    public static  int pushY(int y, int posY, int posX, Entity[][] map_object)
     {
         int temp = posY;
         switch (y)
         {
             case -1:
                 while(map_object[temp][posX] != null)
-                    temp--;
-                int first_entity = temp++;
-                while(temp < posY  && first_entity - 1 >= 0)
                 {
-                    map_object[temp - 1][posX] = map_object[temp][posX];
-                    map_object[temp][posX] = null;
-                    temp ++;
+                    -- temp;
                 }
-                if(map_object[posY - 1][posX] == null)
+                temp += 1;
+                int first_entity = temp;
+                while(temp <= posY  && first_entity - 1 >= 0)
                 {
-                    return -- posY;
+                    Entity temP = map_object[temp][posX];
+                    map_object[temp][posX] = null;
+                    map_object[temp - 1][posX] = temP;
+                    temp ++;
                 }
                 break;
             case 1:
@@ -121,6 +130,6 @@ public class Actions
                     return ++ posY;
                 break;
         }
-        return posY;
+        return temp;
     }
 }

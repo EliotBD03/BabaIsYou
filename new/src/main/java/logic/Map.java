@@ -136,19 +136,4 @@ public class Map {
         res[0] = y; res[1] = x;
         return res;
     }
-
-    protected void actualiseInstance(Class<?> item, int posX, int posY)
-    {
-        for(int i = 0; i <= mapO.length - 1; i++)
-            for(int j = 0; j <= mapO[i].length - 1; j++)
-            {
-                if(mapO[i][j] != null && item.isInstance(mapO[i][j]))
-                {
-                    Entity temp = mapO[i][j];
-                    mapO[i][j] = null;
-                    mapO[posY][posX] = temp;
-                }
-
-            }
     }
-}

@@ -3,9 +3,6 @@ package logic;
 public class Rock extends Item
 {
 
-    private int posX;
-    private int posY;
-
     private String skin = "#";
 
     public String getSkin(){return skin;}
@@ -15,8 +12,8 @@ public class Rock extends Item
     public Rock()
     {
         int[] position = super.searchtype(Rock.class);
-        posY = position[0];
-        posX = position[1];
+        super.posY = position[0];
+        super.posX = position[1];
         super.pushstatus =  canBePushed(BigAlgorithm.getTabperm());
     }
 
@@ -37,6 +34,6 @@ public class Rock extends Item
     public void move(String input)
     {
         super.move(input, Rules.WALL);
-        actualiseInstance(Rock.class, posX, posY);
+
     }
 }

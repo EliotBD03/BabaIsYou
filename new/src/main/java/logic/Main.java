@@ -4,7 +4,7 @@ public class Main
 {
     public static void main(String[] args)
     {
-        Extract extract = new Extract("level1.txt");
+        Extract extract = new Extract("test.txt");
         Map map = new Map();
         map.setMap(extract.getDataList());
         BigAlgorithm rules = new BigAlgorithm();
@@ -20,8 +20,13 @@ public class Main
         {
             String input = Input.get_Input();
 
-            baba.move(input);
+            //baba.move(input);
 
+            //flag.move(input);
+
+            //rock.move(input);
+
+            wall.move(input);
 
             rules.actualise();
             map.actualiseMap();

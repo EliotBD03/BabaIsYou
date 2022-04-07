@@ -2,10 +2,6 @@ package logic;
 
 public class Flag extends Item
 {
-
-    private int posX;
-    private int posY;
-
     private String skin = "@";
 
     public String getSkin(){return skin;}
@@ -18,8 +14,8 @@ public class Flag extends Item
     public Flag()
     {
         int[] position = super.searchtype(Flag.class);
-        posY = position[0];
-        posX = position[1];
+        super.posY = position[0];
+        super.posX = position[1];
         super.pushstatus = canBePushed(BigAlgorithm.getTabperm());
     }
 
@@ -41,6 +37,5 @@ public class Flag extends Item
     public void move(String input)
     {
         super.move(input, Rules.FLAG);
-        actualiseInstance(Flag.class, posX, posY);
     }
 }

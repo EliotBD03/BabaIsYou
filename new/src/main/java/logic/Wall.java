@@ -2,10 +2,6 @@ package logic;
 
 public class Wall extends Item
 {
-
-    private int posX;
-    private int posY;
-
     private String skin = "w";
 
     public String getSkin(){return skin;}
@@ -15,8 +11,8 @@ public class Wall extends Item
     public Wall()
     {
         int[] position = super.searchtype(Wall.class);
-        posY = position[0];
-        posX = position[1];
+        super.posY = position[0];
+        super.posX = position[1];
         super.pushstatus =  canBePushed(BigAlgorithm.getTabperm());
     }
 
@@ -31,10 +27,11 @@ public class Wall extends Item
         }
         return false;
     }
+
+
     @Override
     public void move(String input)
     {
         super.move(input, Rules.WALL);
-        actualiseInstance(Wall.class, posX, posY);
     }
 }

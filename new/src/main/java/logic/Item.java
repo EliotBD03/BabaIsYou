@@ -2,21 +2,32 @@ package logic;
 
 public abstract class Item extends Map implements Entity
 {
-    public int posX;
-    public int posY;
-
+    protected int posX;
+    protected int posY;
     protected String skin;
     protected boolean pushstatus = false;
 
+
     public int[] getPos()
     {
-        System.out.println(posY + " " + posX);
-        int[] pos = {this.posY, this.posX};
+        int[] pos = {posY, posX};
         return pos;
     }
 
 
     // comprend pas pq qd je fais y ou x + 1, ça passe deux fois dans le if
+    private void actualiseInstance(int x, int y)
+    {
+        for(int i = 0; i <= mapO.length - 2; i++)
+            for(int j = 0; j <= mapO[i].length - 2; j++)
+                if (this.getClass().isInstance(mapO[i][j]))
+                {
+                    Entity temp =  mapO[i][j];
+                    mapO[i][j] = null ;
+                    mapO[i + y][j + x] = temp;
+                    //System.out.println("c'est actualise");
+                }
+    }
 
     protected boolean thingIsYou(Enum[][] tabperm, Rules object)
     {
@@ -37,13 +48,14 @@ public abstract class Item extends Map implements Entity
         return true;
     }
 
-    protected boolean canMoveY(Enum[][] tabperm,Rules object,int posy)
+    protected boolean canMoveY(Enum[][] tabperm,Rules object,int posy, int posx)
     {
         //if((posY + y < getLength() - 1) && (super.mapO[this.posY + y][this.posX] == null) && (posY + y > 0))
-        if(posy >= getLength() - 1 || posy <= 0 || !(thingIsYou(tabperm, object)) || mapO[posy][posX] != null)
+        if(posy >= getLength() - 1 || posy <= 0 || !(thingIsYou(tabperm, object)) || mapO[posy][posx] != null)
         {
             return false;
         }
+        //System.out.println(mapO[posy][posX] != null + "\n" + mapO[posy][posX);
         return true;
     }
 
@@ -54,10 +66,13 @@ public abstract class Item extends Map implements Entity
         return false;
     }
 
-    protected boolean thingIsPushingY(Enum[][] tabperm, int y)
+    protected boolean thingIsPushingY(Enum[][] tabperm, int posy, int posx)
     {
-        if(mapO[posY + y][posX] != null && mapO[posY + y][posX].canBePushed(tabperm) && posY + y + y < getLength() - 1 && posY + y + y > 0)
+        if( posy + 1 < getLength() - 1 && posy  - 1> 0 && mapO[posy][posx] != null && mapO[posy][posx].canBePushed(tabperm))
+        {
+            System.out.println("ca passe");
             return true;
+        }
         return false;
     }
 
@@ -72,33 +87,54 @@ public abstract class Item extends Map implements Entity
     {
         if(thingIsYou(BigAlgorithm.getTabperm(), item))
         {
-            System.out.println(item);
             switch (input.charAt(0))
             {
                 case 'z':
-                    if (canMoveY(BigAlgorithm.getTabperm(),item,this.posY - 1))
-                    {
-                        posY = Actions.up(posY);
-                    }
-                    else if(thingIsPushingY(BigAlgorithm.getTabperm(),-1))
-                    {
-                        posY = Actions.pushY(-1, posX, posY, mapO);
-                    }
+                    for(int i = 0; i <= mapO.length - 1; i++)
+                        for(int j = 0; j <= mapO[i].length - 1; j++)
+                            if (this.getClass().isInstance(mapO[i][j]))
+                        {
+                            if (canMoveY(BigAlgorithm.getTabperm(),item,i - 1, j))
+                            {
+                                    System.out.println("je passe");
+                                    posY = Actions.up(mapO, i, j);
+
+                            }
+
+                            else if(thingIsPushingY(BigAlgorithm.getTabperm(),i - 1, j))
+                            {
+                                posY = Actions.pushY(-1, i, j, mapO);
+                            }
+                        }
+                    //actualiseInstance(0, -1);
                     break;
                 case 's':
-                    if (canMoveY(BigAlgorithm.getTabperm(),item,this.posY + 1))
+                  //  if (canMoveY(BigAlgorithm.getTabperm(),item,this.posY + 1))
                     {
-                        posY = Actions.down(posY);
+                        for(int i = 0; i <= mapO.length - 1; i++)
+                            for(int j = 0; j <= mapO[i].length - 1; j++)
+                                if (this.getClass().isInstance(mapO[i][j]))
+                                {
+                                    System.out.println("je passe");
+                                    posY = Actions.down(mapO, i, j);
+                                }
                     }
-                    else if(thingIsPushingY(BigAlgorithm.getTabperm(),1))
+                    //else if(thingIsPushingY(BigAlgorithm.getTabperm(),1))
                     {
                         posY = Actions.pushY(1, posX, posY, mapO);
                     }
+                    //actualiseInstance(0, 1);
                     break;
                 case 'q':
                     if (canMoveX(BigAlgorithm.getTabperm(),item,this.posX - 1))
                     {
-                        posX = Actions.left(posX);
+                        for(int i = 0; i <= mapO.length - 1; i++)
+                            for(int j = 0; j <= mapO[i].length - 1; j++)
+                                if (this.getClass().isInstance(mapO[i][j]))
+                                {
+                                    System.out.println("je passe");
+                                    posX = Actions.left(mapO, i, j);
+                                }
                     }
                     else if(thingIsPushingX(BigAlgorithm.getTabperm(),-1))
                     {
@@ -108,12 +144,19 @@ public abstract class Item extends Map implements Entity
                 case 'd':
                     if (canMoveX(BigAlgorithm.getTabperm(),item, this.posX + 1))
                     {
-                        posX = Actions.right(posX);
+                        for(int i = map.length - 1; i >= 0; i--)
+                            for(int j = mapO[i].length; j >= 0; j--)
+                                if (this.getClass().isInstance(mapO[i][j]))
+                                {
+                                    System.out.println("je passe");
+                                    posX = Actions.right(mapO, i, j);
+                                }
                     }
                     else if(thingIsPushingX(BigAlgorithm.getTabperm(),1))
                     {
                         posX = Actions.pushX(1, posX, posY, mapO);
                     }
+                    //actualiseInstance(1,0);
                     break;
             }
         }
