@@ -1,36 +1,44 @@
 package logic;
 
-public abstract class Item extends Map implements Entity
+import java.util.ArrayList;
+import java.util.Iterator;
+
+
+/**
+ *cette classe représente tous les objets contrôlables par le joueur
+ */
+public abstract class Item extends Environment implements Entity
 {
+    //représente la position en x d'un objet
     protected int posX;
+    //représente la position en x d'un objet
     protected int posY;
+    //représente l'apparence d'un objet
     protected String skin;
+    //représente la caractéristique d'être contrôlable
+    protected boolean youstatus = false;
+    //représente la caractéristique d'un objet à être "poussée"
     protected boolean pushstatus = false;
+    //représente la caractéristique d'un objet à ne pas pouvoir être bougé
+    protected boolean stopstatus = false;
+    //représente si l'objet a "gagné"
     private static boolean winstatus = false;
+    //représente l'objet qui a aucun status
+    protected boolean nostatus = true;
+
+    private ArrayList<int[]> coordonates_win = new ArrayList<int[]>();
+
+    private static Entity[][] temp_object_map  = new Entity[mapO.length][mapO[0].length];
 
 
-    public int[] getPos()
-    {
-        int[] pos = {posY, posX};
-        return pos;
-    }
 
-
-    // comprend pas pq qd je fais y ou x + 1, ça passe deux fois dans le if
-    private void actualiseInstance(int x, int y)
-    {
-        for(int i = 0; i <= mapO.length - 2; i++)
-            for(int j = 0; j <= mapO[i].length - 2; j++)
-                if (this.getClass().isInstance(mapO[i][j]))
-                {
-                    Entity temp =  mapO[i][j];
-                    mapO[i][j] = null ;
-                    mapO[i + y][j + x] = temp;
-                    //System.out.println("c'est actualise");
-                }
-    }
-
-    protected boolean thingIsYou(Enum[][] tabperm, Rules object)
+    /**
+     * @param tabperm tableau issu de la classe BigAlgorithm
+     * @param object représente l'objet qui va être contrôlé par le joueur
+     * @return vrai l'instance en question est contrôlable faux sinon
+     */
+    @Override
+    public boolean thingIsYou(Enum[][] tabperm, Rules object)
     {
         for(int i = 0; i <= tabperm.length - 1; i++)
         {
@@ -39,35 +47,50 @@ public abstract class Item extends Map implements Entity
         }
         return false;
     }
+    public abstract boolean thingIsStop();
 
-    protected boolean canMoveX(Enum[][] tabperm, Rules object,int posy, int posx)
+    public boolean thingisstop(Enum[][] tabperm, Rules object)
     {
-        if(posx >= getWidth() - 1 || posx <= 0 || !(thingIsYou(tabperm, object)) || mapO[posy][posx] != null)
+        for(int i = 0; i <= tabperm.length - 1; i++)
         {
-            return false;
+            if(tabperm[i][0] == object  && tabperm[i][1] == Rules.STOP)
+                return true;
         }
-        return true;
+        return false;
     }
 
-    protected boolean canMoveY(Enum[][] tabperm,Rules object,int posy, int posx)
+    @Override
+    public boolean canMoveX(Enum[][] tabperm, Rules object,int posy, int posx)
     {
-        //if((posY + y < getLength() - 1) && (super.mapO[this.posY + y][this.posX] == null) && (posY + y > 0))
-        if(posy >= getLength() - 1 || posy <= 0 || !(thingIsYou(tabperm, object)) || mapO[posy][posx] != null)
-        {
-            return false;
-        }
-        //System.out.println(mapO[posy][posX] != null + "\n" + mapO[posy][posX);
-        return true;
+        if(posx < getWidth() - 1 && posx > 0 && mapO[posy][posx] == null)
+            return true;
+        if(posx < getWidth() - 1 && posx > 0 && mapO[posy][posx].noStatus())
+            return true;
+
+        return false;
     }
 
-    protected boolean thingIsPushingX(Enum[][] tabperm, int posy, int posx)
+    @Override
+    public boolean canMoveY(Enum[][] tabperm,Rules object,int posy, int posx)
+    {
+        if(posy < getLength() - 1 && posy > 0 && mapO[posy][posx] == null)
+            return true;
+        if(posy < getLength() - 1 && posy > 0 && mapO[posy][posx].noStatus())
+            return true;
+
+        return false;
+    }
+
+    @Override
+    public boolean thingIsPushingX(Enum[][] tabperm, int posy, int posx)
     {
         if(posx+ 1 < getWidth() - 1 && posX - 1 > 0 && mapO[posy][posx] != null && mapO[posy][posx].canBePushed(tabperm))
             return true;
         return false;
     }
 
-    protected boolean thingIsPushingY(Enum[][] tabperm, int posy, int posx)
+    @Override
+    public boolean thingIsPushingY(Enum[][] tabperm, int posy, int posx)
     {
         if( posy + 1 < getLength() - 1 && posy  - 1> 0 && mapO[posy][posx] != null && mapO[posy][posx].canBePushed(tabperm))
         {
@@ -85,7 +108,8 @@ public abstract class Item extends Map implements Entity
 
     protected void move(String input, Rules item)
     {
-        if(thingIsYou(BigAlgorithm.getTabperm(), item))
+        setTempObjectMap();
+        if(youstatus)
         {
             switch (input.charAt(0))
             {
@@ -93,18 +117,17 @@ public abstract class Item extends Map implements Entity
                     for(int i = 0; i <= mapO.length - 1; i++)
                         for(int j = 0; j <= mapO[i].length - 1; j++)
                             if (this.getClass().isInstance(mapO[i][j]))
-                        {
-                            if (canMoveY(BigAlgorithm.getTabperm(),item,i - 1, j))
                             {
+                                if (canMoveY(BigAlgorithm.getTabperm(),item,i - 1, j))
                                     posY = Actions.up(mapO, i, j);
-                            }
 
-                            else if(thingIsPushingY(BigAlgorithm.getTabperm(),i - 1, j))
-                            {
-                                posY = Actions.pushY(-1, i, j, mapO);
+
+                                else if(thingHasWin(i - 1, j))
+                                    winstatus = true;
+
+                                else if(thingIsPushingY(BigAlgorithm.getTabperm(),i - 1, j))
+                                    posY = Actions.pushY(-1, i, j, mapO);
                             }
-                        }
-                    //actualiseInstance(0, -1);
                     break;
                 case 's':
                     for(int i = mapO.length - 1; i >= 0; i--)
@@ -112,15 +135,13 @@ public abstract class Item extends Map implements Entity
                             if (this.getClass().isInstance(mapO[i][j]))
                             {
                                 if (canMoveY(BigAlgorithm.getTabperm(),item,i+ 1,j))
-                                {
                                     posY = Actions.down(mapO, i, j);
-                                }
-                                if(thingHasWin(BigAlgorithm.getTabperm(), i+ 1, posX))
+
+                                else if(thingHasWin( i+ 1, j))
                                     winstatus = true;
+
                                 else if(thingIsPushingY(BigAlgorithm.getTabperm(),i + 1, j))
-                                {
                                     posY = Actions.pushY(1, i, j, mapO);
-                                }
                             }
                     break;
                 case 'q':
@@ -129,13 +150,13 @@ public abstract class Item extends Map implements Entity
                             if(this.getClass().isInstance(mapO[i][j]))
                             {
                                 if (canMoveX(BigAlgorithm.getTabperm(),item,i,j - 1))
-                                {
                                     posX = Actions.left(mapO, i, j);
-                                }
+
+                                else if(thingHasWin( i, j - 1))
+                                    winstatus = true;
+
                                 else if(thingIsPushingX(BigAlgorithm.getTabperm(),i, j - 1))
-                                {
                                     posX = Actions.pushX(-1, i, j, mapO);
-                                }
                             }
                     break;
                 case 'd':
@@ -143,29 +164,46 @@ public abstract class Item extends Map implements Entity
                         for(int j = mapO[i].length - 1; j >= 0; j--)
                             if (this.getClass().isInstance(mapO[i][j]))
                             {
+
                                 if (canMoveX(BigAlgorithm.getTabperm(),item, i, j + 1))
+                                {
                                     posX = Actions.right(mapO, i, j);
+                                }
+
+                                else if(thingHasWin( i, j + 1))
+                                    winstatus = true;
 
                                 else if(thingIsPushingX(BigAlgorithm.getTabperm(),i, j + 1))
+                                {
                                     posX = Actions.pushX(1, i, j, mapO);
-
-                                if(thingHasWin(BigAlgorithm.getTabperm(), i, j))
-                                    winstatus = true;
+                                }
                             }
                     break;
             }
-            System.out.print(posX + " ");
-            System.out.print(posY);
         }
+        actualiseObjectMap();
     }
 
-    private boolean thingHasWin(Enum[][] tabperm, int i, int j)
+    private boolean thingHasWin(int i, int j)
+    {
+        Iterator<int[]> li = coordonates_win.iterator();
+        while(li.hasNext())
+            if(i == li.next()[0] && j == li.next()[1])
+                return true;
+        return false;
+    }
+
+    private void searchWin()
     {
         Enum win_object = whichItem(Rules.WIN);
-        int[] wichinstance = whichPosition(win_object);
-        if(wichinstance != null && i == wichinstance[0] && j == wichinstance[1])
-            return true;
-        return false;
+        for(int i = 0; i <= mapO.length - 1; i++)
+            for(int j = 0; j <= mapO[i].length -1; j++)
+                if(mapO[i][j].getClass().isInstance(BigAlgorithm.dico.get(win_object)))
+                {
+                    temp_object_map[i][j] = mapO[i][j];
+                    int[] pos = {i,j};
+                    coordonates_win.add(pos);
+                }
     }
 
     private Enum whichItem(Rules rules)
@@ -180,22 +218,22 @@ public abstract class Item extends Map implements Entity
     {
         if(item == Rules.WALL)
         {
-            int[] pos = searchtype(Wall.class);
+            int[] pos = searchtype(logic.Wall.class);
             return  pos;
         }
         else if (item == Rules.FLAG)
         {
-            int[] pos = searchtype(Flag.class);
+            int[] pos = searchtype(logic.Flag.class);
             return  pos;
         }
         else if (item == Rules.BABA)
         {
-            int[] pos = searchtype(Baba.class);
+            int[] pos = searchtype(logic.Baba.class);
             return  pos;
         }
         else if (item == Rules.ROCK)
         {
-            int[] pos = searchtype(Rock.class);
+            int[] pos = searchtype(logic.Rock.class);
             return  pos;
         }
         else
@@ -206,4 +244,53 @@ public abstract class Item extends Map implements Entity
     {
         return winstatus;
     }
+
+
+    private void setTempObjectMap()
+    {
+        boolean flag = false;
+        Entity[][] res = new Entity[mapO.length][mapO[0].length];
+            for(int i = 0; i <= mapO.length - 1; i++)
+                for(int j = 0; j <= mapO[j].length - 2; j++)
+                    try
+                    {
+                        if(temp_object_map[i][j] != null && res[i][j] != temp_object_map[i][j])
+                        {
+                            break;
+                        }
+                        if (mapO[i][j].noStatus())
+                        {
+                            flag = true;
+                            res[i][j] = mapO[i][j];
+                            mapO[i][j] = null;
+                        }
+                    }catch (Exception e){}
+        if(flag)
+            temp_object_map = res;
+    }
+
+
+
+
+     private void actualiseObjectMap()
+     {
+        for(int i = 0; i<= mapO.length - 1; i++)
+            for(int j = 0; j <= mapO[i].length - 1; j++)
+                if(mapO[i][j] == null && temp_object_map[i][j] != null)
+                    mapO[i][j] = temp_object_map[i][j];
+     }
+
+     public abstract boolean noStatus();
+
+     public boolean nostatus(Enum[][] tabperm, Rules object)
+     {
+        for(int i = 0; i <= tabperm.length - 1; i++)
+            {
+                if (tabperm[i][0] == object)
+                    return false;
+            }
+        return true;
+     }
+
 }
+

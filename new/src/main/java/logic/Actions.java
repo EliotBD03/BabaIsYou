@@ -77,16 +77,18 @@ public class Actions
 
     public static  int pushX(int x, int posY,int posX, Entity[][] map_object)
     {
-        int temp = posX;
+        int temp = posX - 1;
         switch(x)
         {
             case -1:
-                    while(map_object[posY][temp] != null)
+                    while(map_object[posY][temp] != null && map_object[posY][temp].canBePushed(BigAlgorithm.getTabperm()))
                          temp --;
                     int first_entity = temp ;
                     temp ++;
                     while(temp <= posX && first_entity - 1 >= 0)
                     {
+                        if(map_object[posY][first_entity] != null && map_object[posY][first_entity].thingIsStop())
+                            break;
                         map_object[posY][temp - 1] = map_object[posY][temp];
                         map_object[posY][temp] = null;
                         temp ++;
@@ -94,12 +96,15 @@ public class Actions
                     temp --;
                     break;
             case 1:
-                    while(map_object[posY][temp] != null)
+                    temp = posX + 1;
+                    while(map_object[posY][temp] != null && map_object[posY][temp].canBePushed(BigAlgorithm.getTabperm()))
                        temp ++;
                     int last_entity = temp;
                     temp --;
                     while(temp >= posX  && last_entity + 1 <= map_object[posY].length - 1)
                     {
+                            if(map_object[posY][last_entity] != null && map_object[posY][last_entity].thingIsStop())
+                                break;
                             map_object[posY][temp + 1] = map_object[posY][temp];
                             map_object[posY][temp] = null;
                             temp--;
@@ -122,11 +127,11 @@ public class Actions
 
     public static  int pushY(int y, int posY, int posX, Entity[][] map_object)
     {
-        int temp = posY;
+        int temp = posY - 1;
         switch (y)
         {
             case -1:
-                while(map_object[temp][posX] != null)
+                while(map_object[temp][posX] != null && map_object[temp][posX].canBePushed(BigAlgorithm.getTabperm()))
                 {
                     temp --;
                 }
@@ -135,6 +140,8 @@ public class Actions
                 System.out.println("posy = " + posY +" temp = " + temp);
                 while(temp <= posY  && first_entity - 1 >= 0)
                 {
+                    if(map_object[first_entity][posX] != null && map_object[first_entity][posX].thingIsStop())
+                        break;
                     map_object[temp - 1][posX] = map_object[temp][posX];
                     map_object[temp][posX] = null;
                     temp ++;
@@ -142,12 +149,15 @@ public class Actions
                 temp -= 2;
                 break;
             case 1:
-                while(map_object[temp][posX] != null)
+                temp = posY + 1;
+                while(map_object[temp][posX] != null && map_object[temp][posX].canBePushed(BigAlgorithm.getTabperm()))
                     temp ++;
                 int last_entity = temp;
                 temp --;
                 while(temp >= posY && last_entity + 1 <= map_object.length - 1)
                 {
+                    if(map_object[last_entity][posX] != null && map_object[last_entity][posX].thingIsStop())
+                        break;
                     map_object[temp + 1][posX] = map_object[temp][posX];
                     map_object[temp][posX] = null;
                     temp--;

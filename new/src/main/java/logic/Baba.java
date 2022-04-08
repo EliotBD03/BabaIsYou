@@ -38,6 +38,9 @@ public class Baba extends Item
         super.posY = position[0];
         super.posX = position[1];
         super.pushstatus =  canBePushed(BigAlgorithm.getTabperm());
+        super.stopstatus = thingIsStop();
+        super.youstatus = thingIsYou(BigAlgorithm.getTabperm(), Rules.BABA);
+        super.nostatus = noStatus();
     }
 
     /**
@@ -55,6 +58,13 @@ public class Baba extends Item
             }
         }
         return false;
+    }
+
+    public boolean thingIsStop(){return super.thingisstop(BigAlgorithm.getTabperm(), Rules.BABA);}
+
+    public boolean noStatus()
+    {
+        return super.nostatus(BigAlgorithm.getTabperm(), Rules.BABA);
     }
 
     /**

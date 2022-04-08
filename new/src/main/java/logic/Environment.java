@@ -1,6 +1,6 @@
 package logic;
 
-public class Map {
+public class Environment {
         private static int length;
         private static int width;
 
@@ -31,18 +31,17 @@ public class Map {
         }
 
         private void setStringMap(String[][] dataList) {
-            this.length = Integer.parseInt(dataList[0][1]) + 1;
-            this.width = Integer.parseInt(dataList[0][0]) + 1;
+            this.length = Integer.parseInt(dataList[0][1]) + 2;
+            this.width = Integer.parseInt(dataList[0][0]) + 2;
             this.map = new String[length][width];
 
             for (int i = 0; i <= this.length - 1; i++)
-                for (int j = 0; j <= this.width - 1; j++) {
+                for (int j = 0; j <= this.width - 1; j++)
+                {
                     map[i][j] = " ";
                     if (j == 0 || j == width - 1 || i == 0 || i == length - 1)
                         map[i][j] = "X";
                 }
-            for (int i = 1; i <= dataList.length - 1; i++)
-                map[Integer.parseInt(dataList[i][2])][Integer.parseInt(dataList[i][1])] = "E";
         }
 
         /**
@@ -66,7 +65,7 @@ public class Map {
         {
             this.mapO = new Entity[this.length][this.width];
                     for (int i = 1; i <= dataList.length - 1 ; i++ )
-                            this.mapO[Integer.parseInt(dataList[i][2])][Integer.parseInt(dataList[i][1])] = whatobj(dataList[i][0]);
+                            this.mapO[Integer.parseInt(dataList[i][2]) + 1][Integer.parseInt(dataList[i][1]) + 1] = whatobj(dataList[i][0]);
         }
 
         /**

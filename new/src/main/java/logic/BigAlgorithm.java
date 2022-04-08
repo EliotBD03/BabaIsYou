@@ -1,24 +1,33 @@
 package logic;
 
+import java.util.HashMap;
+import java.util.Map;
+
+
 /**
- * cette classe permet de savoir pour quel item du jeu ,on y retrouve sa règle
+ * cette classe permet de savoir pour quel item du jeu, on y retrouve sa règle
  */
 
-public class BigAlgorithm extends Map {
+public class BigAlgorithm extends Environment {
     public static Enum[][] tabloc = new Enum[getLength()][getWidth()];
     private static Enum[][] tabperm;
     private static final Enum[] character = {Rules.BABA, Rules.ROCK, Rules.FLAG, Rules.WALL};
     private static final Enum[] actions = {Rules.YOU, Rules.STOP, Rules.WIN, Rules.PUSH};
+    public static final Map<Rules, Item> dico = new HashMap<Rules, Item>();
 
 
     /**
-     * constructeur permettant de ne executer les methodes à chaques fois
+     * constructeur permettant de ne pas exécuter les méthodes à chaque fois
      */
 
     public BigAlgorithm() {
         setTab(super.mapO);
         int[][] current_is = findIS();
         setTabperm(findPermX(current_is), findPermY(current_is));
+        dico.put(Rules.BABA, new Baba());
+        dico.put(Rules.FLAG, new Flag());
+        dico.put(Rules.ROCK,new Rock());
+        dico.put(Rules.WALL, new Wall());
     }
 
     /**
@@ -31,9 +40,9 @@ public class BigAlgorithm extends Map {
     }
 
     /**
-     * cree notre tableau "tabloc" a deux dimensions regroupant les regles (ex: BabaIsYou)
+     * cree notre tableau "tabloc" a deux dimensions regroupant les règles (ex: BabaIsYou)
      *
-     * @param map0 le tableau issue de map representant les objets
+     * @param map0 le tableau issus de map représentant les objets
      */
 
     public void setTab(Entity[][] map0) {
@@ -47,7 +56,7 @@ public class BigAlgorithm extends Map {
     }
 
     /**
-     * rassemble les tableaux de permisions en x et en y dans un même tableau
+     * rassemble les tableaux de permissions en x et en y dans un même tableau
      * @param tabpermX issue de la methode findPermX
      * @param tabpermY issue de la methode findPermY
      */
@@ -68,10 +77,10 @@ public class BigAlgorithm extends Map {
     }
 
     /**
-     * cherche dans le tableau "tabloc" les "Is" permettant de faire l'union de deux objets (ex: Baba et You)
+     * cherche dans le tableau "tabloc" les "Is" permettant de faire l'union de deux objets (exemple : Baba et You)
      *
-     * @return un tableau à deux dimensions regroupant les Is et leurs positions de cette maniere:
-     * un sous tableau = Is , les elements de Is => position en y et en x (dans cet ordre)
+     * @return un tableau à deux dimensions regroupant les Is et leurs positions de cette manière :
+     * un sous tableau = Is, les elements de Is => position en y et en x (dans cet ordre)
      */
 
     public int[][] findIS() {
@@ -91,9 +100,9 @@ public class BigAlgorithm extends Map {
     }
 
     /**
-     * cree un tableau representant toutes les regles issue de blocs de regles aligné en Y
+     * cree un tableau représentant toutes les règles issues de blocs de règles aligné en Y
      * @param isLoc la position des blocs Is issue de la methode findIs()
-     * @return tableau à deux dimensions : pour chacun des sous tableaux, on des objets de type Rules(Enum)
+     * @return tableau à deux dimensions : pour chacun des sous tableaux, on a des objets de type Rules(Enum)
      */
     public Enum[][] findPermY(int[][] isLoc) {
         Enum[][] tabpermY = new Enum[10][2];
@@ -133,9 +142,9 @@ public class BigAlgorithm extends Map {
     }
 
     /**
-     * cree un tableau representant toutes les regles issue de blocs de regles aligné en X
+     * cree un tableau représentant toutes les règles issues de blocs de règles aligné en X
      * @param isLoc la position des blocs Is issue de la methode findIs()
-     * @return tableau à deux dimensions : pour chacun des sous tableaux, on des objets de type Rules(Enum)
+     * @return tableau à deux dimensions : pour chacun des sous tableaux, on a des objets de type Rules(Enum)
      */
 
     public Enum[][] findPermX(int[][] isLoc)
@@ -175,10 +184,10 @@ public class BigAlgorithm extends Map {
     }
 
     /**
-     * permet de savoir quel objet ou regle se trouve en fonction du String issu du fichier texte "level"
+     * permet de savoir quel objet ou règle se trouve en fonction du String issu du fichier texte "level"
      *
-     * @param thing l'element du fichier texte representant un objet ou une regle
-     * @return l'objet de type "Rules" (voir Rules.java) representant un objet ou une regle
+     * @param thing l'élément du fichier texte représentant un objet ou une règle
+     * @return l'objet de type "Rules" (voir Rules.java) représentant un objet ou une règle
      */
 
     public static Enum whatobj(Class<?> thing) {
@@ -212,17 +221,5 @@ public class BigAlgorithm extends Map {
         setTab(mapO);
         int[][] current_is = findIS();
         setTabperm(findPermX(current_is), findPermY(current_is));
-        int i = 0;
     }
-
-    /*
-    public Entity searchThingYou()
-    {
-        for(int i = 0; i<= tabperm.length - 1; i++)
-            if(tabperm[i][1] == Rules.YOU && tabperm[i][0] != null)
-                return wichItem(tabperm[i][0]);
-        return null;
-    }
-
-     */
 }

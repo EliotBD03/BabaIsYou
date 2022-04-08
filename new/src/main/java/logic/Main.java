@@ -4,8 +4,8 @@ public class Main
 {
     public static void main(String[] args)
     {
-        Extract extract = new Extract("level1.txt");
-        Map map = new Map();
+        Extract extract = new Extract("test.txt");
+        Environment map = new Environment();
         map.setMap(extract.getDataList());
         BigAlgorithm rules = new BigAlgorithm();
 
@@ -15,7 +15,6 @@ public class Main
         Wall wall = new Wall();
 
         System.out.println(map);
-
         while(true)
         {
             String input = Input.get_Input();

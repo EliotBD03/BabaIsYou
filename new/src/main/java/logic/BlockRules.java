@@ -5,28 +5,37 @@ package logic;
  * caracteristiques. Cela nous permet donc de creer cette classe pour plus de lisibilité
  * au niveau du code et moins de fichier class
  */
-public abstract class BlockRules extends Map implements Entity
+public abstract class BlockRules extends Environment implements Entity
 {
+    //la position en x d'un objet qui est en relation is-a avec Blockrules
     protected int posX;
+    //la position en y d'un objet qui est en relation is-a avec Blockrules
     protected int posY;
 
-    public int[] getPos()
-    {
-        int[] pos = {posY, posX};
-        return pos;
-    }
-
-
+    //Dans le jeu, les règles ne sont pas contrôlables. Cela permet d'implémenter toutes ces méthodes facilement à false
+    @Override
     public boolean canBePushed(Enum[][] tabperm){return true;}
-    private boolean canMoveX(int posx){return false;}
-    private boolean canMoveY(int posy){return false;}
-    private boolean thingIsYou(Enum[][] tabperm, Entity thing){return false;}
-    private boolean thingIsPushingX(int x){return false;}
-    private boolean thingIsPushingY(int y){return false;}
+    @Override
+    public boolean canMoveX(Enum[][] tabperm, Rules object,int posy, int posx){return false;}
+    @Override
+    public boolean canMoveY(Enum[][] tabperm, Rules object,int posy, int posx){return false;}
+    @Override
+    public boolean thingIsYou(Enum[][] tabperm, Rules object){return false;}
+    @Override
+    public boolean thingIsPushingX(Enum[][] tabperm, int posy, int posx){return false;}
+    @Override
+    public boolean thingIsPushingY(Enum[][] tabperm, int posy, int posx){return false;}
+    @Override
+    public boolean thingIsStop(){return false;}
+    @Override
+    public boolean noStatus(){return false;}
 
+    //ces classes internes représentent toutes les règles, elles ont toutes le même moyen d'implémentation sauf pour skin(ce qui permet
+    //de les différencier dans un tableau de String
     public static class TextFlag extends BlockRules
     {
         private static final String skin = "F";
+        @Override
         public String getSkin(){return skin;}
 
         public TextFlag()
@@ -40,6 +49,7 @@ public abstract class BlockRules extends Map implements Entity
     public static class TextRock extends BlockRules
     {
         private static final String skin = "R";
+        @Override
         public String getSkin(){return skin;}
 
         public TextRock()
@@ -53,6 +63,7 @@ public abstract class BlockRules extends Map implements Entity
     public static class TextWall extends BlockRules
     {
         private static final String skin = "W";
+        @Override
         public String getSkin(){return skin;}
 
         public TextWall()
@@ -66,6 +77,7 @@ public abstract class BlockRules extends Map implements Entity
     public static class TextBaba extends BlockRules
     {
         private static final String skin = "B";
+        @Override
         public String getSkin(){return skin;}
 
         public TextBaba()
@@ -79,6 +91,7 @@ public abstract class BlockRules extends Map implements Entity
     public static class Is extends  BlockRules
     {
         private static final String skin = "I";
+        @Override
         public String getSkin(){return skin;}
 
         public Is()
@@ -93,6 +106,7 @@ public abstract class BlockRules extends Map implements Entity
     {
         //G pour Goal (pour ne pas avoir deux fois "W" ou "w")
         private static final String skin = "G";
+        @Override
         public String getSkin(){return skin;}
 
         public Win()
@@ -106,6 +120,7 @@ public abstract class BlockRules extends Map implements Entity
     public static class You extends BlockRules
     {
         private static final String skin = "Y";
+        @Override
         public String getSkin(){return skin;}
 
         public You()
@@ -119,6 +134,7 @@ public abstract class BlockRules extends Map implements Entity
     public static class Stop extends BlockRules
     {
         private static final String skin = "S";
+        @Override
         public String getSkin(){return skin;}
 
         public Stop()
@@ -132,6 +148,7 @@ public abstract class BlockRules extends Map implements Entity
     public static class Push extends BlockRules
     {
         private static final String skin = "P";
+        @Override
         public String getSkin(){return skin;}
 
         public Push()

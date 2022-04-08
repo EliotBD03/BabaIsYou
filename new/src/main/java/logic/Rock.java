@@ -15,6 +15,9 @@ public class Rock extends Item
         super.posY = position[0];
         super.posX = position[1];
         super.pushstatus =  canBePushed(BigAlgorithm.getTabperm());
+        super.stopstatus = thingIsStop();
+        super.youstatus = thingIsYou(BigAlgorithm.getTabperm(), Rules.ROCK);
+        super.nostatus = noStatus();
     }
 
     public boolean canBePushed(Enum[][] tabperm)
@@ -27,6 +30,12 @@ public class Rock extends Item
             }
         }
         return false;
+    }
+    public boolean thingIsStop(){return super.thingisstop(BigAlgorithm.getTabperm(), Rules.ROCK);}
+
+    public boolean noStatus()
+    {
+        return super.nostatus(BigAlgorithm.getTabperm(), Rules.ROCK);
     }
 
 

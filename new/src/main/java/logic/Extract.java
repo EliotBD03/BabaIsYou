@@ -17,14 +17,23 @@ import java.io.IOException;
  */
 import java.io.File;
 
+/**
+ * cette classe permet à partir d'un fichier texte, d'extraire les données afin de jouer correctement au jeu
+ */
 public class Extract {
     private String[][] dataList;
 
+    /**
+     * constructeur permettant d'avoir directement les données(l'attribut "dataList").
+     */
     public Extract(String filename)
     {
         setDataList(filename);
     }
 
+    /**
+     * accesseur au tableau de données
+     */
     public String[][] getDataList() {
         if (this.dataList != null)
             return this.dataList;
@@ -34,17 +43,17 @@ public class Extract {
     /**
      * on extrait les donnés de notre fichier pour les mettre sous la forme d'un tableau a deux dimensions
      *
-     * @param map le fichier texte representant la map du jeu
+     * @param map le fichier texte représentant la map du jeu
      */
     public void setDataList(String map) {
         try {
 
-            //on effectue les intanciations necessaires
+            //on effectue les instantiations nécessaires
             FileReader file = new FileReader(new File(map));
             BufferedReader r1 = new BufferedReader(file);
             String line;
 
-            //on evalue le nombre de ligne pour notre tableau à deux dimensions
+            //on évalue le nombre de lignes pour notre tableau à deux dimensions
             int i = 0;
             while ((line = r1.readLine()) != null)
                 ++i;
@@ -59,10 +68,10 @@ public class Extract {
             BufferedReader r2 = new BufferedReader(file2);
 
             int k = 0; // la ligne de res
-            //tant qu'on a pas atteint la fin de notre fichier
+            //tant qu'on n'a pas atteint la fin de notre fichier
             boolean flag = true;
             while ((line = r2.readLine()) != null) {
-                int j = 0; // evaluer la longueur de la chaine de la ligne "line" de notre fichier map
+                int j = 0; // évaluer la longueur de la chaine de la ligne "line" de notre fichier map
                 int l = 0; //la colonne de res
                 res[k][0] = "";
                 res[k][1] = "";
@@ -81,7 +90,7 @@ public class Extract {
                 k++;
             }
             r2.close();
-            // on met notre attribut de classe comme etant le tableau res (pour pouvoir le manipuler par la suite)
+            // on met notre attribut de classe comme étant le tableau res (pour pouvoir le manipuler par la suite)
             this.dataList = res;
         } catch (IOException error) {
             error.printStackTrace();

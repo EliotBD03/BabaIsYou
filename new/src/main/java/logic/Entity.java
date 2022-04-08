@@ -1,14 +1,19 @@
 package logic;
 
+/**
+ * Cette interface est la base de tous les objets du jeu. Tous les objets qui y sont ont des caractéristiques qui sont
+ * données par ces méthodes.
+ */
 interface Entity
 {
     String getSkin();
 
     boolean canBePushed(Enum[][] tabperm);
-    int[] getPos();
-    static boolean canMoveX(int posx){return false;}
-    static boolean canMoveY(int posy){return false;}
-    static boolean thingIsYou(Enum[][] tabperm, Entity thing){return false;}
-    static boolean thingIsPushingX(int x){return false;}
-    static boolean thingIsPushingY(int y){return false;}
+    boolean canMoveX(Enum[][] tabperm, Rules object,int posy, int posx);
+    boolean canMoveY(Enum[][] tabperm,Rules object,int posy, int posx);
+    boolean thingIsYou(Enum[][] tabperm, Rules object);
+    boolean thingIsPushingX(Enum[][] tabperm, int posy, int posx);
+    boolean thingIsPushingY(Enum[][] tabperm, int posy, int posx);
+    boolean thingIsStop();
+    boolean noStatus();
     }

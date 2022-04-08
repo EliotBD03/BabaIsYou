@@ -17,6 +17,9 @@ public class Flag extends Item
         super.posY = position[0];
         super.posX = position[1];
         super.pushstatus = canBePushed(BigAlgorithm.getTabperm());
+        super.stopstatus = thingIsStop();
+        super.youstatus = thingIsYou(BigAlgorithm.getTabperm(), Rules.FLAG);
+        super.nostatus = noStatus();
     }
 
 
@@ -31,6 +34,13 @@ public class Flag extends Item
         }
         return false;
     }
+    public boolean thingIsStop(){return super.thingisstop(BigAlgorithm.getTabperm(), Rules.FLAG);}
+
+    public boolean noStatus()
+    {
+        return super.nostatus(BigAlgorithm.getTabperm(), Rules.FLAG);
+    }
+
 
 
     @Override

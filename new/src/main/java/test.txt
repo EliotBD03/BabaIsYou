@@ -1,12 +1,15 @@
 20 20
 text_wall 8 7
 is 9 7
-you 10 7
-wall 5 5
-flag 5 4
-flag 5 2
-flag 5 1
-text_flag 3 8
+win 10 7
+push 10 8
+baba 5 6
+wall 5 2
+wall 5 1
+flag 5 5
+text_flag 17 17
+is 17 18
+push 17 19
+text_baba 3 8
 is 4 8
-push 5 8
-you 5 9
+you 5 8
