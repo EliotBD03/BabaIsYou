@@ -39,7 +39,7 @@ public class Baba extends Item
         super.posX = position[1];
         super.pushstatus =  canBePushed(BigAlgorithm.getTabperm());
         super.stopstatus = thingIsStop();
-        super.youstatus = thingIsYou(BigAlgorithm.getTabperm(), Rules.BABA);
+        super.youstatus = thingIsYou();
         super.nostatus = noStatus();
     }
 
@@ -66,6 +66,8 @@ public class Baba extends Item
     {
         return super.nostatus(BigAlgorithm.getTabperm(), Rules.BABA);
     }
+
+    public boolean thingIsYou(){return super.thingisyou(BigAlgorithm.getTabperm(), Rules.BABA);}
 
     /**
      *cette methode est surchargé pour permettre la caractéristiques de type Rules par Rules.Baba isssu

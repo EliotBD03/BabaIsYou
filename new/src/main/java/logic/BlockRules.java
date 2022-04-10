@@ -20,7 +20,7 @@ public abstract class BlockRules extends Environment implements Entity
     @Override
     public boolean canMoveY(Enum[][] tabperm, Rules object,int posy, int posx){return false;}
     @Override
-    public boolean thingIsYou(Enum[][] tabperm, Rules object){return false;}
+    public boolean thingIsYou(){return false;}
     @Override
     public boolean thingIsPushingX(Enum[][] tabperm, int posy, int posx){return false;}
     @Override

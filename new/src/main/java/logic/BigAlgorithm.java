@@ -13,7 +13,7 @@ public class BigAlgorithm extends Environment {
     private static Enum[][] tabperm;
     private static final Enum[] character = {Rules.BABA, Rules.ROCK, Rules.FLAG, Rules.WALL};
     private static final Enum[] actions = {Rules.YOU, Rules.STOP, Rules.WIN, Rules.PUSH};
-    public static final Map<Rules, Item> dico = new HashMap<Rules, Item>();
+    public static final Map<Rules, Entity> dico = new HashMap<Rules, Entity>();
 
 
     /**
@@ -29,6 +29,7 @@ public class BigAlgorithm extends Environment {
         dico.put(Rules.ROCK,new Rock());
         dico.put(Rules.WALL, new Wall());
     }
+
 
     /**
      * accesseur pour le tableau des permissions

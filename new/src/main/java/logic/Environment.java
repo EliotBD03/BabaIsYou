@@ -3,7 +3,7 @@ package logic;
 public class Environment {
         private static int length;
         private static int width;
-
+        private static final int extention = 10;
         protected static String[][] map;
         public static Entity[][] mapO;
 
@@ -31,8 +31,8 @@ public class Environment {
         }
 
         private void setStringMap(String[][] dataList) {
-            this.length = Integer.parseInt(dataList[0][1]) + 2;
-            this.width = Integer.parseInt(dataList[0][0]) + 2;
+            this.length = Integer.parseInt(dataList[0][1]) + extention;
+            this.width = Integer.parseInt(dataList[0][0]) + extention;
             this.map = new String[length][width];
 
             for (int i = 0; i <= this.length - 1; i++)
@@ -65,7 +65,7 @@ public class Environment {
         {
             this.mapO = new Entity[this.length][this.width];
                     for (int i = 1; i <= dataList.length - 1 ; i++ )
-                            this.mapO[Integer.parseInt(dataList[i][2]) + 1][Integer.parseInt(dataList[i][1]) + 1] = whatobj(dataList[i][0]);
+                            this.mapO[Integer.parseInt(dataList[i][2]) + extention / 2][Integer.parseInt(dataList[i][1]) + extention / 2] = whatobj(dataList[i][0]);
         }
 
         /**

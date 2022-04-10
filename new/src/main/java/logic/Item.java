@@ -37,8 +37,10 @@ public abstract class Item extends Environment implements Entity
      * @param object représente l'objet qui va être contrôlé par le joueur
      * @return vrai l'instance en question est contrôlable faux sinon
      */
-    @Override
-    public boolean thingIsYou(Enum[][] tabperm, Rules object)
+
+    public abstract boolean thingIsYou();
+
+    public boolean thingisyou(Enum[][] tabperm, Rules object)
     {
         for(int i = 0; i <= tabperm.length - 1; i++)
         {
@@ -47,6 +49,7 @@ public abstract class Item extends Environment implements Entity
         }
         return false;
     }
+
     public abstract boolean thingIsStop();
 
     public boolean thingisstop(Enum[][] tabperm, Rules object)
@@ -108,8 +111,9 @@ public abstract class Item extends Environment implements Entity
 
     protected void move(String input, Rules item)
     {
+        searchWin();
         setTempObjectMap();
-        if(youstatus)
+        if(thingIsYou())
         {
             switch (input.charAt(0))
             {
@@ -120,8 +124,6 @@ public abstract class Item extends Environment implements Entity
                             {
                                 if (canMoveY(BigAlgorithm.getTabperm(),item,i - 1, j))
                                     posY = Actions.up(mapO, i, j);
-
-
                                 else if(thingHasWin(i - 1, j))
                                     winstatus = true;
 
@@ -186,24 +188,27 @@ public abstract class Item extends Environment implements Entity
 
     private boolean thingHasWin(int i, int j)
     {
-        Iterator<int[]> li = coordonates_win.iterator();
-        while(li.hasNext())
-            if(i == li.next()[0] && j == li.next()[1])
+        for(int k = 0; k <= coordonates_win.size() - 1; k++)
+            if(i == coordonates_win.get(k)[0] && j == coordonates_win.get(k)[1])
                 return true;
         return false;
     }
 
     private void searchWin()
     {
-        Enum win_object = whichItem(Rules.WIN);
+        Entity win_object = BigAlgorithm.dico.get(whichItem(Rules.WIN));
         for(int i = 0; i <= mapO.length - 1; i++)
             for(int j = 0; j <= mapO[i].length -1; j++)
-                if(mapO[i][j].getClass().isInstance(BigAlgorithm.dico.get(win_object)))
+            {
+                if(win_object == null)
+                    coordonates_win = new ArrayList<int[]>();
+                else if(mapO[i][j] != null && mapO[i][j].getClass() == win_object.getClass())
                 {
                     temp_object_map[i][j] = mapO[i][j];
                     int[] pos = {i,j};
                     coordonates_win.add(pos);
                 }
+            }
     }
 
     private Enum whichItem(Rules rules)
@@ -218,7 +223,7 @@ public abstract class Item extends Environment implements Entity
     {
         if(item == Rules.WALL)
         {
-            int[] pos = searchtype(logic.Wall.class);
+            int[] pos = searchtype(Wall.class);
             return  pos;
         }
         else if (item == Rules.FLAG)

@@ -11,7 +11,7 @@ interface Entity
     boolean canBePushed(Enum[][] tabperm);
     boolean canMoveX(Enum[][] tabperm, Rules object,int posy, int posx);
     boolean canMoveY(Enum[][] tabperm,Rules object,int posy, int posx);
-    boolean thingIsYou(Enum[][] tabperm, Rules object);
+    boolean thingIsYou();
     boolean thingIsPushingX(Enum[][] tabperm, int posy, int posx);
     boolean thingIsPushingY(Enum[][] tabperm, int posy, int posx);
     boolean thingIsStop();
