@@ -4,13 +4,8 @@
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="650.0" prefWidth="450.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.helloworld.Controller">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="650.0" prefWidth="450.0" style="-fx-background-color: BLACK;" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.helloworld.Controller">
     <children>
-      <ImageView fitHeight="1017.0" fitWidth="1426.0" layoutX="-205.0" layoutY="-139.0" pickOnBounds="true" preserveRatio="true">
-         <image>
-            <Image url="@fonf.png" />
-         </image>
-      </ImageView>
         <ImageView fx:id="monImageView" fitHeight="50.0" fitWidth="50.0" layoutX="200.0" layoutY="250.0" pickOnBounds="true" preserveRatio="true">
             <image>
                 <Image url="@baba.png" />
