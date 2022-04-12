@@ -1,6 +1,7 @@
 package Presenter;
 import Model.*;
 
+
 import java.util.HashMap;
 import java.util.Map;
 
@@ -14,6 +15,7 @@ public class Main
 
     private static final Map<Character, String> dico = new HashMap<Character, String>();
 
+    public static int getLength(){return map.getMap().length;}
     public static void makeTheGame(String fileName)
     {
         dico.put(' ', "/sprite/fonf.png"); dico.put('X', "/sprite/wall.gif");
@@ -30,7 +32,7 @@ public class Main
         map = new Environment();
         map.setMap(extract.getDataList());
         BigAlgorithm rules = new BigAlgorithm();
-
+        map.actualiseMap();
         baba = new Baba();
         flag = new Flag();
         rock = new Rock();
@@ -47,6 +49,7 @@ public class Main
 
     public static String getSprite(int i , int j)
     {
+        System.out.println(map.getMap()[i][j]);
         return dico.get(map.getMap()[i][j].charAt(0));
     }
 }

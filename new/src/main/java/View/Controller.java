@@ -19,6 +19,7 @@ import javafx.scene.paint.Color;
 import javafx.stage.Stage;
 
 import java.io.IOException;
+import java.net.URI;
 import java.net.URISyntaxException;
 import java.net.URL;
 
@@ -32,7 +33,9 @@ public class Controller {
     private double y = 250.0;
     private double x2 = 200.0;
     private double y2 = 250.0;
+    @FXML
     private Button logoutButton;
+    @FXML
     private AnchorPane scenePane;
     private Stage stage;
     private Scene scene;
@@ -44,23 +47,21 @@ public class Controller {
         int length = x;
         int width = x;
         tabpane = new Pane[length][width];
-        for(int i = 0 ; i <= length - 1; i ++)
-            for(int j = 0; j <= width - 1; j++)
+        for(int i = 0 ; i < length - 1; i ++)
+            for(int j = 0; j < width - 1; j++)
                 tabpane[i][j] = new Pane();
     }
 
-    public void initialize(String url, Pane pane){
-        try
-        {
+    public void initialize(String url, Pane pane) throws URISyntaxException {
             Image image = null;
-            if(getClass().getResource(url).toURI().toString() != null)
+            if(getClass().getResource(url) != null )
                 image = new Image(getClass().getResource(url).toURI().toString());
             ImageView view = new ImageView();
-            view.setFitWidth(50);
-            view.setFitHeight(50);
+            view.setFitWidth(25);
+            view.setFitHeight(25);
             view.setImage(image);
-            pane.getChildren().add(view);
-        }catch (URISyntaxException e){}
+            if(image != null )
+                pane.getChildren().add(view);
     }
     public String sprite(int i,int j)
     {
@@ -91,7 +92,8 @@ public class Controller {
             while(true)
             {
                 try {
-                Main.makeTheGame("/level/level1.txt");
+                Main.makeTheGame("/home/julien/Bureau/BabaIsYou/new/src/main/resources/level/level1.txt");
+                setTabpane(Main.getLength());
                 initializeAll();
                 FXMLLoader loader = new FXMLLoader(getClass().getResource("hello-view.fxml"));
                 Parent root = loader.load();
@@ -125,6 +127,7 @@ public class Controller {
 
             } catch (Exception e) {
                 e.printStackTrace();
+                break;
             }
             }
     }
