@@ -1,8 +1,0 @@
-11 11
-baba 6 6 2
-text_baba 2 7
-is 2 8
-you 2 9
-text_flag 8 7
-is 9 7
-win 10 7
