@@ -1,0 +1,3 @@
+module java {
+    exports Model;
+}
