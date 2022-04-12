@@ -16,13 +16,13 @@ public class Main
 
     public static void makeTheGame(String fileName)
     {
-        dico.put(' ', null); dico.put('X', "/sprite/wall.gif");
-        dico.put('O', "/sprite/baba.gif"); dico.put('w', "/sprite/wall.gif");
+        dico.put(' ', "/sprite/fonf.png"); dico.put('X', "/sprite/wall.gif");
+        dico.put('O', "/sprite/baba.png"); dico.put('w', "/sprite/wall.gif");
         dico.put('@', "/sprite/Flag.png"); dico.put('#', "/sprite/rock.png");
         dico.put('B', "/sprite/textbaba.png"); dico.put('I', "/sprite/textis.png");
-        dico.put('Y', "/sprite/you.png"); dico.put('W', "/sprite/baba.gif");
-        dico.put('S', "/sprite/baba.gif"); dico.put('R', "/sprite/textrock.png");
-        dico.put('P', "/sprite/baba.gif"); dico.put('F', "/sprite/baba.gif");
+        dico.put('Y', "/sprite/you.png"); dico.put('W', "/sprite/walltext.png");
+        dico.put('S', "/sprite/stop.png"); dico.put('R', "/sprite/textrock.png");
+        dico.put('P', "/sprite/push.png"); dico.put('F', "/sprite/textflag.png");
         dico.put('G', "/sprite/win.png");
 
 

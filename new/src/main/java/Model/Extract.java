@@ -1,5 +1,4 @@
 package Model;
-
 /**
  * permet de lire notre fichier
  */
