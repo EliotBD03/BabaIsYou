@@ -18,14 +18,14 @@ public class Main
     public static int getLength(){return map.getMap().length;}
     public static void makeTheGame(String fileName)
     {
-        dico.put(' ', "/sprite/fonf.png"); dico.put('X', "/sprite/wall.gif");
-        dico.put('O', "/sprite/baba.png"); dico.put('w', "/sprite/wall.gif");
-        dico.put('@', "/sprite/Flag.png"); dico.put('#', "/sprite/rock.png");
-        dico.put('B', "/sprite/textbaba.png"); dico.put('I', "/sprite/textis.png");
-        dico.put('Y', "/sprite/you.png"); dico.put('W', "/sprite/walltext.png");
-        dico.put('S', "/sprite/stop.png"); dico.put('R', "/sprite/textrock.png");
-        dico.put('P', "/sprite/push.png"); dico.put('F', "/sprite/textflag.png");
-        dico.put('G', "/sprite/win.png");
+        dico.put(' ', "/home/julien/Bureau/BabaIsYou/new/src/main/resources/sprite/fonf.png"); dico.put('X', "/home/julien/Bureau/BabaIsYou/new/src/main/resources/sprite/border.png");
+        dico.put('O', "/home/julien/Bureau/BabaIsYou/new/src/main/resources/sprite/baba.png"); dico.put('w', "/home/julien/Bureau/BabaIsYou/new/src/main/resources/sprite/wall.png");
+        dico.put('@', "/home/julien/Bureau/BabaIsYou/new/src/main/resources/sprite/Flag.png"); dico.put('#', "/home/julien/Bureau/BabaIsYou/new/src/main/resources/sprite/rock.png");
+        dico.put('B', "/home/julien/Bureau/BabaIsYou/new/src/main/resources/sprite/textbaba.png"); dico.put('I', "/home/julien/Bureau/BabaIsYou/new/src/main/resources/sprite/textis.png");
+        dico.put('Y', "/home/julien/Bureau/BabaIsYou/new/src/main/resources/sprite/you.png"); dico.put('W', "/home/julien/Bureau/BabaIsYou/new/src/main/resources/sprite/walltext.png");
+        dico.put('S', "/home/julien/Bureau/BabaIsYou/new/src/main/resources/sprite/stop.png"); dico.put('R', "/home/julien/Bureau/BabaIsYou/new/src/main/resources/sprite/textrock.png");
+        dico.put('P', "/home/julien/Bureau/BabaIsYou/new/src/main/resources/sprite/push.png"); dico.put('F', "/home/julien/Bureau/BabaIsYou/new/src/main/resources/sprite/textflag.png");
+        dico.put('G', "/home/julien/Bureau/BabaIsYou/new/src/main/resources/sprite/win.png");
 
 
         Extract extract = new Extract(fileName);

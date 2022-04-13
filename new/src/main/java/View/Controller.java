@@ -49,7 +49,9 @@ public class Controller {
         tabpane = new Pane[length][width];
         for(int i = 0 ; i < length - 1; i ++)
             for(int j = 0; j < width - 1; j++)
+            {
                 tabpane[i][j] = new Pane();
+            }
     }
 
     public void initialize(String url, Pane pane) throws URISyntaxException {
@@ -69,8 +71,10 @@ public class Controller {
     }
     public void initializeAll() throws URISyntaxException {
         for(int i = 0; i <= tabpane.length - 1; i++)
-            for(int j = 0; j <= tabpane[i].length - 1; j++)
+            for(int j = 0; j < tabpane[i].length - 1; j++)
+            {
                 initialize(sprite(i,j),tabpane[i][j]);
+            }
     }
 
     public void switchToScene1(ActionEvent event) throws IOException {
@@ -95,7 +99,7 @@ public class Controller {
                 Main.makeTheGame("/home/julien/Bureau/BabaIsYou/new/src/main/resources/level/level1.txt");
                 setTabpane(Main.getLength());
                 initializeAll();
-                FXMLLoader loader = new FXMLLoader(getClass().getResource("hello-view.fxml"));
+                FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/hello-view.fxml"));
                 Parent root = loader.load();
                 stage = (Stage)((Node)event.getSource()).getScene().getWindow();
                 Controller controller = loader.getController();
@@ -108,16 +112,16 @@ public class Controller {
                     public void handle(KeyEvent event) {
                         switch (event.getCode()) {
                             case UP:
-                                Main.makeMove("z");
+                                controller.up();
                                 break;
                             case DOWN:
-                                Main.makeMove("s");
+                                controller.down();
                                 break;
                             case LEFT:
-                                Main.makeMove("q");
+                                controller.left();
                                 break;
                             case RIGHT:
-                                Main.makeMove("d");
+                                controller.right();
                                 break;
 
 
@@ -137,57 +141,18 @@ public class Controller {
         stage.close();
     }
     public void up() {
-        monImageView.setLayoutY(y = y - 50);
-        monImageView2.setLayoutY(y2 = y2 - 50);
-        System.out.println("y" + y);
-        if (y < 100) {
-            System.out.println("bord de map en y:" + y);
-            monImageView.setLayoutY(y = 50);
-        }
-        if (y2 < 100) {
-            monImageView2.setLayoutY(y2 = 50);
-        }
+        Main.makeMove("z");
     }
 
     public void down() {
-        monImageView.setLayoutY(y = y + 50);
-        monImageView2.setLayoutY(y2 = y2 + 50);
-        System.out.println("y" + y);
-        if (y > 550) {
-            System.out.println("bord de map en y:" + y);
-            monImageView.setLayoutY(y = 550);
-        }
-        if (y2 > 550) {
-            monImageView2.setLayoutY(y2 = 550);
-        }
+        Main.makeMove("s");
     }
 
     public void left() {
-        monImageView.setLayoutX(x = x - 50);
-        monImageView2.setLayoutX(x2 = x2 - 50);
-        monImageView2.setOpacity(1);
-
-        System.out.println("x" + x);
-        if (x < 100) {
-            System.out.println("bord de map en x:" + x);
-            monImageView.setLayoutX(x = 50);
-        }
-        if (x2 < 100) {
-            monImageView2.setLayoutX(x2 = 50);
-        }
+        Main.makeMove("q");
     }
 
     public void right() {
-        monImageView.setLayoutX(x = x + 50);
-        monImageView2.setLayoutX(x2 = x2 + 50);
-        monImageView2.setOpacity(0);
-        System.out.println("x" + x);
-        if (x > 350) {
-            System.out.println("bord de map en x:" + x);
-            monImageView.setLayoutX(x = 350);
-        }
-        if (x2 > 350) {
-            monImageView2.setLayoutX(x2 = 350);
-        }
+        Main.makeMove("d");
     }
 }
