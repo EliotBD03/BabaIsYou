@@ -3,7 +3,7 @@ package Model;
 /**
  * cette classe abstraite contient tous les blocs de règles du jeu, ils ont tous les memes
  * caracteristiques. Cela nous permet donc de creer cette classe pour plus de lisibilité
- * au niveau du code et moins de fichier class
+ * au niveau du code
  */
 public abstract class BlockRules extends Environment implements Entity
 {
