@@ -38,8 +38,8 @@ public class Controller {
     private Button logoutButton;
     @FXML
     private AnchorPane scenePane;
-    private Stage stage1;
-    private Scene scene1;
+    private Stage stage;
+    private Scene scene;
     private Parent root;
     private Pane[][] tabpane;
 
@@ -48,7 +48,7 @@ public class Controller {
     //private AnchorPane pane;
     private static HBox[] tabhbox;
     @FXML
-    private static VBox vbox1 = new VBox();
+    private static VBox vbox = new VBox();
 
     public void settabhbox(){
         for (int i = 0; i <= tabhbox.length - 1; i++)
@@ -63,7 +63,7 @@ public class Controller {
     public void setvbox(){
         for(HBox hbox :tabhbox)
         {
-            vbox1.getChildren().add(hbox);
+            vbox.getChildren().add(hbox);
         }
     }
     public void setTabpane()
@@ -101,35 +101,39 @@ public class Controller {
 
     public void switchToScene1(ActionEvent event) throws IOException {
         Parent root = FXMLLoader.load(getClass().getResource("/fxml/Menu.fxml"));
-        stage1 = (Stage)((Node)event.getSource()).getScene().getWindow();
-        scene1 = new Scene(root,950, 750 , Color.BLACK);
-        stage1.setScene(scene1);
-        stage1.show();
+        stage = (Stage)((Node)event.getSource()).getScene().getWindow();
+        scene = new Scene(root,950, 750 , Color.BLACK);
+        stage.setScene(scene);
+        stage.show();
 
     }
     public void switchToScene2(ActionEvent event) throws IOException {
         Parent root = FXMLLoader.load(getClass().getResource("/fxml/Settings.fxml"));
-        stage1 = (Stage)((Node)event.getSource()).getScene().getWindow();
-        scene1 = new Scene(root,950, 750 , Color.BLACK);
-        stage1.setScene(scene1);
-        stage1.show();
+        stage = (Stage)((Node)event.getSource()).getScene().getWindow();
+        scene = new Scene(root,950, 750 , Color.BLACK);
+        stage.setScene(scene);
+        stage.show();
     }
 
     public void switchToGame(ActionEvent event) throws IOException {
-            while(true)
-            {
                 try {
                     new Main().makeTheGame("/home/julien/Bureau/BabaIsYou/new/src/main/resources/level/level1.txt");
+                    System.out.println("1");
                     setTabpane();
+                    System.out.println("2");
                     initializeAll();
+                    System.out.println("3");
                     settabhbox();
+                    System.out.println("4");
                     setvbox();
-                    stage1 = (Stage)((Node)event.getSource()).getScene().getWindow();
-                    scene1 = new Scene(vbox1,950,750,Color.BLACK);
-                    stage1.setScene(scene1);
-                    stage1.show();
+                    System.out.println("5");
+                    stage = (Stage)((Node)event.getSource()).getScene().getWindow();
+                    scene = new Scene(vbox,950,750,Color.BLACK);
+                    stage.setScene(scene);
+                    stage.show();
+                    System.out.println("6");
 
-                scene1.setOnKeyPressed(new EventHandler<KeyEvent>() {
+                scene.setOnKeyPressed(new EventHandler<KeyEvent>() {
                     @Override
                     public void handle(KeyEvent event) {
                         switch (event.getCode()) {
@@ -153,14 +157,12 @@ public class Controller {
 
             } catch (Exception e) {
                 e.printStackTrace();
-                break;
-            }
             }
     }
     public void logout(ActionEvent event){
-        stage1 = (Stage)scenePane.getScene().getWindow();
+        stage = (Stage)scenePane.getScene().getWindow();
         System.out.println("logout");
-        stage1.close();
+        stage.close();
     }
     public void up() {
         monImageView.setLayoutY(y = y - 50);
