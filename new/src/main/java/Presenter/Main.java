@@ -20,14 +20,14 @@ public class Main
     public static int getLength(){return map.getMap().length;}
 
     public void makeTheGame(String fileName) throws URISyntaxException {
-        dico.put(' ',getClass().getResource("/sprite/fonf.png").toString()); dico.put('X',getClass().getResource( "/sprite/wall.png").toURI().toString());
-        dico.put('O', getClass().getResource( "/sprite/wall.png").toURI().toString()); dico.put('w', getClass().getResource( "/sprite/wall.png").toURI().toString());
-        dico.put('@', getClass().getResource( "/sprite/wall.png").toURI().toString()); dico.put('#', getClass().getResource( "/sprite/wall.png").toURI().toString());
-        dico.put('B', getClass().getResource( "/sprite/wall.png").toURI().toString()); dico.put('I', getClass().getResource( "/sprite/wall.png").toURI().toString());
-        dico.put('Y', getClass().getResource( "/sprite/wall.png").toURI().toString()); dico.put('W', getClass().getResource( "/sprite/wall.png").toURI().toString());
-        dico.put('S', getClass().getResource( "/sprite/wall.png").toURI().toString()); dico.put('R', getClass().getResource( "/sprite/wall.png").toURI().toString());
-        dico.put('P', getClass().getResource( "/sprite/wall.png").toURI().toString()); dico.put('F', getClass().getResource( "/sprite/wall.png").toURI().toString());
-        dico.put('G', getClass().getResource( "/sprite/wall.png").toURI().toString());
+        dico.put(' ',getClass().getResource("/sprite/fonf.png").toString()); dico.put('X',getClass().getResource( "/sprite/border.png").toURI().toString());
+        dico.put('O', getClass().getResource( "/sprite/baba.png").toURI().toString()); dico.put('w', getClass().getResource( "/sprite/wall.png").toURI().toString());
+        dico.put('@', getClass().getResource( "/sprite/Flag.png").toURI().toString()); dico.put('#', getClass().getResource( "/sprite/rock.png").toURI().toString());
+        dico.put('B', getClass().getResource( "/sprite/textbaba.png").toURI().toString()); dico.put('I', getClass().getResource( "/sprite/textis.png").toURI().toString());
+        dico.put('Y', getClass().getResource( "/sprite/you.png").toURI().toString()); dico.put('W', getClass().getResource( "/sprite/walltext.png").toURI().toString());
+        dico.put('S', getClass().getResource( "/sprite/stop.png").toURI().toString()); dico.put('R', getClass().getResource( "/sprite/textrock.png").toURI().toString());
+        dico.put('P', getClass().getResource( "/sprite/push.png").toURI().toString()); dico.put('F', getClass().getResource( "/sprite/textflag.png").toURI().toString());
+        dico.put('G', getClass().getResource( "/sprite/win.png").toURI().toString());
 
 
         Extract extract = new Extract(fileName);

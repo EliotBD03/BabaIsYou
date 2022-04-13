@@ -38,45 +38,53 @@ public class Controller {
     private Button logoutButton;
     @FXML
     private AnchorPane scenePane;
-    private Stage stage;
-    private Scene scene;
+    private Stage stage1;
+    private Scene scene1;
     private Parent root;
     private Pane[][] tabpane;
 
-    private final HBox []tabhbox = new HBox[20];
-    private final VBox vbox = new VBox();
+    //private VBox[] vbox;
+    //private HBox[] hbox;
+    //private AnchorPane pane;
+    private static HBox[] tabhbox;
+    @FXML
+    private static VBox vbox1 = new VBox();
+
     public void settabhbox(){
-        for (int i = 0; i<tabhbox.length; i++){
-            for(int j=0; j<tabpane[0].length; j++){
+        for (int i = 0; i <= tabhbox.length - 1; i++)
+        {
+            tabhbox[i] = new HBox();
+            for(int j=0; j < tabpane[0].length  - 1; j++)
+            {
                 tabhbox[i].getChildren().add(tabpane[i][j]);
             }
         }
     }
     public void setvbox(){
-        int i = tabhbox.length-1;
-        while (i>=0){
-            vbox.getChildren().add(tabhbox[i]);
+        for(HBox hbox :tabhbox)
+        {
+            vbox1.getChildren().add(hbox);
         }
     }
     public void setTabpane()
     {
         int length = Main.getLength();
         int width = length;
-        //vbox = new VBox[length];
-        //hbox = new HBox[length];
+        tabhbox = new HBox[length];
         tabpane = new Pane[length][width];
         for(int i = 0 ; i <= length - 1; i ++)
             for(int j = 0; j <= width - 1; j++)
                 tabpane[i][j] = new Pane();
     }
 
+
     public void initialize(String url, Pane pane){
         {
             Image image = null;
             image = new Image(url);
             ImageView view = new ImageView();
-            view.setFitWidth(50);
-            view.setFitHeight(50);
+            view.setFitWidth(25);
+            view.setFitHeight(25);
             view.setImage(image);
             pane.getChildren().add(view);
         }
@@ -93,18 +101,18 @@ public class Controller {
 
     public void switchToScene1(ActionEvent event) throws IOException {
         Parent root = FXMLLoader.load(getClass().getResource("/fxml/Menu.fxml"));
-        stage = (Stage)((Node)event.getSource()).getScene().getWindow();
-        scene = new Scene(root,950, 750 , Color.BLACK);
-        stage.setScene(scene);
-        stage.show();
+        stage1 = (Stage)((Node)event.getSource()).getScene().getWindow();
+        scene1 = new Scene(root,950, 750 , Color.BLACK);
+        stage1.setScene(scene1);
+        stage1.show();
 
     }
     public void switchToScene2(ActionEvent event) throws IOException {
         Parent root = FXMLLoader.load(getClass().getResource("/fxml/Settings.fxml"));
-        stage = (Stage)((Node)event.getSource()).getScene().getWindow();
-        scene = new Scene(root,950, 750 , Color.BLACK);
-        stage.setScene(scene);
-        stage.show();
+        stage1 = (Stage)((Node)event.getSource()).getScene().getWindow();
+        scene1 = new Scene(root,950, 750 , Color.BLACK);
+        stage1.setScene(scene1);
+        stage1.show();
     }
 
     public void switchToGame(ActionEvent event) throws IOException {
@@ -116,15 +124,12 @@ public class Controller {
                     initializeAll();
                     settabhbox();
                     setvbox();
-                   // FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/hello-view.fxml"));
-                    //Parent root = loader.load();
-                    stage = (Stage)((Node)event.getSource()).getScene().getWindow();
-                    //Controller controller = loader.getController();
-                    scene = new Scene(vbox,950,750,Color.BLACK);
-                    stage.setScene(scene);
-                    stage.show();
+                    stage1 = (Stage)((Node)event.getSource()).getScene().getWindow();
+                    scene1 = new Scene(vbox1,950,750,Color.BLACK);
+                    stage1.setScene(scene1);
+                    stage1.show();
 
-                scene.setOnKeyPressed(new EventHandler<KeyEvent>() {
+                scene1.setOnKeyPressed(new EventHandler<KeyEvent>() {
                     @Override
                     public void handle(KeyEvent event) {
                         switch (event.getCode()) {
@@ -153,9 +158,9 @@ public class Controller {
             }
     }
     public void logout(ActionEvent event){
-        stage = (Stage)scenePane.getScene().getWindow();
+        stage1 = (Stage)scenePane.getScene().getWindow();
         System.out.println("logout");
-        stage.close();
+        stage1.close();
     }
     public void up() {
         monImageView.setLayoutY(y = y - 50);
