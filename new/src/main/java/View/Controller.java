@@ -45,6 +45,8 @@ public class Controller {
     //private VBox[] vbox;
     //private HBox[] hbox;
     //private AnchorPane pane;
+    private final HBox []tabhbox = new HBox[20];
+    private final VBox vbox = new VBox();
 
     public void setTabpane()
     {
@@ -56,6 +58,19 @@ public class Controller {
         for(int i = 0 ; i <= length - 1; i ++)
             for(int j = 0; j <= width - 1; j++)
                 tabpane[i][j] = new Pane();
+    }
+    public void settabhbox(){
+        for (int i = 0; i<tabhbox.length; i++){
+            for(int j=0; j<tabpane[0].lenght; j++){
+                tabhbox[i].getChildren().add(tabpane[i][j]);
+            }
+        }
+    }
+    public void setvbox(){
+        int i = tabhbox.length-1;
+        while (i>=0){
+            vbox.getChildren().add(tabhbox[i]);
+        }
     }
 
     public void initialize(String url, Pane pane){
