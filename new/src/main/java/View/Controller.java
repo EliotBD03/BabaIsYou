@@ -42,10 +42,22 @@ public class Controller {
     private Scene scene;
     private Parent root;
     private Pane[][] tabpane;
-    //private VBox[] vbox;
-    //private HBox[] hbox;
-    //private AnchorPane pane;
 
+    private final HBox []tabhbox = new HBox[20];
+    private final VBox vbox = new VBox();
+    public void settabhbox(){
+        for (int i = 0; i<tabhbox.length; i++){
+            for(int j=0; j<tabpane[0].length; j++){
+                tabhbox[i].getChildren().add(tabpane[i][j]);
+            }
+        }
+    }
+    public void setvbox(){
+        int i = tabhbox.length-1;
+        while (i>=0){
+            vbox.getChildren().add(tabhbox[i]);
+        }
+    }
     public void setTabpane()
     {
         int length = Main.getLength();
@@ -78,26 +90,7 @@ public class Controller {
             for(int j = 0; j < tabpane[i].length - 2; j++)
                 initialize(sprite(i,j),tabpane[i][j]);
     }
-    /*
-    public void setStage()
-    {
-        int i = vbox.length;
-        while(i >= 0)
-        {
-            pane.getChildren().add(vbox[i]);
-        }
-        for(int j  = 0 ;j <= vbox.length - 1)
 
-    }
-    public void setScene(HBox[] scene, Pane[][] pane)
-    {
-        for(int i = 0; i<= pane.length - 1; i++)
-            for(int j = 0; j <= pane[i].length - 1; j++)
-                scene[i].getChildren().add(pane[i][j]);
-    }
-
-
-     */
     public void switchToScene1(ActionEvent event) throws IOException {
         Parent root = FXMLLoader.load(getClass().getResource("/fxml/Menu.fxml"));
         stage = (Stage)((Node)event.getSource()).getScene().getWindow();
@@ -118,14 +111,16 @@ public class Controller {
             while(true)
             {
                 try {
-                    new Main().makeTheGame("C:\\Users\\julie\\OneDrive\\Bureau\\newgradle\\src\\main\\resources\\level\\level1.txt");
+                    new Main().makeTheGame("/home/julien/Bureau/BabaIsYou/new/src/main/resources/level/level1.txt");
                     setTabpane();
                     initializeAll();
-                    FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/hello-view.fxml"));
-                    Parent root = loader.load();
+                    settabhbox();
+                    setvbox();
+                   // FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/hello-view.fxml"));
+                    //Parent root = loader.load();
                     stage = (Stage)((Node)event.getSource()).getScene().getWindow();
-                    Controller controller = loader.getController();
-                    scene = new Scene(root,950,750,Color.BLACK);
+                    //Controller controller = loader.getController();
+                    scene = new Scene(vbox,950,750,Color.BLACK);
                     stage.setScene(scene);
                     stage.show();
 
