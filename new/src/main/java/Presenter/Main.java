@@ -1,7 +1,9 @@
 package Presenter;
 import Model.*;
 
-
+import java.net.URI;
+import java.net.URISyntaxException;
+import java.net.URL;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -16,23 +18,23 @@ public class Main
     private static final Map<Character, String> dico = new HashMap<Character, String>();
 
     public static int getLength(){return map.getMap().length;}
-    public static void makeTheGame(String fileName)
-    {
-        dico.put(' ', "/home/julien/Bureau/BabaIsYou/new/src/main/resources/sprite/fonf.png"); dico.put('X', "/home/julien/Bureau/BabaIsYou/new/src/main/resources/sprite/border.png");
-        dico.put('O', "/home/julien/Bureau/BabaIsYou/new/src/main/resources/sprite/baba.png"); dico.put('w', "/home/julien/Bureau/BabaIsYou/new/src/main/resources/sprite/wall.png");
-        dico.put('@', "/home/julien/Bureau/BabaIsYou/new/src/main/resources/sprite/Flag.png"); dico.put('#', "/home/julien/Bureau/BabaIsYou/new/src/main/resources/sprite/rock.png");
-        dico.put('B', "/home/julien/Bureau/BabaIsYou/new/src/main/resources/sprite/textbaba.png"); dico.put('I', "/home/julien/Bureau/BabaIsYou/new/src/main/resources/sprite/textis.png");
-        dico.put('Y', "/home/julien/Bureau/BabaIsYou/new/src/main/resources/sprite/you.png"); dico.put('W', "/home/julien/Bureau/BabaIsYou/new/src/main/resources/sprite/walltext.png");
-        dico.put('S', "/home/julien/Bureau/BabaIsYou/new/src/main/resources/sprite/stop.png"); dico.put('R', "/home/julien/Bureau/BabaIsYou/new/src/main/resources/sprite/textrock.png");
-        dico.put('P', "/home/julien/Bureau/BabaIsYou/new/src/main/resources/sprite/push.png"); dico.put('F', "/home/julien/Bureau/BabaIsYou/new/src/main/resources/sprite/textflag.png");
-        dico.put('G', "/home/julien/Bureau/BabaIsYou/new/src/main/resources/sprite/win.png");
+
+    public void makeTheGame(String fileName) throws URISyntaxException {
+        dico.put(' ',getClass().getResource("/sprite/fonf.png").toString()); dico.put('X',getClass().getResource( "/sprite/wall.png").toURI().toString());
+        dico.put('O', getClass().getResource( "/sprite/wall.png").toURI().toString()); dico.put('w', getClass().getResource( "/sprite/wall.png").toURI().toString());
+        dico.put('@', getClass().getResource( "/sprite/wall.png").toURI().toString()); dico.put('#', getClass().getResource( "/sprite/wall.png").toURI().toString());
+        dico.put('B', getClass().getResource( "/sprite/wall.png").toURI().toString()); dico.put('I', getClass().getResource( "/sprite/wall.png").toURI().toString());
+        dico.put('Y', getClass().getResource( "/sprite/wall.png").toURI().toString()); dico.put('W', getClass().getResource( "/sprite/wall.png").toURI().toString());
+        dico.put('S', getClass().getResource( "/sprite/wall.png").toURI().toString()); dico.put('R', getClass().getResource( "/sprite/wall.png").toURI().toString());
+        dico.put('P', getClass().getResource( "/sprite/wall.png").toURI().toString()); dico.put('F', getClass().getResource( "/sprite/wall.png").toURI().toString());
+        dico.put('G', getClass().getResource( "/sprite/wall.png").toURI().toString());
 
 
         Extract extract = new Extract(fileName);
         map = new Environment();
         map.setMap(extract.getDataList());
         BigAlgorithm rules = new BigAlgorithm();
-        map.actualiseMap();
+
         baba = new Baba();
         flag = new Flag();
         rock = new Rock();
@@ -49,7 +51,6 @@ public class Main
 
     public static String getSprite(int i , int j)
     {
-        System.out.println(map.getMap()[i][j]);
         return dico.get(map.getMap()[i][j].charAt(0));
     }
 }

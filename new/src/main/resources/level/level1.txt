@@ -1,4 +1,4 @@
-11 11
+9 11
 text_wall 1 1
 is 2 1
 stop 3 1
