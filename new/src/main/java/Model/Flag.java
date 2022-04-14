@@ -1,5 +1,8 @@
 package Model;
 
+/**
+ * voir doc sur la classe Baba
+ */
 public class Flag extends Item
 {
     private String skin = "@";
@@ -16,10 +19,10 @@ public class Flag extends Item
         int[] position = super.searchtype(Flag.class);
         super.posY = position[0];
         super.posX = position[1];
-        super.pushstatus = canBePushed(BigAlgorithm.getTabperm());
-        super.stopstatus = thingIsStop();
-        super.youstatus = thingIsYou();
-        super.nostatus = noStatus();
+        super.pushStatus = canBePushed(BigAlgorithm.getTabperm());
+        super.stopStatus = thingIsStop();
+        super.youStatus = thingIsYou();
+        super.noStatus = noStatus();
     }
 
 

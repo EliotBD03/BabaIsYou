@@ -5,7 +5,7 @@ import java.util.ArrayList;
 /**
  *cette classe représente tous les objets contrôlables par le joueur
  */
-public abstract class Item extends Environment implements Entity
+public class Item extends Environment implements Entity
 {
     //représente la position en x d'un objet
     protected int posX;
@@ -14,15 +14,15 @@ public abstract class Item extends Environment implements Entity
     //représente l'apparence d'un objet
     protected String skin;
     //représente la caractéristique d'être contrôlé
-    protected boolean youstatus = false;
+    protected boolean youStatus = false;
     //représente la caractéristique d'un objet à être "poussée"
-    protected boolean pushstatus = false;
+    protected boolean pushStatus = false;
     //représente la caractéristique d'un objet à ne pas pouvoir être bougé
-    protected boolean stopstatus = false;
+    protected boolean stopStatus = false;
     //représente si l'objet a "gagné"
-    private static boolean winstatus = false;
+    private static boolean winStatus = false;
     //représente l'objet qui a aucun status
-    protected boolean nostatus = true;
+    protected boolean noStatus = true;
     //représente les coordonnés des objets qui sont win
     private ArrayList<int[]> coordonates_win = new ArrayList<int[]>();
     //la map temporaire contenant tous les objets qui n'ont pas de status
@@ -34,7 +34,7 @@ public abstract class Item extends Environment implements Entity
      * @return but : la methode thingisyou()
      */
     @Override
-    public abstract boolean thingIsYou();
+    public boolean thingIsYou(){return false;};
 
     public boolean thingisyou(Enum[][] tabperm, Rules object)
     {
@@ -50,7 +50,7 @@ public abstract class Item extends Environment implements Entity
      * @return but : la methode thingisstop()
      */
     @Override
-    public abstract boolean thingIsStop();
+    public  boolean thingIsStop(){return false;};
 
     public boolean thingisstop(Enum[][] tabperm, Rules object)
     {
@@ -59,6 +59,22 @@ public abstract class Item extends Environment implements Entity
             if(tabperm[i][0] == object  && tabperm[i][1] == Rules.STOP)
                 return true;
         }
+        return false;
+    }
+    /**
+     * methode qui sera implémenté dans les classes enfants
+     * @return null par défaut
+     */
+    @Override
+    public String getSkin() {
+        return null;
+    }
+    /**
+     * methode qui sera implémenté dans les classes enfants
+     * @return false par défaut
+     */
+    @Override
+    public boolean canBePushed(Enum[][] tabperm) {
         return false;
     }
 
@@ -123,7 +139,7 @@ public abstract class Item extends Environment implements Entity
      * @param input : entrée utilisateur
      */
 
-    protected abstract void move(String input);
+    protected void move(String input){};
 
     /**
      * la méthode move consiste à effectuer des changements dans la map de type Entity
@@ -164,7 +180,7 @@ public abstract class Item extends Environment implements Entity
                                     posY = Actions.up(mapO, i, j);
 
                                 else if(thingHasWin(i - 1, j))
-                                    winstatus = true;
+                                    winStatus = true;
 
                                 else if(thingIsPushingY(BigAlgorithm.getTabperm(),i - 1, j))
                                     posY = Actions.pushY(-1, i, j, mapO);
@@ -181,7 +197,7 @@ public abstract class Item extends Environment implements Entity
                                     posY = Actions.down(mapO, i, j);
                                 //on regarde si on a atteint un objet qui est win
                                 else if(thingHasWin( i+ 1, j))
-                                    winstatus = true;
+                                    winStatus = true;
                                 //on regarde si on pousse quelque chose
                                 else if(thingIsPushingY(BigAlgorithm.getTabperm(),i + 1, j))
                                     posY = Actions.pushY(1, i, j, mapO);
@@ -197,7 +213,7 @@ public abstract class Item extends Environment implements Entity
                                     posX = Actions.left(mapO, i, j);
 
                                 else if(thingHasWin( i, j - 1))
-                                    winstatus = true;
+                                    winStatus = true;
 
                                 else if(thingIsPushingX(BigAlgorithm.getTabperm(),i, j - 1))
                                     posX = Actions.pushX(-1, i, j, mapO);
@@ -214,7 +230,7 @@ public abstract class Item extends Environment implements Entity
                                     posX = Actions.right(mapO, i, j);
 
                                 else if(thingHasWin( i, j + 1))
-                                    winstatus = true;
+                                    winStatus = true;
 
                                 else if(thingIsPushingX(BigAlgorithm.getTabperm(),i, j + 1))
                                     posX = Actions.pushX(1, i, j, mapO);
@@ -269,90 +285,98 @@ public abstract class Item extends Environment implements Entity
             }
     }
 
+    /**
+     * cette méthode permet de retrouver quel objet de type Rules possède une règle mise en param
+     * @param rules la règle de l'objet qu'on veut retrouver
+     * @return l'élément possédant la règle mise en param
+     */
+
     private Enum whichItem(Rules rules)
     {
+        //on cherche dans le tableau des permissions
         for(int i = 0; i <= BigAlgorithm.getTabperm().length -1; i++)
+            //si on a trouvé la règle que l'on cherchait
+            //alors on retourne l'objet qui la possède
             if(BigAlgorithm.getTabperm()[i][1] == rules && BigAlgorithm.getTabperm()[i][0] != null)
                 return BigAlgorithm.getTabperm()[i][0];
+        //sinon on return null
         return null;
     }
-/*
-    public int[] whichPosition(Enum  item)
-    {
-        if(item == Rules.WALL)
-        {
-            int[] pos = searchtype(Wall.class);
-            return  pos;
-        }
-        else if (item == Rules.FLAG)
-        {
-            int[] pos = searchtype(Flag.class);
-            return  pos;
-        }
-        else if (item == Rules.BABA)
-        {
-            int[] pos = searchtype(Baba.class);
-            return  pos;
-        }
-        else if (item == Rules.ROCK)
-        {
-            int[] pos = searchtype(Rock.class);
-            return  pos;
-        }
-        else
-            return null;
-    }
-*/
+
+    /**
+     * cette méthode retourne le status win des objets de type Item
+     * ie : permet de savoir si on a gagné
+     * @return l'attribut statique des objets de type Item
+     */
     public static boolean win()
     {
-        return winstatus;
+        return winStatus;
     }
 
-
+    /**
+     * cette méthode va créer une map temporaire regroupant tous les objets noStatus
+     */
     private void setTempObjectMap()
     {
+        //le flag nous permet de savoir quand on a le droit de transformer la map temporaire
+        //qui en principe est déjà faite
         boolean flag = false;
         Entity[][] res = new Entity[mapO.length][mapO[0].length];
+            //on passe sur chaque objet de la map
             for(int i = 0; i <= mapO.length - 1; i++)
                 for(int j = 0; j <= mapO[j].length - 2; j++)
+                    //le try catch sert au cas où map[i][j] est null et donc la méthode noStatus
+                    //n'est pas applicable
                     try
                     {
+                        //si un objet qui se trouve sur un element de la map tempk, on break
+                        //car on pourrait écrase l'objet de temp par l'objet de mapO
                         if(temp_object_map[i][j] != null && res[i][j] != temp_object_map[i][j])
                         {
                             break;
                         }
+                        //si l'objet est bien noStatus, on ajoute l'élément à notre map temp
                         if (mapO[i][j].noStatus())
                         {
                             flag = true;
                             res[i][j] = mapO[i][j];
                             mapO[i][j] = null;
                         }
-                    }catch (Exception e){}
+                    }catch (NullPointerException e){}
         if(flag)
             temp_object_map = res;
     }
 
 
-
-
+    /**
+     * cette méthode sert à fusionner la map visible (mapO) avec la map temporaire(temp_object_map)
+     */
      private void actualiseObjectMap()
      {
         for(int i = 0; i<= mapO.length - 1; i++)
             for(int j = 0; j <= mapO[i].length - 1; j++)
+                //si on a rien sur la map visible et qu'il y a un element sur temp
+                //alors on le rajoute à la map visible
                 if(mapO[i][j] == null && temp_object_map[i][j] != null)
                     mapO[i][j] = temp_object_map[i][j];
      }
-
+    /**
+     * methode qui sera implémenté dans les classes enfants
+     * @return false par défaut, but: retourner nostatus()
+     */
      @Override
-     public abstract boolean noStatus();
+     public boolean noStatus(){return false;};
 
      protected boolean nostatus(Enum[][] tabperm, Rules object)
      {
+         //si dans tous les éléments de tabperm, on y trouve que notre objet(implicitement il a une règle)
+         //alors on return false
         for(int i = 0; i <= tabperm.length - 1; i++)
             {
                 if (tabperm[i][0] == object)
                     return false;
             }
+        //vrai sinon
         return true;
      }
 

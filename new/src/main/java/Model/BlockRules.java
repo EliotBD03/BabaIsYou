@@ -5,12 +5,17 @@ package Model;
  * caracteristiques. Cela nous permet donc de creer cette classe pour plus de lisibilité
  * au niveau du code
  */
-public abstract class BlockRules extends Environment implements Entity
+public class BlockRules extends Environment implements Entity
 {
     //la position en x d'un objet qui est en relation is-a avec Blockrules
     protected int posX;
     //la position en y d'un objet qui est en relation is-a avec Blockrules
     protected int posY;
+
+    @Override
+    public String getSkin() {
+        return null;
+    }
 
     //Dans le jeu, les règles ne sont pas contrôlables. Cela permet d'implémenter toutes ces méthodes facilement à false
     @Override

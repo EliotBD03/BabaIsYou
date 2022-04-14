@@ -9,7 +9,7 @@ import java.util.Map;
  */
 
 public class BigAlgorithm extends Environment {
-    public static Enum[][] tabloc = new Enum[getLength()][getWidth()];
+    private static Enum[][] tabloc = new Enum[getLength()][getWidth()];
     private static Enum[][] tabperm;
     private static final Enum[] character = {Rules.BABA, Rules.ROCK, Rules.FLAG, Rules.WALL};
     private static final Enum[] actions = {Rules.YOU, Rules.STOP, Rules.WIN, Rules.PUSH};
@@ -46,11 +46,10 @@ public class BigAlgorithm extends Environment {
      * @param map0 le tableau issus de map représentant les objets
      */
 
-    public void setTab(Entity[][] map0) {
+    private void setTab(Entity[][] map0) {
         for (int i = 1; i <= map0.length - 1; i++)
             for (int j = 1; j <= map0[i].length - 1; j++)
                 if (map0[i][j] != null) {
-                    //System.out.println("on passe la condition");
                     tabloc[i][j] = whatobj(map0[i][j].getClass());
                 } else
                     tabloc[i][j] = Rules.NONE;
@@ -61,7 +60,7 @@ public class BigAlgorithm extends Environment {
      * @param tabpermX issue de la methode findPermX
      * @param tabpermY issue de la methode findPermY
      */
-    public void setTabperm(Enum[][] tabpermX, Enum[][] tabpermY)
+    private void setTabperm(Enum[][] tabpermX, Enum[][] tabpermY)
     {
         tabperm = new Enum[20][2];
         int i = 0;
@@ -84,7 +83,7 @@ public class BigAlgorithm extends Environment {
      * un sous tableau = Is, les elements de Is => position en y et en x (dans cet ordre)
      */
 
-    public int[][] findIS() {
+    private int[][] findIS() {
         int x = -1;
         int y = -1;
         int[][] res = new int[10][2];
@@ -105,7 +104,7 @@ public class BigAlgorithm extends Environment {
      * @param isLoc la position des blocs Is issue de la methode findIs()
      * @return tableau à deux dimensions : pour chacun des sous tableaux, on a des objets de type Rules(Enum)
      */
-    public Enum[][] findPermY(int[][] isLoc) {
+    private Enum[][] findPermY(int[][] isLoc) {
         Enum[][] tabpermY = new Enum[10][2];
         int k = 0;
         for (int[] is : isLoc)
@@ -148,7 +147,7 @@ public class BigAlgorithm extends Environment {
      * @return tableau à deux dimensions : pour chacun des sous tableaux, on a des objets de type Rules(Enum)
      */
 
-    public Enum[][] findPermX(int[][] isLoc)
+    private Enum[][] findPermX(int[][] isLoc)
     {
         Enum[][] tabpermX = new Enum[10][2];
         int k = 0;

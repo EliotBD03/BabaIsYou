@@ -1,5 +1,9 @@
 package Model;
 
+/**
+ * voir doc sur la classe Baba
+ */
+
 public class Wall extends Item
 {
     private String skin = "w";
@@ -13,10 +17,10 @@ public class Wall extends Item
         int[] position = super.searchtype(Wall.class);
         super.posY = position[0];
         super.posX = position[1];
-        super.pushstatus =  canBePushed(BigAlgorithm.getTabperm());
-        super.stopstatus = thingIsStop();
-        super.youstatus = thingIsYou();
-        super.nostatus = noStatus();
+        super.pushStatus =  canBePushed(BigAlgorithm.getTabperm());
+        super.stopStatus = thingIsStop();
+        super.youStatus = thingIsYou();
+        super.noStatus = noStatus();
     }
 
     public boolean canBePushed(Enum[][] tabperm)

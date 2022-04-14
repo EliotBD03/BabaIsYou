@@ -5,7 +5,7 @@ import java.util.Scanner;
 public class Input
     {
         /**
-         * permet de faire une entree pour par la suite avoir des deplacements.
+         * permet de faire une entree pour par la suite avoir des déplacements.
          * @return l'entree prise par l'utilisateur
          */
         public static String get_Input()
@@ -19,9 +19,9 @@ public class Input
         }
 
         /**
-         * verifie si l'entree est respecte
-         * @param input l'entree de l'utilisateur
-         * @return vrai si entree respecte , faux sinon
+         * vérifie si l'entrée est respecte
+         * @param input l'entrée de l'utilisateur
+         * @return vrai si entree respecte, faux sinon
          */
         private static boolean islegal(String input)
         {

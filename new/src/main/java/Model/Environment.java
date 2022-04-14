@@ -1,47 +1,67 @@
 package Model;
 
+/**
+ * cette classe représente le concept de carte
+ * ie: c'est que va se créer deux maps : map de String(affichable dans le terminale) et la map d'objet (qui va être manipulé)
+ */
 public class Environment {
+        //la longueur des deux maps
         private static int length;
+        //la largeur des deux maps
         private static int width;
-        private static final int extention = 10;
+        //extension
+        private static final int extension = 10;
+        //la map de String
         protected static String[][] map;
+        //la map d'objet
         protected static Entity[][] mapO;
 
-        public String[][] getMap(){return map;}
-        /*
-            public void setLength(int length){this.length = length;}
-            public void setWidth(int width){this.width = width;}
-        */
-        public static int getLength() {
-            return length;
-        }
+    /**
+     * accesseur pour la map de String
+     * @return map
+     */
+    public String[][] getMap(){return map;}
 
-        public static int getWidth() {
-            return width;
-        }
-        /**
-         * permet de set la map avec les objets au bon endroit
-         * @param dataList apres avoir execute de la methode Extract.setDataList()
-         */
-        public void setMap(String[][] dataList)
-        {
-            setStringMap(dataList);
-            setObjectMap(dataList);
-            actualiseMap();
-        }
+    /**
+     * accesseur pour la longueur de la map
+     * @return length
+     */
+    public static int getLength() {return length;}
 
-        private void setStringMap(String[][] dataList) {
-            this.length = Integer.parseInt(dataList[0][1]) + extention;
-            this.width = Integer.parseInt(dataList[0][0]) + extention;
-            this.map = new String[length][width];
+    /**
+     * accesseur pour la largeur de la map
+     * @return width
+     */
+    public static int getWidth() {return width;}
+    /**
+     * permet de set la map avec les objets au bon endroit
+     * @param dataList apres avoir execute de la methode Extract.setDataList()
+     */
+     public void setMap(String[][] dataList)
+     {
+         setStringMap(dataList);
+         setObjectMap(dataList);
+         actualiseMap();
+     }
 
-            for (int i = 0; i <= this.length - 1; i++)
-                for (int j = 0; j <= this.width - 1; j++)
-                {
-                    map[i][j] = " ";
-                    if (j == 0 || j == width - 1 || i == 0 || i == length - 1)
+    /**
+     * cette méthode va créer la map de String à partir d'un tableau de donnés
+     * @param dataList le tableau de donnés
+     */
+     private void setStringMap(String[][] dataList)
+     {
+         length = Integer.parseInt(dataList[0][1]) + extension;
+         width = Integer.parseInt(dataList[0][0]) + extension;
+         map = new String[length][width];
+
+         for (int i = 0; i <= length - 1; i++)
+             for (int j = 0; j <= width - 1; j++)
+             {
+                 map[i][j] = " ";
+                 //les X représenteront les limites de la map
+                 if (j == 0 || j == width - 1 || i == 0 || i == length - 1)
                         map[i][j] = "X";
-                }
+             }
         }
 
         /**
@@ -59,13 +79,14 @@ public class Environment {
                         map[i][j] = " ";
         }
         /**
-         * faire une sous carte contenant les objects aux differents endroits
+         * faire une sous carte contenant les objects aux différents endroits
          */
         private void setObjectMap(String [][] dataList)
         {
             this.mapO = new Entity[this.length][this.width];
                     for (int i = 1; i <= dataList.length - 1 ; i++ )
-                            this.mapO[Integer.parseInt(dataList[i][2]) + extention / 2][Integer.parseInt(dataList[i][1]) + extention / 2] = whatobj(dataList[i][0]);
+                            //on va centrer les éléments de la map (extension / 2)
+                            this.mapO[Integer.parseInt(dataList[i][2]) + extension / 2][Integer.parseInt(dataList[i][1]) + extension / 2] = whatobj(dataList[i][0]);
         }
 
         /**
@@ -121,6 +142,11 @@ public class Environment {
             return res;
         }
 
+    /**
+     * cette méthode va rechercher à partir d'un type, les coordonnés de l'élément de même type dans le tableau d'objet
+     * @param thing le type de l'élément que l'on cherche
+     * @return la position de l'objet ((y,x)->plus facile pour l'implémentation dans un tableau)
+     */
     protected int[] searchtype(Class<?> thing)
     {
         int x = -1 ; int y = -1;

@@ -1,7 +1,9 @@
 package Model;
 
 /**
- * cette classe issus de Item est un des objets "jouables" par le joueur
+ * cette classe issue de Item est un des objets "jouables" par le joueur
+ * à note que la documentation de cette classe est la même pour toutes les
+ * classes enfants issues de Item sauf pour l'attribut skin
  */
 
 public class Baba extends Item
@@ -37,10 +39,10 @@ public class Baba extends Item
         int[] position = super.searchtype(Baba.class);
         super.posY = position[0];
         super.posX = position[1];
-        super.pushstatus =  canBePushed(BigAlgorithm.getTabperm());
-        super.stopstatus = thingIsStop();
-        super.youstatus = thingIsYou();
-        super.nostatus = noStatus();
+        super.pushStatus =  canBePushed(BigAlgorithm.getTabperm());
+        super.stopStatus = thingIsStop();
+        super.youStatus = thingIsYou();
+        super.noStatus = noStatus();
     }
 
     /**

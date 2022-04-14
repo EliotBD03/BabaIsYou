@@ -1,7 +1,7 @@
 package Model;
 
 /**
- * cette classe statique contient méthodes permettant d'effectuer une action dans le jeu
+ * cette classe statique contient les méthodes permettant d'effectuer une action dans le jeu
  */
 public class Actions
 {
@@ -72,23 +72,30 @@ public class Actions
      * @param posY la position de l'instance en y dans le tableau
      * @param posX la position de l'instance en x dans le tableau
      * @param map_object le tableau d'objet de type Entity issu de la classe "Entity"
-     * @return
+     * @return la nouvelle position de notre objet qui a poussé
      */
 
     public static  int pushX(int x, int posY,int posX, Entity[][] map_object)
     {
+        //cette variable permettra de savoir jusqu'à quel élément on poussera(voir première boucle while)
         int temp = posX - 1;
         switch(x)
         {
             case -1:
+                    //tant qu'on est encore sur un élément qui peut être poussé(on va vers la gauche)
                     while(map_object[posY][temp] != null && map_object[posY][temp].canBePushed(BigAlgorithm.getTabperm()))
                          temp --;
                     int first_entity = temp ;
                     temp ++;
+                    //tant qu'on n'atteint pas la position de l'élément qui pousse et que la première entité
+                    //se situe dans les limites de la map
                     while(temp <= posX && first_entity - 1 >= 0)
                     {
+                        //si l'objet sur lequel on tombe est un élément qui ne peut pas être poussé
+                        //on arrête la boucle
                         if(map_object[posY][first_entity] != null && map_object[posY][first_entity].thingIsStop())
                             break;
+                        //sinon, on déplace les éléments dans la direction voulue
                         map_object[posY][temp - 1] = map_object[posY][temp];
                         map_object[posY][temp] = null;
                         temp ++;
@@ -122,7 +129,7 @@ public class Actions
      * @param posY la position de l'instance en y dans le tableau
      * @param posX la position de l'instance en x dans le tableau
      * @param map_object le tableau d'objet de type Entity issu de la classe "Entity"
-     * @return
+     * @return la position de notre objet qui a poussé
      */
 
     public static  int pushY(int y, int posY, int posX, Entity[][] map_object)
