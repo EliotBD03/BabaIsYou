@@ -100,7 +100,7 @@ public class Controller {
     public void switchToScene1(ActionEvent event) throws IOException {
         Parent root = FXMLLoader.load(getClass().getResource("/fxml/Menu.fxml"));
         stage = (Stage)((Node)event.getSource()).getScene().getWindow();
-        scene = new Scene(root,950, 750 , Color.BLACK);
+        scene = new Scene(root,450, 500, Color.BLACK);
         stage.setScene(scene);
         stage.show();
 
@@ -108,14 +108,14 @@ public class Controller {
     public void switchToScene2(ActionEvent event) throws IOException {
         Parent root = FXMLLoader.load(getClass().getResource("/fxml/Settings.fxml"));
         stage = (Stage)((Node)event.getSource()).getScene().getWindow();
-        scene = new Scene(root,950, 750 , Color.BLACK);
+        scene = new Scene(root,450, 500, Color.BLACK);
         stage.setScene(scene);
         stage.show();
     }
 
     public void switchToGame(ActionEvent event) throws IOException {
                 try {
-                    new Main().makeTheGame("/home/julien/Bureau/BabaIsYou/new/src/main/resources/level/level1.txt");
+                    new Main().makeTheGame("/Users/romaineloy/new/src/main/resources/level/level1.txt");
                     System.out.println("1");
                     setTabpane();
                     System.out.println("2");
@@ -217,3 +217,4 @@ public class Controller {
         }
     }
 }
+
