@@ -44,7 +44,9 @@ public class Rock extends Item
 
     public boolean thingIsYou(){return super.thingisyou(BigAlgorithm.getTabperm(), Rules.ROCK);}
 
+    public boolean thingIsAnotherThing(Enum[][] tabperm){return thingisanortherthing(tabperm,Rules.ROCK);}
 
+    protected Enum getThing(Enum[][] tabperm){return getthing(tabperm, Rules.ROCK);}
     @Override
     public void move(String input)
     {

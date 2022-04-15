@@ -46,6 +46,9 @@ public class Flag extends Item
 
     public boolean thingIsYou(){return super.thingisyou(BigAlgorithm.getTabperm(), Rules.FLAG);}
 
+    public boolean thingIsAnotherThing(Enum[][] tabperm){return thingisanortherthing(tabperm,Rules.FLAG);}
+
+    protected Enum getThing(Enum[][] tabperm){return getthing(tabperm, Rules.FLAG);}
 
 
     @Override

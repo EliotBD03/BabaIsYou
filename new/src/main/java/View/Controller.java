@@ -21,8 +21,7 @@ import javafx.scene.paint.Color;
 import javafx.stage.Stage;
 
 import java.io.IOException;
-import java.net.URISyntaxException;
-import java.net.URL;
+
 
 import static Presenter.Main.getSprite;
 
@@ -80,8 +79,7 @@ public class Controller {
 
     public void initialize(String url, Pane pane){
         {
-            Image image = null;
-            image = new Image(url);
+            Image image = new Image(url);
             ImageView view = new ImageView();
             view.setFitWidth(25);
             view.setFitHeight(25);
@@ -93,7 +91,7 @@ public class Controller {
     {
         return getSprite(i,j);
     }
-    public void initializeAll() throws URISyntaxException {
+    public void initializeAll(){
         for(int i = 0; i <= tabpane.length - 1; i++)
             for(int j = 0; j < tabpane[i].length - 2; j++)
                 initialize(sprite(i,j),tabpane[i][j]);
@@ -128,7 +126,7 @@ public class Controller {
                     setvbox();
                     System.out.println("5");
                     stage = (Stage)((Node)event.getSource()).getScene().getWindow();
-                    scene = new Scene(vbox,950,750,Color.BLACK);
+                    scene = new Scene(vbox,450,500,Color.BLACK);
                     stage.setScene(scene);
                     stage.show();
                     System.out.println("6");

@@ -76,6 +76,12 @@ interface Entity
     boolean thingIsStop();
 
     /**
+     * methode permettant de savoir si un objet est un autre objet
+     * @return vrai si c'est le cas , faux sinon
+     */
+    boolean thingIsAnotherThing(Enum[][] tabperm);
+
+    /**
      * methode permettant de savoir si l'objet qui est instancié n'a aucune caractéristique
      * ie : concidéré comme absent. Autrement dit, il ne bouge pas et peut être traversé
      * @return vrai si l'objet est "no status" , faux sinon

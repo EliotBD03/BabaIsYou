@@ -36,7 +36,7 @@ public class Item extends Environment implements Entity
     @Override
     public boolean thingIsYou(){return false;};
 
-    public boolean thingisyou(Enum[][] tabperm, Rules object)
+    protected boolean thingisyou(Enum[][] tabperm, Rules object)
     {
         for(int i = 0; i <= tabperm.length - 1; i++)
         {
@@ -50,9 +50,61 @@ public class Item extends Environment implements Entity
      * @return but : la methode thingisstop()
      */
     @Override
-    public  boolean thingIsStop(){return false;};
+    public  boolean thingIsStop(){return false;}
 
-    public boolean thingisstop(Enum[][] tabperm, Rules object)
+    /**
+     * methode permettant d'être propre aux classes enfantes de ITEM
+     * @return but : la methode thingisanother()
+     */
+    @Override
+    public boolean thingIsAnotherThing(Enum[][] tabperm) {
+        return false;
+    }
+
+    protected boolean thingisanortherthing(Enum[][] tabperm, Rules object)
+    {
+        Enum[] thing = {Rules.BABA,Rules.FLAG,Rules.ROCK,Rules.WALL};
+
+        for(int i = 0; i <= tabperm.length - 1; i++)
+            for(int j = 0; j <= thing.length - 1; j++)
+                if(tabperm[i][0] == object  && tabperm[i][1] == thing[j])
+                    return true;
+        return false;
+    }
+
+    protected Enum getThing(Enum[][] tabperm){return null;}
+    /**
+     * cette méthode permet de récupérer l'élément qui compte remplacer object
+     * @param tabperm tableau des permissions
+     * @param object objet qui compte être remplacé
+     * @return l'élément qui remplace object
+     */
+    protected Enum getthing(Enum[][] tabperm, Rules object)
+    {
+        Enum[] thing = {Rules.BABA,Rules.FLAG,Rules.ROCK,Rules.WALL};
+
+        for(int i = 0; i <= tabperm.length - 1; i++)
+            for(int j = 0; j <= thing.length - 1; j++)
+                if(tabperm[i][0] == object  && tabperm[i][1] == thing[j])
+                    return thing[j];
+        return null;
+    }
+
+    private void swithObject(Enum[][] tabperm)
+    {
+        if (thingIsAnotherThing(tabperm))
+        {
+            Entity thing = BigAlgorithm.dico.get(getThing(tabperm));
+            for(int i = 0; i <= mapO.length - 1; i++)
+                for(int j = 0; j <= mapO[i].length - 1; j++)
+                    if(this.getClass().isInstance(mapO[i][j]))
+                        mapO[i][j] = thing;
+
+        }
+
+    }
+
+    protected boolean thingisstop(Enum[][] tabperm, Rules object)
     {
         for(int i = 0; i <= tabperm.length - 1; i++)
         {
@@ -151,6 +203,8 @@ public class Item extends Environment implements Entity
 
     protected void move(String input, Rules item)
     {
+        //on va d'office regarder si des objets sont inter-changeables
+        swithObject(BigAlgorithm.getTabperm());
         //on cherche les coordonnés des objets qui ont la caractéristique win
         searchWin();
         //on initialise la map temporaire de type Entity
@@ -238,6 +292,7 @@ public class Item extends Environment implements Entity
                     break;
             }
         }
+        rules.actualise();
         //on va fusionner la map actuel avec la map temporaire
         actualiseObjectMap();
     }

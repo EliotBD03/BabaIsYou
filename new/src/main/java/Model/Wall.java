@@ -43,7 +43,9 @@ public class Wall extends Item
 
     public boolean thingIsYou(){return super.thingisyou(BigAlgorithm.getTabperm(), Rules.WALL);}
 
+    public boolean thingIsAnotherThing(Enum[][] tabperm){return thingisanortherthing(tabperm, Rules.WALL);}
 
+    protected Enum getThing(Enum[][] tabperm){return getthing(tabperm, Rules.WALL);}
 
     @Override
     public void move(String input)

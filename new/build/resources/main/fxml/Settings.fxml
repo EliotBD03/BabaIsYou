@@ -6,17 +6,17 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane prefHeight="750.0" prefWidth="950.0" style="-fx-background-color: BLACK;" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.javafx.Controller">
+<AnchorPane prefHeight="500.0" prefWidth="450.0" style="-fx-background-color: BLACK;" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="View.Controller">
     <children>
-        <Button layoutX="375.0" layoutY="447.0" mnemonicParsing="false" onAction="#switchToScene1" prefHeight="60.0" prefWidth="180.0" text="Quit Settings">
+        <Button layoutX="150.0" layoutY="278.0" mnemonicParsing="false" onAction="#switchToScene1" prefHeight="50.0" prefWidth="150.0" text="Quit Settings">
             <font>
-                <Font size="23.0" />
+                <Font size="21.0" />
             </font>
         </Button>
-        <Slider fx:id="volume" layoutX="375.0" layoutY="168.0" max="200.0" prefHeight="66.0" prefWidth="180.0" value="100.0" />
-        <Text fill="WHITE" layoutX="375.0" layoutY="177.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Musique" wrappingWidth="113.0234375">
+        <Slider fx:id="volume" layoutX="142.0" layoutY="137.0" max="200.0" prefHeight="50.0" prefWidth="166.0" value="100.0" />
+        <Text fill="WHITE" layoutX="142.0" layoutY="119.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Musique" wrappingWidth="140.0234375">
             <font>
-                <Font size="26.0" />
+                <Font size="25.0" />
             </font>
         </Text>
     </children>

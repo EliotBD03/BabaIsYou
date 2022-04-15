@@ -16,6 +16,8 @@ public class Environment {
         //la map d'objet
         protected static Entity[][] mapO;
 
+        protected static BigAlgorithm rules;
+
     /**
      * accesseur pour la map de String
      * @return map
@@ -42,6 +44,7 @@ public class Environment {
          setStringMap(dataList);
          setObjectMap(dataList);
          actualiseMap();
+         rules = new BigAlgorithm();
      }
 
     /**

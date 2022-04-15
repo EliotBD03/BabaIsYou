@@ -32,6 +32,12 @@ public class BlockRules extends Environment implements Entity
     public boolean thingIsPushingY(Enum[][] tabperm, int posy, int posx){return false;}
     @Override
     public boolean thingIsStop(){return false;}
+
+    @Override
+    public boolean thingIsAnotherThing(Enum[][] tabperm) {
+        return false;
+    }
+
     @Override
     public boolean noStatus(){return false;}
 

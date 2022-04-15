@@ -71,6 +71,10 @@ public class Baba extends Item
 
     public boolean thingIsYou(){return super.thingisyou(BigAlgorithm.getTabperm(), Rules.BABA);}
 
+    public boolean thingIsAnotherThing(Enum[][] tabperm){return thingisanortherthing(tabperm, Rules.BABA);}
+
+    protected Enum getThing(Enum[][] tabperm){return getthing(tabperm, Rules.BABA);}
+
     /**
      *cette methode est surchargé pour permettre la caractéristiques de type Rules par Rules.Baba isssu
      * de la classe Rules
