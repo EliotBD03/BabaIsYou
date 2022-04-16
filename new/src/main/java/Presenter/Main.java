@@ -1,22 +1,27 @@
 package Presenter;
 import Model.*;
 
-import java.net.URI;
 import java.net.URISyntaxException;
-import java.net.URL;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.ArrayList;
+<<<<<<< HEAD
+import java.util.Objects;
+=======
+>>>>>>> e6ce85052ee482a12101072c3a85293bfd36eeb8
 
 public class Main
 {
     private static ArrayList<int[]> changeCoord = new ArrayList<>();
     
     private static Environment map;
+    private ArrayList<int[]> changeCoord;
     private static Baba baba;
     private static Flag flag;
     private static Rock rock;
     private static Wall wall;
+
+    private static  String[][] temp;
 
     private static final Map<Character, String> dico = new HashMap<Character, String>();
 
@@ -44,18 +49,27 @@ public class Main
         wall = new Wall();
     }
 
-    public static void makeMove(String event)
+    public void makeMove(String event)
     {
         baba.move(event);
         flag.move(event);
         rock.move(event);
         wall.move(event);
+        makeChange();
     }
 
     public static String getSprite(int i , int j)
     {
         return dico.get(map.getMap()[i][j].charAt(0));
     }
+<<<<<<< HEAD
+    private void makeChange()
+    {
+        changeCoord = new ArrayList<>();
+        temp = map.getStringMap(map.getMap());
+        map.actualiseMap();
+        String[][] actual = map.getMap();
+=======
     
     private static void makeChange()
     {
@@ -64,15 +78,23 @@ public class Main
         map.actualiseMap();
         String[][] actual = map.getMap();
         System.out.println(map.toString(temp));
+>>>>>>> e6ce85052ee482a12101072c3a85293bfd36eeb8
         for(int i = 0; i <= actual.length -1; i++)
             for(int j = 0; j < actual[j].length -1; j++)
                 if(!(actual[i][j].equals(temp[i][j])))
                 {
                     int[] pos = {i,j};
+<<<<<<< HEAD
+=======
                     System.out.println(i + " " +j);
+>>>>>>> e6ce85052ee482a12101072c3a85293bfd36eeb8
                     changeCoord.add(pos);
                 }
     }
 
+<<<<<<< HEAD
+    public ArrayList<int[]> getChanges(){return changeCoord;}
+=======
     public static ArrayList<int[]> getChanges(){return changeCoord;}
+>>>>>>> e6ce85052ee482a12101072c3a85293bfd36eeb8
 }
