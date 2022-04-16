@@ -44,6 +44,11 @@ public class Controller {
     private Parent root;
     private Pane[][] tabpane;
 
+    private static final int paneHeigth = 25;
+    private static final int paneWidth = 25;
+    private static final ImageView imageview = new ImageView();
+
+
     //private VBox[] vbox;
     //private HBox[] hbox;
     //private AnchorPane pane;
@@ -98,10 +103,9 @@ public class Controller {
             for(int j = 0; j < tabpane[i].length - 2; j++)
                 initialize(sprite(i,j),tabpane[i][j]);
     }
-
     public void actualise(ArrayList<int[]> change)
     {
-        if(change != null)
+        if(change.size() > 0)
         {
             System.out.println("je passe dans actualise\n" + change.get(0)[0] + " " + change.get(0)[1]);
             for(int i = 0; i <= change.size() - 1; i++)
@@ -166,8 +170,8 @@ public class Controller {
                             System.out.println("right");
                             break;
                     }
+                    actualise(game.getChanges());
                 });
-                actualise(game.getChanges());
             }
 
         } catch (Exception e) {

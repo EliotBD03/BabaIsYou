@@ -50,17 +50,16 @@ public class Main
         flag.move(event);
         rock.move(event);
         wall.move(event);
-        makeChange();
     }
 
     public static String getSprite(int i , int j)
     {
         return dico.get(map.getMap()[i][j].charAt(0));
     }
-    private void makeChange()
+    public ArrayList<int[]> getChanges()
     {
-        changeCoord = new ArrayList<>();
-        temp = map.getStringMap(map.getMap());
+        ArrayList<int[]> changeCoord = new ArrayList<>();
+        temp = Environment.getStringMap(map.getMap());
         map.actualiseMap();
         String[][] actual = map.getMap();
         for(int i = 0; i <= actual.length -1; i++)
@@ -68,9 +67,9 @@ public class Main
                 if(!(actual[i][j].equals(temp[i][j])))
                 {
                     int[] pos = {i,j};
+                    System.out.println("je passe");
                     changeCoord.add(pos);
                 }
+        return changeCoord;
     }
-
-    public ArrayList<int[]> getChanges(){return changeCoord;}
 }

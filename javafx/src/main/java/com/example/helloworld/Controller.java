@@ -11,6 +11,7 @@ import javafx.scene.control.Button;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.Pane;
 import javafx.scene.paint.Color;
 import javafx.stage.Stage;
 
@@ -35,6 +36,14 @@ public class Controller {
     private Scene scene;
     private Parent root;
 
+    private Pane[] tabPane;
+
+    public void setPane(int x)
+    {
+        tabPane = new Pane[x*x];
+        for(int i = 0; i <= tabPane.length - 1; i++)
+            tabPane[i] = new Pane();
+    }
     public void switchToScene1(ActionEvent event) throws IOException {
         Parent root = FXMLLoader.load(getClass().getResource("Menu.fxml"));
         stage = (Stage)((Node)event.getSource()).getScene().getWindow();

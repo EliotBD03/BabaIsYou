@@ -10,7 +10,8 @@ public class Environment {
         //la largeur des deux maps
         private static int width;
         //extension
-        private static final int extension = 0;
+        private static int  extensionx;
+        private static int extensiony;
         //la map de String
         protected static String[][] map;
         //la map d'objet
@@ -61,8 +62,10 @@ public class Environment {
      */
      private void setStringMap(String[][] dataList)
      {
-         length = Integer.parseInt(dataList[0][1]) + extension;
-         width = Integer.parseInt(dataList[0][0]) + extension;
+         extensionx = 20 - Integer.parseInt(dataList[0][1]);
+         extensiony = 20 - Integer.parseInt(dataList[0][0]);
+         length = Integer.parseInt(dataList[0][1]) + extensionx;
+         width = Integer.parseInt(dataList[0][0]) + extensiony;
          map = new String[length][width];
 
          for (int i = 0; i <= length - 1; i++)
@@ -97,7 +100,7 @@ public class Environment {
             this.mapO = new Entity[this.length][this.width];
                     for (int i = 1; i <= dataList.length - 1 ; i++ )
                             //on va centrer les éléments de la map (extension / 2)
-                            this.mapO[Integer.parseInt(dataList[i][2]) + extension / 2][Integer.parseInt(dataList[i][1]) + extension / 2] = whatobj(dataList[i][0]);
+                            this.mapO[Integer.parseInt(dataList[i][2]) + extensionx / 2][Integer.parseInt(dataList[i][1]) + extensiony / 2] = whatobj(dataList[i][0]);
         }
 
         /**
