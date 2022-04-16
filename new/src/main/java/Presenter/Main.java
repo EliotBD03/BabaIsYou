@@ -6,9 +6,12 @@ import java.net.URISyntaxException;
 import java.net.URL;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.ArrayList;
 
 public class Main
 {
+    private static ArrayList<int[]> changeCoord = new ArrayList<>();
+    
     private static Environment map;
     private static Baba baba;
     private static Flag flag;
@@ -53,4 +56,23 @@ public class Main
     {
         return dico.get(map.getMap()[i][j].charAt(0));
     }
+    
+    private static void makeChange()
+    {
+        temp = map.getMap();
+        System.out.println(map.toString(temp));
+        map.actualiseMap();
+        String[][] actual = map.getMap();
+        System.out.println(map.toString(temp));
+        for(int i = 0; i <= actual.length -1; i++)
+            for(int j = 0; j < actual[j].length -1; j++)
+                if(!(actual[i][j].equals(temp[i][j])))
+                {
+                    int[] pos = {i,j};
+                    System.out.println(i + " " +j);
+                    changeCoord.add(pos);
+                }
+    }
+
+    public static ArrayList<int[]> getChanges(){return changeCoord;}
 }
