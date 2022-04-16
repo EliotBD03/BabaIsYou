@@ -20,8 +20,8 @@ tasks.withType(JavaCompile) {
 }
 
 application {
-    mainModule = 'Presenter'
-    mainClass = 'Presenter.Save'
+    mainModule = 'View'
+    mainClass = 'View.HelloApplication'
 }
 
 javafx {
