@@ -96,6 +96,13 @@ public class Controller {
             for(int j = 0; j < tabpane[i].length - 2; j++)
                 initialize(sprite(i,j),tabpane[i][j]);
     }
+    
+    public void actualise()
+    {
+        ArrayList<int[]> change = Main.getChanges();
+        for(int i = 0; i <= change.size() - 1; i++)
+            initialize(sprite(change.get(i)[0], change.get(i)[1]),tabpane[change.get(i)[0]][change.get(i)[1]]);
+    }
 
     public void switchToScene1(ActionEvent event) throws IOException {
         Parent root = FXMLLoader.load(getClass().getResource("/fxml/Menu.fxml"));
