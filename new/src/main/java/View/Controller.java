@@ -60,7 +60,7 @@ public class Controller {
         for (int i = 0; i <= tabhbox.length - 1; i++)
         {
             tabhbox[i] = new HBox();
-            for(int j=0; j < tabpane[0].length  - 1; j++)
+            for(int j=0; j <= tabpane[0].length  - 1; j++)
             {
                 tabhbox[i].getChildren().add(tabpane[i][j]);
             }
@@ -100,7 +100,7 @@ public class Controller {
     }
     public void initializeAll(){
         for(int i = 0; i <= tabpane.length - 1; i++)
-            for(int j = 0; j < tabpane[i].length - 2; j++)
+            for(int j = 0; j <= tabpane[i].length - 1; j++)
                 initialize(sprite(i,j),tabpane[i][j]);
     }
     public void actualise(ArrayList<int[]> change)

@@ -10,7 +10,6 @@ import java.util.Objects;
 public class Main
 {
     private static Environment map;
-    private ArrayList<int[]> changeCoord;
     private static Baba baba;
     private static Flag flag;
     private static Rock rock;
