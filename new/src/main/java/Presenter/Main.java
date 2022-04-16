@@ -1,19 +1,22 @@
 package Presenter;
 import Model.*;
 
-import java.net.URI;
 import java.net.URISyntaxException;
-import java.net.URL;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.ArrayList;
+import java.util.Objects;
 
 public class Main
 {
     private static Environment map;
+    private ArrayList<int[]> changeCoord;
     private static Baba baba;
     private static Flag flag;
     private static Rock rock;
     private static Wall wall;
+
+    private static  String[][] temp;
 
     private static final Map<Character, String> dico = new HashMap<Character, String>();
 
@@ -41,16 +44,33 @@ public class Main
         wall = new Wall();
     }
 
-    public static void makeMove(String event)
+    public void makeMove(String event)
     {
         baba.move(event);
         flag.move(event);
         rock.move(event);
         wall.move(event);
+        makeChange();
     }
 
     public static String getSprite(int i , int j)
     {
         return dico.get(map.getMap()[i][j].charAt(0));
     }
+    private void makeChange()
+    {
+        changeCoord = new ArrayList<>();
+        temp = map.getStringMap(map.getMap());
+        map.actualiseMap();
+        String[][] actual = map.getMap();
+        for(int i = 0; i <= actual.length -1; i++)
+            for(int j = 0; j < actual[j].length -1; j++)
+                if(!(actual[i][j].equals(temp[i][j])))
+                {
+                    int[] pos = {i,j};
+                    changeCoord.add(pos);
+                }
+    }
+
+    public ArrayList<int[]> getChanges(){return changeCoord;}
 }

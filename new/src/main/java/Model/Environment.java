@@ -23,6 +23,14 @@ public class Environment {
      * @return map
      */
     public String[][] getMap(){return map;}
+    public static String[][] getStringMap(String[][] map)
+    {
+        String[][] res = new String[map.length][map[0].length];
+        for (int i = 0; i <= map.length - 1; i++)
+            for (int j = 0; j <= map[i].length - 1; j++)
+                res[i][j] = map[i][j];
+        return res;
+    }
 
     /**
      * accesseur pour la longueur de la map
@@ -134,7 +142,6 @@ public class Environment {
          * affiche la map
          */
 
-        @Override
         public String toString() {
             String res = "";
             for (int i = 0; i <= length - 1; i++) {

@@ -1,29 +1,31 @@
 package View;
 
-import Presenter.*;
+        import Presenter.*;
 
-import javafx.event.ActionEvent;
-import javafx.event.EventHandler;
-import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
-import javafx.scene.Node;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
-import javafx.scene.control.Button;
-import javafx.scene.image.Image;
-import javafx.scene.image.ImageView;
-import javafx.scene.input.KeyEvent;
-import javafx.scene.layout.AnchorPane;
-import javafx.scene.layout.HBox;
-import javafx.scene.layout.Pane;
-import javafx.scene.layout.VBox;
-import javafx.scene.paint.Color;
-import javafx.stage.Stage;
+        import javafx.event.ActionEvent;
+        import javafx.event.EventHandler;
+        import javafx.fxml.FXML;
+        import javafx.fxml.FXMLLoader;
+        import javafx.scene.Node;
+        import javafx.scene.Parent;
+        import javafx.scene.Scene;
+        import javafx.scene.control.Button;
+        import javafx.scene.image.Image;
+        import javafx.scene.image.ImageView;
+        import javafx.scene.input.KeyEvent;
+        import javafx.scene.layout.AnchorPane;
+        import javafx.scene.layout.HBox;
+        import javafx.scene.layout.Pane;
+        import javafx.scene.layout.VBox;
+        import javafx.scene.paint.Color;
+        import javafx.stage.Stage;
 
-import java.io.IOException;
+        import java.io.File;
+        import java.io.IOException;
+        import java.util.ArrayList;
 
 
-import static Presenter.Main.getSprite;
+        import static Presenter.Main.getSprite;
 
 
 public class Controller {
@@ -97,6 +99,19 @@ public class Controller {
                 initialize(sprite(i,j),tabpane[i][j]);
     }
 
+    public void actualise(ArrayList<int[]> change)
+    {
+        if(change != null)
+        {
+            System.out.println("je passe dans actualise\n" + change.get(0)[0] + " " + change.get(0)[1]);
+            for(int i = 0; i <= change.size() - 1; i++)
+            {
+                System.out.println("je passe dans la boucle");
+                initialize(sprite(change.get(i)[0], change.get(i)[1]),tabpane[change.get(i)[0]][change.get(i)[1]]);
+            }
+        }
+    }
+
     public void switchToScene1(ActionEvent event) throws IOException {
         Parent root = FXMLLoader.load(getClass().getResource("/fxml/Menu.fxml"));
         stage = (Stage)((Node)event.getSource()).getScene().getWindow();
@@ -114,48 +129,50 @@ public class Controller {
     }
 
     public void switchToGame(ActionEvent event) throws IOException {
-                try {
-                    new Main().makeTheGame("/Users/romaineloy/new/src/main/resources/level/level1.txt");
-                    System.out.println("1");
-                    setTabpane();
-                    System.out.println("2");
-                    initializeAll();
-                    System.out.println("3");
-                    settabhbox();
-                    System.out.println("4");
-                    setvbox();
-                    System.out.println("5");
-                    stage = (Stage)((Node)event.getSource()).getScene().getWindow();
-                    scene = new Scene(vbox,450,500,Color.BLACK);
-                    stage.setScene(scene);
-                    stage.show();
-                    System.out.println("6");
-
-                scene.setOnKeyPressed(new EventHandler<KeyEvent>() {
-                    @Override
-                    public void handle(KeyEvent event) {
-                        switch (event.getCode()) {
-                            case UP:
-                                Main.makeMove("z");
-                                break;
-                            case DOWN:
-                                Main.makeMove("s");
-                                break;
-                            case LEFT:
-                                Main.makeMove("q");
-                                break;
-                            case RIGHT:
-                                Main.makeMove("d");
-                                break;
-
-
-                        }
+        try {
+            Main game = new Main();
+            game.makeTheGame("/home/julien/Bureau/BabaIsYou/new/src/main/resources/level/default/level1.txt");
+            System.out.println("1");
+            setTabpane();
+            System.out.println("2");
+            initializeAll();
+            System.out.println("3");
+            settabhbox();
+            System.out.println("4");
+            setvbox();
+            System.out.println("5");
+            stage = (Stage)((Node)event.getSource()).getScene().getWindow();
+            scene = new Scene(vbox,450,500,Color.BLACK);
+            stage.setScene(scene);
+            stage.show();
+            System.out.println("6");
+            {
+                scene.setOnKeyPressed(event1 -> {
+                    switch (event1.getCode()) {
+                        case UP:
+                            game.makeMove("z");
+                            System.out.println("up");
+                            break;
+                        case DOWN:
+                            game.makeMove("s");
+                            System.out.println("down");
+                            break;
+                        case LEFT:
+                            game.makeMove("q");
+                            System.out.println("left");
+                            break;
+                        case RIGHT:
+                            game.makeMove("d");
+                            System.out.println("right");
+                            break;
                     }
                 });
-
-            } catch (Exception e) {
-                e.printStackTrace();
+                actualise(game.getChanges());
             }
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
     public void logout(ActionEvent event){
         stage = (Stage)scenePane.getScene().getWindow();
@@ -217,4 +234,3 @@ public class Controller {
         }
     }
 }
-
