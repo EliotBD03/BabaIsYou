@@ -231,8 +231,9 @@ public class Item extends Environment implements Entity
                                 //                      -est ce que l'objet pousse ?
                                 //note : on ne peut réaliser qu'une action à la fois(else if)
                                 if (canMoveY(BigAlgorithm.getTabperm(),item,i - 1, j))
+                                {
                                     posY = Actions.up(mapO, i, j);
-
+                                }
                                 else if(thingHasWin(i - 1, j))
                                     winStatus = true;
 
