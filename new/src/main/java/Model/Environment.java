@@ -10,7 +10,7 @@ public class Environment {
         //la largeur des deux maps
         private static int width;
         //extension
-        private static final int extension = 10;
+        private static final int extension = 0;
         //la map de String
         protected static String[][] map;
         //la map d'objet

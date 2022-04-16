@@ -10,17 +10,17 @@
     <children>
       <ImageView fitHeight="50.0" fitWidth="150.0" layoutX="150.0" layoutY="150.0" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@play.gif" />
+            <Image url="@../sprite/play.gif" />
          </image>
       </ImageView>
       <ImageView fitHeight="50.0" fitWidth="150.0" layoutX="150.0" layoutY="266.0" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@settings.gif" />
+            <Image url="@../sprite/settings.gif" />
          </image>
       </ImageView>
       <ImageView fitHeight="50.0" fitWidth="150.0" layoutX="150.0" layoutY="335.0" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@exit.gif" />
+            <Image url="@../sprite/exit.gif" />
          </image>
       </ImageView>
         <Button layoutX="150.0" layoutY="150.0" mnemonicParsing="false" onAction="#switchToGame" opacity="0.0" prefHeight="50.0" prefWidth="150.0" text="Play">
@@ -40,9 +40,8 @@
         </Button>
       <ImageView fitHeight="100.0" fitWidth="250.0" layoutX="100.0" layoutY="20.0" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@babaisyoutitle.gif" />
+            <Image url="@../sprite/babaisyoutitle.gif" />
          </image>
       </ImageView>
     </children>
 </AnchorPane>
-
