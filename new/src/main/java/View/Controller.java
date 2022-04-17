@@ -50,6 +50,7 @@ public class Controller {
     public final Image flagImage = new Image(getClass().getResource( "/sprite/Flag.png").toURI().toString());
     public final Image rockImage = new Image(getClass().getResource( "/sprite/rock.png").toURI().toString());
     public final Image wallImage = new Image(getClass().getResource( "/sprite/wall.png").toURI().toString());
+    public final Image goopImage = new Image(getClass().getResource("/sprite/water.gif").toURI().toString());
     public final Image borderImage = new Image(getClass().getResource( "/sprite/border.png").toURI().toString());
     public final Image fonfImage = new Image(getClass().getResource( "/sprite/fonf.png").toURI().toString());
     public final Image pushImage = new Image(getClass().getResource( "/sprite/push.png").toURI().toString());
@@ -61,6 +62,8 @@ public class Controller {
     public final Image textRockImage = new Image(getClass().getResource( "/sprite/textrock.png").toURI().toString());
     public final Image textFlagImage = new Image(getClass().getResource( "/sprite/textflag.png").toURI().toString());
     public final Image textWallImage = new Image(getClass().getResource( "/sprite/walltext.png").toURI().toString());
+    public final Image textGoopImage = new Image(getClass().getResource("/sprite/gooptext.png").toURI().toString());
+    public final Image textSinkImage = new Image(getClass().getResource("/sprite/sinktext.png").toURI().toString());
 
     //private VBox[] vbox;
     //private HBox[] hbox;
@@ -172,22 +175,26 @@ public class Controller {
                 scene.setOnKeyPressed(event1 -> {
                     switch (event1.getCode()) {
                         case UP:
-                            game.makeMove("z");
+                            if(game.makeMove("z"))
+                                stage.close();
                             System.out.println("up");
                             count_move ++;
                             break;
                         case DOWN:
-                            game.makeMove("s");
+                            if(game.makeMove("s"))
+                                stage.close();
                             System.out.println("down");
                             count_move ++;
                             break;
                         case LEFT:
-                            game.makeMove("q");
+                            if(game.makeMove("q"))
+                                stage.close();
                             System.out.println("left");
                             count_move ++;
                             break;
                         case RIGHT:
-                            game.makeMove("d");
+                            if(game.makeMove("d"))
+                                stage.close();
                             System.out.println("right");
                             count_move ++;
                             break;

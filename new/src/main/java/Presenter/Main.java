@@ -34,7 +34,8 @@ public class Main
         dico.put('Y', controller.youImage); dico.put('W', controller.textWallImage);
         dico.put('S', controller.stopImage); dico.put('R', controller.textRockImage);
         dico.put('P', controller.pushImage); dico.put('F', controller.textFlagImage);
-        dico.put('G', controller.winImage);
+        dico.put('G', controller.winImage); dico.put('?', controller.goopImage);
+        dico.put('M', controller.textGoopImage); dico.put('D', controller.textSinkImage);
 
 
         Extract extract = new Extract(fileName);
@@ -48,12 +49,13 @@ public class Main
         wall = new Wall();
     }
 
-    public void makeMove(String event)
+    public boolean makeMove(String event)
     {
         baba.move(event);
         flag.move(event);
         rock.move(event);
         wall.move(event);
+        return Item.win();
     }
 
     public static Image getSprite(int i , int j)

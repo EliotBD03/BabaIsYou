@@ -104,7 +104,7 @@ public class BlockRules extends Environment implements Entity
     }
     public static class TextGoop extends BlockRules
     {
-        private static final String skin = "P";
+        private static final String skin = "M";
         @Override
         public String getSkin(){return skin;}
 
@@ -189,7 +189,7 @@ public class BlockRules extends Environment implements Entity
 
     public static class Sink extends BlockRules
     {
-        private static final String skin = "S";
+        private static final String skin = "D";
         @Override
         public String getSkin(){return skin;}
 
