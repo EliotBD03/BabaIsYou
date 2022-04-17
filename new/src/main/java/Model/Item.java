@@ -1,6 +1,7 @@
 package Model;
 
 import java.util.ArrayList;
+import java.util.Queue;
 
 /**
  *cette classe représente tous les objets contrôlables par le joueur
@@ -21,6 +22,8 @@ public class Item extends Environment implements Entity
     protected boolean stopStatus = false;
     //représente si l'objet a "gagné"
     private static boolean winStatus = false;
+    //représente l'objet qui est sink
+    protected boolean sinkStatus = false;
     //représente l'objet qui a aucun status
     protected boolean noStatus = true;
     //représente les coordonnés des objets qui sont win
@@ -113,6 +116,12 @@ public class Item extends Environment implements Entity
         }
         return false;
     }
+
+    @Override
+    public boolean isItem() {
+        return true;
+    }
+
     /**
      * methode qui sera implémenté dans les classes enfants
      * @return null par défaut
@@ -139,7 +148,7 @@ public class Item extends Environment implements Entity
         if(posx < getWidth() - 1 && posx > 0 && mapO[posy][posx] == null)
             return true;
         //vrai si : pareil que celle du dessus sauf que l'élément doit avoir "nostatus"
-        if(posx < getWidth() - 1 && posx > 0 && mapO[posy][posx].noStatus())
+        if(posx < getWidth() - 1 && posx > 0 && (mapO[posy][posx].noStatus() || mapO[posy][posx].thingIsSink()))
             return true;
         //faux si : aucune des conditions n'est respecté
         return false;
@@ -154,7 +163,7 @@ public class Item extends Environment implements Entity
         if(posy < getLength() - 1 && posy > 0 && mapO[posy][posx] == null)
             return true;
         //vrai si : pareil que celle du dessus sauf que l'élément doit avoir "nostatus"
-        if(posy < getLength() - 1 && posy > 0 && mapO[posy][posx].noStatus())
+        if(posy < getLength() - 1 && posy > 0 && (mapO[posy][posx].noStatus() || mapO[posy][posx].thingIsSink()))
             return true;
         //faux si : aucune des conditions n'est respecté
         return false;
@@ -226,7 +235,8 @@ public class Item extends Environment implements Entity
                         for(int j = 0; j <= mapO[i].length - 1; j++)
                             if (this.getClass().isInstance(mapO[i][j]))
                             {
-                                //on va vérifier 3 cas: -est ce que l'objet bouge ?
+                                //on va vérifier 4 cas: -est ce que l'objet va disparaitre(ie: l'objet devant lui est sink)
+                                //                      -est ce que l'objet bouge ?
                                 //                      -est ce que l'objet a gagné ?
                                 //                      -est ce que l'objet pousse ?
                                 //note : on ne peut réaliser qu'une action à la fois(else if)
@@ -280,7 +290,6 @@ public class Item extends Environment implements Entity
                         for(int j = mapO[i].length - 1; j >= 0; j--)
                             if (this.getClass().isInstance(mapO[i][j]))
                             {
-
                                 if (canMoveX(BigAlgorithm.getTabperm(),item, i, j + 1))
                                     posX = Actions.right(mapO, i, j);
 
@@ -293,7 +302,7 @@ public class Item extends Environment implements Entity
                     break;
             }
         }
-        rules.actualise();
+        BigAlgorithm.actualise();
         //on va fusionner la map actuel avec la map temporaire
         actualiseObjectMap();
     }
@@ -380,27 +389,31 @@ public class Item extends Environment implements Entity
         Entity[][] res = new Entity[mapO.length][mapO[0].length];
             //on passe sur chaque objet de la map
             for(int i = 0; i <= mapO.length - 1; i++)
-                for(int j = 0; j <= mapO[j].length - 2; j++)
+                for(int j = 0; j <= mapO[i].length - 1; j++)
+                {
                     //le try catch sert au cas où map[i][j] est null et donc la méthode noStatus
                     //n'est pas applicable
                     try
                     {
                         //si un objet qui se trouve sur un element de la map tempk, on break
                         //car on pourrait écrase l'objet de temp par l'objet de mapO
-                        if(temp_object_map[i][j] != null && res[i][j] != temp_object_map[i][j])
+                        if(temp_object_map[i][j] != null && mapO[i][j] != temp_object_map[i][j])
                         {
-                            break;
+                            return;
                         }
                         //si l'objet est bien noStatus, on ajoute l'élément à notre map temp
-                        if (mapO[i][j].noStatus())
+                        else if (mapO[i][j].noStatus() || mapO[i][j].thingIsSink())
                         {
                             flag = true;
                             res[i][j] = mapO[i][j];
                             mapO[i][j] = null;
                         }
                     }catch (NullPointerException e){}
+                }
         if(flag)
+        {
             temp_object_map = res;
+        }
     }
 
 
@@ -413,15 +426,25 @@ public class Item extends Environment implements Entity
             for(int j = 0; j <= mapO[i].length - 1; j++)
                 //si on a rien sur la map visible et qu'il y a un element sur temp
                 //alors on le rajoute à la map visible
-                if(mapO[i][j] == null && temp_object_map[i][j] != null)
+            {
+                if(mapO[i][j] != null && temp_object_map[i][j] != null && mapO[i][j].isItem() && temp_object_map[i][j].thingIsSink() && mapO[i][j] != temp_object_map[i][j])
+                {
+                    temp_object_map[i][j] = null;
                     mapO[i][j] = temp_object_map[i][j];
+                }
+                else if(mapO[i][j] == null && temp_object_map[i][j] != null)
+                {
+                   // System.out.println("je passe");
+                    mapO[i][j] = temp_object_map[i][j];
+                }
+            }
      }
     /**
      * methode qui sera implémenté dans les classes enfants
      * @return false par défaut, but: retourner nostatus()
      */
      @Override
-     public boolean noStatus(){return false;};
+     public boolean noStatus(){return false;}
 
      protected boolean nostatus(Enum[][] tabperm, Rules object)
      {
@@ -435,6 +458,23 @@ public class Item extends Environment implements Entity
         //vrai sinon
         return true;
      }
+
+    /**
+     * methode qui sera implémenté dans les classes enfants
+     * @return false par défaut, but: retourner thingissink()
+     */
+    @Override
+    public boolean thingIsSink() {
+        return false;
+    }
+
+    protected boolean thingisskink(Enum[][] tabperm, Rules object)
+    {
+        for(int i = 0; i<= tabperm.length - 1; i ++)
+            if(tabperm[i][0] == object && tabperm[i][1] == Rules.SINK)
+                return true;
+        return false;
+    }
 
 }
 

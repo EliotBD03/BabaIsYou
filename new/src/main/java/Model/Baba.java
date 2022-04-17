@@ -75,6 +75,7 @@ public class Baba extends Item
 
     protected Enum getThing(Enum[][] tabperm){return getthing(tabperm, Rules.BABA);}
 
+    public boolean thingIsSink(){return thingisskink(BigAlgorithm.getTabperm(), Rules.BABA);}
     /**
      *cette methode est surchargé pour permettre la caractéristiques de type Rules par Rules.Baba isssu
      * de la classe Rules

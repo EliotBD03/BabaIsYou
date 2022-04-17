@@ -3,5 +3,5 @@ package Model;
 //elle représente les tous les objets en dehors des blocs de règle
 public enum Rules
 {
-    BABA, WALL, ROCK, STOP, PUSH, YOU, IS, FLAG, WIN, NONE
+    BABA, WALL, ROCK,GOOP, STOP, PUSH, YOU, IS, FLAG, WIN, SINK, NONE
 }

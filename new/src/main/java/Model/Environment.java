@@ -100,7 +100,7 @@ public class Environment {
             this.mapO = new Entity[this.length][this.width];
                     for (int i = 1; i <= dataList.length - 1 ; i++ )
                             //on va centrer les éléments de la map (extension / 2)
-                            this.mapO[Integer.parseInt(dataList[i][2]) + extensionx / 2][Integer.parseInt(dataList[i][1]) + extensiony / 2] = whatobj(dataList[i][0]);
+                            this.mapO[Integer.parseInt(dataList[i][2]) + 1][Integer.parseInt(dataList[i][1]) + 1] = whatobj(dataList[i][0]);
         }
 
         /**
@@ -126,6 +126,8 @@ public class Environment {
                     return new Baba(true);
                 case "flag":
                     return new Flag(true);
+                case "goop":
+                    return new Goop(true);
                 case "you":
                     return new BlockRules.You();
                 case "win":
@@ -138,6 +140,10 @@ public class Environment {
                     return new BlockRules.TextFlag();
                 case "text_rock":
                     return new BlockRules.TextRock();
+                case "text_goop":
+                    return new BlockRules.TextGoop();
+                case "sink":
+                    return new BlockRules.Sink();
             }
             return null;
         }

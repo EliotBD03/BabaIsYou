@@ -47,6 +47,9 @@ public class Wall extends Item
 
     protected Enum getThing(Enum[][] tabperm){return getthing(tabperm, Rules.WALL);}
 
+    public boolean thingIsSink(){return thingisskink(BigAlgorithm.getTabperm(), Rules.WALL);}
+
+
     @Override
     public void move(String input)
     {

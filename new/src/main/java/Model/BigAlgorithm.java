@@ -11,8 +11,8 @@ import java.util.Map;
 public class BigAlgorithm extends Environment {
     private static Enum[][] tabloc = new Enum[getLength()][getWidth()];
     private static Enum[][] tabperm;
-    private static final Enum[] character = {Rules.BABA, Rules.ROCK, Rules.FLAG, Rules.WALL};
-    private static final Enum[] actions = {Rules.YOU, Rules.STOP, Rules.WIN, Rules.PUSH, Rules.BABA, Rules.ROCK, Rules.FLAG, Rules.WALL};
+    private static final Enum[] character = {Rules.BABA, Rules.ROCK, Rules.FLAG, Rules.WALL, Rules.GOOP};
+    private static final Enum[] actions = {Rules.YOU, Rules.STOP, Rules.WIN, Rules.PUSH, Rules.SINK, Rules.BABA, Rules.ROCK, Rules.FLAG, Rules.WALL, Rules.GOOP};
     public static final Map<Rules, Entity> dico = new HashMap<Rules, Entity>();
 
 
@@ -28,6 +28,7 @@ public class BigAlgorithm extends Environment {
         dico.put(Rules.FLAG, new Flag());
         dico.put(Rules.ROCK,new Rock());
         dico.put(Rules.WALL, new Wall());
+        dico.put(Rules.GOOP, new Goop());
     }
 
 
@@ -209,7 +210,10 @@ public class BigAlgorithm extends Environment {
             return Rules.YOU;
         } else if (BlockRules.Win.class.equals(thing)) {
             return Rules.WIN;
-        }
+        } else if (BlockRules.TextGoop.class.equals(thing)) {
+            return Rules.GOOP;
+        }else if (BlockRules.Sink.class.equals(thing)){return Rules.SINK;}
+
         return Rules.NONE;
     }
 

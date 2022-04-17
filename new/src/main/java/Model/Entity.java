@@ -7,6 +7,7 @@ package Model;
  */
 interface Entity
 {
+    boolean isItem();
     /**
      * accesseur de l'apparence du joueur
      * @return l'apparence de l'objet de type Entity sous forme d'un String
@@ -87,4 +88,11 @@ interface Entity
      * @return vrai si l'objet est "no status" , faux sinon
      */
     boolean noStatus();
+
+    /**
+     * methode permettant de savoir si l'objet qui est instancié a la caractéristique "sink"
+     * ie : l'objet noie les objets de type item
+     * @return vrai si c'est le cas, faux sinon
+     */
+    boolean thingIsSink();
     }

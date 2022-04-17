@@ -47,6 +47,9 @@ public class Rock extends Item
     public boolean thingIsAnotherThing(Enum[][] tabperm){return thingisanortherthing(tabperm,Rules.ROCK);}
 
     protected Enum getThing(Enum[][] tabperm){return getthing(tabperm, Rules.ROCK);}
+
+    public boolean thingIsSink(){return thingisskink(BigAlgorithm.getTabperm(), Rules.ROCK);}
+
     @Override
     public void move(String input)
     {

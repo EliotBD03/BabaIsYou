@@ -7,10 +7,14 @@ package Model;
  */
 public class BlockRules extends Environment implements Entity
 {
+
     //la position en x d'un objet qui est en relation is-a avec Blockrules
     protected int posX;
     //la position en y d'un objet qui est en relation is-a avec Blockrules
     protected int posY;
+
+    @Override
+    public boolean isItem() {return false;}
 
     @Override
     public String getSkin() {
@@ -32,14 +36,14 @@ public class BlockRules extends Environment implements Entity
     public boolean thingIsPushingY(Enum[][] tabperm, int posy, int posx){return false;}
     @Override
     public boolean thingIsStop(){return false;}
-
     @Override
     public boolean thingIsAnotherThing(Enum[][] tabperm) {
         return false;
     }
-
     @Override
     public boolean noStatus(){return false;}
+    @Override
+    public boolean thingIsSink() {return false;}
 
     //ces classes internes représentent toutes les règles, elles ont toutes le même moyen d'implémentation sauf pour skin(ce qui permet
     //de les différencier dans un tableau de String
@@ -94,6 +98,19 @@ public class BlockRules extends Environment implements Entity
         public TextBaba()
         {
             int[] position = super.searchtype(TextBaba.class);
+            super.posY = position[0];
+            super.posX = position[1];
+        }
+    }
+    public static class TextGoop extends BlockRules
+    {
+        private static final String skin = "P";
+        @Override
+        public String getSkin(){return skin;}
+
+        public TextGoop()
+        {
+            int[] position = super.searchtype(TextGoop.class);
             super.posY = position[0];
             super.posX = position[1];
         }
@@ -168,5 +185,20 @@ public class BlockRules extends Environment implements Entity
             super.posY = position[0];
             super.posX = position[1];
         }
+    }
+
+    public static class Sink extends BlockRules
+    {
+        private static final String skin = "S";
+        @Override
+        public String getSkin(){return skin;}
+
+        public Sink()
+        {
+            int[] position = super.searchtype(Sink.class);
+            super.posY = position[0];
+            super.posX = position[1];
+        }
+
     }
 }
