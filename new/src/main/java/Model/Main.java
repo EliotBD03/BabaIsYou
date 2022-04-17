@@ -4,10 +4,9 @@ public class Main
 {
     public static void main(String[] args)
     {
-        Extract extract = new Extract("/home/julien/Bureau/BabaIsYou/new/src/main/resources/level/default/level4.txt");
+        Extract extract = new Extract("/home/julien/Bureau/BabaIsYou/new/src/main/java/Model/test.txt");
         Environment map = new Environment();
         map.setMap(extract.getDataList());
-        BigAlgorithm rules = new BigAlgorithm();
 
         Baba baba = new Baba();
         Flag flag = new Flag();
@@ -16,29 +15,14 @@ public class Main
         Goop goop = new Goop();
 
         System.out.println(map);
-        while(true)
+        int i = 50;
+        while(i > 0)
         {
-            String input = Input.get_Input();
-
-            baba.move(input);
-
-            flag.move(input);
-
-            rock.move(input);
-
-            wall.move(input);
-
-            goop.move(input);
-
-            if(Item.win())
-            {
-                System.out.println("GREAT JOB! YOU WON");
-                break;
-            }
-            rules.actualise();
+            baba.move("z");
+            baba.move("s");
             map.actualiseMap();
-            System.out.println(map);
+            i--;
         }
-
+            System.out.println(map);
     }
 }

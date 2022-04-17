@@ -23,7 +23,6 @@ application {
     mainModule = 'View'
     mainClass = 'View.HelloApplication'
 }
-
 javafx {
     version = '17.0.1'
     modules = ['javafx.controls', 'javafx.fxml']

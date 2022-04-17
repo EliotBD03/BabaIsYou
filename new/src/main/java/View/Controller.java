@@ -22,6 +22,7 @@ package View;
 
         import java.io.File;
         import java.io.IOException;
+        import java.net.URISyntaxException;
         import java.util.ArrayList;
 
 
@@ -43,11 +44,23 @@ public class Controller {
     private Scene scene;
     private Parent root;
     private Pane[][] tabpane;
+    private static int count_move = 0;
 
-    private static final int paneHeigth = 25;
-    private static final int paneWidth = 25;
-    private static final ImageView imageview = new ImageView();
-
+    public final Image babaImage = new Image(getClass().getResource( "/sprite/baba.gif").toURI().toString());
+    public final Image flagImage = new Image(getClass().getResource( "/sprite/Flag.png").toURI().toString());
+    public final Image rockImage = new Image(getClass().getResource( "/sprite/rock.png").toURI().toString());
+    public final Image wallImage = new Image(getClass().getResource( "/sprite/wall.png").toURI().toString());
+    public final Image borderImage = new Image(getClass().getResource( "/sprite/border.png").toURI().toString());
+    public final Image fonfImage = new Image(getClass().getResource( "/sprite/fonf.png").toURI().toString());
+    public final Image pushImage = new Image(getClass().getResource( "/sprite/push.png").toURI().toString());
+    public final Image isImage = new Image(getClass().getResource( "/sprite/textis.png").toURI().toString());
+    public final Image stopImage = new Image(getClass().getResource( "/sprite/stop.png").toURI().toString());
+    public final Image winImage = new Image(getClass().getResource( "/sprite/win.png").toURI().toString());
+    public final Image youImage = new Image(getClass().getResource( "/sprite/you.png").toURI().toString());
+    public final Image textBabaImage =new Image(getClass().getResource( "/sprite/textbaba.png").toURI().toString());
+    public final Image textRockImage = new Image(getClass().getResource( "/sprite/textrock.png").toURI().toString());
+    public final Image textFlagImage = new Image(getClass().getResource( "/sprite/textflag.png").toURI().toString());
+    public final Image textWallImage = new Image(getClass().getResource( "/sprite/walltext.png").toURI().toString());
 
     //private VBox[] vbox;
     //private HBox[] hbox;
@@ -55,6 +68,9 @@ public class Controller {
     private static HBox[] tabhbox;
     @FXML
     private static VBox vbox = new VBox();
+
+    public Controller() throws URISyntaxException {
+    }
 
     public void settabhbox(){
         for (int i = 0; i <= tabhbox.length - 1; i++)
@@ -84,33 +100,34 @@ public class Controller {
     }
 
 
-    public void initialize(String url, Pane pane){
+    public void initialize(Image image, Pane pane){
         {
-            Image image = new Image(url);
             ImageView view = new ImageView();
             view.setFitWidth(25);
             view.setFitHeight(25);
             view.setImage(image);
             pane.getChildren().add(view);
+
         }
     }
-    public String sprite(int i,int j)
+    public Image sprite(int i,int j)
     {
         return getSprite(i,j);
     }
     public void initializeAll(){
         for(int i = 0; i <= tabpane.length - 1; i++)
             for(int j = 0; j <= tabpane[i].length - 1; j++)
+            {
+                tabpane[i][j] = new Pane();
                 initialize(sprite(i,j),tabpane[i][j]);
+            }
     }
     public void actualise(ArrayList<int[]> change)
     {
         if(change.size() > 0)
         {
-            System.out.println("je passe dans actualise\n" + change.get(0)[0] + " " + change.get(0)[1]);
             for(int i = 0; i <= change.size() - 1; i++)
             {
-                System.out.println("je passe dans la boucle");
                 initialize(sprite(change.get(i)[0], change.get(i)[1]),tabpane[change.get(i)[0]][change.get(i)[1]]);
             }
         }
@@ -135,44 +152,51 @@ public class Controller {
     public void switchToGame(ActionEvent event) throws IOException {
         try {
             Main game = new Main();
-            game.makeTheGame("/home/julien/Bureau/BabaIsYou/new/src/main/resources/level/default/level1.txt");
-            System.out.println("1");
+            File file = new File("src/main/resources/level/default/level1.txt");
+            System.out.println(file.getAbsolutePath());
+            game.makeTheGame(file.getAbsolutePath());
+            //System.out.println("1");
             setTabpane();
-            System.out.println("2");
+            //System.out.println("2");
             initializeAll();
-            System.out.println("3");
+            //System.out.println("3");
             settabhbox();
-            System.out.println("4");
+            //System.out.println("4");
             setvbox();
-            System.out.println("5");
+            //System.out.println("5");
             stage = (Stage)((Node)event.getSource()).getScene().getWindow();
             scene = new Scene(vbox,450,500,Color.BLACK);
             stage.setScene(scene);
-            stage.show();
-            System.out.println("6");
+            //System.out.println("6");
             {
                 scene.setOnKeyPressed(event1 -> {
                     switch (event1.getCode()) {
                         case UP:
                             game.makeMove("z");
                             System.out.println("up");
+                            count_move ++;
                             break;
                         case DOWN:
                             game.makeMove("s");
                             System.out.println("down");
+                            count_move ++;
                             break;
                         case LEFT:
                             game.makeMove("q");
                             System.out.println("left");
+                            count_move ++;
                             break;
                         case RIGHT:
                             game.makeMove("d");
                             System.out.println("right");
+                            count_move ++;
                             break;
                     }
                     actualise(game.getChanges());
+                    System.out.println(count_move);
                 });
             }
+            stage.show();
 
         } catch (Exception e) {
             e.printStackTrace();

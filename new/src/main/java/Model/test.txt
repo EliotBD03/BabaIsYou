@@ -1,15 +1,5 @@
 20 20
-text_baba 3 3
-is 4 3
-you 5 3
-text_goop 12 12
-is 12 13
-sink 12 14
-goop 7 7
-baba 6 6
-text_flag 17 16
-is 17 17
-push 17 18
-flag 6 5
-flag 7 5
-text_wall 8 7
+text_baba 1 1
+is 2 1
+you 3 1
+baba 16 16

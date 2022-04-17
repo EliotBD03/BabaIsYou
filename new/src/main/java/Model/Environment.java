@@ -64,8 +64,8 @@ public class Environment {
      {
          extensionx = 20 - Integer.parseInt(dataList[0][1]);
          extensiony = 20 - Integer.parseInt(dataList[0][0]);
-         length = Integer.parseInt(dataList[0][1]) + extensionx;
-         width = Integer.parseInt(dataList[0][0]) + extensiony;
+         length = Integer.parseInt(dataList[0][1]) + extensionx + 1;
+         width = Integer.parseInt(dataList[0][0]) + extensiony + 1;
          map = new String[length][width];
 
          for (int i = 0; i <= length - 1; i++)

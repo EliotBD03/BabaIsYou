@@ -1,5 +1,7 @@
 package Presenter;
 import Model.*;
+import View.Controller;
+import javafx.scene.image.Image;
 
 import java.net.URISyntaxException;
 import java.util.HashMap;
@@ -18,19 +20,21 @@ public class Main
 
     private static  String[][] temp;
 
-    private static final Map<Character, String> dico = new HashMap<Character, String>();
+    private static final Map<Character, Image> dico = new HashMap<Character, Image>();
 
     public static int getLength(){return map.getMap().length;}
 
     public void makeTheGame(String fileName) throws URISyntaxException {
-        dico.put(' ',getClass().getResource("/sprite/fonf.png").toString()); dico.put('X',getClass().getResource( "/sprite/border.png").toURI().toString());
-        dico.put('O', getClass().getResource( "/sprite/baba.gif").toURI().toString()); dico.put('w', getClass().getResource( "/sprite/wall.png").toURI().toString());
-        dico.put('@', getClass().getResource( "/sprite/Flag.png").toURI().toString()); dico.put('#', getClass().getResource( "/sprite/rock.png").toURI().toString());
-        dico.put('B', getClass().getResource( "/sprite/textbaba.png").toURI().toString()); dico.put('I', getClass().getResource( "/sprite/textis.png").toURI().toString());
-        dico.put('Y', getClass().getResource( "/sprite/you.png").toURI().toString()); dico.put('W', getClass().getResource( "/sprite/walltext.png").toURI().toString());
-        dico.put('S', getClass().getResource( "/sprite/stop.png").toURI().toString()); dico.put('R', getClass().getResource( "/sprite/textrock.png").toURI().toString());
-        dico.put('P', getClass().getResource( "/sprite/push.png").toURI().toString()); dico.put('F', getClass().getResource( "/sprite/textflag.png").toURI().toString());
-        dico.put('G', getClass().getResource( "/sprite/win.png").toURI().toString());
+        Controller controller = new Controller();
+
+        dico.put(' ',controller.fonfImage); dico.put('X',controller.borderImage);
+        dico.put('O', controller.babaImage); dico.put('w', controller.wallImage);
+        dico.put('@', controller.flagImage); dico.put('#', controller.rockImage);
+        dico.put('B', controller.textBabaImage); dico.put('I', controller.isImage);
+        dico.put('Y', controller.youImage); dico.put('W', controller.textWallImage);
+        dico.put('S', controller.stopImage); dico.put('R', controller.textRockImage);
+        dico.put('P', controller.pushImage); dico.put('F', controller.textFlagImage);
+        dico.put('G', controller.winImage);
 
 
         Extract extract = new Extract(fileName);
@@ -52,7 +56,7 @@ public class Main
         wall.move(event);
     }
 
-    public static String getSprite(int i , int j)
+    public static Image getSprite(int i , int j)
     {
         return dico.get(map.getMap()[i][j].charAt(0));
     }
@@ -67,7 +71,6 @@ public class Main
                 if(!(actual[i][j].equals(temp[i][j])))
                 {
                     int[] pos = {i,j};
-                    System.out.println("je passe");
                     changeCoord.add(pos);
                 }
         return changeCoord;
