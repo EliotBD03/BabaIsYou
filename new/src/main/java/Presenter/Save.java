@@ -2,18 +2,19 @@ package Presenter;
 
 import Model.*;
 
-import java.io.File;
-import java.io.FileNotFoundException;
-import java.io.IOException;
-import java.io.PrintWriter;
-import java.net.URL;
+import java.io.*;
 import java.util.HashMap;
 import java.util.Map;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
+import java.util.Scanner;
 
 public class Save
 {
     private final String save_directory = new File("src/main/resources/level/save").getAbsolutePath();
     public static final Map<String, String> dico = new HashMap<>();
+
+    private static final DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy/MMMM/dd HH:mm:ss");
     public Save()
     {
         dico.put("O","baba");dico.put("#", "rock");
@@ -25,27 +26,24 @@ public class Save
         dico.put("W", "text_wall");dico.put(" ", null); dico.put("X", null);
 
     }
-    public void newSave(String levelName, String[][] tab)
+    public void newSave(String[][] tab)
     {
         try
         {
-            File file = new File (save_directory+ File.separator + levelName);
-            System.out.println(save_directory + File.separator + levelName);
-            if (!(file.exists()))
-            {
+            String file_name = getFileName();
+
+            File file = new File (save_directory+ File.separator + file_name);
                 if (file.createNewFile())
                 {
                     PrintWriter level = new PrintWriter(file);
-                    level.println(tab[0].length + " " + tab.length);
+                    level.println((tab[0].length - 1 )+ " " + (tab.length - 1));
                     for(int i = 0; i <= tab.length - 1; i++)
                         for(int j= 0; j <= tab[i].length -1 ; j++)
                             if(dico.get(tab[i][j]) != null)
-                                level.println(dico.get(tab[i][j]) + " " + j + " " + i);
+                                level.println(dico.get(tab[i][j]) + " " + (j - 1) + " " + (i - 1));
                     level.close();
+                    writeDate(file_name);
                 }
-            }
-            else
-                System.out.println("je passes pas");
         }
         catch (IOException e)
         {
@@ -53,6 +51,59 @@ public class Save
             e.printStackTrace();
         }
     }
+
+    private String getFileName()
+    {
+        String name = "save";
+        int i = 0;
+        File file = new File(save_directory + File.separator + name + i + ".txt");
+        while(file.exists())
+        {
+            i++;
+            file = new File(save_directory + File.separator + name + i + ".txt");
+        }
+        return name + i + ".txt";
+    }
+
+    private void writeDate(String fileName) throws IOException {
+        File history = new File(save_directory + File.separator + "history.txt");
+        if(history.exists())
+        {
+            FileWriter fw = new FileWriter(history, true);
+            fw.write("\n"+ fileName + " " + dtf.format(LocalDateTime.now()));
+            fw.close();
+
+        }
+
+    }
+
+    public String getLastSave(){
+        try {
+                Scanner scanner = new Scanner(new File(save_directory + File.separator + "history.txt"));
+                String line = null;
+                while (scanner.hasNextLine())
+                {
+                    line = scanner.nextLine();
+                }
+                scanner.close();
+                String res = "";
+                int i  = 0;
+                while(line.charAt(i) != ' ')
+                {
+                    res += line.charAt(i);
+                    i ++;
+                }
+                return res;
+            }
+        catch (FileNotFoundException e)
+        {
+            System.out.println(save_directory + File.separator + "history.txt" + " not found");
+            e.printStackTrace();
+        }
+        return null;
+
+    }
+
         public static void main(String[] args)
     {
         Save save = new Save();
@@ -60,8 +111,8 @@ public class Save
         Extract extract = new Extract("/home/julien/Bureau/BabaIsYou/new/src/main/resources/level/default/level1.txt");
         Environment map = new Environment();
         map.setMap(extract.getDataList());
-
-        save.newSave( "level1_save.txt", map.getMap());
+        save.newSave(map.getMap());
+        System.out.println(save.getLastSave());
 
     }
 }

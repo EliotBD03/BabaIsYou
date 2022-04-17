@@ -375,7 +375,12 @@ public class Item extends Environment implements Entity
      */
     public static boolean win()
     {
-        return winStatus;
+        if(winStatus)
+        {
+            winStatus = false;
+            return true;
+        }
+        return false;
     }
 
     /**

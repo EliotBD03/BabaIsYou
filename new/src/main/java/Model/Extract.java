@@ -44,7 +44,7 @@ public class Extract {
      *
      * @param map le fichier texte représentant la map du jeu
      */
-    public void setDataList(String map) {
+    private void setDataList(String map) {
         try {
 
             //on effectue les instantiations nécessaires
