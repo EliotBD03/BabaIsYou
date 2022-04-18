@@ -16,10 +16,11 @@ public class Flag extends Item
 
     public Flag()
     {
+        super();
         int[] position = super.searchtype(Flag.class);
         super.posY = position[0];
         super.posX = position[1];
-        super.pushStatus = canBePushed(BigAlgorithm.getTabperm());
+        super.pushStatus = canBePushed(rules.getTabperm());
         super.stopStatus = thingIsStop();
         super.youStatus = thingIsYou();
         super.noStatus = noStatus();
@@ -37,20 +38,20 @@ public class Flag extends Item
         }
         return false;
     }
-    public boolean thingIsStop(){return super.thingisstop(BigAlgorithm.getTabperm(), Rules.FLAG);}
+    public boolean thingIsStop(){return super.thingisstop(rules.getTabperm(), Rules.FLAG);}
 
     public boolean noStatus()
     {
-        return super.nostatus(BigAlgorithm.getTabperm(), Rules.FLAG);
+        return super.nostatus(rules.getTabperm(), Rules.FLAG);
     }
 
-    public boolean thingIsYou(){return super.thingisyou(BigAlgorithm.getTabperm(), Rules.FLAG);}
+    public boolean thingIsYou(){return super.thingisyou(rules.getTabperm(), Rules.FLAG);}
 
     public boolean thingIsAnotherThing(Enum[][] tabperm){return thingisanortherthing(tabperm,Rules.FLAG);}
 
     protected Enum getThing(Enum[][] tabperm){return getthing(tabperm, Rules.FLAG);}
 
-    public boolean thingIsSink(){return thingisskink(BigAlgorithm.getTabperm(), Rules.FLAG);}
+    public boolean thingIsSink(){return thingisskink(rules.getTabperm(), Rules.FLAG);}
 
 
 

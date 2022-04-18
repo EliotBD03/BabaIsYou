@@ -7,16 +7,17 @@ import java.net.URISyntaxException;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.ArrayList;
-import java.util.Objects;
 
 public class Main
 {
     private static Environment map;
-    private ArrayList<int[]> changeCoord;
+    private static ArrayList<int[]> changeCoord;
     private static Baba baba;
     private static Flag flag;
     private static Rock rock;
     private static Wall wall;
+
+    private static Goop goop;
 
     private static  String[][] temp;
 
@@ -24,7 +25,7 @@ public class Main
 
     public static int getLength(){return map.getMap().length;}
 
-    public void makeTheGame(String fileName) throws URISyntaxException {
+    public Main() throws URISyntaxException {
         Controller controller = new Controller();
 
         dico.put(' ',controller.fonfImage); dico.put('X',controller.borderImage);
@@ -38,24 +39,30 @@ public class Main
         dico.put('M', controller.textGoopImage); dico.put('D', controller.textSinkImage);
 
 
+    }
+
+    public void makeTheGame(String fileName) {
+        changeCoord = null;
+
         Extract extract = new Extract(fileName);
         map = new Environment();
         map.setMap(extract.getDataList());
-        BigAlgorithm rules = new BigAlgorithm();
+        map.actualiseMap();
 
         baba = new Baba();
         flag = new Flag();
         rock = new Rock();
         wall = new Wall();
+        goop = new Goop();
     }
 
-    public boolean makeMove(String event)
+    public void makeMove(String event)
     {
         baba.move(event);
         flag.move(event);
         rock.move(event);
         wall.move(event);
-        return Item.win();
+        goop.move(event);
     }
 
     public static Image getSprite(int i , int j)
@@ -64,17 +71,30 @@ public class Main
     }
     public ArrayList<int[]> getChanges()
     {
-        ArrayList<int[]> changeCoord = new ArrayList<>();
+        changeCoord = new ArrayList<>();
         temp = Environment.getStringMap(map.getMap());
         map.actualiseMap();
         String[][] actual = map.getMap();
         for(int i = 0; i <= actual.length -1; i++)
+        {
             for(int j = 0; j < actual[j].length -1; j++)
+                System.out.print(temp[i][j]);
+            System.out.print("\n");
+        }
+        System.out.println(map);
+        for(int i = 0; i <= actual.length -1; i++)
+            for(int j = 0; j <= actual[i].length -1; j++)
                 if(!(actual[i][j].equals(temp[i][j])))
                 {
                     int[] pos = {i,j};
+                    System.out.println(i + " " + j + temp[i][j]);
                     changeCoord.add(pos);
                 }
         return changeCoord;
+    }
+
+    public boolean stop()
+    {
+        return Item.win();
     }
 }

@@ -8,6 +8,7 @@ import java.util.Queue;
  */
 public class Item extends Environment implements Entity
 {
+    protected static BigAlgorithm rules = new BigAlgorithm();
     //représente la position en x d'un objet
     protected int posX;
     //représente la position en x d'un objet
@@ -213,7 +214,7 @@ public class Item extends Environment implements Entity
     protected void move(String input, Rules item)
     {
         //on va d'office regarder si des objets sont inter-changeables
-        swithObject(BigAlgorithm.getTabperm());
+        swithObject(rules.getTabperm());
         //on cherche les coordonnés des objets qui ont la caractéristique win
         searchWin();
         //on initialise la map temporaire de type Entity
@@ -240,15 +241,15 @@ public class Item extends Environment implements Entity
                                 //                      -est ce que l'objet a gagné ?
                                 //                      -est ce que l'objet pousse ?
                                 //note : on ne peut réaliser qu'une action à la fois(else if)
-                                if (canMoveY(BigAlgorithm.getTabperm(),item,i - 1, j))
+                                if (canMoveY(rules.getTabperm(),item,i - 1, j))
                                 {
                                     posY = Actions.up(mapO, i, j);
                                 }
                                 else if(thingHasWin(i - 1, j))
                                     winStatus = true;
 
-                                else if(thingIsPushingY(BigAlgorithm.getTabperm(),i - 1, j))
-                                    posY = Actions.pushY(-1, i, j, mapO);
+                                else if(thingIsPushingY(rules.getTabperm(),i - 1, j))
+                                    posY = Actions.pushY(-1, i, j, mapO, rules.getTabperm());
                             }
                     break;
                 //si c'est 's', on compte aller vers le bas
@@ -258,14 +259,14 @@ public class Item extends Environment implements Entity
                             if (this.getClass().isInstance(mapO[i][j]))
                             {
                                 //on regarde si on a le droit d'avancer
-                                if (canMoveY(BigAlgorithm.getTabperm(),item,i+ 1,j))
+                                if (canMoveY(rules.getTabperm(),item,i+ 1,j))
                                     posY = Actions.down(mapO, i, j);
                                 //on regarde si on a atteint un objet qui est win
                                 else if(thingHasWin( i+ 1, j))
                                     winStatus = true;
                                 //on regarde si on pousse quelque chose
-                                else if(thingIsPushingY(BigAlgorithm.getTabperm(),i + 1, j))
-                                    posY = Actions.pushY(1, i, j, mapO);
+                                else if(thingIsPushingY(rules.getTabperm(),i + 1, j))
+                                    posY = Actions.pushY(1, i, j, mapO, rules.getTabperm());
                             }
                     break;
                 //si c'est 'q', on compte aller vers la gauche
@@ -274,14 +275,14 @@ public class Item extends Environment implements Entity
                         for(int j = 0; j <= mapO[i].length - 1; j++)
                             if(this.getClass().isInstance(mapO[i][j]))
                             {
-                                if (canMoveX(BigAlgorithm.getTabperm(),item,i,j - 1))
+                                if (canMoveX(rules.getTabperm(),item,i,j - 1))
                                     posX = Actions.left(mapO, i, j);
 
                                 else if(thingHasWin( i, j - 1))
                                     winStatus = true;
 
-                                else if(thingIsPushingX(BigAlgorithm.getTabperm(),i, j - 1))
-                                    posX = Actions.pushX(-1, i, j, mapO);
+                                else if(thingIsPushingX(rules.getTabperm(),i, j - 1))
+                                    posX = Actions.pushX(-1, i, j, mapO, rules.getTabperm());
                             }
                     break;
                 //si c'est 'd', on compte aller vers la droite
@@ -290,19 +291,19 @@ public class Item extends Environment implements Entity
                         for(int j = mapO[i].length - 1; j >= 0; j--)
                             if (this.getClass().isInstance(mapO[i][j]))
                             {
-                                if (canMoveX(BigAlgorithm.getTabperm(),item, i, j + 1))
+                                if (canMoveX(rules.getTabperm(),item, i, j + 1))
                                     posX = Actions.right(mapO, i, j);
 
                                 else if(thingHasWin( i, j + 1))
                                     winStatus = true;
 
-                                else if(thingIsPushingX(BigAlgorithm.getTabperm(),i, j + 1))
-                                    posX = Actions.pushX(1, i, j, mapO);
+                                else if(thingIsPushingX(rules.getTabperm(),i, j + 1))
+                                    posX = Actions.pushX(1, i, j, mapO, rules.getTabperm());
                             }
                     break;
             }
         }
-        BigAlgorithm.actualise();
+        rules.actualise();
         //on va fusionner la map actuel avec la map temporaire
         actualiseObjectMap();
     }
@@ -352,18 +353,18 @@ public class Item extends Environment implements Entity
 
     /**
      * cette méthode permet de retrouver quel objet de type Rules possède une règle mise en param
-     * @param rules la règle de l'objet qu'on veut retrouver
+     * @param rUles la règle de l'objet qu'on veut retrouver
      * @return l'élément possédant la règle mise en param
      */
 
-    private Enum whichItem(Rules rules)
+    private Enum whichItem(Rules rUles)
     {
         //on cherche dans le tableau des permissions
-        for(int i = 0; i <= BigAlgorithm.getTabperm().length -1; i++)
+        for(int i = 0; i <= rules.getTabperm().length -1; i++)
             //si on a trouvé la règle que l'on cherchait
             //alors on retourne l'objet qui la possède
-            if(BigAlgorithm.getTabperm()[i][1] == rules && BigAlgorithm.getTabperm()[i][0] != null)
-                return BigAlgorithm.getTabperm()[i][0];
+            if(rules.getTabperm()[i][1] == rUles && rules.getTabperm()[i][0] != null)
+                return rules.getTabperm()[i][0];
         //sinon on return null
         return null;
     }

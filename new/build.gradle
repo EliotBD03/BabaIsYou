@@ -20,8 +20,11 @@ tasks.withType(JavaCompile) {
 }
 
 application {
-    mainModule = 'View'
-    mainClass = 'View.HelloApplication'
+    mainModule = 'Model'
+    mainClass = 'Model.Main'
+}
+run {
+    standardInput = System.in
 }
 javafx {
     version = '17.0.1'

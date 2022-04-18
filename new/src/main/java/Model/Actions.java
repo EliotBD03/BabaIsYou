@@ -75,7 +75,7 @@ public class Actions
      * @return la nouvelle position de notre objet qui a poussé
      */
 
-    public static  int pushX(int x, int posY,int posX, Entity[][] map_object)
+    public static  int pushX(int x, int posY,int posX, Entity[][] map_object, Enum[][] tabperm)
     {
         //cette variable permettra de savoir jusqu'à quel élément on poussera(voir première boucle while)
         int temp = posX - 1;
@@ -83,7 +83,7 @@ public class Actions
         {
             case -1:
                     //tant qu'on est encore sur un élément qui peut être poussé(on va vers la gauche)
-                    while(map_object[posY][temp] != null && map_object[posY][temp].canBePushed(BigAlgorithm.getTabperm()))
+                    while(map_object[posY][temp] != null && map_object[posY][temp].canBePushed(tabperm))
                          temp --;
                     int first_entity = temp ;
                     temp ++;
@@ -104,7 +104,7 @@ public class Actions
                     break;
             case 1:
                     temp = posX + 1;
-                    while(map_object[posY][temp] != null && map_object[posY][temp].canBePushed(BigAlgorithm.getTabperm()))
+                    while(map_object[posY][temp] != null && map_object[posY][temp].canBePushed(tabperm))
                        temp ++;
                     int last_entity = temp;
                     temp --;
@@ -132,13 +132,13 @@ public class Actions
      * @return la position de notre objet qui a poussé
      */
 
-    public static  int pushY(int y, int posY, int posX, Entity[][] map_object)
+    public static  int pushY(int y, int posY, int posX, Entity[][] map_object, Enum[][] tabperm)
     {
         int temp = posY - 1;
         switch (y)
         {
             case -1:
-                while(map_object[temp][posX] != null && map_object[temp][posX].canBePushed(BigAlgorithm.getTabperm()))
+                while(map_object[temp][posX] != null && map_object[temp][posX].canBePushed(tabperm))
                 {
                     temp --;
                 }
@@ -157,7 +157,7 @@ public class Actions
                 break;
             case 1:
                 temp = posY + 1;
-                while(map_object[temp][posX] != null && map_object[temp][posX].canBePushed(BigAlgorithm.getTabperm()))
+                while(map_object[temp][posX] != null && map_object[temp][posX].canBePushed(tabperm))
                     temp ++;
                 int last_entity = temp;
                 temp --;

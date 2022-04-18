@@ -9,8 +9,8 @@ import java.util.Map;
  */
 
 public class BigAlgorithm extends Environment {
-    private static Enum[][] tabloc = new Enum[getLength()][getWidth()];
-    private static Enum[][] tabperm;
+    private  Enum[][] tabloc = new Enum[getLength()][getWidth()];
+    private Enum[][] tabperm;
     private static final Enum[] character = {Rules.BABA, Rules.ROCK, Rules.FLAG, Rules.WALL, Rules.GOOP};
     private static final Enum[] actions = {Rules.YOU, Rules.STOP, Rules.WIN, Rules.PUSH, Rules.SINK, Rules.BABA, Rules.ROCK, Rules.FLAG, Rules.WALL, Rules.GOOP};
     public static final Map<Rules, Entity> dico = new HashMap<Rules, Entity>();
@@ -24,11 +24,11 @@ public class BigAlgorithm extends Environment {
         setTab(super.mapO);
         int[][] current_is = findIS();
         setTabperm(findPermX(current_is), findPermY(current_is));
-        dico.put(Rules.BABA, new Baba());
-        dico.put(Rules.FLAG, new Flag());
-        dico.put(Rules.ROCK,new Rock());
-        dico.put(Rules.WALL, new Wall());
-        dico.put(Rules.GOOP, new Goop());
+        dico.put(Rules.BABA, new Baba(true));
+        dico.put(Rules.FLAG, new Flag(true));
+        dico.put(Rules.ROCK,new Rock(true));
+        dico.put(Rules.WALL, new Wall(true));
+        dico.put(Rules.GOOP, new Goop(true));
     }
 
 
@@ -37,7 +37,7 @@ public class BigAlgorithm extends Environment {
      *
      * @return tableau à 2 dimensions
      */
-    public static Enum[][] getTabperm() {
+    public  Enum[][] getTabperm() {
         return tabperm;
     }
 
@@ -47,7 +47,7 @@ public class BigAlgorithm extends Environment {
      * @param map0 le tableau issus de map représentant les objets
      */
 
-    private static void setTab(Entity[][] map0) {
+    private  void setTab(Entity[][] map0) {
         for (int i = 1; i <= map0.length - 1; i++)
             for (int j = 1; j <= map0[i].length - 1; j++)
                 if (map0[i][j] != null) {
@@ -61,7 +61,7 @@ public class BigAlgorithm extends Environment {
      * @param tabpermX issue de la methode findPermX
      * @param tabpermY issue de la methode findPermY
      */
-    private static void setTabperm(Enum[][] tabpermX, Enum[][] tabpermY)
+    private void setTabperm(Enum[][] tabpermX, Enum[][] tabpermY)
     {
         tabperm = new Enum[20][2];
         int i = 0;
@@ -84,7 +84,7 @@ public class BigAlgorithm extends Environment {
      * un sous tableau = Is, les elements de Is => position en y et en x (dans cet ordre)
      */
 
-    private static int[][] findIS() {
+    private  int[][] findIS() {
         int x = -1;
         int y = -1;
         int[][] res = new int[10][2];
@@ -105,7 +105,7 @@ public class BigAlgorithm extends Environment {
      * @param isLoc la position des blocs Is issue de la methode findIs()
      * @return tableau à deux dimensions : pour chacun des sous tableaux, on a des objets de type Rules(Enum)
      */
-    private static Enum[][] findPermY(int[][] isLoc) {
+    private  Enum[][] findPermY(int[][] isLoc) {
         Enum[][] tabpermY = new Enum[10][2];
         int k = 0;
         for (int[] is : isLoc)
@@ -148,7 +148,7 @@ public class BigAlgorithm extends Environment {
      * @return tableau à deux dimensions : pour chacun des sous tableaux, on a des objets de type Rules(Enum)
      */
 
-    private static Enum[][] findPermX(int[][] isLoc)
+    private  Enum[][] findPermX(int[][] isLoc)
     {
         Enum[][] tabpermX = new Enum[10][2];
         int k = 0;
@@ -221,7 +221,7 @@ public class BigAlgorithm extends Environment {
     /**
      * permet d'actualiser le tableau de permissions après changement de position d'une instance dans le tableau d'objet
      */
-    public static void actualise() {
+    public void actualise() {
         setTab(mapO);
         int[][] current_is = findIS();
         setTabperm(findPermX(current_is), findPermY(current_is));

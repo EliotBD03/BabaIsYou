@@ -71,7 +71,7 @@ public class Controller {
 
     private static int indexLevel = 0;
 
-    private static Main game;
+    private Main game;
 
     //private VBox[] vbox;
     //private HBox[] hbox;
@@ -181,61 +181,36 @@ public class Controller {
                 scene.setOnKeyPressed(event1 -> {
                     switch (event1.getCode()) {
                         case UP:
-                            if(game.makeMove("z"))
-                            {
-                                System.out.println("1");
-                                if(indexLevel < levelList.length - 1)
-                                {
-                                    indexLevel++;
-                                    nextLevel(event);
-                                }
-
-                            }
+                            game.makeMove("z");
                             System.out.println("up");
                             count_move ++;
                             break;
                         case DOWN:
-                            if(game.makeMove("s"))
-                            {
-                                System.out.println("1");
-                                if(indexLevel < levelList.length - 1)
-                                {
-                                    indexLevel++;
-                                    nextLevel(event);
-                                }
-                            }
+                            game.makeMove("s");
                             System.out.println("down");
                             count_move ++;
                             break;
                         case LEFT:
-                            if(game.makeMove("q"))
-                            {
-                                System.out.println("1");
-                                if(indexLevel < levelList.length - 1)
-                                {
-                                    indexLevel++;
-                                    nextLevel(event);
-                                }
-                            }
+                            game.makeMove("q");
                             System.out.println("left");
                             count_move ++;
                             break;
                         case RIGHT:
-                            if(game.makeMove("d"))
-                            {
-                                System.out.println("1");
-                                if(indexLevel < levelList.length - 1)
-                                {
-                                    indexLevel++;
-                                    nextLevel(event);
-                                }
-
-                            }
+                            game.makeMove("d");
                             System.out.println("right");
                             count_move ++;
                             break;
                     }
                     actualise(game.getChanges());
+                    if(game.stop())
+                    {
+
+                        if(indexLevel < levelList.length - 1)
+                        {
+                            indexLevel++;
+                            nextLevel();
+                        }
+                    }
                 });
             stage.show();
 
@@ -244,23 +219,29 @@ public class Controller {
         }
     }
 
-    public void nextLevel(ActionEvent event) {
-        try
-        {
-            vbox.getChildren().clear();
-            tabhbox = null;
-            tabpane = null;
-            game = new Main();
-            File file = new File("src/main/resources/level/default/" + levelList[indexLevel]);
-            game.makeTheGame(file.getAbsolutePath());
-            setTabpane();
-            initializeAll();
-            settabhbox();
-            setvbox();
-            stage = (Stage)((Node)event.getSource()).getScene().getWindow();
-            scene = new Scene(vbox,450,500,Color.BLACK);
-            stage.setScene(scene);
-        }catch (URISyntaxException e){System.out.println("an error occured");}
+    public void nextLevel() {
+        resetPane();
+        resethbox();
+        vbox.getChildren().clear();
+        File file = new File("src/main/resources/level/default/" + levelList[indexLevel]);
+        game.makeTheGame(file.getAbsolutePath());
+        initializeAll();
+        settabhbox();
+        setvbox();
+
+
+    }
+
+    private void resetPane()
+    {
+        for(int i = 0; i <= tabpane.length - 1; i++)
+            for(int j = 0; j <= tabpane[i].length - 1; j++)
+                tabpane[i][j].getChildren().clear();
+    }
+    private void resethbox()
+    {
+        for(int i = 0; i <= tabhbox.length -1; i++)
+            tabhbox[i].getChildren().clear();
     }
     public void logout(ActionEvent event){
         stage = (Stage)scenePane.getScene().getWindow();

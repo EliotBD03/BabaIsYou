@@ -36,10 +36,11 @@ public class Baba extends Item
      */
     public Baba()
     {
+        super();
         int[] position = super.searchtype(Baba.class);
         super.posY = position[0];
         super.posX = position[1];
-        super.pushStatus =  canBePushed(BigAlgorithm.getTabperm());
+        super.pushStatus =  canBePushed(rules.getTabperm());
         super.stopStatus = thingIsStop();
         super.youStatus = thingIsYou();
         super.noStatus = noStatus();
@@ -62,20 +63,20 @@ public class Baba extends Item
         return false;
     }
 
-    public boolean thingIsStop(){return super.thingisstop(BigAlgorithm.getTabperm(), Rules.BABA);}
+    public boolean thingIsStop(){return super.thingisstop(rules.getTabperm(), Rules.BABA);}
 
     public boolean noStatus()
     {
-        return super.nostatus(BigAlgorithm.getTabperm(), Rules.BABA);
+        return super.nostatus(rules.getTabperm(), Rules.BABA);
     }
 
-    public boolean thingIsYou(){return super.thingisyou(BigAlgorithm.getTabperm(), Rules.BABA);}
+    public boolean thingIsYou(){return super.thingisyou(rules.getTabperm(), Rules.BABA);}
 
     public boolean thingIsAnotherThing(Enum[][] tabperm){return thingisanortherthing(tabperm, Rules.BABA);}
 
     protected Enum getThing(Enum[][] tabperm){return getthing(tabperm, Rules.BABA);}
 
-    public boolean thingIsSink(){return thingisskink(BigAlgorithm.getTabperm(), Rules.BABA);}
+    public boolean thingIsSink(){return thingisskink(rules.getTabperm(), Rules.BABA);}
     /**
      *cette methode est surchargé pour permettre la caractéristiques de type Rules par Rules.Baba isssu
      * de la classe Rules

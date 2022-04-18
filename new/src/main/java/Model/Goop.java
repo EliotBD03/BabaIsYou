@@ -13,10 +13,11 @@ public class Goop extends Item
 
     public Goop()
     {
+        super();
         int[] position = super.searchtype(Goop.class);
         super.posY = position[0];
         super.posX = position[1];
-        super.pushStatus =  canBePushed(BigAlgorithm.getTabperm());
+        super.pushStatus =  canBePushed(rules.getTabperm());
         super.stopStatus = thingIsStop();
         super.youStatus = thingIsYou();
         super.noStatus = noStatus();
@@ -34,20 +35,20 @@ public class Goop extends Item
         return false;
     }
 
-    public boolean thingIsStop(){return super.thingisstop(BigAlgorithm.getTabperm(), Rules.GOOP);}
+    public boolean thingIsStop(){return super.thingisstop(rules.getTabperm(), Rules.GOOP);}
 
     public boolean noStatus()
     {
-        return super.nostatus(BigAlgorithm.getTabperm(), Rules.GOOP);
+        return super.nostatus(rules.getTabperm(), Rules.GOOP);
     }
 
-    public boolean thingIsYou(){return super.thingisyou(BigAlgorithm.getTabperm(), Rules.GOOP);}
+    public boolean thingIsYou(){return super.thingisyou(rules.getTabperm(), Rules.GOOP);}
 
     public boolean thingIsAnotherThing(Enum[][] tabperm){return thingisanortherthing(tabperm, Rules.GOOP);}
 
     protected Enum getThing(Enum[][] tabperm){return getthing(tabperm, Rules.GOOP);}
 
-    public boolean thingIsSink(){return thingisskink(BigAlgorithm.getTabperm(), Rules.GOOP);}
+    public boolean thingIsSink(){return thingisskink(rules.getTabperm(), Rules.GOOP);}
 
     @Override
     public void move(String input)

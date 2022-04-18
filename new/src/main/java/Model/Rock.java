@@ -15,10 +15,11 @@ public class Rock extends Item
 
     public Rock()
     {
+        super();
         int[] position = super.searchtype(Rock.class);
         super.posY = position[0];
         super.posX = position[1];
-        super.pushStatus =  canBePushed(BigAlgorithm.getTabperm());
+        super.pushStatus =  canBePushed(rules.getTabperm());
         super.stopStatus = thingIsStop();
         super.youStatus = thingIsYou();
         super.noStatus = noStatus();
@@ -35,20 +36,20 @@ public class Rock extends Item
         }
         return false;
     }
-    public boolean thingIsStop(){return super.thingisstop(BigAlgorithm.getTabperm(), Rules.ROCK);}
+    public boolean thingIsStop(){return super.thingisstop(rules.getTabperm(), Rules.ROCK);}
 
     public boolean noStatus()
     {
-        return super.nostatus(BigAlgorithm.getTabperm(), Rules.ROCK);
+        return super.nostatus(rules.getTabperm(), Rules.ROCK);
     }
 
-    public boolean thingIsYou(){return super.thingisyou(BigAlgorithm.getTabperm(), Rules.ROCK);}
+    public boolean thingIsYou(){return super.thingisyou(rules.getTabperm(), Rules.ROCK);}
 
     public boolean thingIsAnotherThing(Enum[][] tabperm){return thingisanortherthing(tabperm,Rules.ROCK);}
 
     protected Enum getThing(Enum[][] tabperm){return getthing(tabperm, Rules.ROCK);}
 
-    public boolean thingIsSink(){return thingisskink(BigAlgorithm.getTabperm(), Rules.ROCK);}
+    public boolean thingIsSink(){return thingisskink(rules.getTabperm(), Rules.ROCK);}
 
     @Override
     public void move(String input)
