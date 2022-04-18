@@ -4,7 +4,7 @@ public class Main
 {
     public static void main(String[] args)
     {
-        Extract extract = new Extract("/home/julien/Bureau/BabaIsYou/new/src/main/java/Model/test.txt");
+        Extract extract = new Extract("/home/julien/Bureau/BabaIsYou/new/src/main/resources/level/default/level1.txt");
         Environment map = new Environment();
         map.setMap(extract.getDataList());
 
@@ -15,14 +15,43 @@ public class Main
         Goop goop = new Goop();
 
         System.out.println(map);
-        int i = 50;
-        while(i > 0)
+        while(true)
         {
-            baba.move("z");
-            baba.move("s");
+            baba.move(Input.get_Input());
             map.actualiseMap();
-            i--;
-        }
             System.out.println(map);
+            if(Item.win())
+                break;
+        }
+        extract = new Extract("/home/julien/Bureau/BabaIsYou/new/src/main/resources/level/default/level2.txt");
+        map.setMap(extract.getDataList());
+        while(true)
+        {
+            baba.move(Input.get_Input());
+            map.actualiseMap();
+            System.out.println(map);
+            if(Item.win())
+                break;
+        }
+        extract = new Extract("/home/julien/Bureau/BabaIsYou/new/src/main/resources/level/default/level3.txt");
+        map.setMap(extract.getDataList());
+        while(true)
+        {
+            baba.move(Input.get_Input());
+            map.actualiseMap();
+            System.out.println(map);
+            if(Item.win())
+                break;
+        }
+        extract = new Extract("/home/julien/Bureau/BabaIsYou/new/src/main/resources/level/default/level4.txt");
+        map.setMap(extract.getDataList());
+        while(true)
+        {
+            baba.move(Input.get_Input());
+            map.actualiseMap();
+            System.out.println(map);
+            if(Item.win())
+                break;
+        }
     }
 }

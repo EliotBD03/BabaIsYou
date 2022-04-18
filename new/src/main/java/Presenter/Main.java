@@ -41,7 +41,6 @@ public class Main
         Extract extract = new Extract(fileName);
         map = new Environment();
         map.setMap(extract.getDataList());
-        BigAlgorithm rules = new BigAlgorithm();
 
         baba = new Baba();
         flag = new Flag();
@@ -76,5 +75,11 @@ public class Main
                     changeCoord.add(pos);
                 }
         return changeCoord;
+    }
+
+    public void nextLevel(String fileName)
+    {
+        Extract extract = new Extract(fileName);
+        map.setMap(extract.getDataList());
     }
 }

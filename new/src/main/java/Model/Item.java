@@ -29,7 +29,7 @@ public class Item extends Environment implements Entity
     //représente les coordonnés des objets qui sont win
     private ArrayList<int[]> coordonates_win = new ArrayList<int[]>();
     //la map temporaire contenant tous les objets qui n'ont pas de status
-    private static Entity[][] temp_object_map  = new Entity[mapO.length][mapO[0].length];
+    private static Entity[][] temp_object_map = new Entity[mapO.length][mapO[0].length];
 
 
     /**
@@ -319,8 +319,10 @@ public class Item extends Environment implements Entity
         //on cherche dans notre arraylist si on a les coordonnés donnés en paramètres
         //si c'est le cas -> true sinon -> false
         for(int k = 0; k <= coordonates_win.size() - 1; k++)
+        {
             if(i == coordonates_win.get(k)[0] && j == coordonates_win.get(k)[1])
                 return true;
+        }
         return false;
     }
 
@@ -378,6 +380,7 @@ public class Item extends Environment implements Entity
         if(winStatus)
         {
             winStatus = false;
+            temp_object_map = new Entity[mapO.length][mapO[0].length];
             return true;
         }
         return false;
@@ -439,7 +442,6 @@ public class Item extends Environment implements Entity
                 }
                 else if(mapO[i][j] == null && temp_object_map[i][j] != null)
                 {
-                   // System.out.println("je passe");
                     mapO[i][j] = temp_object_map[i][j];
                 }
             }
