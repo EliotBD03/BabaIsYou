@@ -196,6 +196,7 @@ public class Controller {
                     switch (event1.getCode()) {
                         case ESCAPE:
                             try {
+                                    //Ne marche pas car this.stage est un nullpointerexecption problème.
                                 switchToPause(event);
                             } catch (IOException e) {
                                 e.printStackTrace();
