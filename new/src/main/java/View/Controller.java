@@ -161,18 +161,27 @@ public class Controller {
     }
     public void mapChoice(ActionEvent event) throws IOException{
         Parent root = FXMLLoader.load(getClass().getResource("/fxml/mapChoice.fxml"));
-        stage = (Stage)((Node)event.getSource()).getScene().getWindow();
-        scene = new Scene(root,450, 500, Color.BLACK);
-        stage.setScene(scene);
+        Scene scene1 = new Scene(root, 450, 500, Color.BLACK);
+        stage.setScene(scene1);
         stage.show();
     }
     public void switchToPause(ActionEvent event)throws IOException{
+
+        FXMLLoader loader = new FXMLLoader();
+        loader.setLocation(getClass().getResource("/fxml/Pause.fxml"));
+        Parent root = loader.load();
+        Scene scene1 = new Scene(root, 450, 500, Color.BLACK);
+        stage.setScene(scene1);
+        stage.show();
+
+        /*
         Parent root = FXMLLoader.load(getClass().getResource("/fxml/Pause.fxml"));
         stage = (Stage)((Node)event.getSource()).getScene().getWindow();
+        System.out.println(stage);
         scene = new Scene(root,450, 500, Color.BLACK);
         stage.setScene(scene);
         stage.show();
-
+         */
     }
     public void switchToGame(ActionEvent event) throws IOException {
         try {

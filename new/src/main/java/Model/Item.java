@@ -101,7 +101,14 @@ public class Item extends Environment implements Entity
             for(int i = 0; i <= mapO.length - 1; i++)
                 for(int j = 0; j <= mapO[i].length - 1; j++)
                     if(this.getClass().isInstance(mapO[i][j]))
+                    {
+                        if(mapO[i][j] == temp_object_map[i][j])
+                        {
+                            System.out.println("je passe dans la condition");
+                            temp_object_map[i][j] = null;
+                        }
                         mapO[i][j] = thing;
+                    }
 
         }
 
@@ -444,6 +451,8 @@ public class Item extends Environment implements Entity
                 {
                     mapO[i][j] = temp_object_map[i][j];
                 }
+                else if (mapO[i][j] == temp_object_map[i][j])
+                    temp_object_map[i][j] = null;
             }
      }
     /**
