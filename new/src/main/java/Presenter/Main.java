@@ -22,6 +22,11 @@ public class Main
 
     private static final Map<Character, Image> dico = new HashMap<Character, Image>();
 
+    private static int rollback = 5;
+    private static Main[] tabmap = new Main[rollback];
+
+    private static int count = 5;
+
     public static int getLength(){return map.getMap().length;}
 
     public void makeTheGame(String fileName) throws URISyntaxException {
@@ -50,12 +55,47 @@ public class Main
 
     public boolean makeMove(String event)
     {
+        addmap();
         baba.move(event);
         flag.move(event);
         rock.move(event);
         wall.move(event);
         return Item.win();
     }
+
+
+    private void addmap()
+    {
+        int i = rollback -1;
+        System.out.println(i);
+        if(tabmap[i] == null)
+        {
+            while(tabmap[i] == null && i > 0)
+                i--;
+            tabmap[i + 1] = this;
+        }
+        else
+        {
+            for(int j = 1; j >= tabmap.length - 1; j++)
+               tabmap[j] = tabmap[j - 1];
+        }
+    }
+    public Environment getMap(){return map;}
+
+    public Main goBack()
+    {
+        System.out.println("jpadq");
+        int i = rollback - 1;
+        while(tabmap[i] == null)
+        {
+            i--;
+            System.out.println(i + " " + tabmap[i]);
+        }
+        System.out.println(map+ " "+ tabmap[i]);
+        count = i;
+        return tabmap[i];
+    }
+
 
     public static Image getSprite(int i , int j)
     {

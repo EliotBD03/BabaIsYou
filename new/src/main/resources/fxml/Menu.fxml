@@ -43,5 +43,6 @@
             <Image url="@../sprite/babaisyoutitle.gif" />
          </image>
       </ImageView>
+      <Button layoutX="189.0" layoutY="225.0" mnemonicParsing="false" onAction="#switchToMapChoice" text="levels" />
     </children>
 </AnchorPane>

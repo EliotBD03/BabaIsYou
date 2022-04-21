@@ -72,7 +72,9 @@ public class Controller {
 
     private static int indexLevel = 0;
 
-    private static Main game;
+    private Main game;
+
+    private Main tempGame;
 
     //private VBox[] vbox;
     //private HBox[] hbox;
@@ -211,6 +213,9 @@ public class Controller {
                     } catch (IOException e) {
                         e.printStackTrace();
                     }
+                    break;
+                case R:
+                    game.goBack();
                     break;
                 case UP:
                     if(game.makeMove("z"))
