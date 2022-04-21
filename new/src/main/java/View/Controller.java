@@ -159,10 +159,11 @@ public class Controller {
         stage.setScene(scene);
         stage.show();
     }
-    public void mapChoice(ActionEvent event) throws IOException{
+    public void switchToMapChoice(ActionEvent event) throws IOException{
         Parent root = FXMLLoader.load(getClass().getResource("/fxml/mapChoice.fxml"));
-        Scene scene1 = new Scene(root, 450, 500, Color.BLACK);
-        stage.setScene(scene1);
+        stage = (Stage)((Node)event.getSource()).getScene().getWindow();
+        scene = new Scene(root,450, 500, Color.BLACK);
+        stage.setScene(scene);
         stage.show();
     }
     public void switchToPause(ActionEvent event)throws IOException{
@@ -205,7 +206,6 @@ public class Controller {
                     switch (event1.getCode()) {
                         case ESCAPE:
                             try {
-                                    //Ne marche pas car this.stage est un nullpointerexecption problème.
                                 switchToPause(event);
                             } catch (IOException e) {
                                 e.printStackTrace();
@@ -318,6 +318,13 @@ public void switchToLevelOne(ActionEvent event)throws IOException{
             //System.out.println("6");
             scene.setOnKeyPressed(event1 -> {
                 switch (event1.getCode()) {
+                    case ESCAPE:
+                        try {
+                            switchToPause(event);
+                        } catch (IOException e) {
+                            e.printStackTrace();
+                        }
+                        break;
                     case UP:
                         if(game.makeMove("z"))
                         {
@@ -402,6 +409,13 @@ public void switchToLevelOne(ActionEvent event)throws IOException{
             //System.out.println("6");
             scene.setOnKeyPressed(event1 -> {
                 switch (event1.getCode()) {
+                    case ESCAPE:
+                        try {
+                            switchToPause(event);
+                        } catch (IOException e) {
+                            e.printStackTrace();
+                        }
+                        break;
                     case UP:
                         if(game.makeMove("z"))
                         {
@@ -487,6 +501,13 @@ public void switchToLevelOne(ActionEvent event)throws IOException{
             //System.out.println("6");
             scene.setOnKeyPressed(event1 -> {
                 switch (event1.getCode()) {
+                    case ESCAPE:
+                        try {
+                            switchToPause(event);
+                        } catch (IOException e) {
+                            e.printStackTrace();
+                        }
+                        break;
                     case UP:
                         if(game.makeMove("z"))
                         {
@@ -571,6 +592,13 @@ public void switchToLevelOne(ActionEvent event)throws IOException{
             //System.out.println("6");
             scene.setOnKeyPressed(event1 -> {
                 switch (event1.getCode()) {
+                    case ESCAPE:
+                        try {
+                            switchToPause(event);
+                        } catch (IOException e) {
+                            e.printStackTrace();
+                        }
+                        break;
                     case UP:
                         if(game.makeMove("z"))
                         {
@@ -641,3 +669,4 @@ public void switchToLevelOne(ActionEvent event)throws IOException{
         stage.close();
     }
 }
+
