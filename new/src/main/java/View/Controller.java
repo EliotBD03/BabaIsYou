@@ -43,7 +43,7 @@ public class Controller {
     @FXML
     private Button playButton;
     private Stage stage;
-    private Scene scene;
+    private static Scene scene;
     private Parent root;
     private static  Pane[][] tabpane;
     private static int count_move = 0;
@@ -68,6 +68,7 @@ public class Controller {
     public final Image textSinkImage = new Image(getClass().getResource("/sprite/sinktext.png").toURI().toString());
 
     private final String[] levelList = {"level1.txt", "level2.txt", "level3.txt", "level4.txt", "level5.txt"};
+    private static String level;
 
     private static int indexLevel = 0;
 
@@ -184,101 +185,124 @@ public class Controller {
         stage.show();
          */
     }
-    public void switchToGame(ActionEvent event) throws IOException {
+    public void switchToGame(ActionEvent event){
         try {
-            game = new Main();
-            File file = new File("src/main/resources/level/default/" + levelList[indexLevel]);
-            game.makeTheGame(file.getAbsolutePath());
-            //System.out.println("1");
-            setTabpane();
-            //System.out.println("2");
-            initializeAll();
-            //System.out.println("3");
-            settabhbox();
-            //System.out.println("4");
-            setvbox();
-            //System.out.println("5");
+            initializeGame(levelList[indexLevel]);
             stage = (Stage)((Node)event.getSource()).getScene().getWindow();
             scene = new Scene(vbox,500,500,Color.BLACK);
             stage.setScene(scene);
-            //System.out.println("6");
-                scene.setOnKeyPressed(event1 -> {
-                    switch (event1.getCode()) {
-                        case ESCAPE:
-                            try {
-                                switchToPause(event);
-                            } catch (IOException e) {
-                                e.printStackTrace();
-                            }
-                            break;
-                        case UP:
-                            if(game.makeMove("z"))
-                            {
+            keyInput(event);
+            stage.show();
 
-                                if(indexLevel < levelList.length - 1)
-                                {
-                                    indexLevel++;
-                                    nextLevel(event);
-                                }
-                                else
-                                    stage.close();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
 
-                            }
-                            System.out.println("up");
-                            count_move ++;
-                            break;
-                        case DOWN:
-                            if(game.makeMove("s"))
-                            {
+    private void keyInput(ActionEvent event)
+    {
+        scene.setOnKeyPressed(event1 -> {
+            switch (event1.getCode()) {
+                case ESCAPE:
+                    try {
+                        System.out.println(scene);
+                        switchToPause(event);
+                        System.out.println(scene);
+                    } catch (IOException e) {
+                        e.printStackTrace();
+                    }
+                    break;
+                case UP:
+                    if(game.makeMove("z"))
+                    {
 
-                                if(indexLevel < levelList.length - 1)
-                                {
-                                    indexLevel++;
-                                    nextLevel(event);
-                                }
-                                else
-                                    stage.close();
-
-                            }
-                            System.out.println("down");
-                            count_move ++;
-                            break;
-                        case LEFT:
-                            if(game.makeMove("q"))
-                            {
-
-                                if(indexLevel < levelList.length - 1)
-                                {
-                                    indexLevel++;
-                                    nextLevel(event);
-                                }
-                                else
-                                    stage.close();
-
-                            }
-                            System.out.println("left");
-                            count_move ++;
-                            break;
-                        case RIGHT:
-                            if(game.makeMove("d"))
-                            {
-
-                                if(indexLevel < levelList.length - 1)
-                                {
-                                    indexLevel++;
-                                    nextLevel(event);
-                                }
-                                else
-                                    stage.close();
-
-                            }
-                            System.out.println("right");
-                            count_move ++;
-                            break;
+                        if(indexLevel < levelList.length - 1)
+                        {
+                            indexLevel++;
+                            nextLevel(event);
+                        }
+                        else
+                            stage.close();
 
                     }
-                    actualise(game.getChanges());
-                });
+                    System.out.println("up");
+                    count_move ++;
+                    break;
+                case DOWN:
+                    if(game.makeMove("s"))
+                    {
+
+                        if(indexLevel < levelList.length - 1)
+                        {
+                            indexLevel++;
+                            nextLevel(event);
+                        }
+                        else
+                            stage.close();
+
+                    }
+                    System.out.println("down");
+                    count_move ++;
+                    break;
+                case LEFT:
+                    if(game.makeMove("q"))
+                    {
+
+                        if(indexLevel < levelList.length - 1)
+                        {
+                            indexLevel++;
+                            nextLevel(event);
+                        }
+                        else
+                            stage.close();
+
+                    }
+                    System.out.println("left");
+                    count_move ++;
+                    break;
+                case RIGHT:
+                    if(game.makeMove("d"))
+                    {
+
+                        if(indexLevel < levelList.length - 1)
+                        {
+                            indexLevel++;
+                            nextLevel(event);
+                        }
+                        else
+                            stage.close();
+
+                    }
+                    System.out.println("right");
+                    count_move ++;
+                    break;
+
+            }
+            actualise(game.getChanges());
+        });
+    }
+
+    private void initializeGame(String levelPath) throws URISyntaxException {
+        game = new Main();
+        File file = new File("src/main/resources/level/default/" + levelPath);
+        game.makeTheGame(file.getAbsolutePath());
+        //System.out.println("1");
+        setTabpane();
+        //System.out.println("2");
+        initializeAll();
+        //System.out.println("3");
+        settabhbox();
+        //System.out.println("4");
+        setvbox();
+        //System.out.println("5");
+    }
+    @FXML
+    private void resume(ActionEvent event)
+    {
+        try {
+            stage = (Stage)((Node)event.getSource()).getScene().getWindow();
+            stage.setScene(scene);
+            keyInput(event);
             stage.show();
 
         } catch (Exception e) {
@@ -298,97 +322,34 @@ public class Controller {
             settabhbox();
             setvbox();
     }
-public void switchToLevelOne(ActionEvent event)throws IOException{
-        try {
-            game = new Main();
-            File file = new File("src/main/resources/level/default/" + levelList[indexLevel = 0]);
-            game.makeTheGame(file.getAbsolutePath());
-            //System.out.println("1");
-            setTabpane();
-            //System.out.println("2");
-            initializeAll();
-            //System.out.println("3");
-            settabhbox();
-            //System.out.println("4");
-            setvbox();
-            //System.out.println("5");
+public void switchToLevel(ActionEvent event) throws IOException, URISyntaxException {
+            initializeGame(levelList[indexLevel]);
             stage = (Stage)((Node)event.getSource()).getScene().getWindow();
             scene = new Scene(vbox,500,500,Color.BLACK);
             stage.setScene(scene);
-            //System.out.println("6");
-            scene.setOnKeyPressed(event1 -> {
-                switch (event1.getCode()) {
-                    case ESCAPE:
-                        try {
-                            switchToPause(event);
-                        } catch (IOException e) {
-                            e.printStackTrace();
-                        }
-                        break;
-                    case UP:
-                        if(game.makeMove("z"))
-                        {
-                            System.out.println("1");
-                            if(indexLevel < levelList.length - 1)
-                            {
-                                indexLevel++;
-                                nextLevel(event);
-                            }
-
-                        }
-                        System.out.println("up");
-                        count_move ++;
-                        break;
-                    case DOWN:
-                        if(game.makeMove("s"))
-                        {
-                            System.out.println("1");
-                            if(indexLevel < levelList.length - 1)
-                            {
-                                indexLevel++;
-                                nextLevel(event);
-                            }
-                        }
-                        System.out.println("down");
-                        count_move ++;
-                        break;
-                    case LEFT:
-                        if(game.makeMove("q"))
-                        {
-                            System.out.println("1");
-                            if(indexLevel < levelList.length - 1)
-                            {
-                                indexLevel++;
-                                nextLevel(event);
-                            }
-                        }
-                        System.out.println("left");
-                        count_move ++;
-                        break;
-                    case RIGHT:
-                        if(game.makeMove("d"))
-                        {
-                            System.out.println("1");
-                            if(indexLevel < levelList.length - 1)
-                            {
-                                indexLevel++;
-                                nextLevel(event);
-                            }
-
-                        }
-                        System.out.println("right");
-                        count_move ++;
-                        break;
-
-                }
-                actualise(game.getChanges());
-            });
+            keyInput(event);
             stage.show();
+}
+public void setLevelOne(ActionEvent event){level = "level1.txt";}
+public void setLevelTwo(ActionEvent event){level = "level2.txt";}
+public void setLevelThree(ActionEvent event){level = "level3.txt";}
+public void setLevelFour(ActionEvent event){level = "level4.txt";}
 
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
+public void playLevel(ActionEvent event)
+{
+    try {
+        initializeGame(level);
+        stage = (Stage)((Node)event.getSource()).getScene().getWindow();
+        scene = new Scene(vbox,500,500,Color.BLACK);
+        stage.setScene(scene);
+        keyInput(event);
+        stage.show();
+
+    } catch (Exception e) {
+        e.printStackTrace();
     }
+}
+
     public void switchToLevelTwo(ActionEvent event)throws IOException{
         try {
             game = new Main();
@@ -667,6 +628,17 @@ public void switchToLevelOne(ActionEvent event)throws IOException{
         stage = (Stage)scenePane.getScene().getWindow();
         System.out.println("logout");
         stage.close();
+    }
+
+    private void saveLevel()
+    {
+        game.getSave();
+    }
+
+    @FXML
+    private void quitAndSave(ActionEvent event) throws IOException {
+        saveLevel();
+        switchToScene1(event);
     }
 }
 

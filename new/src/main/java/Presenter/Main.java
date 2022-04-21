@@ -82,4 +82,10 @@ public class Main
         Extract extract = new Extract(fileName);
         map.setMap(extract.getDataList());
     }
+
+    public void getSave()
+    {
+        Save save = new Save();
+        save.newSave(map.getMap());
+    }
 }
