@@ -23,7 +23,8 @@ public class Save
         dico.put("P", "push");dico.put("S", "stop");
         dico.put("G", "win");dico.put("B", "text_baba");
         dico.put("F", "text_flag");dico.put("R", "text_rock");
-        dico.put("W", "text_wall");dico.put(" ", null); dico.put("X", null);
+        dico.put("W", "text_wall");dico.put("?", "goop");
+        dico.put(" ", null); dico.put("X", null);dico.put("D", "text_goop");
 
     }
     public void newSave(String[][] tab)
@@ -93,7 +94,7 @@ public class Save
                     res += line.charAt(i);
                     i ++;
                 }
-                return res;
+                return save_directory + "\\" + res;
             }
         catch (FileNotFoundException e)
         {
@@ -104,15 +105,4 @@ public class Save
 
     }
 
-        public static void main(String[] args)
-    {
-        Save save = new Save();
-        System.out.println(save.save_directory);
-        Extract extract = new Extract("/home/julien/Bureau/BabaIsYou/new/src/main/resources/level/default/level1.txt");
-        Environment map = new Environment();
-        map.setMap(extract.getDataList());
-        save.newSave(map.getMap());
-        System.out.println(save.getLastSave());
-
-    }
 }

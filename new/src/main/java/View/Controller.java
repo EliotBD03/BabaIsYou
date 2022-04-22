@@ -72,7 +72,7 @@ public class Controller {
 
     private static int indexLevel = 0;
 
-    private Main game;
+    private static Main game;
 
     private Main tempGame;
 
@@ -189,7 +189,7 @@ public class Controller {
     }
     public void switchToGame(ActionEvent event){
         try {
-            initializeGame(levelList[indexLevel]);
+            initializeGame("src/main/resources/level/default/" + levelList[indexLevel]);
             stage = (Stage)((Node)event.getSource()).getScene().getWindow();
             scene = new Scene(vbox,500,500,Color.BLACK);
             stage.setScene(scene);
@@ -207,9 +207,7 @@ public class Controller {
             switch (event1.getCode()) {
                 case ESCAPE:
                     try {
-                        System.out.println(scene);
                         switchToPause(event);
-                        System.out.println(scene);
                     } catch (IOException e) {
                         e.printStackTrace();
                     }
@@ -289,7 +287,7 @@ public class Controller {
 
     private void initializeGame(String levelPath) throws URISyntaxException {
         game = new Main();
-        File file = new File("src/main/resources/level/default/" + levelPath);
+        File file = new File(levelPath);
         game.makeTheGame(file.getAbsolutePath());
         //System.out.println("1");
         setTabpane();
@@ -643,7 +641,23 @@ public void playLevel(ActionEvent event)
     @FXML
     private void quitAndSave(ActionEvent event) throws IOException {
         saveLevel();
-        switchToScene1(event);
+        stage.close();
+    }
+    @FXML
+    private void conTinu(ActionEvent event)
+    {
+        try {
+
+            initializeGame(Main.getLastSave());
+            stage = (Stage)((Node)event.getSource()).getScene().getWindow();
+            scene = new Scene(vbox,500,500,Color.BLACK);
+            stage.setScene(scene);
+            keyInput(event);
+            stage.show();
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 }
 

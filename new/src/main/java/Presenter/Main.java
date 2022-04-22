@@ -128,4 +128,10 @@ public class Main
         Save save = new Save();
         save.newSave(map.getMap());
     }
+
+    public static String getLastSave()
+    {
+        Save save = new Save();
+        return save.getLastSave();
+    }
 }

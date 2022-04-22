@@ -44,5 +44,6 @@
          </image>
       </ImageView>
       <Button layoutX="189.0" layoutY="225.0" mnemonicParsing="false" onAction="#switchToMapChoice" text="levels" />
+      <Button layoutX="186.0" layoutY="400.0" mnemonicParsing="false" onAction="#conTinu" text="continue" />
     </children>
 </AnchorPane>

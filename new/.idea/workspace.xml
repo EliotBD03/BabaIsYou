@@ -5,11 +5,52 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="50973d8a-fe32-432d-aa49-acae49dce348" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/../javafx/build/classes/java/main/com/example/helloworld/Controller.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../javafx/build/classes/java/main/com/example/helloworld/HelloApplication$1.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../javafx/build/classes/java/main/com/example/helloworld/HelloApplication$2.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../javafx/build/classes/java/main/com/example/helloworld/HelloApplication.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../javafx/build/classes/java/main/module-info.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/7.4/executionHistory/executionHistory.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/7.4/executionHistory/executionHistory.bin" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/7.4/executionHistory/executionHistory.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/7.4/executionHistory/executionHistory.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/7.4/fileHashes/fileHashes.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/7.4/fileHashes/fileHashes.bin" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/7.4/fileHashes/fileHashes.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/7.4/fileHashes/fileHashes.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/cache.properties" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/cache.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/outputFiles.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/outputFiles.bin" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/file-system.probe" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/file-system.probe" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/gradle.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/gradle.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/Model/Actions.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/Model/Actions.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/Model/Baba.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/Model/Baba.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/Model/BigAlgorithm.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/Model/BigAlgorithm.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/Model/BlockRules$Is.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/Model/BlockRules$Is.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/Model/BlockRules$Push.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/Model/BlockRules$Push.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/Model/BlockRules$Sink.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/Model/BlockRules$Sink.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/Model/BlockRules$Stop.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/Model/BlockRules$Stop.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/Model/BlockRules$TextBaba.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/Model/BlockRules$TextBaba.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/Model/BlockRules$TextFlag.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/Model/BlockRules$TextFlag.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/Model/BlockRules$TextGoop.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/Model/BlockRules$TextGoop.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/Model/BlockRules$TextRock.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/Model/BlockRules$TextRock.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/Model/BlockRules$TextWall.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/Model/BlockRules$TextWall.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/Model/BlockRules$Win.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/Model/BlockRules$Win.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/Model/BlockRules$You.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/Model/BlockRules$You.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/Model/BlockRules.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/Model/BlockRules.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/Model/Entity.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/Model/Entity.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/Model/Environment.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/Model/Environment.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/Model/Extract.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/Model/Extract.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/Model/Flag.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/Model/Flag.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/Model/Goop.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/Model/Goop.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/Model/Input.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/Model/Input.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/Model/Item.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/Model/Item.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/Model/Main.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/Model/Main.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/Model/Rock.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/Model/Rock.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/Model/Rules.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/Model/Rules.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/Model/Wall.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/Model/Wall.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/Presenter/Main.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/Presenter/Main.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/Presenter/Save.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/Presenter/Save.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/View/Controller$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/View/Controller$1.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/View/Controller.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/View/Controller.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/View/HelloApplication.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/View/HelloApplication.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/module-info.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/module-info.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/distributions/new.tar" beforeDir="false" afterPath="$PROJECT_DIR$/build/distributions/new.tar" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/distributions/new.zip" beforeDir="false" afterPath="$PROJECT_DIR$/build/distributions/new.zip" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/libs/new.jar" beforeDir="false" afterPath="$PROJECT_DIR$/build/libs/new.jar" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/scripts/new" beforeDir="false" afterPath="$PROJECT_DIR$/build/scripts/new" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/scripts/new.bat" beforeDir="false" afterPath="$PROJECT_DIR$/build/scripts/new.bat" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -33,17 +74,10 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "WebServerToolWindowFactoryState": "false",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)"
-  }
-}]]></component>
+  <component name="PropertiesComponent">
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/.." />
+  </component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/src/main/java" />
@@ -69,6 +103,7 @@
       <workItem from="1649577071876" duration="5077000" />
       <workItem from="1649775562707" duration="738000" />
       <workItem from="1649776318999" duration="156000" />
+      <workItem from="1650606655581" duration="45000" />
     </task>
     <servers />
   </component>
