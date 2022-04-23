@@ -23,7 +23,7 @@
             <Image url="@../sprite/exit.gif" />
          </image>
       </ImageView>
-        <Button fx:id="playButton" layoutX="150.0" layoutY="150.0" mnemonicParsing="false" onAction="#switchToGame" opacity="0.0" prefHeight="50.0" prefWidth="150.0" text="Play">
+        <Button fx:id="playButton" layoutX="150.0" layoutY="150.0" mnemonicParsing="false" onAction="#switchToLetsGame" opacity="0.0" prefHeight="50.0" prefWidth="150.0" text="Play">
             <font>
                 <Font size="24.0" />
             </font>
@@ -43,7 +43,6 @@
             <Image url="@../sprite/babaisyoutitle.gif" />
          </image>
       </ImageView>
-      <Button layoutX="189.0" layoutY="225.0" mnemonicParsing="false" onAction="#switchToMapChoice" text="levels" />
-      <Button layoutX="186.0" layoutY="400.0" mnemonicParsing="false" onAction="#conTinu" text="continue" />
     </children>
 </AnchorPane>
+
