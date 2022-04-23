@@ -15,7 +15,7 @@ public class HelloApplication extends Application {
     @Override
     public void start(Stage stage)  throws IOException {
         try{
-            Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("/fxml/Menu.fxml")));
+            Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("/fxml/connection.fxml")));
             Scene scene = new Scene(root,450, 500 , Color.BLACK);
             stage.setTitle("Baba Is You");
             stage.setScene(scene);
