@@ -24,6 +24,7 @@ public class Save
         dico.put("G", "win");dico.put("B", "text_baba");
         dico.put("F", "text_flag");dico.put("R", "text_rock");
         dico.put("W", "text_wall");dico.put("?", "goop");
+        dico.put("*", "lava");dico.put("K", "kill");dico.put("L", "text_lava");
         dico.put(" ", null); dico.put("X", null);dico.put("D", "text_goop");
 
     }

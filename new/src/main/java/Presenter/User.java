@@ -1,6 +1,8 @@
 package Presenter;
 
 import java.io.File;
+import java.net.InetAddress;
+import java.net.UnknownHostException;
 import java.nio.charset.StandardCharsets;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
@@ -12,7 +14,7 @@ import java.util.Scanner;
 public class User
 {
     private static String id;
-    private final int[] levelAccess = new int[5];
+    private final int[] levelAccess = new  int[5];
     private static final String random = "player";
     private static final String pathRegister = new File("src/main/resources/users/register.txt").getAbsolutePath();
     private static final String pathAccessLevel = new File("src/main/resources/users/access_level.txt").getAbsolutePath();
@@ -28,12 +30,18 @@ public class User
         id = name;
     }
 
-    private void searchUser()
+    private void searchUser(){
+    try
     {
         Info info = new Info(pathRegister);
         String date = info.getUserInfo(id);
         if(date == null)
-            info.writeInfo(id + " " + dtf.format(LocalDateTime.now()));
+            info.writeInfo(id + " "+ InetAddress.getLocalHost().getHostAddress() + " " + dtf.format(LocalDateTime.now()));
+    }catch (UnknownHostException e)
+    {
+        System.out.println("cannot take the Local Ip address");
+        e.printStackTrace();
+    }
     }
     private void searchAccess()
     {
@@ -74,8 +82,8 @@ public class User
     public static void main(String[] args)
     {
         User user = new User("juju");
+        user.searchUser();
         user.searchAccess();
-        user.addLevel(3);
         user.writeLevelAccess();
     }
 }

@@ -18,6 +18,8 @@ public class Main
     private static Rock rock;
     private static Wall wall;
 
+    private static Lava lava;
+
     private static  String[][] temp;
 
     private static final Map<Character, Image> dico = new HashMap<Character, Image>();
@@ -41,6 +43,8 @@ public class Main
         dico.put('P', controller.pushImage); dico.put('F', controller.textFlagImage);
         dico.put('G', controller.winImage); dico.put('?', controller.goopImage);
         dico.put('M', controller.textGoopImage); dico.put('D', controller.textSinkImage);
+        dico.put('L', controller.textLavaImage);dico.put('K', controller.killImage);
+        dico.put('*', controller.lavaImage);
 
 
         Extract extract = new Extract(fileName);
@@ -51,15 +55,19 @@ public class Main
         flag = new Flag();
         rock = new Rock();
         wall = new Wall();
+        lava = new Lava();
+
     }
 
     public boolean makeMove(String event)
     {
+        System.out.println(map);
         addmap();
         baba.move(event);
         flag.move(event);
         rock.move(event);
         wall.move(event);
+        lava.move(event);
         return Item.win();
     }
 
