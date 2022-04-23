@@ -67,7 +67,7 @@ public class Controller {
     public final Image textGoopImage = new Image(getClass().getResource("/sprite/gooptext.png").toURI().toString());
     public final Image textSinkImage = new Image(getClass().getResource("/sprite/sinktext.png").toURI().toString());
 
-    private final String[] levelList = {"level1.txt", "level2.txt", "level3.txt", "level4.txt", "level5.txt"};
+    private final String[] levelList = {"level0.txt", "level1.txt", "level2.txt", "level3.txt", "level4.txt"};
     private static String level;
 
     private static int indexLevel = 0;
@@ -174,8 +174,8 @@ public class Controller {
         FXMLLoader loader = new FXMLLoader();
         loader.setLocation(getClass().getResource("/fxml/Pause.fxml"));
         Parent root = loader.load();
-        Scene scene1 = new Scene(root, 450, 500, Color.BLACK);
-        stage.setScene(scene1);
+        scene = new Scene(root, 450, 500, Color.BLACK);
+        stage.setScene(scene);
         stage.show();
 
         /*
@@ -333,10 +333,10 @@ public void switchToLevel(ActionEvent event) throws IOException, URISyntaxExcept
             keyInput(event);
             stage.show();
 }
-public void setLevelOne(ActionEvent event){level = "level1.txt";}
-public void setLevelTwo(ActionEvent event){level = "level2.txt";}
-public void setLevelThree(ActionEvent event){level = "level3.txt";}
-public void setLevelFour(ActionEvent event){level = "level4.txt";}
+public void setLevelOne(ActionEvent event){level = "level0.txt";}
+public void setLevelTwo(ActionEvent event){level = "level1.txt";}
+public void setLevelThree(ActionEvent event){level = "level2.txt";}
+public void setLevelFour(ActionEvent event){level = "level3.txt";}
 
 public void playLevel(ActionEvent event)
 {
@@ -628,7 +628,7 @@ public void playLevel(ActionEvent event)
         }
     }
     public void logout(ActionEvent event){
-        stage = (Stage)scenePane.getScene().getWindow();
+        stage = (Stage)scene.getWindow();
         System.out.println("logout");
         stage.close();
     }
@@ -641,16 +641,19 @@ public void playLevel(ActionEvent event)
     @FXML
     private void quitAndSave(ActionEvent event) throws IOException {
         saveLevel();
-        stage.close();
+        logout(event);
     }
     @FXML
     private void conTinu(ActionEvent event)
     {
+        if(stage == null)
+        {
+            stage = (Stage)((Node)event.getSource()).getScene().getWindow();
+            scene = new Scene(vbox,500,500,Color.BLACK);
+        }
         try {
 
             initializeGame(Main.getLastSave());
-            stage = (Stage)((Node)event.getSource()).getScene().getWindow();
-            scene = new Scene(vbox,500,500,Color.BLACK);
             stage.setScene(scene);
             keyInput(event);
             stage.show();

@@ -50,13 +50,16 @@ public class Flag extends Item
 
     protected Enum getThing(Enum[][] tabperm){return getthing(tabperm, Rules.FLAG);}
 
-    public boolean thingIsSink(){return thingisskink(BigAlgorithm.getTabperm(), Rules.FLAG);}
+    public boolean thingIsSink(){return thingissink(BigAlgorithm.getTabperm(), Rules.FLAG);}
+
+    public boolean thingIsKill(){return thingiskill(BigAlgorithm.getTabperm(), Rules.FLAG);}
 
 
 
     @Override
     public void move(String input)
     {
+        System.out.println("je passe dans flag");
         super.move(input, Rules.FLAG);
     }
 }

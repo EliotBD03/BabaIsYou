@@ -94,7 +94,7 @@ public class Save
                     res += line.charAt(i);
                     i ++;
                 }
-                return save_directory + "\\" + res;
+                return save_directory + File.separator + res;
             }
         catch (FileNotFoundException e)
         {

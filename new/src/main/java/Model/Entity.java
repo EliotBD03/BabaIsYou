@@ -95,4 +95,11 @@ interface Entity
      * @return vrai si c'est le cas, faux sinon
      */
     boolean thingIsSink();
+    /**
+     * methode permettant de savoir si un objet a la caractéristique "kill"
+     * ie: si le personnage qu'on controle touche cet objet, alors il disparait
+     * @return vrai si c'est le cas, faux sinon
+     */
+     boolean thingIsKill();
+
     }

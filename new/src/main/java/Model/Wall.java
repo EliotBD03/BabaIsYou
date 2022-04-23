@@ -47,7 +47,9 @@ public class Wall extends Item
 
     protected Enum getThing(Enum[][] tabperm){return getthing(tabperm, Rules.WALL);}
 
-    public boolean thingIsSink(){return thingisskink(BigAlgorithm.getTabperm(), Rules.WALL);}
+    public boolean thingIsSink(){return thingissink(BigAlgorithm.getTabperm(), Rules.WALL);}
+
+    public boolean thingIsKill(){return thingiskill(BigAlgorithm.getTabperm(), Rules.WALL);}
 
 
     @Override

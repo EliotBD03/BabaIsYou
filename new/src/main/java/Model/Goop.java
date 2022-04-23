@@ -47,7 +47,9 @@ public class Goop extends Item
 
     protected Enum getThing(Enum[][] tabperm){return getthing(tabperm, Rules.GOOP);}
 
-    public boolean thingIsSink(){return thingisskink(BigAlgorithm.getTabperm(), Rules.GOOP);}
+    public boolean thingIsSink(){return thingissink(BigAlgorithm.getTabperm(), Rules.GOOP);}
+
+    public boolean thingIsKill(){return thingiskill(BigAlgorithm.getTabperm(), Rules.GOOP);}
 
     @Override
     public void move(String input)

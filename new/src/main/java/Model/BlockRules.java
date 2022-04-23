@@ -45,6 +45,11 @@ public class BlockRules extends Environment implements Entity
     @Override
     public boolean thingIsSink() {return false;}
 
+    @Override
+    public boolean thingIsKill() {
+        return false;
+    }
+
     //ces classes internes représentent toutes les règles, elles ont toutes le même moyen d'implémentation sauf pour skin(ce qui permet
     //de les différencier dans un tableau de String
     public static class TextFlag extends BlockRules
@@ -200,5 +205,35 @@ public class BlockRules extends Environment implements Entity
             super.posX = position[1];
         }
 
+    }
+
+    public static class TextLava extends BlockRules
+    {
+        private static final String skin = "L";
+
+        @Override
+        public String getSkin(){return skin;}
+
+        public TextLava()
+        {
+            int[] position = super.searchtype(TextLava.class);
+            super.posY = position[0];
+            super.posX = position[1];
+        }
+    }
+
+    public static class Kill extends BlockRules
+    {
+        private static final String skin = "K";
+
+        @Override
+        public String getSkin(){return skin;}
+
+        public Kill()
+        {
+            int[] position = super.searchtype(TextLava.class);
+            super.posY = position[0];
+            super.posX = position[1];
+        }
     }
 }

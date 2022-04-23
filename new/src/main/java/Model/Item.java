@@ -417,7 +417,7 @@ public class Item extends Environment implements Entity
                             return;
                         }
                         //si l'objet est bien noStatus, on ajoute l'élément à notre map temp
-                        else if (mapO[i][j].noStatus() || mapO[i][j].thingIsSink())
+                        else if (mapO[i][j].noStatus() || mapO[i][j].thingIsSink() || mapO[i][j].thingIsKill())
                         {
                             flag = true;
                             res[i][j] = mapO[i][j];
@@ -445,6 +445,10 @@ public class Item extends Environment implements Entity
                 if(mapO[i][j] != null && temp_object_map[i][j] != null && mapO[i][j].isItem() && temp_object_map[i][j].thingIsSink() && mapO[i][j] != temp_object_map[i][j])
                 {
                     temp_object_map[i][j] = null;
+                    mapO[i][j] = temp_object_map[i][j];
+                }
+                else if(mapO[i][j] != null && temp_object_map[i][j] != null && mapO[i][j].thingIsYou() && temp_object_map[i][j].thingIsKill())
+                {
                     mapO[i][j] = temp_object_map[i][j];
                 }
                 else if(mapO[i][j] == null && temp_object_map[i][j] != null)
@@ -484,11 +488,24 @@ public class Item extends Environment implements Entity
         return false;
     }
 
-    protected boolean thingisskink(Enum[][] tabperm, Rules object)
+    protected boolean thingissink(Enum[][] tabperm, Rules object)
     {
         for(int i = 0; i<= tabperm.length - 1; i ++)
             if(tabperm[i][0] == object && tabperm[i][1] == Rules.SINK)
                 return true;
+        return false;
+    }
+
+    @Override
+    public boolean thingIsKill(){return false;}
+
+    public boolean thingiskill(Enum[][] tabperm, Rules object)
+    {
+        for(int i = 0; i<= tabperm.length - 1; i ++)
+            if(tabperm[i][0] == object && tabperm[i][1] == Rules.KILL)
+            {
+                return true;
+            }
         return false;
     }
 

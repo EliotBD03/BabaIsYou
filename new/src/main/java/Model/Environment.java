@@ -128,6 +128,8 @@ public class Environment {
                     return new Flag(true);
                 case "goop":
                     return new Goop(true);
+                case "lava":
+                    return new Lava(true);
                 case "you":
                     return new BlockRules.You();
                 case "win":
@@ -144,6 +146,10 @@ public class Environment {
                     return new BlockRules.TextGoop();
                 case "sink":
                     return new BlockRules.Sink();
+                case "text_lava":
+                    return new BlockRules.TextLava();
+                case "kill":
+                    return new BlockRules.Kill();
             }
             return null;
         }
