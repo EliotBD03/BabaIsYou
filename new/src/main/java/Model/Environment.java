@@ -119,17 +119,17 @@ public class Environment {
                 case "push":
                     return new BlockRules.Push();
                 case "wall":
-                    return new Wall(true);
+                    return new Wall();
                 case "rock":
-                    return new Rock(true);
+                    return new Rock();
                 case "baba":
-                    return new Baba(true);
+                    return new Baba();
                 case "flag":
-                    return new Flag(true);
+                    return new Flag();
                 case "goop":
-                    return new Goop(true);
+                    return new Goop();
                 case "lava":
-                    return new Lava(true);
+                    return new Lava();
                 case "you":
                     return new BlockRules.You();
                 case "win":

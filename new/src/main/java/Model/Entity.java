@@ -16,10 +16,9 @@ interface Entity
 
     /**
      * methode permettant de savoir si l'objet peut etre poussé
-     * @param tabperm le tableau contenant les permissions issu de la classe BigAlgorithm
      * @return vrai si l'objet peut etre poussé, faux sinon
      */
-    boolean canBePushed(Enum[][] tabperm);
+    boolean thingIsPush(Enum[][] tabperm);
 
     /**
      * methode permettant de savoir si l'objet peut bouger dans une certaine direction
@@ -30,7 +29,7 @@ interface Entity
      * @param posx la position de l'objet en x (en l'occurence apres mouvement)
      * @return vrai si l'objet peut bouger, faux sinon
      */
-    boolean canMoveX(Enum[][] tabperm, Rules object,int posy, int posx);
+    boolean canMoveX(Enum[][] tabperm,int posy, int posx);
 
     /**
      * methode permettant de savoir si l'objet peut bouger dans une certaine direction
@@ -41,13 +40,13 @@ interface Entity
      * @param posy la position de l'objet en y (en l'occurence apres mouvement)
      * @return vrai si l'objet peut bouger, faux sinon
      */
-    boolean canMoveY(Enum[][] tabperm,Rules object,int posy, int posx);
+    boolean canMoveY(Enum[][] tabperm,int posy, int posx);
 
     /**
      * methode permettant de savoir si l'objet qui est instancié peut-être contrôlé
      * @return vrai si l'objet peut être contrôlé ,faux sinon
      */
-    boolean thingIsYou();
+    boolean thingIsYou(Enum[][] tabperm);
 
     /**
      * methode permettant de savoir si l'objet qui est instancié va "pousser" pendant son mouvement
@@ -74,7 +73,7 @@ interface Entity
      * ie : l'objet ne peut bouger de lui-même, ne peut pas être poussé et ne peut pas être traversé
      * @return vrai si l'objet est "stop", faux sinon
      */
-    boolean thingIsStop();
+    boolean thingIsStop(Enum[][] tabperm);
 
     /**
      * methode permettant de savoir si un objet est un autre objet
@@ -87,19 +86,19 @@ interface Entity
      * ie : concidéré comme absent. Autrement dit, il ne bouge pas et peut être traversé
      * @return vrai si l'objet est "no status" , faux sinon
      */
-    boolean noStatus();
+    boolean noStatus(Enum[][] tabperm);
 
     /**
      * methode permettant de savoir si l'objet qui est instancié a la caractéristique "sink"
      * ie : l'objet noie les objets de type item
      * @return vrai si c'est le cas, faux sinon
      */
-    boolean thingIsSink();
+    boolean thingIsSink(Enum[][] tabperm);
     /**
      * methode permettant de savoir si un objet a la caractéristique "kill"
      * ie: si le personnage qu'on controle touche cet objet, alors il disparait
      * @return vrai si c'est le cas, faux sinon
      */
-     boolean thingIsKill();
-
+     boolean thingIsKill(Enum[][] tabperm);
+     boolean thingIsWin(Enum[][] tabperm);
     }

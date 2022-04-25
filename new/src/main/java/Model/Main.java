@@ -33,7 +33,6 @@ public class Main
                     break;
                 }
                 map.actualiseMap();
-                System.out.println(map);
             }
 
         }

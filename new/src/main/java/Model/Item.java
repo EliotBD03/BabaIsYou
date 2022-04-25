@@ -8,25 +8,15 @@ import java.util.Queue;
  */
 public class Item extends Environment implements Entity
 {
+    protected Rules object = Rules.NONE;
     //représente la position en x d'un objet
     protected int posX;
     //représente la position en x d'un objet
     protected int posY;
     //représente l'apparence d'un objet
     protected String skin;
-    //représente la caractéristique d'être contrôlé
-    protected boolean youStatus = false;
-    //représente la caractéristique d'un objet à être "poussée"
-    protected boolean pushStatus = false;
-    //représente la caractéristique d'un objet à ne pas pouvoir être bougé
-    protected boolean stopStatus = false;
-    //représente si l'objet a "gagné"
     private static boolean winStatus = false;
-    //représente l'objet qui est sink
-    protected boolean sinkStatus = false;
-    //représente l'objet qui a aucun status
-    protected boolean noStatus = true;
-    //représente les coordonnés des objets qui sont win
+
     private ArrayList<int[]> coordonates_win = new ArrayList<int[]>();
     //la map temporaire contenant tous les objets qui n'ont pas de status
     private static Entity[][] temp_object_map = new Entity[mapO.length][mapO[0].length];
@@ -36,10 +26,7 @@ public class Item extends Environment implements Entity
      * methode permettant d'être propre aux classes enfantes de ITEM
      * @return but : la methode thingisyou()
      */
-    @Override
-    public boolean thingIsYou(){return false;};
-
-    protected boolean thingisyou(Enum[][] tabperm, Rules object)
+    public boolean thingIsYou(Enum[][] tabperm)
     {
         for(int i = 0; i <= tabperm.length - 1; i++)
         {
@@ -52,19 +39,12 @@ public class Item extends Environment implements Entity
      * methode permettant d'être propre aux classes enfantes de ITEM
      * @return but : la methode thingisstop()
      */
-    @Override
-    public  boolean thingIsStop(){return false;}
 
     /**
      * methode permettant d'être propre aux classes enfantes de ITEM
      * @return but : la methode thingisanother()
      */
-    @Override
-    public boolean thingIsAnotherThing(Enum[][] tabperm) {
-        return false;
-    }
-
-    protected boolean thingisanortherthing(Enum[][] tabperm, Rules object)
+    public boolean thingIsAnotherThing(Enum[][] tabperm)
     {
         Enum[] thing = {Rules.BABA,Rules.FLAG,Rules.ROCK,Rules.WALL};
 
@@ -75,14 +55,12 @@ public class Item extends Environment implements Entity
         return false;
     }
 
-    protected Enum getThing(Enum[][] tabperm){return null;}
     /**
      * cette méthode permet de récupérer l'élément qui compte remplacer object
      * @param tabperm tableau des permissions
-     * @param object objet qui compte être remplacé
      * @return l'élément qui remplace object
      */
-    protected Enum getthing(Enum[][] tabperm, Rules object)
+    protected Enum getThing(Enum[][] tabperm)
     {
         Enum[] thing = {Rules.BABA,Rules.FLAG,Rules.ROCK,Rules.WALL};
 
@@ -104,7 +82,7 @@ public class Item extends Environment implements Entity
                     {
                         if(mapO[i][j] == temp_object_map[i][j])
                         {
-                            System.out.println("je passe dans la condition");
+
                             temp_object_map[i][j] = null;
                         }
                         mapO[i][j] = thing;
@@ -114,7 +92,7 @@ public class Item extends Environment implements Entity
 
     }
 
-    protected boolean thingisstop(Enum[][] tabperm, Rules object)
+    public boolean thingIsStop(Enum[][] tabperm)
     {
         for(int i = 0; i <= tabperm.length - 1; i++)
         {
@@ -137,17 +115,9 @@ public class Item extends Environment implements Entity
     public String getSkin() {
         return null;
     }
-    /**
-     * methode qui sera implémenté dans les classes enfants
-     * @return false par défaut
-     */
-    @Override
-    public boolean canBePushed(Enum[][] tabperm) {
-        return false;
-    }
 
     @Override
-    public boolean canMoveX(Enum[][] tabperm, Rules object,int posy, int posx)
+    public boolean canMoveX(Enum[][] tabperm,int posy, int posx)
     {
         //vrai si : -posx ne situe pas en dehors des limites de la map
         //          -l'élément se situant à l'endroit indiqué par les coordonnés
@@ -155,14 +125,14 @@ public class Item extends Environment implements Entity
         if(posx < getWidth() - 1 && posx > 0 && mapO[posy][posx] == null)
             return true;
         //vrai si : pareil que celle du dessus sauf que l'élément doit avoir "nostatus"
-        if(posx < getWidth() - 1 && posx > 0 && (mapO[posy][posx].noStatus() || mapO[posy][posx].thingIsSink()))
+        if(posx < getWidth() - 1 && posx > 0 && (mapO[posy][posx].noStatus(BigAlgorithm.getTabperm()) || mapO[posy][posx].thingIsSink(BigAlgorithm.getTabperm())))
             return true;
         //faux si : aucune des conditions n'est respecté
         return false;
     }
 
     @Override
-    public boolean canMoveY(Enum[][] tabperm,Rules object,int posy, int posx)
+    public boolean canMoveY(Enum[][] tabperm,int posy, int posx)
     {
         //vrai si : -posy ne situe pas en dehors des limites de la map
         //          -l'élément se situant à l'endroit indiqué par les coordonnés
@@ -170,7 +140,7 @@ public class Item extends Environment implements Entity
         if(posy < getLength() - 1 && posy > 0 && mapO[posy][posx] == null)
             return true;
         //vrai si : pareil que celle du dessus sauf que l'élément doit avoir "nostatus"
-        if(posy < getLength() - 1 && posy > 0 && (mapO[posy][posx].noStatus() || mapO[posy][posx].thingIsSink()))
+        if(posy < getLength() - 1 && posy > 0 && (mapO[posy][posx].noStatus(BigAlgorithm.getTabperm()) || mapO[posy][posx].thingIsSink(BigAlgorithm.getTabperm())))
             return true;
         //faux si : aucune des conditions n'est respecté
         return false;
@@ -182,7 +152,7 @@ public class Item extends Environment implements Entity
         //vrai si : -posx se situe dans les limites de la map
         //          -l'élément se situant à l'endroit indiqué par les coordonnés
         //           peut être poussé
-        if(posx+ 1 < getWidth() - 1 && posX - 1 > 0 && mapO[posy][posx] != null && mapO[posy][posx].canBePushed(tabperm))
+        if(posx+ 1 < getWidth() - 1 && posX - 1 > 0 && mapO[posy][posx] != null && mapO[posy][posx].thingIsPush(tabperm))
             return true;
         //faux si : la condition n'est pas respectée
         return false;
@@ -194,7 +164,7 @@ public class Item extends Environment implements Entity
         //vrai si : -posy se situe dans les limites de la map
         //          -l'élément se situant à l'endroit indiqué par les coordonnés
         //           peut être poussé
-        if( posy + 1 < getLength() - 1 && posy  - 1> 0 && mapO[posy][posx] != null && mapO[posy][posx].canBePushed(tabperm))
+        if( posy + 1 < getLength() - 1 && posy  - 1> 0 && mapO[posy][posx] != null && mapO[posy][posx].thingIsPush(tabperm))
         {
             return true;
         }
@@ -203,60 +173,58 @@ public class Item extends Environment implements Entity
     }
 
     /**
-     * methode permettant d'être propre aux classes enfantes de ITEM
-     * @param input : entrée utilisateur
-     */
-
-    protected void move(String input){};
-
-    /**
      * la méthode move consiste à effectuer des changements dans la map de type Entity
      * par l'intermédiaire d'une entrée utilisateur et de l'objet issu de Rules correspondant
      * à l'instance de la méthode
      * @param input entrée utilisateur
-     * @param item but : correspond à l'objet qui l'instancie (voir dans les classes enfants)
      */
 
-    protected void move(String input, Rules item)
+    public void move(String input)
     {
         //on va d'office regarder si des objets sont inter-changeables
         swithObject(BigAlgorithm.getTabperm());
         //on cherche les coordonnés des objets qui ont la caractéristique win
-        searchWin();
         //on initialise la map temporaire de type Entity
         //où se retrouve tous les objets qui n'ont aucun status ("noStatus()")
         setTempObjectMap();
+        //searchWin();
+
         //on vérifie si l'instance qui emploie la méthode peut bien être contrôlé
-        if(thingIsYou())
+        if(thingIsYou(BigAlgorithm.getTabperm()))
         {
+
             //on va chercher les 4 cas possibles d'entrée
             //car la différence entre les entrées influera sur le comportement des méthodes
             switch (input.charAt(0))
             {
                 //si c'est 'z', on compte aller vers le haut
                 case 'z':
+
                     //les deux boucles for vont nous permettre de parcourir tout le tableau d'objet
                     //pour vérifier à chaque fois si l'objet en position (j,i) est du même type
                     //que l'instance qui utilise cette méthode (voir la première condition)
                     for(int i = 0; i <= mapO.length - 1; i++)
                         for(int j = 0; j <= mapO[i].length - 1; j++)
+                        {
+
+
                             if (this.getClass().isInstance(mapO[i][j]))
                             {
+
                                 //on va vérifier 4 cas: -est ce que l'objet va disparaitre(ie: l'objet devant lui est sink)
                                 //                      -est ce que l'objet bouge ?
                                 //                      -est ce que l'objet a gagné ?
                                 //                      -est ce que l'objet pousse ?
                                 //note : on ne peut réaliser qu'une action à la fois(else if)
-                                if (canMoveY(BigAlgorithm.getTabperm(),item,i - 1, j))
+                                if (canMoveY(BigAlgorithm.getTabperm(),i - 1, j))
                                 {
+
                                     posY = Actions.up(mapO, i, j);
                                 }
-                                else if(thingHasWin(i - 1, j))
-                                    winStatus = true;
-
                                 else if(thingIsPushingY(BigAlgorithm.getTabperm(),i - 1, j))
                                     posY = Actions.pushY(-1, i, j, mapO);
                             }
+                        }
                     break;
                 //si c'est 's', on compte aller vers le bas
                 case 's':
@@ -265,11 +233,11 @@ public class Item extends Environment implements Entity
                             if (this.getClass().isInstance(mapO[i][j]))
                             {
                                 //on regarde si on a le droit d'avancer
-                                if (canMoveY(BigAlgorithm.getTabperm(),item,i+ 1,j))
+                                if (canMoveY(BigAlgorithm.getTabperm(),i+ 1,j))
                                     posY = Actions.down(mapO, i, j);
                                 //on regarde si on a atteint un objet qui est win
-                                else if(thingHasWin( i+ 1, j))
-                                    winStatus = true;
+                               // else if(thingHasWin( i+ 1, j))
+                                 //   winStatus = true;
                                 //on regarde si on pousse quelque chose
                                 else if(thingIsPushingY(BigAlgorithm.getTabperm(),i + 1, j))
                                     posY = Actions.pushY(1, i, j, mapO);
@@ -281,11 +249,11 @@ public class Item extends Environment implements Entity
                         for(int j = 0; j <= mapO[i].length - 1; j++)
                             if(this.getClass().isInstance(mapO[i][j]))
                             {
-                                if (canMoveX(BigAlgorithm.getTabperm(),item,i,j - 1))
+                                if (canMoveX(BigAlgorithm.getTabperm(),i,j - 1))
                                     posX = Actions.left(mapO, i, j);
 
-                                else if(thingHasWin( i, j - 1))
-                                    winStatus = true;
+                               // else if(thingHasWin( i, j - 1))
+                                //   winStatus = true;
 
                                 else if(thingIsPushingX(BigAlgorithm.getTabperm(),i, j - 1))
                                     posX = Actions.pushX(-1, i, j, mapO);
@@ -297,11 +265,11 @@ public class Item extends Environment implements Entity
                         for(int j = mapO[i].length - 1; j >= 0; j--)
                             if (this.getClass().isInstance(mapO[i][j]))
                             {
-                                if (canMoveX(BigAlgorithm.getTabperm(),item, i, j + 1))
+                                if (canMoveX(BigAlgorithm.getTabperm(), i, j + 1))
                                     posX = Actions.right(mapO, i, j);
 
-                                else if(thingHasWin( i, j + 1))
-                                    winStatus = true;
+                                //else if(thingHasWin( i, j + 1))
+                                  //  winStatus = true;
 
                                 else if(thingIsPushingX(BigAlgorithm.getTabperm(),i, j + 1))
                                     posX = Actions.pushX(1, i, j, mapO);
@@ -327,6 +295,7 @@ public class Item extends Environment implements Entity
         //si c'est le cas -> true sinon -> false
         for(int k = 0; k <= coordonates_win.size() - 1; k++)
         {
+            System.out.println(i + " " + j + "win : " + coordonates_win.get(k)[0] + " " + coordonates_win.get(k)[1]);
             if(i == coordonates_win.get(k)[0] && j == coordonates_win.get(k)[1])
                 return true;
         }
@@ -350,9 +319,8 @@ public class Item extends Environment implements Entity
                     coordonates_win = new ArrayList<int[]>();
                 //sinon si on vérifie si l'objet est du type qu'on cherche
                     // si oui, alors on l'ajoute dans l'arraylist
-                else if(mapO[i][j] != null && mapO[i][j].getClass() == win_object.getClass())
+                else if(temp_object_map[i][j] != null && temp_object_map[i][j].thingIsWin(BigAlgorithm.getTabperm()))
                 {
-                    temp_object_map[i][j] = mapO[i][j];
                     int[] pos = {i,j};
                     coordonates_win.add(pos);
                 }
@@ -406,19 +374,24 @@ public class Item extends Environment implements Entity
             for(int i = 0; i <= mapO.length - 1; i++)
                 for(int j = 0; j <= mapO[i].length - 1; j++)
                 {
+                    Entity bulkyThing = null;
                     //le try catch sert au cas où map[i][j] est null et donc la méthode noStatus
                     //n'est pas applicable
                     try
                     {
+                        boolean condition  = mapO[i][j].noStatus(BigAlgorithm.getTabperm()) || mapO[i][j].thingIsSink(BigAlgorithm.getTabperm()) || mapO[i][j].thingIsKill(BigAlgorithm.getTabperm())|| mapO[i][j].thingIsWin(BigAlgorithm.getTabperm());
                         //si un objet qui se trouve sur un element de la map tempk, on break
                         //car on pourrait écrase l'objet de temp par l'objet de mapO
-                        if(temp_object_map[i][j] != null && mapO[i][j] != temp_object_map[i][j])
+                        if(temp_object_map[i][j] != null && mapO[i][j] != null && mapO[i][j] != temp_object_map[i][j])
                         {
+<<<<<<< HEAD
+=======
                             System.out.println(mapO[i][j].getClass());
+>>>>>>> 1969376bc74a7d49339e3915bf3b8e818a87a4f2
                             res[i][j] = temp_object_map[i][j];
                         }
                         //si l'objet est bien noStatus, on ajoute l'élément à notre map temp
-                        else if (mapO[i][j].noStatus() || mapO[i][j].thingIsSink() || mapO[i][j].thingIsKill())
+                        else if (condition)
                         {
                             flag = true;
                             res[i][j] = mapO[i][j];
@@ -448,31 +421,39 @@ public class Item extends Environment implements Entity
                 //si on a rien sur la map visible et qu'il y a un element sur temp
                 //alors on le rajoute à la map visible
             {
-                if(mapO[i][j] != null && temp_object_map[i][j] != null && mapO[i][j].isItem() && temp_object_map[i][j].thingIsSink() && mapO[i][j] != temp_object_map[i][j])
+                if(mapO[i][j] != null && temp_object_map[i][j] != null && mapO[i][j].isItem() && temp_object_map[i][j].thingIsSink(BigAlgorithm.getTabperm()) && mapO[i][j] != temp_object_map[i][j])
                 {
+
                     temp_object_map[i][j] = null;
                     mapO[i][j] = temp_object_map[i][j];
                 }
-                else if(mapO[i][j] != null && temp_object_map[i][j] != null && mapO[i][j].thingIsYou() && temp_object_map[i][j].thingIsKill())
+                else if(mapO[i][j] != null && temp_object_map[i][j] != null && mapO[i][j].thingIsYou(BigAlgorithm.getTabperm()) && temp_object_map[i][j].thingIsKill(BigAlgorithm.getTabperm()) && mapO[i][j] != temp_object_map[i][j])
                 {
+
                     mapO[i][j] = temp_object_map[i][j];
                 }
+                else if(mapO[i][j] != null && temp_object_map[i][j] != null && temp_object_map[i][j].thingIsWin(BigAlgorithm.getTabperm()) && mapO[i][j].thingIsYou(BigAlgorithm.getTabperm()))
+                    winStatus = true;
                 else if(mapO[i][j] == null && temp_object_map[i][j] != null)
                 {
+
                     mapO[i][j] = temp_object_map[i][j];
                 }
+<<<<<<< HEAD
+                //else if (mapO[i][j] == temp_object_map[i][j] )
+                    //temp_object_map[i][j] = null;
+=======
                 else if (mapO[i][j] == temp_object_map[i][j])
                    mapO[i][j] = temp_object_map[i][j];
+>>>>>>> 1969376bc74a7d49339e3915bf3b8e818a87a4f2
             }
      }
     /**
      * methode qui sera implémenté dans les classes enfants
      * @return false par défaut, but: retourner nostatus()
      */
-     @Override
-     public boolean noStatus(){return false;}
 
-     protected boolean nostatus(Enum[][] tabperm, Rules object)
+     public boolean noStatus(Enum[][] tabperm)
      {
          //si dans tous les éléments de tabperm, on y trouve que notre objet(implicitement il a une règle)
          //alors on return false
@@ -489,12 +470,7 @@ public class Item extends Environment implements Entity
      * methode qui sera implémenté dans les classes enfants
      * @return false par défaut, but: retourner thingissink()
      */
-    @Override
-    public boolean thingIsSink() {
-        return false;
-    }
-
-    protected boolean thingissink(Enum[][] tabperm, Rules object)
+    public boolean thingIsSink(Enum[][] tabperm)
     {
         for(int i = 0; i<= tabperm.length - 1; i ++)
             if(tabperm[i][0] == object && tabperm[i][1] == Rules.SINK)
@@ -502,16 +478,38 @@ public class Item extends Environment implements Entity
         return false;
     }
 
-    @Override
-    public boolean thingIsKill(){return false;}
 
-    public boolean thingiskill(Enum[][] tabperm, Rules object)
+    public boolean thingIsKill(Enum[][] tabperm)
     {
         for(int i = 0; i<= tabperm.length - 1; i ++)
             if(tabperm[i][0] == object && tabperm[i][1] == Rules.KILL)
             {
                 return true;
             }
+        return false;
+    }
+
+    @Override
+    public boolean thingIsWin(Enum[][] tabperm) {
+        for(int i = 0; i <= tabperm.length - 1; i++)
+        {
+            if(tabperm[i][0] ==  object && tabperm[i][1] == Rules.WIN)
+            {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    public boolean thingIsPush(Enum[][] tabperm)
+    {
+        for(int i = 0; i <= tabperm.length - 1; i++)
+        {
+            if(tabperm[i][0] ==  object && tabperm[i][1] == Rules.PUSH)
+            {
+                return true;
+            }
+        }
         return false;
     }
 

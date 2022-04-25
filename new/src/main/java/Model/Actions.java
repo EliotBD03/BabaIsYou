@@ -83,7 +83,7 @@ public class Actions
         {
             case -1:
                     //tant qu'on est encore sur un élément qui peut être poussé(on va vers la gauche)
-                    while(map_object[posY][temp] != null && map_object[posY][temp].canBePushed(BigAlgorithm.getTabperm()))
+                    while(map_object[posY][temp] != null && map_object[posY][temp].thingIsPush(BigAlgorithm.getTabperm()))
                          temp --;
                     int first_entity = temp ;
                     temp ++;
@@ -93,7 +93,7 @@ public class Actions
                     {
                         //si l'objet sur lequel on tombe est un élément qui ne peut pas être poussé
                         //on arrête la boucle
-                        if(map_object[posY][first_entity] != null && map_object[posY][first_entity].thingIsStop())
+                        if(map_object[posY][first_entity] != null && map_object[posY][first_entity].thingIsStop(BigAlgorithm.getTabperm()))
                             break;
                         //sinon, on déplace les éléments dans la direction voulue
                         map_object[posY][temp - 1] = map_object[posY][temp];
@@ -104,13 +104,13 @@ public class Actions
                     break;
             case 1:
                     temp = posX + 1;
-                    while(map_object[posY][temp] != null && map_object[posY][temp].canBePushed(BigAlgorithm.getTabperm()))
+                    while(map_object[posY][temp] != null && map_object[posY][temp].thingIsPush(BigAlgorithm.getTabperm()))
                        temp ++;
                     int last_entity = temp;
                     temp --;
                     while(temp >= posX  && last_entity + 1 <= map_object[posY].length - 1)
                     {
-                            if(map_object[posY][last_entity] != null && map_object[posY][last_entity].thingIsStop())
+                            if(map_object[posY][last_entity] != null && map_object[posY][last_entity].thingIsStop(BigAlgorithm.getTabperm()))
                                 break;
                             map_object[posY][temp + 1] = map_object[posY][temp];
                             map_object[posY][temp] = null;
@@ -138,7 +138,7 @@ public class Actions
         switch (y)
         {
             case -1:
-                while(map_object[temp][posX] != null && map_object[temp][posX].canBePushed(BigAlgorithm.getTabperm()))
+                while(map_object[temp][posX] != null && map_object[temp][posX].thingIsPush(BigAlgorithm.getTabperm()))
                 {
                     temp --;
                 }
@@ -147,7 +147,7 @@ public class Actions
                 System.out.println("posy = " + posY +" temp = " + temp);
                 while(temp <= posY  && first_entity - 1 >= 0)
                 {
-                    if(map_object[first_entity][posX] != null && map_object[first_entity][posX].thingIsStop())
+                    if(map_object[first_entity][posX] != null && map_object[first_entity][posX].thingIsStop(BigAlgorithm.getTabperm()))
                         break;
                     map_object[temp - 1][posX] = map_object[temp][posX];
                     map_object[temp][posX] = null;
@@ -157,13 +157,13 @@ public class Actions
                 break;
             case 1:
                 temp = posY + 1;
-                while(map_object[temp][posX] != null && map_object[temp][posX].canBePushed(BigAlgorithm.getTabperm()))
+                while(map_object[temp][posX] != null && map_object[temp][posX].thingIsPush(BigAlgorithm.getTabperm()))
                     temp ++;
                 int last_entity = temp;
                 temp --;
                 while(temp >= posY && last_entity + 1 <= map_object.length - 1)
                 {
-                    if(map_object[last_entity][posX] != null && map_object[last_entity][posX].thingIsStop())
+                    if(map_object[last_entity][posX] != null && map_object[last_entity][posX].thingIsStop(BigAlgorithm.getTabperm()))
                         break;
                     map_object[temp + 1][posX] = map_object[temp][posX];
                     map_object[temp][posX] = null;

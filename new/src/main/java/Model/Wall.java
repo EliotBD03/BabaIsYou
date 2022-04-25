@@ -14,47 +14,9 @@ public class Wall extends Item
 
     public Wall()
     {
+        super.object = Rules.WALL;
         int[] position = super.searchtype(Wall.class);
         super.posY = position[0];
         super.posX = position[1];
-        super.pushStatus =  canBePushed(BigAlgorithm.getTabperm());
-        super.stopStatus = thingIsStop();
-        super.youStatus = thingIsYou();
-        super.noStatus = noStatus();
-    }
-
-    public boolean canBePushed(Enum[][] tabperm)
-    {
-        for(int i = 0; i <= tabperm.length - 1; i++)
-        {
-            if(tabperm[i][0] ==  Rules.WALL && tabperm[i][1] == Rules.PUSH)
-            {
-                return true;
-            }
-        }
-        return false;
-    }
-    public boolean thingIsStop(){return super.thingisstop(BigAlgorithm.getTabperm(), Rules.WALL);}
-
-    public boolean noStatus()
-    {
-        return super.nostatus(BigAlgorithm.getTabperm(), Rules.WALL);
-    }
-
-    public boolean thingIsYou(){return super.thingisyou(BigAlgorithm.getTabperm(), Rules.WALL);}
-
-    public boolean thingIsAnotherThing(Enum[][] tabperm){return thingisanortherthing(tabperm, Rules.WALL);}
-
-    protected Enum getThing(Enum[][] tabperm){return getthing(tabperm, Rules.WALL);}
-
-    public boolean thingIsSink(){return thingissink(BigAlgorithm.getTabperm(), Rules.WALL);}
-
-    public boolean thingIsKill(){return thingiskill(BigAlgorithm.getTabperm(), Rules.WALL);}
-
-
-    @Override
-    public void move(String input)
-    {
-        super.move(input, Rules.WALL);
     }
 }

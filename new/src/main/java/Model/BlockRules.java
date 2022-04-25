@@ -23,30 +23,35 @@ public class BlockRules extends Environment implements Entity
 
     //Dans le jeu, les règles ne sont pas contrôlables. Cela permet d'implémenter toutes ces méthodes facilement à false
     @Override
-    public boolean canBePushed(Enum[][] tabperm){return true;}
+    public boolean thingIsPush(Enum[][] tabperm){return true;}
     @Override
-    public boolean canMoveX(Enum[][] tabperm, Rules object,int posy, int posx){return false;}
+    public boolean canMoveX(Enum[][] tabperm,int posy, int posx){return false;}
     @Override
-    public boolean canMoveY(Enum[][] tabperm, Rules object,int posy, int posx){return false;}
+    public boolean canMoveY(Enum[][] tabperm,int posy, int posx){return false;}
     @Override
-    public boolean thingIsYou(){return false;}
+    public boolean thingIsYou(Enum[][] tabperm){return false;}
     @Override
     public boolean thingIsPushingX(Enum[][] tabperm, int posy, int posx){return false;}
     @Override
     public boolean thingIsPushingY(Enum[][] tabperm, int posy, int posx){return false;}
     @Override
-    public boolean thingIsStop(){return false;}
+    public boolean thingIsStop(Enum[][] tabperm){return false;}
     @Override
     public boolean thingIsAnotherThing(Enum[][] tabperm) {
         return false;
     }
     @Override
-    public boolean noStatus(){return false;}
+    public boolean noStatus(Enum[][] tabperm){return false;}
     @Override
-    public boolean thingIsSink() {return false;}
+    public boolean thingIsSink(Enum[][] tabperm) {return false;}
 
     @Override
-    public boolean thingIsKill() {
+    public boolean thingIsKill(Enum[][] tabperm) {
+        return false;
+    }
+
+    @Override
+    public boolean thingIsWin(Enum[][] tabperm) {
         return false;
     }
 
