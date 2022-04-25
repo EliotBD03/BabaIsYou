@@ -384,10 +384,7 @@ public class Item extends Environment implements Entity
                         //car on pourrait écrase l'objet de temp par l'objet de mapO
                         if(temp_object_map[i][j] != null && mapO[i][j] != null && mapO[i][j] != temp_object_map[i][j])
                         {
-<<<<<<< HEAD
-=======
                             System.out.println(mapO[i][j].getClass());
->>>>>>> 1969376bc74a7d49339e3915bf3b8e818a87a4f2
                             res[i][j] = temp_object_map[i][j];
                         }
                         //si l'objet est bien noStatus, on ajoute l'élément à notre map temp
@@ -439,13 +436,10 @@ public class Item extends Environment implements Entity
 
                     mapO[i][j] = temp_object_map[i][j];
                 }
-<<<<<<< HEAD
                 //else if (mapO[i][j] == temp_object_map[i][j] )
                     //temp_object_map[i][j] = null;
-=======
                 else if (mapO[i][j] == temp_object_map[i][j])
                    mapO[i][j] = temp_object_map[i][j];
->>>>>>> 1969376bc74a7d49339e3915bf3b8e818a87a4f2
             }
      }
     /**

@@ -75,18 +75,14 @@ public class BigAlgorithm extends Environment {
             tabperm[i][0] = elemY[0]; tabperm[i][1] = elemY[1];
             i++;
         }
-<<<<<<< HEAD
 
         for(int u = 0; u<= tabperm.length -1 ; u++)
             if(tabperm[u][0] != null && tabperm[u][1] != null)
                 System.out.println(tabperm[u][0] + " " + tabperm[u][1]);
 
-
-=======
         for(int u = 0; u <= tabperm.length -1; u++)
             if(tabperm[u][0] != null && tabperm[u][1] != null)
                 System.out.println(tabperm[u][0] + " " + tabperm[u][1]);
->>>>>>> 1969376bc74a7d49339e3915bf3b8e818a87a4f2
     }
 
     /**
@@ -148,10 +144,7 @@ public class BigAlgorithm extends Environment {
                             k++;
                         }
                     }
-<<<<<<< HEAD
-=======
                     //si on a trouvé aucune action correspondante, alors on retire notre personnage des permissions
->>>>>>> 1969376bc74a7d49339e3915bf3b8e818a87a4f2
                     if(tabpermY[k][1] == null)
                         tabpermY[k][0] = null;
                 }
@@ -197,10 +190,7 @@ public class BigAlgorithm extends Environment {
                         }
 
                     }
-<<<<<<< HEAD
-=======
                     //si on a trouvé aucune action correspondante, alors on retire notre personnage des permissions
->>>>>>> 1969376bc74a7d49339e3915bf3b8e818a87a4f2
                     if(tabpermX[k][1] == null)
                         tabpermX[k][0] = null;
                 }
