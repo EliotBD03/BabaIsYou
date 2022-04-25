@@ -414,7 +414,8 @@ public class Item extends Environment implements Entity
                         //car on pourrait écrase l'objet de temp par l'objet de mapO
                         if(temp_object_map[i][j] != null && mapO[i][j] != temp_object_map[i][j])
                         {
-                            return;
+                            System.out.println(mapO[i][j].getClass());
+                            res[i][j] = temp_object_map[i][j];
                         }
                         //si l'objet est bien noStatus, on ajoute l'élément à notre map temp
                         else if (mapO[i][j].noStatus() || mapO[i][j].thingIsSink() || mapO[i][j].thingIsKill())
@@ -428,6 +429,11 @@ public class Item extends Environment implements Entity
         if(flag)
         {
             temp_object_map = res;
+            for(int i = 0; i <= temp_object_map.length -1 ; i++)
+                for(int j = 0; j <= temp_object_map[i].length -1; j++)
+                    if(temp_object_map[i][j] != null)
+                        System.out.print(temp_object_map[i][j].getSkin());
+
         }
     }
 
@@ -456,7 +462,7 @@ public class Item extends Environment implements Entity
                     mapO[i][j] = temp_object_map[i][j];
                 }
                 else if (mapO[i][j] == temp_object_map[i][j])
-                    temp_object_map[i][j] = null;
+                   mapO[i][j] = temp_object_map[i][j];
             }
      }
     /**
