@@ -51,6 +51,8 @@ public class Controller {
     private Parent root;
     private static  Pane[][] tabpane;
     private static int count_move = 0;
+    @FXML
+    private TextField MyTextField;
 
     public final Image babaImage = new Image(getClass().getResource( "/sprite/baba.gif").toURI().toString());
     public final Image flagImage = new Image(getClass().getResource( "/sprite/Flag.png").toURI().toString());
@@ -168,6 +170,8 @@ public class Controller {
     }
 
     public void switchToScene1(ActionEvent event) throws IOException {
+        name = MyTextField.getText();
+        System.out.println("Ton pseudo est "+name);
         Parent root = FXMLLoader.load(getClass().getResource("/fxml/Menu.fxml"));
         stage = (Stage)((Node)event.getSource()).getScene().getWindow();
         scene = new Scene(root,450, 500, Color.BLACK);
