@@ -1,6 +1,6 @@
 package View;
 
-        import Presenter.*;
+        import Presenter.Main;
 
         import javafx.event.ActionEvent;
         import javafx.event.EventHandler;
@@ -10,6 +10,7 @@ package View;
         import javafx.scene.Parent;
         import javafx.scene.Scene;
         import javafx.scene.control.Button;
+        import javafx.scene.control.TextField;
         import javafx.scene.image.Image;
         import javafx.scene.image.ImageView;
         import javafx.scene.input.KeyEvent;
@@ -76,6 +77,8 @@ public class Controller {
 
     private final String[] levelList = {"level0.txt", "level1.txt", "level2.txt", "level3.txt", "level4.txt"};
     private static String level;
+    @FXML
+    private static TextField userInput;
 
     private static int indexLevel = 0;
 
@@ -86,6 +89,13 @@ public class Controller {
     private static HBox[] tabhbox;
     @FXML
     private static VBox vbox = new VBox();
+
+    @FXML
+    private void inputUser(ActionEvent event)throws IOException
+    {
+        String input = userInput.getText();
+        Main.askUser(input);
+    }
     public void setMusic() throws URISyntaxException {
         Media media = new Media(getClass().getResource("/music/AdhesiveWombat - Night Shade.mp3").toURI().toString());
         MediaPlayer player = new MediaPlayer(media);

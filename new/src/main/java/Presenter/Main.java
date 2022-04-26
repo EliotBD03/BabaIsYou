@@ -11,6 +11,7 @@ import java.util.Objects;
 
 public class Main
 {
+    private static User player;
     private static Environment map;
     private ArrayList<int[]> changeCoord;
     private static Baba baba;
@@ -141,5 +142,10 @@ public class Main
     {
         Save save = new Save();
         return save.getLastSave();
+    }
+
+    public static void askUser(String input)
+    {
+        player = User.getUser(input);
     }
 }

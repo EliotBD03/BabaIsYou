@@ -98,11 +98,4 @@ public class User
             res += levelAccess[i];
         info.writeInfoUser(res, id);
     }
-
-    public static void main(String[] args)
-    {
-        User user = getUser("pipi");
-        user.addLevel(3);
-        user.writeLevelAccess();
-    }
 }
