@@ -14,6 +14,6 @@
             <Font size="23.0" />
          </font>
       </Text>
-      <Button layoutX="147.0" layoutY="288.0" mnemonicParsing="false" onAction="#switchToScene1" prefHeight="50.0" prefWidth="150.0" text="Connection" />
+      <Button layoutX="147.0" layoutY="288.0" mnemonicParsing="false" onAction="#switchToScene1_2" prefHeight="50.0" prefWidth="150.0" text="Connection" />
    </children>
 </AnchorPane>
