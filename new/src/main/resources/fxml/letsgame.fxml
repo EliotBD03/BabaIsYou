@@ -22,7 +22,7 @@
             <Image url="@../sprite/mapchoice.gif" />
          </image></ImageView>
       <Button layoutX="150.0" layoutY="94.0" mnemonicParsing="false" onAction="#switchToGame" opacity="0.0" prefHeight="50.0" prefWidth="150.0" text="New Game" />
-      <Button layoutX="150.0" layoutY="188.0" mnemonicParsing="false" opacity="0.0" prefHeight="50.0" prefWidth="150.0" text="Resume" />
+      <Button layoutX="150.0" layoutY="188.0" mnemonicParsing="false" onAction="#conTinu" opacity="0.0" prefHeight="50.0" prefWidth="150.0" text="Resume" />
       <Button layoutX="150.0" layoutY="319.0" mnemonicParsing="false" onAction="#switchToMapChoice" opacity="0.0" prefHeight="50.0" prefWidth="150.0" text="Map Choice" />
    </children>
 </AnchorPane>

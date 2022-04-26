@@ -87,7 +87,7 @@ public class Controller {
     @FXML
     private static VBox vbox = new VBox();
     public void setMusic() throws URISyntaxException {
-        Media media = new Media(getClass().getResource("/music/music.mp3").toURI().toString());
+        Media media = new Media(getClass().getResource("/music/AdhesiveWombat - Night Shade.mp3").toURI().toString());
         MediaPlayer player = new MediaPlayer(media);
         player.setAutoPlay(true);
         player.setCycleCount(MediaPlayer.INDEFINITE);

@@ -1,9 +1,11 @@
 package Presenter;
 
 import java.io.*;
+import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
@@ -67,16 +69,21 @@ public class Info
         }
     }
 
-    public void writeInfoUser(String information){
+    public void writeInfoUser(String information, String userName){
         try
         {
             Path path = Paths.get(fileName);
             List<String> lines = Files.readAllLines(path);
-            System.out.println(lines.get(userLine));
-            lines.add(userLine, information);
-            lines.remove(userLine + 1);
-            lines.remove(userLine - 1);
-            Files.write(path, lines);
+            List<String> res = new ArrayList<>();
+            int i = 0;
+            while(lines.get(i).length() > 0 &&!lines.get(i).substring(0, userName.length()).equals(userName))
+            {
+                res.add(lines.get(i));
+                i++;
+            }
+            res.add(userName + " " + information);
+            Files.write(path, res);
+
         }
         catch (IOException e)
         {

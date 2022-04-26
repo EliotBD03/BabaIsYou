@@ -21,31 +21,49 @@ public class User
     private static final DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy/MMMM/dd HH:mm:ss");
 
     public int[] getLevelAccess(){return levelAccess;}
-    public User()
+    private User()
     {
         id = random;
+        addLevel(1);
+        addLevel(2);
+        addLevel(3);
+        addLevel(4);
     }
-    public User(String name)
+    private User(String name)
     {
         id = name;
+        searchUser();
     }
 
-    private void searchUser(){
-    try
+    public static User getUser(String input)
+    {
+        try
+        {
+            if(User.id != null)
+                throw new Exception();
+            if(input.length() == 0)
+                return new User();
+            else
+                return new User(input);
+        }
+        catch (Exception e)
+        {
+            System.out.println("An user is already defined");
+        }
+        return new User();
+    }
+
+    private void searchUser()
     {
         Info info = new Info(pathRegister);
         String date = info.getUserInfo(id);
         if(date == null)
-            info.writeInfo(id + " "+ InetAddress.getLocalHost().getHostAddress() + " " + dtf.format(LocalDateTime.now()));
-    }catch (UnknownHostException e)
-    {
-        System.out.println("cannot take the Local Ip address");
-        e.printStackTrace();
-    }
+            info.writeInfo(id +" " + dtf.format(LocalDateTime.now()));
     }
     private void searchAccess()
     {
-        String res = "";
+        if(id.equals(random))
+            return;
         Info info = new Info(pathAccessLevel);
         String access = info.getUserInfo(id);
         if(access == null)
@@ -59,12 +77,12 @@ public class User
                     levelAccess[i] = Integer.parseInt(nb);
                 }
             }
-        for(int i = 0; i <= levelAccess.length -1; i ++)
-            res += levelAccess[i] + " ";
     }
 
     private void addLevel(int level)
     {
+        if(id.equals(random))
+            return;
         searchAccess();
         if(levelAccess[level] == 0)
             levelAccess[level] = level;
@@ -72,18 +90,19 @@ public class User
 
     private void writeLevelAccess()
     {
+        if(id.equals(random))
+            return;
         Info info = new Info(pathAccessLevel);
         String res = "";
         for(int i = 0; i <= levelAccess.length - 1; i ++)
             res += levelAccess[i];
-        info.writeInfoUser(id + " " + res);
+        info.writeInfoUser(res, id);
     }
 
     public static void main(String[] args)
     {
-        User user = new User("juju");
-        user.searchUser();
-        user.searchAccess();
+        User user = getUser("pipi");
+        user.addLevel(3);
         user.writeLevelAccess();
     }
 }
