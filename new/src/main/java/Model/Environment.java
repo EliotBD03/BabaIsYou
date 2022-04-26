@@ -100,7 +100,7 @@ public class Environment {
             this.mapO = new Entity[this.length][this.width];
                     for (int i = 1; i <= dataList.length - 1 ; i++ )
                             //on va centrer les éléments de la map (extension / 2)
-                            this.mapO[Integer.parseInt(dataList[i][2]) + 1][Integer.parseInt(dataList[i][1]) + 1] = whatobj(dataList[i][0]);
+                            this.mapO[Integer.parseInt(dataList[i][2]) + 1][Integer.parseInt(dataList[i][1])+ 1] = whatobj(dataList[i][0]);
         }
 
         /**

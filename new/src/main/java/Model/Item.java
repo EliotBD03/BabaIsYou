@@ -187,7 +187,7 @@ public class Item extends Environment implements Entity
         //on initialise la map temporaire de type Entity
         //où se retrouve tous les objets qui n'ont aucun status ("noStatus()")
         setTempObjectMap();
-        //searchWin();
+        searchWin();
 
         //on vérifie si l'instance qui emploie la méthode peut bien être contrôlé
         if(thingIsYou(BigAlgorithm.getTabperm()))
@@ -206,8 +206,6 @@ public class Item extends Environment implements Entity
                     for(int i = 0; i <= mapO.length - 1; i++)
                         for(int j = 0; j <= mapO[i].length - 1; j++)
                         {
-
-
                             if (this.getClass().isInstance(mapO[i][j]))
                             {
 
@@ -216,9 +214,11 @@ public class Item extends Environment implements Entity
                                 //                      -est ce que l'objet a gagné ?
                                 //                      -est ce que l'objet pousse ?
                                 //note : on ne peut réaliser qu'une action à la fois(else if)
-                                if (canMoveY(BigAlgorithm.getTabperm(),i - 1, j))
+                                //on regarde si on a atteint un objet qui est win
+                                if(thingHasWin( i+ 1, j))
+                                    winStatus = true;
+                                else if (canMoveY(BigAlgorithm.getTabperm(),i - 1, j))
                                 {
-
                                     posY = Actions.up(mapO, i, j);
                                 }
                                 else if(thingIsPushingY(BigAlgorithm.getTabperm(),i - 1, j))
@@ -236,8 +236,8 @@ public class Item extends Environment implements Entity
                                 if (canMoveY(BigAlgorithm.getTabperm(),i+ 1,j))
                                     posY = Actions.down(mapO, i, j);
                                 //on regarde si on a atteint un objet qui est win
-                               // else if(thingHasWin( i+ 1, j))
-                                 //   winStatus = true;
+                                else if(thingHasWin( i+ 1, j))
+                                    winStatus = true;
                                 //on regarde si on pousse quelque chose
                                 else if(thingIsPushingY(BigAlgorithm.getTabperm(),i + 1, j))
                                     posY = Actions.pushY(1, i, j, mapO);
@@ -252,8 +252,8 @@ public class Item extends Environment implements Entity
                                 if (canMoveX(BigAlgorithm.getTabperm(),i,j - 1))
                                     posX = Actions.left(mapO, i, j);
 
-                               // else if(thingHasWin( i, j - 1))
-                                //   winStatus = true;
+                               else if(thingHasWin( i, j - 1))
+                                   winStatus = true;
 
                                 else if(thingIsPushingX(BigAlgorithm.getTabperm(),i, j - 1))
                                     posX = Actions.pushX(-1, i, j, mapO);
@@ -268,8 +268,8 @@ public class Item extends Environment implements Entity
                                 if (canMoveX(BigAlgorithm.getTabperm(), i, j + 1))
                                     posX = Actions.right(mapO, i, j);
 
-                                //else if(thingHasWin( i, j + 1))
-                                  //  winStatus = true;
+                                else if(thingHasWin( i, j + 1))
+                                    winStatus = true;
 
                                 else if(thingIsPushingX(BigAlgorithm.getTabperm(),i, j + 1))
                                     posX = Actions.pushX(1, i, j, mapO);
@@ -306,25 +306,24 @@ public class Item extends Environment implements Entity
      * cette méthode va chercher dans le tableau d'objet toutes les coordonnés des éléments qui sont win
      * et va les transférer dans l'arraylist "coordonates_win"
      */
-    private void searchWin()
+    private boolean searchWin()
     {
-        //on cherche type de l'objet qui est win
-        Entity win_object = BigAlgorithm.dico.get(whichItem(Rules.WIN));
         //on va cherher dans tout le tableau (les deux boucles)
         for(int i = 0; i <= mapO.length - 1; i++)
             for(int j = 0; j <= mapO[i].length -1; j++)
             {
-                //si on a aucun objet win, on réinitialise l'arraylist
-                if(win_object == null)
-                    coordonates_win = new ArrayList<int[]>();
                 //sinon si on vérifie si l'objet est du type qu'on cherche
                     // si oui, alors on l'ajoute dans l'arraylist
-                else if(temp_object_map[i][j] != null && temp_object_map[i][j].thingIsWin(BigAlgorithm.getTabperm()))
+                if(temp_object_map[i][j] != null && temp_object_map[i][j].thingIsWin(BigAlgorithm.getTabperm()) || mapO[i][j] != null && mapO[i][j].thingIsWin(BigAlgorithm.getTabperm()))
                 {
+                    System.out.println("je suis win");
                     int[] pos = {i,j};
                     coordonates_win.add(pos);
+                    return true;
                 }
             }
+        coordonates_win = new ArrayList<int[]>();
+        return false;
     }
 
     /**
@@ -379,7 +378,7 @@ public class Item extends Environment implements Entity
                     //n'est pas applicable
                     try
                     {
-                        boolean condition  = mapO[i][j].noStatus(BigAlgorithm.getTabperm()) || mapO[i][j].thingIsSink(BigAlgorithm.getTabperm()) || mapO[i][j].thingIsKill(BigAlgorithm.getTabperm())|| mapO[i][j].thingIsWin(BigAlgorithm.getTabperm());
+                        boolean condition  = !mapO[i][j].thingIsYou(BigAlgorithm.getTabperm()) && !mapO[i][j].thingIsStop(BigAlgorithm.getTabperm()) && !mapO[i][j].thingIsPush(BigAlgorithm.getTabperm());
                         //si un objet qui se trouve sur un element de la map tempk, on break
                         //car on pourrait écrase l'objet de temp par l'objet de mapO
                         if(temp_object_map[i][j] != null && mapO[i][j] != null && mapO[i][j] != temp_object_map[i][j])
@@ -433,13 +432,11 @@ public class Item extends Environment implements Entity
                     winStatus = true;
                 else if(mapO[i][j] == null && temp_object_map[i][j] != null)
                 {
-
                     mapO[i][j] = temp_object_map[i][j];
+                    temp_object_map[i][j] = null;
                 }
                 //else if (mapO[i][j] == temp_object_map[i][j] )
                     //temp_object_map[i][j] = null;
-                else if (mapO[i][j] == temp_object_map[i][j])
-                   mapO[i][j] = temp_object_map[i][j];
             }
      }
     /**

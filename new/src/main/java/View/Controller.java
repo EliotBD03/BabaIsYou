@@ -77,7 +77,7 @@ public class Controller {
     public final Image lavaImage = new Image(getClass().getResource("/sprite/lava.gif").toURI().toString());
 
 
-    private final String[] levelList = {"level0.txt", "level1.txt", "level2.txt", "level3.txt", "level4.txt"};
+    private final String[] levelList = {"level0.txt", "level1.txt", "level2.txt", "level3.txt", "level4.txt", "level5.txt", "level6.txt"};
     private static String level;
     @FXML
     private static TextField userInput;
@@ -178,7 +178,7 @@ public class Controller {
 
     }
     public void switchToScene1_2(ActionEvent event) throws IOException {
-        name = MyTextField.getText();
+        String name = MyTextField.getText();
         System.out.println("Ton pseudo est "+name);
         Parent root = FXMLLoader.load(getClass().getResource("/fxml/Menu.fxml"));
         stage = (Stage)((Node)event.getSource()).getScene().getWindow();
@@ -229,7 +229,7 @@ public class Controller {
     public void switchToGame(ActionEvent event){
         try {
             setMusic();
-            initializeGame("src/main/resources/level/default/" + levelList[indexLevel]);
+            initializeGame("src/main/resources/level/default/" + levelList[6]);
             stage = (Stage)((Node)event.getSource()).getScene().getWindow();
             scene = new Scene(vbox,500,500,Color.BLACK);
             stage.setScene(scene);
