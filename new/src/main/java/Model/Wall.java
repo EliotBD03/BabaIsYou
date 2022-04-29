@@ -6,15 +6,18 @@ package Model;
 
 public class Wall extends Item
 {
+    private final Rules object = Rules.WALL;
+
     private String skin = "w";
 
-    public String getSkin(){return skin;}
+    @Override
+    public Rules getObject(){return object;}
 
-    public Wall(boolean flag){}
+    @Override
+    public String getSkin(){return skin;}
 
     public Wall()
     {
-        super.object = Rules.WALL;
         int[] position = super.searchtype(Wall.class);
         super.posY = position[0];
         super.posX = position[1];

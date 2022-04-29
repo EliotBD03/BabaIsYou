@@ -31,6 +31,14 @@ public class BigAlgorithm extends Environment {
         dico.put(Rules.GOOP, new Goop());
     }
 
+    /**
+     * permet d'actualiser le tableau de permissions après changement de position d'une instance dans le tableau d'objet
+     */
+    public static void actualise() {
+        setTab(mapO);
+        int[][] current_is = findIS();
+        setTabperm(findPermX(current_is), findPermY(current_is));
+    }
 
     /**
      * accesseur pour le tableau des permissions
@@ -206,7 +214,7 @@ public class BigAlgorithm extends Environment {
      * @return l'objet de type "Rules" (voir Rules.java) représentant un objet ou une règle
      */
 
-    public static Enum whatobj(Class<?> thing) {
+    private static Enum whatobj(Class<?> thing) {
         if (BlockRules.Is.class.equals(thing)) {
             return Rules.IS;
         } else if (BlockRules.Stop.class.equals(thing)) {
@@ -232,15 +240,5 @@ public class BigAlgorithm extends Environment {
         else if (BlockRules.Kill.class.equals(thing)){return Rules.KILL;}
 
         return Rules.NONE;
-    }
-
-
-    /**
-     * permet d'actualiser le tableau de permissions après changement de position d'une instance dans le tableau d'objet
-     */
-    public static void actualise() {
-        setTab(mapO);
-        int[][] current_is = findIS();
-        setTabperm(findPermX(current_is), findPermY(current_is));
     }
 }

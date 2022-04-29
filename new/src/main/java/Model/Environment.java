@@ -9,9 +9,6 @@ public class Environment {
         private static int length;
         //la largeur des deux maps
         private static int width;
-        //extension
-        private static int  extensionx;
-        private static int extensiony;
         //la map de String
         protected static String[][] map;
         //la map d'objet
@@ -24,6 +21,7 @@ public class Environment {
      * @return map
      */
     public String[][] getMap(){return map;}
+
     public static String[][] getStringMap(String[][] map)
     {
         String[][] res = new String[map.length][map[0].length];
@@ -62,10 +60,8 @@ public class Environment {
      */
      private void setStringMap(String[][] dataList)
      {
-         extensionx = 20 - Integer.parseInt(dataList[0][1]);
-         extensiony = 20 - Integer.parseInt(dataList[0][0]);
-         length = Integer.parseInt(dataList[0][1]) + extensionx + 1;
-         width = Integer.parseInt(dataList[0][0]) + extensiony + 1;
+         length = 21;
+         width = 21;
          map = new String[length][width];
 
          for (int i = 0; i <= length - 1; i++)
