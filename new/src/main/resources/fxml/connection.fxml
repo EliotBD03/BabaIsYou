@@ -7,18 +7,18 @@
 <?import javafx.scene.layout.AnchorPane?>
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="450.0" style="-fx-background-color: BLACK;" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="View.Controller">
-   <children>
-      <ImageView fitHeight="50.0" fitWidth="150.0" layoutX="147.0" layoutY="288.0" pickOnBounds="true" preserveRatio="true">
-         <image>
-            <Image url="@../sprite/connection.gif" />
-         </image>
-      </ImageView>
-      <TextField fx:id="MyTextField" layoutX="85.0" layoutY="125.0" prefHeight="49.0" prefWidth="273.0" />
-      <Button layoutX="147.0" layoutY="288.0" mnemonicParsing="false" onAction="#switchToScene1_2" opacity="0.0" prefHeight="50.0" prefWidth="150.0" text="Connection" />
-      <ImageView fitHeight="93.0" fitWidth="167.0" layoutX="81.0" layoutY="30.0" pickOnBounds="true" preserveRatio="true">
-         <image>
-            <Image url="@../sprite/Yourpseudo.png" />
-         </image>
-      </ImageView>
-   </children>
+    <children>
+        <ImageView fitHeight="50.0" fitWidth="150.0" layoutX="147.0" layoutY="288.0" pickOnBounds="true" preserveRatio="true">
+            <image>
+                <Image url="@../sprite/connection.gif" />
+            </image>
+        </ImageView>
+        <TextField fx:id="MyTextField" layoutX="85.0" layoutY="125.0" prefHeight="49.0" prefWidth="273.0" />
+        <Button layoutX="147.0" layoutY="288.0" mnemonicParsing="false" onAction="#inputUser" opacity="0.0" prefHeight="50.0" prefWidth="150.0" text="Connection" />
+        <ImageView fitHeight="93.0" fitWidth="167.0" layoutX="81.0" layoutY="30.0" pickOnBounds="true" preserveRatio="true">
+            <image>
+                <Image url="@../sprite/Yourpseudo.png" />
+            </image>
+        </ImageView>
+    </children>
 </AnchorPane>
