@@ -1,9 +1,8 @@
 package View;
 
-        import Presenter.Main;
+        import Presenter.Game;
 
         import javafx.event.ActionEvent;
-        import javafx.event.EventHandler;
         import javafx.fxml.FXML;
         import javafx.fxml.FXMLLoader;
         import javafx.scene.Node;
@@ -13,7 +12,6 @@ package View;
         import javafx.scene.control.TextField;
         import javafx.scene.image.Image;
         import javafx.scene.image.ImageView;
-        import javafx.scene.input.KeyEvent;
         import javafx.scene.layout.AnchorPane;
         import javafx.scene.layout.HBox;
         import javafx.scene.layout.Pane;
@@ -24,22 +22,15 @@ package View;
         import javafx.scene.paint.Color;
         import javafx.stage.Stage;
 
-        import java.io.File;
         import java.io.IOException;
         import java.net.URISyntaxException;
         import java.util.ArrayList;
 
 
-        import static Presenter.Main.getSprite;
+        import static Presenter.Game.getSprite;
 
 
 public class Controller {
-    private ImageView monImageView;
-    private ImageView monImageView2;
-    private double x = 200.0;
-    private double y = 250.0;
-    private double x2 = 200.0;
-    private double y2 = 250.0;
     @FXML
     private Button logoutButton;
     @FXML
@@ -48,7 +39,6 @@ public class Controller {
     private Button playButton;
     private Stage stage;
     private static Scene scene;
-    private Parent root;
     private static  Pane[][] tabpane;
     private static int count_move = 0;
     @FXML
@@ -77,14 +67,7 @@ public class Controller {
     public final Image lavaImage = new Image(getClass().getResource("/sprite/lava.gif").toURI().toString());
 
 
-    private final String[] levelList = {"level0.txt", "level1.txt", "level2.txt", "level3.txt", "level4.txt", "level5.txt", "level6.txt"};
-    private static String level;
-    @FXML
-    private static TextField userInput;
-
-    private static int indexLevel = 0;
-
-    private static Main game;
+    private static Game game;
 
     //private Main tempGame;
 
@@ -93,10 +76,14 @@ public class Controller {
     private static VBox vbox = new VBox();
 
     @FXML
-    private void inputUser(ActionEvent event)throws IOException
-    {
-        String input = userInput.getText();
-        Main.askUser(input);
+    private void inputUser(ActionEvent event) throws IOException, URISyntaxException {
+        String name = MyTextField.getText();
+        game = new Game(name);
+        Parent root = FXMLLoader.load(getClass().getResource("/fxml/Menu.fxml"));
+        stage = (Stage)((Node)event.getSource()).getScene().getWindow();
+        scene = new Scene(root,450, 500, Color.BLACK);
+        stage.setScene(scene);
+        stage.show();
     }
     public void setMusic() throws URISyntaxException {
         Media media = new Media(getClass().getResource("/music/AdhesiveWombat - Night Shade.mp3").toURI().toString());
@@ -126,7 +113,7 @@ public class Controller {
     }
     public void setTabpane()
     {
-        int length = Main.getLength();
+        int length = Game.getLength();
         int width = length;
         tabhbox = new HBox[length];
         tabpane = new Pane[length][width];
@@ -177,16 +164,6 @@ public class Controller {
         stage.show();
 
     }
-    public void switchToScene1_2(ActionEvent event) throws IOException {
-        String name = MyTextField.getText();
-        System.out.println("Ton pseudo est "+name);
-        Parent root = FXMLLoader.load(getClass().getResource("/fxml/Menu.fxml"));
-        stage = (Stage)((Node)event.getSource()).getScene().getWindow();
-        scene = new Scene(root,450, 500, Color.BLACK);
-        stage.setScene(scene);
-        stage.show();
-
-    }
     public void switchToScene2(ActionEvent event) throws IOException {
         Parent root = FXMLLoader.load(getClass().getResource("/fxml/Settings.fxml"));
         stage = (Stage)((Node)event.getSource()).getScene().getWindow();
@@ -229,7 +206,7 @@ public class Controller {
     public void switchToGame(ActionEvent event){
         try {
             setMusic();
-            initializeGame("src/main/resources/level/default/" + levelList[6]);
+            initializeGame(game.getLevel());
             stage = (Stage)((Node)event.getSource()).getScene().getWindow();
             scene = new Scene(vbox,500,500,Color.BLACK);
             stage.setScene(scene);
@@ -252,21 +229,14 @@ public class Controller {
                         e.printStackTrace();
                     }
                     break;
-                case R:
-                    game.goBack();
-                    break;
                 case UP:
                     if(game.makeMove("z"))
                     {
                         System.out.println("gagné");
-                        if(indexLevel < levelList.length - 1)
-                        {
-                            indexLevel++;
-                            nextLevel(event);
-                        }
-                        else
+                        if(!(game.nextLevel()))
                             stage.close();
-
+                        else
+                            refresh(event);
                     }
                     System.out.println("up");
                     count_move ++;
@@ -275,14 +245,10 @@ public class Controller {
                     if(game.makeMove("s"))
                     {
                         System.out.println("gagné");
-                        if(indexLevel < levelList.length - 1)
-                        {
-                            indexLevel++;
-                            nextLevel(event);
-                        }
-                        else
+                        if(!(game.nextLevel()))
                             stage.close();
-
+                        else
+                            refresh(event);
                     }
                     System.out.println("down");
                     count_move ++;
@@ -291,14 +257,10 @@ public class Controller {
                     if(game.makeMove("q"))
                     {
                         System.out.println("gagné");
-                        if(indexLevel < levelList.length - 1)
-                        {
-                            indexLevel++;
-                            nextLevel(event);
-                        }
-                        else
+                        if(!(game.nextLevel()))
                             stage.close();
-
+                        else
+                            refresh(event);
                     }
                     System.out.println("left");
                     count_move ++;
@@ -307,28 +269,33 @@ public class Controller {
                     if(game.makeMove("d"))
                     {
                         System.out.println("gagné");
-                        if(indexLevel < levelList.length - 1)
-                        {
-                            indexLevel++;
-                            nextLevel(event);
-                        }
-                        else
+                        if(!(game.nextLevel()))
                             stage.close();
-
+                        else
+                            refresh(event);
                     }
                     System.out.println("right");
                     count_move ++;
                     break;
-
             }
             actualise(game.getChanges());
         });
     }
 
-    private void initializeGame(String levelPath) throws URISyntaxException {
-        game = new Main();
-        File file = new File(levelPath);
-        game.makeTheGame(file.getAbsolutePath());
+    private void initializeGame(int indexLevel) throws URISyntaxException {
+        game.makeTheGame(indexLevel);
+        //System.out.println("1");
+        setTabpane();
+        //System.out.println("2");
+        initializeAll();
+        //System.out.println("3");
+        settabhbox();
+        //System.out.println("4");
+        setvbox();
+        //System.out.println("5");
+    }
+    private void initializeGame(String fileName) throws URISyntaxException {
+        game.makeTheGame(fileName);
         //System.out.println("1");
         setTabpane();
         //System.out.println("2");
@@ -353,35 +320,53 @@ public class Controller {
         }
     }
 
-    public void nextLevel(ActionEvent event) {
+    public void refresh(ActionEvent event) {
             vbox.getChildren().clear();
             tabhbox = null;
             tabpane = null;
-            game = new Main();
-            File file = new File("src/main/resources/level/default/" + levelList[indexLevel]);
-            game.nextLevel(file.getAbsolutePath());
             setTabpane();
             initializeAll();
             settabhbox();
             setvbox();
     }
 public void switchToLevel(ActionEvent event) throws IOException, URISyntaxException {
-            initializeGame(levelList[indexLevel]);
+            initializeGame(game.getLevel());
             stage = (Stage)((Node)event.getSource()).getScene().getWindow();
             scene = new Scene(vbox,500,500,Color.BLACK);
             stage.setScene(scene);
             keyInput(event);
             stage.show();
 }
-public void setLevelOne(ActionEvent event){level = "level0.txt";}
-public void setLevelTwo(ActionEvent event){level = "level1.txt";}
-public void setLevelThree(ActionEvent event){level = "level2.txt";}
-public void setLevelFour(ActionEvent event){level = "level3.txt";}
+public void setLevelOne(ActionEvent event)
+    {
+        game.setLevel(0);
+    }
+public void setLevelTwo(ActionEvent event) throws IOException {
+        if(!game.setLevel( 1))
+        {
+            switchToMapChoice(event);
+            System.out.println("you haven't finished the level one yet");
+        }
+    }
+public void setLevelThree(ActionEvent event) throws IOException {
+    if(!game.setLevel(2))
+    {
+        switchToMapChoice(event);
+        System.out.println("you haven't finished the level two yet");
+    }
+}
+public void setLevelFour(ActionEvent event) throws IOException {
+    if(!game.setLevel( 3))
+    {
+        switchToMapChoice(event);
+        System.out.println("you haven't finished the level three yet");
+    }
+    }
 
 public void playLevel(ActionEvent event)
 {
     try {
-        initializeGame(level);
+        initializeGame(game.getLevel());
         stage = (Stage)((Node)event.getSource()).getScene().getWindow();
         scene = new Scene(vbox,500,500,Color.BLACK);
         stage.setScene(scene);
@@ -418,7 +403,7 @@ public void playLevel(ActionEvent event)
         }
         try {
 
-            initializeGame(Main.getLastSave());
+            initializeGame(Game.getLastSave());
             stage.setScene(scene);
             keyInput(event);
             stage.show();

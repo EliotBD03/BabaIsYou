@@ -25,7 +25,8 @@ public class Save
         dico.put("F", "text_flag");dico.put("R", "text_rock");
         dico.put("W", "text_wall");dico.put("?", "goop");
         dico.put("*", "lava");dico.put("K", "kill");dico.put("L", "text_lava");
-        dico.put(" ", null); dico.put("X", null);dico.put("D", "text_goop");
+        dico.put(" ", null); dico.put("X", null);dico.put("M", "text_goop");
+        dico.put("D", "sink");
 
     }
     public void newSave(String[][] tab)
@@ -72,9 +73,8 @@ public class Save
         if(history.exists())
         {
             FileWriter fw = new FileWriter(history, true);
-            fw.write("\n"+ fileName + " " + dtf.format(LocalDateTime.now()));
+            fw.write("\n"+ fileName + " "+ dtf.format(LocalDateTime.now()));
             fw.close();
-
         }
 
     }
@@ -103,7 +103,5 @@ public class Save
             e.printStackTrace();
         }
         return null;
-
     }
-
 }

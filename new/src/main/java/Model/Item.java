@@ -17,7 +17,7 @@ public class Item extends Environment implements Entity
     protected String skin;
     private static boolean winStatus = false;
 
-    private ArrayList<int[]> coordonates_win = new ArrayList<int[]>();
+    private static ArrayList<int[]> coordonates_win = new ArrayList<int[]>();
     //la map temporaire contenant tous les objets qui n'ont pas de status
     private static Entity[][] temp_object_map = new Entity[mapO.length][mapO[0].length];
 
@@ -215,12 +215,12 @@ public class Item extends Environment implements Entity
                                 //                      -est ce que l'objet pousse ?
                                 //note : on ne peut réaliser qu'une action à la fois(else if)
                                 //on regarde si on a atteint un objet qui est win
-                                if(thingHasWin( i+ 1, j))
-                                    winStatus = true;
-                                else if (canMoveY(BigAlgorithm.getTabperm(),i - 1, j))
+                                if (canMoveY(BigAlgorithm.getTabperm(),i - 1, j))
                                 {
                                     posY = Actions.up(mapO, i, j);
                                 }
+                                else if(thingHasWin( i+ 1, j))
+                                    winStatus = true;
                                 else if(thingIsPushingY(BigAlgorithm.getTabperm(),i - 1, j))
                                     posY = Actions.pushY(-1, i, j, mapO);
                             }
@@ -355,6 +355,7 @@ public class Item extends Environment implements Entity
         {
             winStatus = false;
             temp_object_map = new Entity[mapO.length][mapO[0].length];
+            coordonates_win = new ArrayList<>();
             return true;
         }
         return false;
