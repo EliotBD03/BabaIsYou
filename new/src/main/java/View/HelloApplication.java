@@ -12,6 +12,11 @@ import java.util.Objects;
 
 public class HelloApplication extends Application {
 
+   /**
+ * Méthode start qui va lancer le jeu dont la 1er scene qui permet de ce connecter avec un pseudo
+ */
+    
+    
     @Override
     public void start(Stage stage)  throws IOException {
         try{
