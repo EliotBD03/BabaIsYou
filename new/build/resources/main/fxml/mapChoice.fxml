@@ -5,10 +5,10 @@
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="450.0" style="-fx-background-color: BLACK;" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="View.Controller">
    <children>
-      <Button layoutX="150.0" layoutY="83.0" mnemonicParsing="false" onAction="#switchToLevelOne" prefHeight="50.0" prefWidth="150.0" text="level1" />
-      <Button layoutX="150.0" layoutY="181.0" mnemonicParsing="false" onAction="#switchToLevelTwo" prefHeight="50.0" prefWidth="150.0" text="level2" />
-      <Button layoutX="150.0" layoutY="283.0" mnemonicParsing="false" onAction="#switchToLevelThree" prefHeight="50.0" prefWidth="150.0" text="level3" />
-      <Button layoutX="150.0" layoutY="374.0" mnemonicParsing="false" onAction="#switchToLevelFour" prefHeight="50.0" prefWidth="150.0" text="level4" />
+      <Button layoutX="150.0" layoutY="83.0" mnemonicParsing="false" onAction="#setLevelOne" prefHeight="50.0" prefWidth="150.0" text="level1" />
+      <Button layoutX="150.0" layoutY="181.0" mnemonicParsing="false" onAction="#setLevelTwo" prefHeight="50.0" prefWidth="150.0" text="level2" />
+      <Button layoutX="150.0" layoutY="283.0" mnemonicParsing="false" onAction="#setLevelThree" prefHeight="50.0" prefWidth="150.0" text="level3" />
+      <Button layoutX="150.0" layoutY="374.0" mnemonicParsing="false" onAction="#setLevelFour" prefHeight="50.0" prefWidth="150.0" text="level4" />
+      <Button layoutX="199.0" layoutY="446.0" mnemonicParsing="false" onAction="#playLevel" text="play" />
    </children>
 </AnchorPane>
-

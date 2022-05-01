@@ -1,5 +1,2 @@
 /********this file is the scoreboard*******/
-level1
-
-level2
 

@@ -7,6 +7,11 @@ package Model;
  */
 interface Entity
 {
+    /**
+     * méthode qui permet de savoir l'objet qui l'instancie est un objet
+     * issu de la classe Item
+     */
+
     boolean isItem();
     /**
      * accesseur de l'apparence du joueur
@@ -24,7 +29,6 @@ interface Entity
      * methode permettant de savoir si l'objet peut bouger dans une certaine direction
      * on préconise que le deplacement se fait en x
      * @param tabperm le tableau contenant les permissions issu de la classe BigAlgorithm
-     * @param object l'objet de type Rules correspondant au type de l'instance qui utilise la méthode
      * @param posy la position de l'objet en y (en l'occurence apres mouvement)
      * @param posx la position de l'objet en x (en l'occurence apres mouvement)
      * @return vrai si l'objet peut bouger, faux sinon
@@ -100,5 +104,10 @@ interface Entity
      * @return vrai si c'est le cas, faux sinon
      */
      boolean thingIsKill(Enum[][] tabperm);
+    /**
+     * methode permettant de savoir si un objet a la caractéristique "win"
+     * ie: si le personnage qu'on controle touche cet objet, alors il disparait
+     * @return vrai si c'est le cas, faux sinon
+     */
      boolean thingIsWin(Enum[][] tabperm);
     }
