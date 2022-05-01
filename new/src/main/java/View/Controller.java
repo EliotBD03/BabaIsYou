@@ -76,6 +76,9 @@ public class Controller {
     private static VBox vbox = new VBox();
 
     @FXML
+       /**
+ * Méthode pour rejoindre le Menu du après s'être connecter avec son pseudo
+ */
     private void inputUser(ActionEvent event) throws IOException, URISyntaxException {
         String name = MyTextField.getText();
         game = new Game(name);
@@ -85,6 +88,9 @@ public class Controller {
         stage.setScene(scene);
         stage.show();
     }
+        /**
+ * Méthode pour jouer la music dans le jeu
+ */
     public void setMusic() throws URISyntaxException {
         Media media = new Media(getClass().getResource("/music/AdhesiveWombat - Night Shade.mp3").toURI().toString());
         MediaPlayer player = new MediaPlayer(media);
@@ -94,6 +100,9 @@ public class Controller {
     }
     public Controller() throws URISyntaxException {
     }
+        /**
+ * Cette méthode va charger les Hbox en fonction des tableaux
+ */
 
     public void settabhbox(){
         for (int i = 0; i <= tabhbox.length - 1; i++)
@@ -111,6 +120,10 @@ public class Controller {
             vbox.getChildren().add(hbox);
         }
     }
+        
+       /**
+ * setTabpane va ajouter des Pane dans les hbox pour pouvoir placer nos objets de dans
+ */
     public void setTabpane()
     {
         int length = Game.getLength();
@@ -155,6 +168,9 @@ public class Controller {
             }
         }
     }
+        /**
+ * permet de retourner au menu
+ */
 
    public void switchToScene1(ActionEvent event) throws IOException {
         Parent root = FXMLLoader.load(getClass().getResource("/fxml/Menu.fxml"));
@@ -164,6 +180,9 @@ public class Controller {
         stage.show();
 
     }
+        /**
+ * permet d'aller au settings
+ */
     public void switchToScene2(ActionEvent event) throws IOException {
         Parent root = FXMLLoader.load(getClass().getResource("/fxml/Settings.fxml"));
         stage = (Stage)((Node)event.getSource()).getScene().getWindow();
@@ -171,6 +190,9 @@ public class Controller {
         stage.setScene(scene);
         stage.show();
     }
+        /**
+ * permet d'aller au menu de choix de niveau
+ */
     public void switchToMapChoice(ActionEvent event) throws IOException{
         Parent root = FXMLLoader.load(getClass().getResource("/fxml/mapChoice.fxml"));
         stage = (Stage)((Node)event.getSource()).getScene().getWindow();
@@ -178,6 +200,9 @@ public class Controller {
         stage.setScene(scene);
         stage.show();
     }
+        /**
+ * permet d'aller au menu pour choisir entre aller à la campagne ou de reprendre une partie ou de choisir son niveeau
+ */
     public void switchToLetsGame(ActionEvent event) throws IOException{
         Parent root = FXMLLoader.load(getClass().getResource("/fxml/letsgame.fxml"));
         stage = (Stage)((Node)event.getSource()).getScene().getWindow();
@@ -185,6 +210,9 @@ public class Controller {
         stage.setScene(scene);
         stage.show();
     }
+        /**
+ * permet de faire pause en partie
+ */
     public void switchToPause(ActionEvent event)throws IOException{
 
         FXMLLoader loader = new FXMLLoader();
@@ -203,6 +231,9 @@ public class Controller {
         stage.show();
          */
     }
+        /**
+ * lance la partie
+ */
     public void switchToGame(ActionEvent event){
         try {
             setMusic();
@@ -282,6 +313,9 @@ public class Controller {
         });
     }
 
+        /**
+ * charge la partie en fonction de l'indexLevel qui représente le niveau 
+ */
     private void initializeGame(int indexLevel) throws URISyntaxException {
         game.makeTheGame(indexLevel);
         //System.out.println("1");
@@ -306,6 +340,9 @@ public class Controller {
         setvbox();
         //System.out.println("5");
     }
+        /**
+ * permet de retourner en partie après avoir fait pause
+ */
     @FXML
     private void resume(ActionEvent event)
     {
@@ -377,6 +414,9 @@ public void playLevel(ActionEvent event)
         e.printStackTrace();
     }
 }
+        /**
+ * permet de quitter 
+ */
     public void logout(ActionEvent event){
         stage = (Stage)scene.getWindow();
         System.out.println("logout");
@@ -387,12 +427,17 @@ public void playLevel(ActionEvent event)
     {
         game.getSave();
     }
-
+/**
+ * Sauvegarde le niveau et quitte le jeu
+ */
     @FXML
     private void quitAndSave(ActionEvent event) throws IOException {
         saveLevel();
         logout(event);
     }
+        /**
+ * permet de reprendre là ou on avait quitté et sauvergarder
+ */
     @FXML
     private void conTinu(ActionEvent event)
     {
