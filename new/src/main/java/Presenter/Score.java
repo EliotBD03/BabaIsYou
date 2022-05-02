@@ -13,7 +13,7 @@ public class Score {
     private String fileName;
     private static int userLine = 0;
     static int secondsPassed = 0;
-    static int globalScore = 0;
+    static int globalScore;
     static int levelScore = 1500;
     static Timer myTimer = new Timer();
     TimerTask task = new TimerTask(){
@@ -22,7 +22,7 @@ public class Score {
             System.out.println("Vous avez perdu: "+ secondsPassed+"0 points");
             Scanner sc = new Scanner(System.in);
             if(secondsPassed == 150){
-                stop();
+                secondsPassed = 0;
             }
         }
     };
@@ -34,7 +34,7 @@ public class Score {
     public static void stop(){
         globalScore = globalScore + levelScore - secondsPassed*10;
         System.out.println("Votre score: "+ globalScore+" points");
-        myTimer.cancel();
+        secondsPassed = 0;
     }
 
     public void start(){
