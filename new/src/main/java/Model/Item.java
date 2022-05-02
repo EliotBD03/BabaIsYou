@@ -185,13 +185,8 @@ public class Item extends Environment implements Entity
                 for(int j = 0; j <= mapO[i].length - 1; j++)
                     if(this.getClass().isInstance(mapO[i][j]))
                     {
-                        if(mapO[i][j] == tempMapO
-                                [i][j])
-                        {
-
-                            tempMapO
-                                    [i][j] = null;
-                        }
+                        if(mapO[i][j] == tempMapO[i][j])
+                            tempMapO[i][j] = null;
                         mapO[i][j] = thing;
                     }
 
@@ -444,7 +439,7 @@ public class Item extends Environment implements Entity
                                 }
                                 else if(thingIsPushingY(BigAlgorithm.getTabperm(),i - 1, j))
                                     posY = Actions.pushY(-1, i, j, mapO);
-                                if(thingHasWin( posY, posX))
+                                if(thingHasWin(i, j))
                                     winStatus = true;
                             }
                         }
@@ -462,7 +457,7 @@ public class Item extends Environment implements Entity
                                 else if(thingIsPushingY(BigAlgorithm.getTabperm(),i + 1, j))
                                     posY = Actions.pushY(1, i, j, mapO);
                                 //on regarde si on a atteint un objet qui est win
-                                if(thingHasWin( posY, posX))
+                                if(thingHasWin( i, j))
                                     winStatus = true;
                             }
                     break;
@@ -478,7 +473,7 @@ public class Item extends Environment implements Entity
                                 else if(thingIsPushingX(BigAlgorithm.getTabperm(),i, j - 1))
                                     posX = Actions.pushX(-1, i, j, mapO);
 
-                                if(thingHasWin( posY, posX))
+                                if(thingHasWin( i, j))
                                     winStatus = true;
                             }
                     break;
@@ -494,7 +489,7 @@ public class Item extends Environment implements Entity
                                 else if(thingIsPushingX(BigAlgorithm.getTabperm(),i, j + 1))
                                     posX = Actions.pushX(1, i, j, mapO);
 
-                                if(thingHasWin( posY, posX))
+                                if(thingHasWin( i, j))
                                     winStatus = true;
 
                             }

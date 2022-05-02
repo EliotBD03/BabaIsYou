@@ -40,6 +40,14 @@ public class Environment {
      * @return width
      */
     public static int getWidth() {return width;}
+
+    /**
+     * accesseur pour la map d'objet
+     * @return la map d'objet de type "Entity"
+     */
+
+    public static Entity[][] getMapO(){return mapO;}
+
     /**
      * permet de set la map avec les objets au bon endroit
      * @param dataList apres avoir execute de la methode Extract.setDataList()
@@ -91,10 +99,20 @@ public class Environment {
          */
         private void setObjectMap(String [][] dataList)
         {
-            this.mapO = new Entity[this.length][this.width];
-                    for (int i = 1; i <= dataList.length - 1 ; i++ )
-                            //on va centrer les éléments de la map (extension / 2)
-                            this.mapO[Integer.parseInt(dataList[i][2]) + 1][Integer.parseInt(dataList[i][1])+ 1] = whatobj(dataList[i][0]);
+            mapO = new Entity[length][width];
+            for (int i = 1; i <= dataList.length - 1 ; i++ )
+            {
+                try
+                {
+                    Entity object = whatobj(dataList[i][0]);
+                    mapO[Integer.parseInt(dataList[i][2]) + 1][Integer.parseInt(dataList[i][1])+ 1] = object;
+                }
+                catch (Exception e)
+                {
+                    mapO = new Entity[length][width];
+                    System.out.println("the element : " + dataList[i][0] + " does not respect the format of the game.");
+                }
+            }
         }
 
         /**
@@ -102,50 +120,53 @@ public class Environment {
          * @param thing l'element du tableau correspondant a l'instance
          * @return l'instance demandé
          */
-        private Entity whatobj(String thing)
+        private Entity whatobj(String thing) throws Exception
         {
-            switch (thing)
-            {
-                case "is":
-                    return new BlockRules.Is();
-                case "stop":
-                    return new BlockRules.Stop();
-                case "push":
-                    return new BlockRules.Push();
-                case "wall":
-                    return new Wall();
-                case "rock":
-                    return new Rock();
-                case "baba":
-                    return new Baba();
-                case "flag":
-                    return new Flag();
-                case "goop":
-                    return new Goop();
-                case "lava":
-                    return new Lava();
-                case "you":
-                    return new BlockRules.You();
-                case "win":
-                    return new BlockRules.Win();
-                case "text_wall":
-                    return new BlockRules.TextWall();
-                case "text_baba":
-                    return new BlockRules.TextBaba();
-                case "text_flag":
-                    return new BlockRules.TextFlag();
-                case "text_rock":
-                    return new BlockRules.TextRock();
-                case "text_goop":
-                    return new BlockRules.TextGoop();
-                case "sink":
-                    return new BlockRules.Sink();
-                case "text_lava":
-                    return new BlockRules.TextLava();
-                case "kill":
-                    return new BlockRules.Kill();
-            }
-            return null;
+                switch (thing)
+                {
+                    case "is":
+                        return new BlockRules.Is();
+                    case "stop":
+                        return new BlockRules.Stop();
+                    case "push":
+                        return new BlockRules.Push();
+                    case "wall":
+                        return new Wall();
+                    case "rock":
+                        return new Rock();
+                    case "baba":
+                        return new Baba();
+                    case "flag":
+                        return new Flag();
+                    case "goop":
+                        return new Goop();
+                    case "lava":
+                        return new Lava();
+                    case "you":
+                        return new BlockRules.You();
+                    case "win":
+                        return new BlockRules.Win();
+                    case "text_wall":
+                        return new BlockRules.TextWall();
+                    case "text_baba":
+                        return new BlockRules.TextBaba();
+                    case "text_flag":
+                        return new BlockRules.TextFlag();
+                    case "text_rock":
+                        return new BlockRules.TextRock();
+                    case "text_goop":
+                        return new BlockRules.TextGoop();
+                    case "sink":
+                        return new BlockRules.Sink();
+                    case "text_lava":
+                        return new BlockRules.TextLava();
+                    case "kill":
+                        return new BlockRules.Kill();
+                }
+                if(thing.equals(""))
+                    return null;
+                else
+                    throw new Exception();
         }
         /**
          * affiche la map

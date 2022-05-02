@@ -27,18 +27,34 @@ public class Extract {
      */
     public Extract(String filename)
     {
-        setDataList(filename);
+        if(validFormat(filename))
+            setDataList(filename);
+        else
+            System.out.println("unvalid format");
     }
 
     /**
      * accesseur au tableau de données
      */
-    public String[][] getDataList() {
+    public String[][] getDataList(){
         if (this.dataList != null)
             return this.dataList;
         return null;
     }
 
+    /**
+     * méthode permettant de verifier le format du fichier
+     * @param fileName le fichier qu'on va vérifier
+     * @return vrai si c'est le bon format, faux sinon
+     */
+
+    public boolean validFormat(String fileName)
+    {
+        String extension = fileName.substring(fileName.length() - 4);
+        if(extension.equals(".txt"))
+            return true;
+        return false;
+    }
     /**
      * on extrait les donnés de notre fichier pour les mettre sous la forme d'un tableau a deux dimensions
      *
@@ -48,7 +64,7 @@ public class Extract {
         try {
 
             //on effectue les instantiations nécessaires
-            FileReader file = new FileReader(new File(map));
+            FileReader file = new FileReader(map);
             BufferedReader r1 = new BufferedReader(file);
             String line;
 
@@ -81,18 +97,32 @@ public class Extract {
                     if (line.charAt(j) == ' ')
                         l++;
                     else
+                    {
                         res[k][l] += line.charAt(j);
+                        //pour vérifier si ceux sont bien des nombres après le mot
+                        if(l > 0)
+                            Integer.parseInt(res[k][l]);
+
+                    }
+
                     j++;
                 }
-                if (res[k][3] == "")
+                if (res[k][3].equals(""))
                     res[k][3] += "0";
                 k++;
             }
             r2.close();
             // on met notre attribut de classe comme étant le tableau res (pour pouvoir le manipuler par la suite)
             this.dataList = res;
-        } catch (IOException error) {
-            error.printStackTrace();
+        }
+        catch (IOException error)
+        {
+            System.out.println("cannot find the file. Please make sure this is the right path");
+        }
+        catch (NumberFormatException error)
+        {
+            System.out.println("the format of the level isn't respected");
+            dataList = null;
         }
     }
 }

@@ -14,7 +14,6 @@ import java.util.Scanner;
 public class User
 {
     private static String id;
-    private static Level availablelevel;
     private static final String pathRegister = new File("src/main/resources/users/register.txt").getAbsolutePath();
     private static final DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy/MMMM/dd HH:mm:ss");
 
