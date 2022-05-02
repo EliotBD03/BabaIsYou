@@ -43,6 +43,6 @@
             <Image url="@../sprite/babaisyoutitle.gif" />
          </image>
       </ImageView>
+      <Button layoutX="29.0" layoutY="433.0" mnemonicParsing="false" onAction="#goToScore" text="Score" />
     </children>
 </AnchorPane>
-
