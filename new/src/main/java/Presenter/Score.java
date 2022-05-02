@@ -1,6 +1,7 @@
 package Presenter;
 import java.util.Timer;
 import java.util.TimerTask;
+import java.util.Scanner;
 /**
  * cette classe à pour but d'établir un tableau des scores
  */
@@ -14,7 +15,10 @@ TimerTask task = new TimerTask(){
     public void run(){
         secondsPassed++;
         System.out.println("Vous avez perdu: "+ secondsPassed+"0 points");
-        if(secondsPassed == 5){
+        Scanner sc = new Scanner(System.in);
+        System.out.println("Avez vous finis ? si oui taper 1 sinon taper 2");
+        int entier = sc.nextInt();
+        if(entier == 1 | secondsPassed == 150){
             stop();
             cancel();
         }
