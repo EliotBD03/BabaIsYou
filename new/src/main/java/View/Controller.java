@@ -195,6 +195,13 @@ public class Controller {
         stage.setScene(scene);
         stage.show();
     }
+    public void goToScore(ActionEvent event) throws IOException{
+        Parent root = FXMLLoader.load(getClass().getResource("/fxml/Score.fxml"));
+        stage = (Stage)((Node)event.getSource()).getScene().getWindow();
+        scene = new Scene(root,450, 500, Color.BLACK);
+        stage.setScene(scene);
+        stage.show();
+    }
         /**
  * permet d'aller au menu de choix de niveau
  */
