@@ -14,7 +14,9 @@ import java.util.Scanner;
 public class User
 {
     private static String id;
+    private static Level availablelevel;
     private static final String pathRegister = new File("src/main/resources/users/register.txt").getAbsolutePath();
+    private static final String pathRegister2 = new File("src/main/resources/users/scoreboard.txt").getAbsolutePath();
     private static final DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy/MMMM/dd HH:mm:ss");
 
     public String getId()
@@ -53,8 +55,13 @@ public class User
     private void searchUser()
     {
         Info info = new Info(pathRegister);
+        Score info2 = new Score(pathRegister2);
+        String date2 = info2.getUserInfo(id);
         String date = info.getUserInfo(id);
         if(date == null)
             info.writeInfo(id +" " + dtf.format(LocalDateTime.now()));
+        if(date == null)
+            info2.writeInfo(id +" ");
     }
 }
+
