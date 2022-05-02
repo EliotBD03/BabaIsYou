@@ -2,8 +2,6 @@ package Presenter;
 import Model.*;
 import View.Controller;
 import javafx.scene.image.Image;
-
-import java.io.File;
 import java.net.URISyntaxException;
 import java.util.HashMap;
 import java.util.Map;
@@ -110,6 +108,7 @@ public class Game
 
     public boolean nextLevel()
     {
+        Score.stop();
         boolean continu = level.goNext();
         if(continu)
         {
