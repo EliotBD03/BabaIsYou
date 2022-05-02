@@ -43,6 +43,8 @@ public class Controller {
     private static int count_move = 0;
     @FXML
     private TextField MyTextField;
+    private Media media;
+    private MediaPlayer mediaPlayer;
 
     public final Image babaImage = new Image(getClass().getResource( "/sprite/baba.gif").toURI().toString());
     public final Image flagImage = new Image(getClass().getResource( "/sprite/Flag.png").toURI().toString());
@@ -91,12 +93,15 @@ public class Controller {
         /**
  * Méthode pour jouer la music dans le jeu
  */
-    public void setMusic() throws URISyntaxException {
+       public void setMusic() throws URISyntaxException {
         Media media = new Media(getClass().getResource("/music/AdhesiveWombat - Night Shade.mp3").toURI().toString());
-        MediaPlayer player = new MediaPlayer(media);
-        player.setAutoPlay(true);
-        player.setCycleCount(MediaPlayer.INDEFINITE);
-        MediaView view = new MediaView(player);
+        mediaPlayer = new MediaPlayer(media);
+        mediaPlayer.setAutoPlay(true);
+        mediaPlayer.setCycleCount(MediaPlayer.INDEFINITE);
+        MediaView view = new MediaView(mediaPlayer);
+    }
+    public void cutMusic() {
+        mediaPlayer.pause();
     }
     public Controller() throws URISyntaxException {
     }
