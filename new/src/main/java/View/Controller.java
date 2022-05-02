@@ -1,7 +1,16 @@
 package View;
 
         import Presenter.Game;
+        import java.io.*;
+        import java.nio.charset.StandardCharsets;
+        import java.nio.file.Files;
+        import java.nio.file.Path;
+        import java.nio.file.Paths;
+        import java.util.ArrayList;
+        import java.util.List;
+        import java.util.Scanner;
 
+        import Presenter.Score;
         import javafx.event.ActionEvent;
         import javafx.fxml.FXML;
         import javafx.fxml.FXMLLoader;
@@ -9,6 +18,7 @@ package View;
         import javafx.scene.Parent;
         import javafx.scene.Scene;
         import javafx.scene.control.Button;
+        import javafx.scene.control.Label;
         import javafx.scene.control.TextField;
         import javafx.scene.image.Image;
         import javafx.scene.image.ImageView;
@@ -22,9 +32,12 @@ package View;
         import javafx.scene.paint.Color;
         import javafx.stage.Stage;
 
+        import java.io.File;
+        import java.io.FileNotFoundException;
         import java.io.IOException;
         import java.net.URISyntaxException;
         import java.util.ArrayList;
+        import java.util.Scanner;
 
 
         import static Presenter.Game.getSprite;
@@ -45,6 +58,9 @@ public class Controller {
     private TextField MyTextField;
     private Media media;
     private MediaPlayer mediaPlayer;
+    @FXML
+    private Label myLabel;
+    private String name = "Romain";
 
     public final Image babaImage = new Image(getClass().getResource( "/sprite/baba.gif").toURI().toString());
     public final Image flagImage = new Image(getClass().getResource( "/sprite/Flag.png").toURI().toString());
@@ -67,7 +83,9 @@ public class Controller {
     public final Image textLavaImage = new Image(getClass().getResource("/sprite/lavatext.png").toURI().toString());
     public final Image killImage= new Image(getClass().getResource("/sprite/textkill.png").toURI().toString());
     public final Image lavaImage = new Image(getClass().getResource("/sprite/lava.gif").toURI().toString());
+    private String fileName;
 
+    private static int userLine = 0;
 
     private static Game game;
 
@@ -79,7 +97,7 @@ public class Controller {
 
     @FXML
        /**
- * Méthode pour rejoindre le Menu du après s'être connecter avec son pseudo
+ * Méthode pour rejoindre le Menu après s'être connecter avec son pseudo
  */
     private void inputUser(ActionEvent event) throws IOException, URISyntaxException {
         String name = MyTextField.getText();
@@ -90,10 +108,7 @@ public class Controller {
         stage.setScene(scene);
         stage.show();
     }
-        /**
- * Méthode pour jouer la music dans le jeu
- */
-       public void setMusic() throws URISyntaxException {
+    public void setMusic() throws URISyntaxException {
         Media media = new Media(getClass().getResource("/music/AdhesiveWombat - Night Shade.mp3").toURI().toString());
         mediaPlayer = new MediaPlayer(media);
         mediaPlayer.setAutoPlay(true);
@@ -108,7 +123,6 @@ public class Controller {
         /**
  * Cette méthode va charger les Hbox en fonction des tableaux
  */
-
     public void settabhbox(){
         for (int i = 0; i <= tabhbox.length - 1; i++)
         {
@@ -183,20 +197,12 @@ public class Controller {
         scene = new Scene(root,450, 500, Color.BLACK);
         stage.setScene(scene);
         stage.show();
-
     }
         /**
  * permet d'aller au settings
  */
     public void switchToScene2(ActionEvent event) throws IOException {
         Parent root = FXMLLoader.load(getClass().getResource("/fxml/Settings.fxml"));
-        stage = (Stage)((Node)event.getSource()).getScene().getWindow();
-        scene = new Scene(root,450, 500, Color.BLACK);
-        stage.setScene(scene);
-        stage.show();
-    }
-    public void goToScore(ActionEvent event) throws IOException{
-        Parent root = FXMLLoader.load(getClass().getResource("/fxml/Score.fxml"));
         stage = (Stage)((Node)event.getSource()).getScene().getWindow();
         scene = new Scene(root,450, 500, Color.BLACK);
         stage.setScene(scene);
@@ -211,6 +217,20 @@ public class Controller {
         scene = new Scene(root,450, 500, Color.BLACK);
         stage.setScene(scene);
         stage.show();
+    }
+    public void goToScore(ActionEvent event) throws IOException{
+        Parent root = FXMLLoader.load(getClass().getResource("/fxml/Score.fxml"));
+        stage = (Stage)((Node)event.getSource()).getScene().getWindow();
+        scene = new Scene(root,450, 500, Color.BLACK);
+        stage.setScene(scene);
+        stage.show();
+    }
+    public void Info(String fileName)
+    {
+        this.fileName = fileName;
+    }
+    public void loadScore(ActionEvent event){
+        myLabel.setText(name);
     }
         /**
  * permet d'aller au menu pour choisir entre aller à la campagne ou de reprendre une partie ou de choisir son niveeau
@@ -233,22 +253,14 @@ public class Controller {
         scene = new Scene(root, 450, 500, Color.BLACK);
         stage.setScene(scene);
         stage.show();
-
-        /*
-        Parent root = FXMLLoader.load(getClass().getResource("/fxml/Pause.fxml"));
-        stage = (Stage)((Node)event.getSource()).getScene().getWindow();
-        System.out.println(stage);
-        scene = new Scene(root,450, 500, Color.BLACK);
-        stage.setScene(scene);
-        stage.show();
-         */
     }
         /**
  * lance la partie
  */
     public void switchToGame(ActionEvent event){
         try {
-            setMusic();
+            Score score = new Score();
+            score.start();
             initializeGame(game.getLevel());
             stage = (Stage)((Node)event.getSource()).getScene().getWindow();
             scene = new Scene(vbox,500,500,Color.BLACK);
