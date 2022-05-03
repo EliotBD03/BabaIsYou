@@ -19,6 +19,7 @@ package View;
         import javafx.scene.Scene;
         import javafx.scene.control.Button;
         import javafx.scene.control.Label;
+        import javafx.scene.control.TextArea;
         import javafx.scene.control.TextField;
         import javafx.scene.image.Image;
         import javafx.scene.image.ImageView;
@@ -59,8 +60,8 @@ public class Controller {
     private Media media;
     private MediaPlayer mediaPlayer;
     @FXML
-    private Label myLabel;
-    private String name = "Romain";
+    private TextArea myLabel;
+    private String playerscore;
 
     public final Image babaImage = new Image(getClass().getResource( "/sprite/baba.gif").toURI().toString());
     public final Image flagImage = new Image(getClass().getResource( "/sprite/Flag.png").toURI().toString());
@@ -229,8 +230,18 @@ public class Controller {
     {
         this.fileName = fileName;
     }
-    public void loadScore(ActionEvent event){
-        myLabel.setText(name);
+    public void loadScore(ActionEvent event) {
+        File file = new File("/Users/romaineloy/new/src/main/resources/users/scoreboard.txt");
+
+        try (FileInputStream fis = new FileInputStream(file)) {
+            Scanner sc = new Scanner(fis);
+            while(sc.hasNextLine()) {
+                playerscore = "/ Voici votre Score :" + sc.nextLine();
+                myLabel.appendText(playerscore);
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
         /**
  * permet d'aller au menu pour choisir entre aller à la campagne ou de reprendre une partie ou de choisir son niveeau
@@ -287,6 +298,7 @@ public class Controller {
                 case UP:
                     if(game.makeMove("z"))
                     {
+                        Score.stop();
                         System.out.println("gagné");
                         if(!(game.nextLevel()))
                             stage.close();
@@ -299,6 +311,7 @@ public class Controller {
                 case DOWN:
                     if(game.makeMove("s"))
                     {
+                        Score.stop();
                         System.out.println("gagné");
                         if(!(game.nextLevel()))
                             stage.close();
@@ -311,6 +324,7 @@ public class Controller {
                 case LEFT:
                     if(game.makeMove("q"))
                     {
+                        Score.stop();
                         System.out.println("gagné");
                         if(!(game.nextLevel()))
                             stage.close();
@@ -323,6 +337,7 @@ public class Controller {
                 case RIGHT:
                     if(game.makeMove("d"))
                     {
+                        Score.stop();
                         System.out.println("gagné");
                         if(!(game.nextLevel()))
                             stage.close();
@@ -456,6 +471,8 @@ public void playLevel(ActionEvent event)
  */
     @FXML
     private void quitAndSave(ActionEvent event) throws IOException {
+        Score.saveScore();
+        Score.endScore();
         saveLevel();
         logout(event);
     }
@@ -482,4 +499,6 @@ public void playLevel(ActionEvent event)
         }
     }
 }
+
+
 
