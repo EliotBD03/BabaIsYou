@@ -30,7 +30,7 @@ public class Score {
     public Score() {
 
     }
-    public static void saveScore(){
+    public static void endScore(){
         globalScore = globalScore + levelScore - secondsPassed*10;
         myTimer.cancel();
     }
