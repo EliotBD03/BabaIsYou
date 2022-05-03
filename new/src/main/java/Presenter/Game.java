@@ -108,7 +108,6 @@ public class Game
 
     public boolean nextLevel()
     {
-        Score.stop();
         boolean continu = level.goNext();
         if(continu)
         {
@@ -145,3 +144,4 @@ public class Game
     }
 
 }
+
