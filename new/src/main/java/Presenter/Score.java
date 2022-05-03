@@ -4,12 +4,14 @@ import java.io.*;
 import java.util.Scanner;
 import java.util.Timer;
 import java.util.TimerTask;
-import java.util.Scanner;
+
 
 /**
  * cette classe est faite pour pouvoir accéder aux infos d'un fichier texte
  */
 public class Score {
+    private static String id;
+    private static final String pathScoreboard = new File("src/main/resources/users/scoreboard.txt").getAbsolutePath();
     private String fileName;
     private static int userLine = 0;
     static int secondsPassed = 0;
@@ -26,9 +28,18 @@ public class Score {
             }
         }
     };
+    public String getId()
+    {
+        return id;
+    }
 
-    public Score() {
 
+    public Score() {}
+
+
+    public static void saveScore(){
+        globalScore = globalScore + levelScore - secondsPassed*10;
+        User.searchUser2();
     }
     public static void endScore(){
         globalScore = globalScore + levelScore - secondsPassed*10;
