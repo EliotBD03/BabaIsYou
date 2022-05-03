@@ -287,6 +287,7 @@ public class Controller {
                 case UP:
                     if(game.makeMove("z"))
                     {
+                        Score.stop();
                         System.out.println("gagné");
                         if(!(game.nextLevel()))
                             stage.close();
@@ -299,6 +300,7 @@ public class Controller {
                 case DOWN:
                     if(game.makeMove("s"))
                     {
+                        Score.stop();
                         System.out.println("gagné");
                         if(!(game.nextLevel()))
                             stage.close();
@@ -311,6 +313,7 @@ public class Controller {
                 case LEFT:
                     if(game.makeMove("q"))
                     {
+                        Score.stop();
                         System.out.println("gagné");
                         if(!(game.nextLevel()))
                             stage.close();
@@ -323,6 +326,7 @@ public class Controller {
                 case RIGHT:
                     if(game.makeMove("d"))
                     {
+                        Score.stop();
                         System.out.println("gagné");
                         if(!(game.nextLevel()))
                             stage.close();
@@ -456,6 +460,7 @@ public void playLevel(ActionEvent event)
  */
     @FXML
     private void quitAndSave(ActionEvent event) throws IOException {
+        Score.saveScore();
         saveLevel();
         logout(event);
     }
