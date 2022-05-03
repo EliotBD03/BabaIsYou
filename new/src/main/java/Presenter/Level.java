@@ -20,7 +20,7 @@ public class Level
     private static final String level6 = pathLevel + File.separator + "level6.txt";
     private static final String level7 = pathLevel + File.separator + "level7.txt";
 
-    private static final String[] levels = {"C:\\Users\\julie\\OneDrive\\Bureau\\myProject\\BabaIsYou\\new\\src\\main\\resources\\level\\test\\test.txt",level0,level1,level2,level3,level4,level5,level6,level7};
+    private static final String[] levels = {level0,level1,level2,level3,level4,level5,level6,level7};
 
     public Level(String id)
     {

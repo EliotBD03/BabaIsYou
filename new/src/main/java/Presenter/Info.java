@@ -1,4 +1,4 @@
-
+package Presenter;
 
 import java.io.*;
 import java.nio.charset.StandardCharsets;
@@ -127,11 +127,5 @@ public class Info
         }
         return null;
     }
-
-    public static void main(String[] args)
-    {
-        Info info = new Info("/home/julien/Bureau/BabaIsYou/BabaIsYou/new/src/main/resources/level/save/history.txt");
-        System.out.println(info.getUserInfo("juju"));
-    }
-
+    
 }
