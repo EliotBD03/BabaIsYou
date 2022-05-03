@@ -460,7 +460,7 @@ public void playLevel(ActionEvent event)
  */
     @FXML
     private void quitAndSave(ActionEvent event) throws IOException {
-        Score.saveScore();
+        Score.endScore();
         saveLevel();
         logout(event);
     }
