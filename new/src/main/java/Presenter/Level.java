@@ -61,6 +61,7 @@ public class Level
     public boolean goNext()
     {
         if(currentIndex == levels.length -1)
+            Score.saveScore();
             return false;
         currentIndex += 1;
         return true;
