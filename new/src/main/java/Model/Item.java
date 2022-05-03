@@ -261,7 +261,7 @@ public class Item extends Environment implements Entity
                 }
                 //si l'objet que l'on contrôle est la position d'un objet de temp qui est win, alors on a gagné et le winStatus = true
                 else if(mapO[i][j] != null && tempMapO[i][j] != null && tempMapO[i][j].thingIsWin(BigAlgorithm.getTabperm()) && mapO[i][j].thingIsYou(BigAlgorithm.getTabperm()))
-                    winStatus = true;
+                  winStatus = true;
                 //s'il n'y a rien sur mapO à cet endroit-là et que sur temp ce n'est pas le cas, alors on remplace le null de mapO par l'objet de temp
                 else if(mapO[i][j] == null && tempMapO[i][j] != null)
                 {
@@ -296,8 +296,10 @@ public class Item extends Environment implements Entity
      * cette méthode va chercher dans le tableau d'objet toutes les coordonnés des éléments qui sont win
      * et va les transférer dans l'arraylist "coordonates_win"
      */
-    private boolean searchWin()
+    private void searchWin()
     {
+        //permet de savoir si on a été une fois dans la condition (flag = false)
+        boolean flag = true;
         //on va cherher dans tout le tableau (les deux boucles)
         for(int i = 0; i <= mapO.length - 1; i++)
             for(int j = 0; j <= mapO[i].length -1; j++)
@@ -309,11 +311,11 @@ public class Item extends Environment implements Entity
                     System.out.println("je suis win");
                     int[] pos = {i,j};
                     coordonates_win.add(pos);
-                    return true;
+                    flag = false;
                 }
             }
-        coordonates_win = new ArrayList<int[]>();
-        return false;
+        if(flag)
+            coordonates_win = new ArrayList<int[]>();
     }
 
 
@@ -327,8 +329,7 @@ public class Item extends Environment implements Entity
         if(winStatus)
         {
             winStatus = false;
-            tempMapO
-                    = new Entity[mapO.length][mapO[0].length];
+            tempMapO = new Entity[mapO.length][mapO[0].length];
             coordonates_win = new ArrayList<>();
             return true;
         }
@@ -371,7 +372,7 @@ public class Item extends Environment implements Entity
         //vrai si : -posx se situe dans les limites de la map
         //          -l'élément se situant à l'endroit indiqué par les coordonnés
         //           peut être poussé
-        if(posx+ 1 < getWidth() - 1 && posX - 1 > 0 && mapO[posy][posx] != null && mapO[posy][posx].thingIsPush(tabperm))
+        if(posx+ 1 <= getWidth() - 1 && posX - 1 >= 0 && mapO[posy][posx] != null && mapO[posy][posx].thingIsPush(tabperm))
             return true;
         //faux si : la condition n'est pas respectée
         return false;
@@ -383,10 +384,8 @@ public class Item extends Environment implements Entity
         //vrai si : -posy se situe dans les limites de la map
         //          -l'élément se situant à l'endroit indiqué par les coordonnés
         //           peut être poussé
-        if( posy + 1 < getLength() - 1 && posy  - 1> 0 && mapO[posy][posx] != null && mapO[posy][posx].thingIsPush(tabperm))
-        {
+        if( posy + 1 <= getLength() - 1 && posy  - 1>= 0 && mapO[posy][posx] != null && mapO[posy][posx].thingIsPush(tabperm))
             return true;
-        }
         //faux si : la condition n'est pas respectée
         return false;
     }
@@ -439,7 +438,7 @@ public class Item extends Environment implements Entity
                                 }
                                 else if(thingIsPushingY(BigAlgorithm.getTabperm(),i - 1, j))
                                     posY = Actions.pushY(-1, i, j, mapO);
-                                if(thingHasWin(i, j))
+                               if(thingHasWin(i, j))
                                     winStatus = true;
                             }
                         }
@@ -499,6 +498,20 @@ public class Item extends Environment implements Entity
         BigAlgorithm.actualise();
         //on va fusionner la map actuel avec la map temporaire
         actualiseObjectMap();
+    }
+
+    /**
+     * méthode permettant de savoir on a perdu la partie
+     * @return vrai si c'est le cas, faux sinon
+     */
+
+    public static boolean isGameOver()
+    {
+        for(int i = 0; i <= mapO.length - 1; i ++)
+            for(int j = 0; j <= mapO[i].length - 1; j++)
+                if(mapO[i][j] != null && mapO[i][j].thingIsYou(BigAlgorithm.getTabperm()))
+                    return false;
+        return true;
     }
 }
 
