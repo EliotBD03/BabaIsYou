@@ -413,30 +413,58 @@ public void switchToLevel(ActionEvent event) throws IOException, URISyntaxExcept
             keyInput(event);
             stage.show();
 }
-public void setLevelOne(ActionEvent event)
+    public void setLevelOne(ActionEvent event)
     {
         game.setLevel(0);
     }
-public void setLevelTwo(ActionEvent event) throws IOException {
+    public void setLevelTwo(ActionEvent event) throws IOException {
         if(!game.setLevel( 1))
         {
             switchToMapChoice(event);
             System.out.println("you haven't finished the level one yet");
         }
     }
-public void setLevelThree(ActionEvent event) throws IOException {
+    public void setLevelThree(ActionEvent event) throws IOException {
     if(!game.setLevel(2))
     {
         switchToMapChoice(event);
         System.out.println("you haven't finished the level two yet");
     }
 }
-public void setLevelFour(ActionEvent event) throws IOException {
+    public void setLevelFour(ActionEvent event) throws IOException {
     if(!game.setLevel( 3))
     {
         switchToMapChoice(event);
         System.out.println("you haven't finished the level three yet");
     }
+    }
+    public void setLevelFive(ActionEvent event) throws IOException {
+        if(!game.setLevel(4))
+        {
+            switchToMapChoice(event);
+            System.out.println("you haven't finished the level three yet");
+        }
+    }
+    public void setLevelSix(ActionEvent event) throws IOException {
+        if(!game.setLevel(5))
+        {
+            switchToMapChoice(event);
+            System.out.println("you haven't finished the level three yet");
+        }
+    }
+    public void setLevelSeven(ActionEvent event) throws IOException {
+        if(!game.setLevel(6))
+        {
+            switchToMapChoice(event);
+            System.out.println("you haven't finished the level three yet");
+        }
+    }
+    public void setLevelHeight(ActionEvent event) throws IOException {
+        if(!game.setLevel(7))
+        {
+            switchToMapChoice(event);
+            System.out.println("you haven't finished the level three yet");
+        }
     }
 
 public void playLevel(ActionEvent event)
