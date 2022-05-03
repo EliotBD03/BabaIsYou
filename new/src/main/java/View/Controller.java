@@ -2,12 +2,7 @@ package View;
 
         import Presenter.Game;
         import java.io.*;
-        import java.nio.charset.StandardCharsets;
-        import java.nio.file.Files;
-        import java.nio.file.Path;
-        import java.nio.file.Paths;
         import java.util.ArrayList;
-        import java.util.List;
         import java.util.Scanner;
 
         import Presenter.Score;
@@ -18,7 +13,6 @@ package View;
         import javafx.scene.Parent;
         import javafx.scene.Scene;
         import javafx.scene.control.Button;
-        import javafx.scene.control.Label;
         import javafx.scene.control.TextArea;
         import javafx.scene.control.TextField;
         import javafx.scene.image.Image;
@@ -34,11 +28,8 @@ package View;
         import javafx.stage.Stage;
 
         import java.io.File;
-        import java.io.FileNotFoundException;
         import java.io.IOException;
         import java.net.URISyntaxException;
-        import java.util.ArrayList;
-        import java.util.Scanner;
 
 
         import static Presenter.Game.getSprite;
@@ -386,6 +377,7 @@ public class Controller {
     private void resume(ActionEvent event)
     {
         try {
+            System.out.println("qdhqzdqdqzd");
             stage = (Stage)((Node)event.getSource()).getScene().getWindow();
             stage.setScene(scene);
             keyInput(event);
@@ -442,28 +434,28 @@ public void switchToLevel(ActionEvent event) throws IOException, URISyntaxExcept
         if(!game.setLevel(4))
         {
             switchToMapChoice(event);
-            System.out.println("you haven't finished the level three yet");
+            System.out.println("you haven't finished the level four yet");
         }
     }
     public void setLevelSix(ActionEvent event) throws IOException {
         if(!game.setLevel(5))
         {
             switchToMapChoice(event);
-            System.out.println("you haven't finished the level three yet");
+            System.out.println("you haven't finished the level five yet");
         }
     }
     public void setLevelSeven(ActionEvent event) throws IOException {
         if(!game.setLevel(6))
         {
             switchToMapChoice(event);
-            System.out.println("you haven't finished the level three yet");
+            System.out.println("you haven't finished the level six yet");
         }
     }
     public void setLevelHeight(ActionEvent event) throws IOException {
         if(!game.setLevel(7))
         {
             switchToMapChoice(event);
-            System.out.println("you haven't finished the level three yet");
+            System.out.println("you haven't finished the level seven yet");
         }
     }
 
@@ -508,7 +500,7 @@ public void playLevel(ActionEvent event)
  * permet de reprendre là ou on avait quitté et sauvergarder
  */
     @FXML
-    private void conTinu(ActionEvent event)
+    private void continu(ActionEvent event)
     {
         if(stage == null)
         {

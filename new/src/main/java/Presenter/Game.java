@@ -7,27 +7,42 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.ArrayList;
 
+/**
+ * cette classe est la classe "Main" du Presenter.
+ * C'est par là que va transiter les informations de Model
+ * et de toute autre classe du Presenter.
+ */
 public class Game
 {
+    //notre utilisateur
     private static User player;
+    //le niveau en cours (le chemin du fichier)
     private static Level level;
+    //la carte du jeu
     private static Environment map;
-
+    //lien avec l'interface graphique
     private static Controller controller;
-
+    //les différents objets du jeu (Item)
     private static Baba baba;
     private static Flag flag;
     private static Rock rock;
     private static Wall wall;
-
+    private static Goop goop;
     private static Lava lava;
-
+    //la map de String temporaire
     private static  String[][] temp;
-
+    //notre dictionnaire pour faire le lien
+    //entre les Strings et les images
     private static final Map<Character, Image> dico = new HashMap<Character, Image>();
-
+    //la taille de la map (en longueur et largeur)
     public static int getLength(){return map.getMap().length;}
 
+    /**
+     * constructeur qui va établir les niveaux faits/disponibles et l'index de niveaux courant
+     * dernièrement utilisé
+     * @param userName le pseudo du joueur
+     * @throws URISyntaxException pour controller
+     */
     public Game(String userName) throws URISyntaxException
     {
         player =  User.getUser(userName);
@@ -47,6 +62,10 @@ public class Game
         dico.put('*', controller.lavaImage);
     }
 
+    /**
+     * cette méthode va construire le jeu
+     * @param index l'index du niveau
+     */
     public void makeTheGame(int index){
 
         level.setCurrentIndex(index);
@@ -58,9 +77,17 @@ public class Game
         flag = new Flag();
         rock = new Rock();
         wall = new Wall();
+        goop = new Goop();
         lava = new Lava();
 
     }
+
+    /**
+     * à la différence de makeTheGame(int index),
+     * cette méthode est plutôt utilisée pour les
+     * sauvegardes
+     * @param fileName la sauvegarde
+     */
 
     public void makeTheGame(String fileName)
     {
@@ -72,9 +99,15 @@ public class Game
         flag = new Flag();
         rock = new Rock();
         wall = new Wall();
+        goop = new Goop();
         lava = new Lava();
     }
 
+    /**
+     * Méthode ayant pour but d'effectuer un déplacement dans le jeu.
+     * @param event l'entrée du joueur
+     * @return Elle retourne vrai si le joueur a gagné, faux sinon
+     */
     public boolean makeMove(String event)
     {
         System.out.println(map);
@@ -82,14 +115,32 @@ public class Game
         flag.move(event);
         rock.move(event);
         wall.move(event);
+        goop.move(event);
         lava.move(event);
         return Item.win();
     }
 
+    /**
+     * méthode permettant de récupérer une image du jeu
+     * en fonction de la position du String donné
+     * en paramètre.
+     * @param i la position du String en y
+     * @param j la position du String en x
+     * @return l'url de l'image correspondante
+     */
     public static Image getSprite(int i , int j)
     {
         return dico.get(map.getMap()[i][j].charAt(0));
     }
+
+    /**
+     * cette méthode permet de savoir quelle image il faut
+     * changer en fonction de deux cartes:
+     * - avant l'entrée du joueur
+     * - après l'entrée du joueur
+     * @return la coordonnée de l'image à modifier
+     */
+
     public ArrayList<int[]> getChanges()
     {
         ArrayList<int[]> changeCoord = new ArrayList<>();
@@ -106,6 +157,12 @@ public class Game
         return changeCoord;
     }
 
+    /**
+     * Méthode utilisée pour changer de niveau.
+     * Elle va simplement changer l'url du niveau
+     * et va réinitialiser la carte.
+     * @return vrai si on peut continuer à jouer (si on n'est pas au dernier niveau), faux sinon
+     */
     public boolean nextLevel()
     {
         boolean continu = level.goNext();
@@ -117,6 +174,11 @@ public class Game
         return continu;
     }
 
+    /**
+     * Méthode servant à sauvegarder une partie.
+     * ATTENTION, ssi le joueur a mis un pseudo.
+     */
+
     public void getSave()
     {
         if(player.getId() == null)
@@ -126,6 +188,10 @@ public class Game
         save.newSave(map.getMap());
     }
 
+    /**
+     * Méthode servant à reprendre une partie.
+     * @return l'url de la dernière sauvegarde
+     */
     public static String getLastSave()
     {
         level.fromSave();
@@ -133,11 +199,20 @@ public class Game
         return save.getLastSave();
     }
 
+    /**
+     * méthode mettant en place un niveau en fonction de son index
+     * @param index l'index de la liste des niveaux
+     * @return l'url du niveau correspondant
+     */
     public boolean setLevel(int index)
     {
         return level.setCurrentIndex(index);
     }
 
+    /**
+     * méthode servant à récupérer le niveau actuel
+     * @return l'url du niveau
+     */
     public String getLevel()
     {
         return level.getCurrentLevel();

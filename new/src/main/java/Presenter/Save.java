@@ -1,6 +1,5 @@
 package Presenter;
 
-import Model.*;
 
 import java.io.*;
 import java.util.HashMap;
@@ -9,12 +8,21 @@ import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.Scanner;
 
+/**
+ * classe ayant pour but d'effectuer des sauvegardes et d'en charger
+ */
 public class Save
 {
+    //chemin du dossier des sauvegardes
     private final String save_directory = new File("src/main/resources/level/save").getAbsolutePath();
+    //dictionnaire utilisé pour faire le lien entre la map de String et les mots dans un fichier level
     public static final Map<String, String> dico = new HashMap<>();
-
+    //le format de la date à écrire
     private static final DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy/MMMM/dd HH:mm:ss");
+
+    /**
+     * constructeur qui "initialise" le dico
+     */
     public Save()
     {
         dico.put("O","baba");dico.put("#", "rock");
@@ -29,6 +37,12 @@ public class Save
         dico.put("D", "sink");
 
     }
+
+    /**
+     * méthode servant à créer une nouvelle sauvegarde
+     * @param tab la map de String actuelle
+     */
+
     public void newSave(String[][] tab)
     {
         try
@@ -55,6 +69,11 @@ public class Save
         }
     }
 
+    /**
+     * méthode servant à trouver le nom de la sauvegarde en fonction
+     * du nombre qu'il y a dans le dossier
+     * @return le nom de la sauvegarde
+     */
     private String getFileName()
     {
         String name = "save";
@@ -68,6 +87,12 @@ public class Save
         return name + i + ".txt";
     }
 
+    /**
+     * méthode servant à écrire le nom de la sauvegarde + sa date de création
+     * dans l'historique des sauvegardes (history.txt)
+     * @param fileName le nom de la sauvegarde
+     * @throws IOException si on ne trouve pas le fichier
+     */
     private void writeDate(String fileName) throws IOException {
         File history = new File(save_directory + File.separator + "history.txt");
         if(history.exists())
@@ -76,8 +101,13 @@ public class Save
             fw.write("\n"+ fileName + " "+ dtf.format(LocalDateTime.now()));
             fw.close();
         }
-
     }
+
+    /**
+     * méthode servant à récupérer la dernière sauvegarde
+     * (à partir de l'historique)
+     * @return l'url de la dernière sauvegarde
+     */
 
     public String getLastSave(){
         try {

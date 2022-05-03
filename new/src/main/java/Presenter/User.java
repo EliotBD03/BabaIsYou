@@ -1,12 +1,8 @@
 package Presenter;
 
 import java.io.File;
-import java.net.InetAddress;
-import java.net.UnknownHostException;
-import java.nio.charset.StandardCharsets;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
-import java.util.Scanner;
 
 /**
  * cette classe a pour but d'identifier le joueur
@@ -14,36 +10,56 @@ import java.util.Scanner;
 public class User
 {
     private static final String pathScoreboard = new File("src/main/resources/users/scoreboard.txt").getAbsolutePath();
+    // le nom du joueur
     private static String id;
-    private static Level availablelevel;
+    // le chemin du registre des inscriptions
     private static final String pathRegister = new File("src/main/resources/users/register.txt").getAbsolutePath();
+    // le format de la date
     private static final DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy/MMMM/dd HH:mm:ss");
 
+    /**
+     * accesseur
+     * @return le nom du joueur
+     */
     public String getId()
     {
         return id;
     }
 
-    User()
+    /**
+     * constructeur pour les joueurs randoms
+     */
+    private User()
     {
 
     }
-    User(String name)
+
+    /**
+     * constructeur pour les joueurs inscrits
+     * (ou pas encore !)
+     * @param name le nom du joueur
+     */
+    private User(String name)
     {
         id = name;
         searchUser();
     }
 
-    public static User getUser(String input)
+    /**
+     * méthode faisant office de "constructeur" double
+     * @param name le nom du joueur
+     * @return
+     */
+    public static User getUser(String name)
     {
         try
         {
             if(User.id != null)
                 throw new Exception();
-            if(input.length() == 0)
+            if(name.length() == 0)
                 return new User();
             else
-                return new User(input);
+                return new User(name);
         }
         catch (Exception e)
         {
@@ -52,6 +68,10 @@ public class User
         return new User();
     }
 
+    /**
+     * méthode servant à retrouver les informations d'un
+     * joueur sur son inscription
+     */
     private void searchUser()
     {
         Info info = new Info(pathRegister);
@@ -59,6 +79,7 @@ public class User
         if(date == null)
             info.writeInfo(id +" " + dtf.format(LocalDateTime.now()));
     }
+
     static void searchUser2()
     {
         Score info2 = new Score(pathScoreboard);

@@ -10,19 +10,26 @@ import java.util.List;
 import java.util.Scanner;
 
 /**
- * cette classe est faite pour pouvoir accéder aux infos d'un fichier texte
+ * cette classe est faite pour pouvoir accéder(écrire) aux infos d'un fichier texte
  */
 public class Info
 {
+    //le nom du fichier
     private String fileName;
 
-    private static int userLine = 0;
-
+    /**
+     * constructeur
+     * @param fileName le nom du fichier
+     */
     public Info(String fileName)
     {
         this.fileName = fileName;
     }
 
+    /**
+     * méthode servant à récupérer la dernière information d'un fichier
+     * @return l'information
+     */
     public String getLastLine()
     {
         try {
@@ -50,6 +57,11 @@ public class Info
         return null;
     }
 
+    /**
+     * méthode servant à écrire une information à la fin d'un fichier
+     * @param information l'information à mettre
+     */
+
     public void writeInfo(String information)
     {
         try {
@@ -69,19 +81,36 @@ public class Info
         }
     }
 
+    /**
+     * méthode servant à écrire une information à partir d'un nom utilisateur
+     * @param information l'information à écrire
+     * @param userName le nom utilisateur
+     */
     public void writeInfoUser(String information, String userName){
         try
         {
+            //on cherche le chemin du fichier
             Path path = Paths.get(fileName);
+            //on met tout le contenu d'une liste
             List<String> lines = Files.readAllLines(path);
+            //la liste du fichier résultant
             List<String> res = new ArrayList<>();
             int i = 0;
+            //tant qu'on n'a pas trouvé le nom donné en paramètre
             while(lines.get(i).length() > 0 &&!lines.get(i).substring(0, userName.length()).equals(userName))
             {
                 res.add(lines.get(i));
                 i++;
             }
+            //on rajoute l'information
             res.add(userName + " " + information);
+            i++;
+            //on rajoute le reste
+            while(lines.size() - 1 >= i)
+            {
+                res.add(lines.get(i));
+                i++;
+            }
             Files.write(path, res);
 
         }
@@ -92,6 +121,13 @@ public class Info
         }
 
     }
+
+    /**
+     * méthode servant à récupérer de l'information à partir
+     * d'un nom utilisateur
+     * @param userId nom utilisateur
+     * @return l'information
+     */
 
     public String getUserInfo(String userId)
     {
@@ -111,7 +147,6 @@ public class Info
                     else if(i > userId.length() - 1 && line.charAt(i) != ' ')
                     {
                         res += line.charAt(i);
-                        userLine = tempLine - 1;
                     }
                 }
             }
