@@ -44,6 +44,8 @@ public class Controller {
     private Button playButton;
     private Stage stage;
     private static Scene scene;
+    //pour romain, c'est pour permettre de logout dans le menu pause
+    private static Scene pauseScene;
     private static  Pane[][] tabpane;
     private static int count_move = 0;
     @FXML
@@ -221,6 +223,7 @@ public class Controller {
     {
         this.fileName = fileName;
     }
+
     public void loadScore(ActionEvent event) {
         File file = new File("/Users/romaineloy/new/src/main/resources/users/scoreboard.txt");
 
@@ -252,8 +255,8 @@ public class Controller {
         FXMLLoader loader = new FXMLLoader();
         loader.setLocation(getClass().getResource("/fxml/Pause.fxml"));
         Parent root = loader.load();
-        scene = new Scene(root, 450, 500, Color.BLACK);
-        stage.setScene(scene);
+        pauseScene = new Scene(root, 450, 500, Color.BLACK);
+        stage.setScene(pauseScene);
         stage.show();
     }
         /**
@@ -343,21 +346,7 @@ public class Controller {
         });
     }
 
-        /**
- * charge la partie en fonction de l'indexLevel qui représente le niveau 
- */
-    private void initializeGame(int indexLevel) throws URISyntaxException {
-        game.makeTheGame(indexLevel);
-        //System.out.println("1");
-        setTabpane();
-        //System.out.println("2");
-        initializeAll();
-        //System.out.println("3");
-        settabhbox();
-        //System.out.println("4");
-        setvbox();
-        //System.out.println("5");
-    }
+
     private void initializeGame(String fileName) throws URISyntaxException {
         game.makeTheGame(fileName);
         //System.out.println("1");
@@ -377,7 +366,6 @@ public class Controller {
     private void resume(ActionEvent event)
     {
         try {
-            System.out.println("qdhqzdqdqzd");
             stage = (Stage)((Node)event.getSource()).getScene().getWindow();
             stage.setScene(scene);
             keyInput(event);
@@ -494,7 +482,9 @@ public void playLevel(ActionEvent event)
         Score.saveScore();
         Score.endScore();
         saveLevel();
-        logout(event);
+        stage = (Stage)pauseScene.getWindow();
+        System.out.println("logout");
+        stage.close();
     }
         /**
  * permet de reprendre là ou on avait quitté et sauvergarder

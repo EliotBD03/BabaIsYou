@@ -97,18 +97,14 @@ public class Info
             List<String> res = new ArrayList<>();
             int i = 0;
             //tant qu'on n'a pas trouvé le nom donné en paramètre
-            while(lines.get(i).length() > 0 &&!lines.get(i).substring(0, userName.length()).equals(userName))
+            while(i <= lines.size() - 1)
             {
-                res.add(lines.get(i));
-                i++;
-            }
-            //on rajoute l'information
-            res.add(userName + " " + information);
-            i++;
-            //on rajoute le reste
-            while(lines.size() - 1 >= i)
-            {
-                res.add(lines.get(i));
+                System.out.println(lines.get(i));
+                if(lines.get(i).length() > userName.length() && lines.get(i).substring(0,userName.length()).equals(userName))
+                    res.add(userName + " " + information);
+                else
+                    res.add(lines.get(i));
+                System.out.println("indice i : " + i + " + mot : " + lines.get(i));
                 i++;
             }
             Files.write(path, res);

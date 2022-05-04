@@ -7,12 +7,12 @@
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="450.0" style="-fx-background-color: BLACK;" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="View.Controller">
    <children>
-      <Button layoutX="150.0" layoutY="100.0" mnemonicParsing="false" onAction="#continu" prefHeight="50.0" prefWidth="150.0" text="Resume" />
       <Button layoutX="125.0" layoutY="212.0" mnemonicParsing="false" onAction="#quitAndSave" prefHeight="50.0" prefWidth="175.0" text="Quit and Save" />
       <ImageView fitHeight="50.0" fitWidth="150.0" layoutX="150.0" layoutY="100.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../sprite/resume.gif" />
          </image>
       </ImageView>
+      <Button layoutX="146.0" layoutY="95.0" mnemonicParsing="false" onAction="#resume" opacity="0.0" prefHeight="59.0" prefWidth="158.0" text="Resume" />
    </children>
 </AnchorPane>
