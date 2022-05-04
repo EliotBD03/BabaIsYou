@@ -230,7 +230,7 @@ public class Controller {
         try (FileInputStream fis = new FileInputStream(file)) {
             Scanner sc = new Scanner(fis);
             while(sc.hasNextLine()) {
-                playerscore = "/ Voici votre Score :" + sc.nextLine();
+             playerscore = ""+ sc.nextLine()+"\n";
                 myLabel.appendText(playerscore);
             }
         } catch (IOException e) {
