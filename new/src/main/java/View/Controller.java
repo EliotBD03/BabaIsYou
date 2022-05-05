@@ -282,12 +282,7 @@ public class Controller {
         scene.setOnKeyPressed(event1 -> {
             switch (event1.getCode()) {
                 case SPACE:
-                    try{
-                    initializeGame(game.getLevel());
-                       
-                    } catch (URISyntaxException e) {
-                        e.printStackTrace();
-                    }
+                    refresh(event);
                     break;
                 case ESCAPE:
                     try {
@@ -383,6 +378,7 @@ public class Controller {
             vbox.getChildren().clear();
             tabhbox = null;
             tabpane = null;
+            game.resetLevel();
             setTabpane();
             initializeAll();
             settabhbox();

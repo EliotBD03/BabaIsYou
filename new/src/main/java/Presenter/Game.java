@@ -155,6 +155,15 @@ public class Game
     }
 
     /**
+     * Méthode utilisée pour réinitialiser la carte du jeu
+     */
+    public void resetLevel()
+    {
+        Extract extract = new Extract(level.getCurrentLevel());
+        map.setMap(extract.getDataList());
+    }
+
+    /**
      * Méthode servant à sauvegarder une partie.
      * ATTENTION, ssi le joueur a mis un pseudo.
      */
