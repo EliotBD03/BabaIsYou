@@ -224,7 +224,7 @@ public class Controller {
     }
 
     public void loadScore(ActionEvent event) {
-        File file = new File("/src/main/resources/users/scoreboard.txt");
+        File file = new File("src/main/resources/users/scoreboard.txt");
 
         try (FileInputStream fis = new FileInputStream(file)) {
             Scanner sc = new Scanner(fis);
