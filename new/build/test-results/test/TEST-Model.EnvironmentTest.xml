@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="Model.EnvironmentTest" tests="1" skipped="0" failures="0" errors="0" timestamp="2022-05-05T06:26:16" hostname="LAPTOP-Q42REQGH" time="0.034">
+  <properties/>
+  <testcase name="getMapOTest()" classname="Model.EnvironmentTest" time="0.034"/>
+  <system-out><![CDATA[level : 0
+level : 1
+level : 2
+level : 3
+level : 4
+level : 5
+level : 6
+level : 7
+]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

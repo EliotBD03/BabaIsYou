@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="Model.ItemTest" tests="3" skipped="0" failures="0" errors="0" timestamp="2022-05-05T06:26:16" hostname="LAPTOP-Q42REQGH" time="0.034">
+  <properties/>
+  <testcase name="win()" classname="Model.ItemTest" time="0.018"/>
+  <testcase name="move()" classname="Model.ItemTest" time="0.009"/>
+  <testcase name="isGameOver()" classname="Model.ItemTest" time="0.004"/>
+  <system-out><![CDATA[Before rule established : winStatus = false
+je suis win
+2 2win : 1 1
+je suis win
+2 1win : 1 1
+2 1win : 1 1
+After rule established : winStatus = true
+cannot go up : OK
+cannot go left : OK
+cannot go left because of a wall which is stop : OK
+cannot push down because of a wall : OK
+pushing...
+cannot push anymore : OK
+moved the rule block
+Can push
+Before the move, we have : BabaIsYou
+After we have : NOTHING => GAME OVER
+]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

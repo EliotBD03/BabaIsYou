@@ -63,26 +63,6 @@ public class Game
     }
 
     /**
-     * cette méthode va construire le jeu
-     * @param index l'index du niveau
-     */
-    public void makeTheGame(int index){
-
-        level.setCurrentIndex(index);
-        Extract extract = new Extract(level.getCurrentLevel());
-        map = new Environment();
-        map.setMap(extract.getDataList());
-
-        baba = new Baba();
-        flag = new Flag();
-        rock = new Rock();
-        wall = new Wall();
-        goop = new Goop();
-        lava = new Lava();
-
-    }
-
-    /**
      * à la différence de makeTheGame(int index),
      * cette méthode est plutôt utilisée pour les
      * sauvegardes

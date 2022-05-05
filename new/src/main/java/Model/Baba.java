@@ -31,16 +31,4 @@ public class Baba extends Item
      */
     @Override
     public String getSkin(){return skin;}
-
-    /**
-     * ce constructeur s'applique dans la classe Main.Au moment de son initialisation, il va rechercher
-     * dans mapO l'instance va prendre la position dans le tableau comme
-     * caractéristiques posy et posx.
-     */
-    public Baba()
-    {
-        int[] position = super.searchtype(Baba.class);
-        super.posY = position[0];
-        super.posX = position[1];
-    }
 }

@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="Model.BigAlgorithmTest" tests="2" skipped="0" failures="0" errors="0" timestamp="2022-05-05T06:26:16" hostname="LAPTOP-Q42REQGH" time="0.11">
+  <properties/>
+  <testcase name="newRulesTest()" classname="Model.BigAlgorithmTest" time="0.099"/>
+  <testcase name="removeTest()" classname="Model.BigAlgorithmTest" time="0.01"/>
+  <system-out><![CDATA[posy = 4 temp = 3
+VERTICAL : 
+
+before: BABA YOU after : WALL STOP
+before: null null after : BABA YOU
+before: null null after : null null
+before: null null after : null null
+before: null null after : null null
+before: null null after : null null
+before: null null after : null null
+before: null null after : null null
+before: null null after : null null
+before: null null after : null null
+before: null null after : null null
+before: null null after : null null
+before: null null after : null null
+before: null null after : null null
+before: null null after : null null
+before: null null after : null null
+before: null null after : null null
+before: null null after : null null
+before: null null after : null null
+before: null null after : null null
+HORIZONTAL : 
+
+before: WALL STOP after : WALL STOP
+before: BABA YOU after : BABA YOU
+before: null null after : null null
+before: null null after : null null
+before: null null after : null null
+before: null null after : null null
+before: null null after : null null
+before: null null after : null null
+before: null null after : null null
+before: null null after : null null
+before: null null after : FLAG WIN
+before: null null after : null null
+before: null null after : null null
+before: null null after : null null
+before: null null after : null null
+before: null null after : null null
+before: null null after : null null
+before: null null after : null null
+before: null null after : null null
+before: null null after : null null
+C:\Users\julie\OneDrive\Bureau\TheLastFuckingTime!!!!!\BabaIsYou\new\src\main\resources\level\test\test0.txt
+posy = 3 temp = 2
+before: WALL STOP after : BABA YOU
+before: BABA YOU after : BABA YOU
+before: null null after : null null
+before: null null after : null null
+before: null null after : null null
+before: null null after : null null
+before: null null after : null null
+before: null null after : null null
+before: null null after : null null
+before: null null after : null null
+before: null null after : null null
+before: GOOP SINK after : null null
+before: null null after : null null
+before: null null after : null null
+before: null null after : null null
+before: null null after : null null
+before: null null after : null null
+before: null null after : null null
+before: null null after : null null
+before: null null after : null null
+before: null null after : null null
+]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

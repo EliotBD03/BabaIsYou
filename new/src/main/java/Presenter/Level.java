@@ -124,7 +124,6 @@ public class Level
         {
             lastIndex = Integer.parseInt(String.valueOf(access.charAt(access.length() - 1)));
             previousCurrentIndex =  Integer.parseInt(String.valueOf(access.charAt(0)));
-            System.out.println("le dernier indice accessible est : " + lastIndex + "et le dernier utilisé : " + previousCurrentIndex);
         }
     }
 

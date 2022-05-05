@@ -66,8 +66,8 @@ public class Environment {
      */
      private void setStringMap(String[][] dataList)
      {
-         length = 21;
-         width = 21;
+         length = 23;
+         width = 23;
          map = new String[length][width];
 
          for (int i = 0; i <= length - 1; i++)
@@ -172,6 +172,7 @@ public class Environment {
          * affiche la map
          */
 
+        @Override
         public String toString() {
             String res = "";
             for (int i = 0; i <= length - 1; i++) {
@@ -182,23 +183,4 @@ public class Environment {
             return res;
         }
 
-    /**
-     * cette méthode va rechercher à partir d'un type, les coordonnés de l'élément de même type dans le tableau d'objet
-     * @param thing le type de l'élément que l'on cherche
-     * @return la position de l'objet ((y,x)->plus facile pour l'implémentation dans un tableau)
-     */
-    protected int[] searchtype(Class<?> thing)
-    {
-        int x = -1 ; int y = -1;
-        int[] res = new int[2];
-
-        for(int i = 0; i <= mapO.length - 1; i++)
-            for(int j = 0; j <= mapO[i].length - 1; j++)
-                if (thing.isInstance(mapO[i][j]))
-                {
-                    y = i; x = j;
-                }
-        res[0] = y; res[1] = x;
-        return res;
-    }
     }

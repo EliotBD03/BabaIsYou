@@ -140,11 +140,10 @@ public class Controller {
     public void setTabpane()
     {
         int length = Game.getLength();
-        int width = length;
         tabhbox = new HBox[length];
-        tabpane = new Pane[length][width];
+        tabpane = new Pane[length][length];
         for(int i = 0 ; i <= length - 1; i ++)
-            for(int j = 0; j <= width - 1; j++)
+            for(int j = 0; j <= length - 1; j++)
                 tabpane[i][j] = new Pane();
     }
 
@@ -152,8 +151,8 @@ public class Controller {
     public void initialize(Image image, Pane pane){
         {
             ImageView view = new ImageView();
-            view.setFitWidth(25);
-            view.setFitHeight(25);
+            view.setFitWidth(23);
+            view.setFitHeight(23);
             view.setImage(image);
             pane.getChildren().add(view);
 
@@ -293,7 +292,6 @@ public class Controller {
                     if(game.makeMove("z"))
                     {
                         Score.stop();
-                        System.out.println("gagné");
                         if(!(game.nextLevel()))
                             stage.close();
                         else
@@ -306,7 +304,6 @@ public class Controller {
                     if(game.makeMove("s"))
                     {
                         Score.stop();
-                        System.out.println("gagné");
                         if(!(game.nextLevel()))
                             stage.close();
                         else
@@ -319,7 +316,6 @@ public class Controller {
                     if(game.makeMove("q"))
                     {
                         Score.stop();
-                        System.out.println("gagné");
                         if(!(game.nextLevel()))
                             stage.close();
                         else
@@ -332,7 +328,6 @@ public class Controller {
                     if(game.makeMove("d"))
                     {
                         Score.stop();
-                        System.out.println("gagné");
                         if(!(game.nextLevel()))
                             stage.close();
                         else

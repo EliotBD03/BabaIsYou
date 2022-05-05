@@ -1,2 +1,1 @@
-/********this file is the scoreboard*******/
-
+ /********this file is the scoreboard*******/

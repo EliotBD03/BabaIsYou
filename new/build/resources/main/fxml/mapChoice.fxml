@@ -5,10 +5,14 @@
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="450.0" style="-fx-background-color: BLACK;" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="View.Controller">
    <children>
-      <Button layoutX="150.0" layoutY="83.0" mnemonicParsing="false" onAction="#setLevelOne" prefHeight="50.0" prefWidth="150.0" text="level1" />
-      <Button layoutX="150.0" layoutY="181.0" mnemonicParsing="false" onAction="#setLevelTwo" prefHeight="50.0" prefWidth="150.0" text="level2" />
-      <Button layoutX="150.0" layoutY="283.0" mnemonicParsing="false" onAction="#setLevelThree" prefHeight="50.0" prefWidth="150.0" text="level3" />
-      <Button layoutX="150.0" layoutY="374.0" mnemonicParsing="false" onAction="#setLevelFour" prefHeight="50.0" prefWidth="150.0" text="level4" />
-      <Button layoutX="199.0" layoutY="446.0" mnemonicParsing="false" onAction="#playLevel" text="play" />
+      <Button layoutX="32.0" layoutY="49.0" mnemonicParsing="false" onAction="#setLevelOne" prefHeight="50.0" prefWidth="150.0" text="level 1" />
+      <Button layoutX="254.0" layoutY="49.0" mnemonicParsing="false" onAction="#setLevelTwo" prefHeight="50.0" prefWidth="150.0" text="level 2" />
+      <Button layoutX="32.0" layoutY="130.0" mnemonicParsing="false" onAction="#setLevelThree" prefHeight="50.0" prefWidth="150.0" text="level 3" />
+      <Button layoutX="254.0" layoutY="130.0" mnemonicParsing="false" onAction="#setLevelFour" prefHeight="50.0" prefWidth="150.0" text="level 4" />
+      <Button layoutX="206.0" layoutY="396.0" mnemonicParsing="false" onAction="#playLevel" text="play" />
+      <Button layoutX="32.0" layoutY="216.0" mnemonicParsing="false" onAction="#setLevelFive" prefHeight="50.0" prefWidth="150.0" text="level 5" />
+      <Button layoutX="32.0" layoutY="298.0" mnemonicParsing="false" onAction="#setLevelSeven" prefHeight="50.0" prefWidth="150.0" text="level 7" />
+      <Button layoutX="254.0" layoutY="216.0" mnemonicParsing="false" onAction="#setLevelSix" prefHeight="50.0" prefWidth="150.0" text="level 6" />
+      <Button layoutX="254.0" layoutY="298.0" mnemonicParsing="false" onAction="#setLevelHeight" prefHeight="50.0" prefWidth="150.0" text="level 8" />
    </children>
 </AnchorPane>

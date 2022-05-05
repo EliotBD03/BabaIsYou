@@ -104,7 +104,6 @@ public class Info
                     res.add(userName + " " + information);
                 else
                     res.add(lines.get(i));
-                System.out.println("indice i : " + i + " + mot : " + lines.get(i));
                 i++;
             }
             Files.write(path, res);

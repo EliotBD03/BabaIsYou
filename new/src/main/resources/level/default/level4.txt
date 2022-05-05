@@ -3,8 +3,8 @@ rock 17 1
 rock 2 2
 rock 6 2
 rock 8 3
-text_wall 17 3
-is 17 4
+text_wall 20 3
+is 20 4
 wall 1 5
 wall 2 5
 wall 3 5
@@ -15,7 +15,7 @@ lava 11 5
 lava 12 5
 lava 13 5
 lava 14 5
-stop 17 5
+stop 20 5
 wall 1 6
 wall 5 6
 lava 10 6
@@ -46,12 +46,12 @@ is 3 12
 you 4 12
 wall 5 12
 rock 14 12
-text_flag 17 13
+text_flag 19 13
 text_rock 9 14
 is 10 14
 push 11 14
-is 17 14
-win 17 15
+is 19 14
+win 19 15
 text_lava 1 18
 is 2 18
 kill 3 18

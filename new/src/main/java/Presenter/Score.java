@@ -116,10 +116,4 @@ public class Score {
         return null;
     }
 
-    public static void main(String[] args)
-    {
-        Info info = new Info("/Users/romaineloy/new/src/main/resources/level/save/history.txt");
-        System.out.println(info.getUserInfo("juju"));
-    }
-
 }
