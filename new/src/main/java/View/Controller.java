@@ -281,6 +281,14 @@ public class Controller {
     {
         scene.setOnKeyPressed(event1 -> {
             switch (event1.getCode()) {
+                case SPACE:
+                    try{
+                    initializeGame(game.getLevel());
+                       
+                    } catch (URISyntaxException e) {
+                        e.printStackTrace();
+                    }
+                    break;
                 case ESCAPE:
                     try {
                         switchToPause(event);
