@@ -102,6 +102,9 @@ public class Controller {
         stage.setScene(scene);
         stage.show();
     }
+           /*
+        Va lancer la musique après avoir appuyé sur le bouton music dans le menu settings
+     */
     public void setMusic() throws URISyntaxException {
         Media media = new Media(getClass().getResource("/music/AdhesiveWombat - Night Shade.mp3").toURI().toString());
         mediaPlayer = new MediaPlayer(media);
@@ -211,6 +214,10 @@ public class Controller {
         stage.setScene(scene);
         stage.show();
     }
+                   /*
+        Amène vers le menu score
+     */
+        
     public void goToScore(ActionEvent event) throws IOException{
         Parent root = FXMLLoader.load(getClass().getResource("/fxml/Score.fxml"));
         stage = (Stage)((Node)event.getSource()).getScene().getWindow();
@@ -222,6 +229,10 @@ public class Controller {
     {
         this.fileName = fileName;
     }
+    /*
+        Va afficher le score des joueurs dans le textArea
+     */
+
 
     public void loadScore(ActionEvent event) {
         File file = new File("src/main/resources/users/scoreboard.txt");
@@ -276,7 +287,9 @@ public class Controller {
             e.printStackTrace();
         }
     }
-
+    /*
+        Méthode pour tout les event crée par les touches au clavier
+     */
     private void keyInput(ActionEvent event)
     {
         scene.setOnKeyPressed(event1 -> {
@@ -343,7 +356,9 @@ public class Controller {
             actualise(game.getChanges());
         });
     }
-
+    /*
+        Va appeler tout les méthodes qui permet de charger la map
+ */
 
     private void initializeGame(String fileName) throws URISyntaxException {
         game.makeTheGame(fileName);
@@ -373,7 +388,9 @@ public class Controller {
             e.printStackTrace();
         }
     }
-
+    /*
+Méthode qui va être utilisé si le joueur est bloqué et appuie sur la touche espace
+ */
     public void refresh(ActionEvent event) {
             vbox.getChildren().clear();
             tabhbox = null;
@@ -392,6 +409,10 @@ public void switchToLevel(ActionEvent event) throws IOException, URISyntaxExcept
             keyInput(event);
             stage.show();
 }
+          /*
+    setLevelOne va juste set le level sur le 1er car il est accesible dans tout les cas Sinon pour les autres
+    Il faut que le joueur les débloquent le code le vérifie.
+     */
     public void setLevelOne(ActionEvent event)
     {
         game.setLevel(0);
@@ -445,7 +466,9 @@ public void switchToLevel(ActionEvent event) throws IOException, URISyntaxExcept
             System.out.println("you haven't finished the level seven yet");
         }
     }
-
+    /*
+    Après avoir choisis un niveau le bouton playlevel charge le niveau choisis
+    */
 public void playLevel(ActionEvent event)
 {
     try {
