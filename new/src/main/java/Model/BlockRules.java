@@ -54,118 +54,99 @@ public class BlockRules extends Environment implements Entity
     //de les différencier dans un tableau de String
     public static class TextFlag extends BlockRules
     {
-        private static final String skin = "F";
-
         @Override
-        public String getSkin(){return skin;}
+        public final String getSkin(){return "F";}
 
     }
 
     public static class TextRock extends BlockRules
     {
-        private static final String skin = "R";
-
         @Override
-        public String getSkin(){return skin;}
+        public final String getSkin(){return "R";}
 
     }
 
     public static class TextWall extends BlockRules
     {
-        private static final String skin = "W";
 
         @Override
-        public String getSkin(){return skin;}
+        public final String getSkin(){return "W";}
 
     }
 
     public static class TextBaba extends BlockRules
     {
-        private static final String skin = "B";
-
         @Override
-        public String getSkin(){return skin;}
+        public final String getSkin(){return "B";}
 
     }
     public static class TextGoop extends BlockRules
     {
-        private static final String skin = "M";
 
         @Override
-        public String getSkin(){return skin;}
+        public final String getSkin(){return "M";}
 
     }
 
     public static class Is extends  BlockRules
     {
-        private static final String skin = "I";
-
         @Override
-        public String getSkin(){return skin;}
+        public final String getSkin(){return "I";}
 
     }
 
     public static class Win extends BlockRules
     {
-        //G pour Goal (pour ne pas avoir deux fois "W" ou "w")
-        private static final String skin = "G";
-
         @Override
-        public String getSkin(){return skin;}
+        public final String getSkin(){return "G";}
 
     }
 
     public static class You extends BlockRules
     {
-        private static final String skin = "Y";
 
         @Override
-        public String getSkin(){return skin;}
+        public final String getSkin(){return "Y";}
 
     }
 
     public static class Stop extends BlockRules
     {
-        private static final String skin = "S";
 
         @Override
-        public String getSkin(){return skin;}
+        public final String getSkin(){return "S";}
 
     }
 
     public static class Push extends BlockRules
     {
-        private static final String skin = "P";
 
         @Override
-        public String getSkin(){return skin;}
+        public final String getSkin(){return "P";}
 
     }
 
     public static class Sink extends BlockRules
     {
-        private static final String skin = "D";
 
         @Override
-        public String getSkin(){return skin;}
+        public final String getSkin(){return "D";}
 
     }
 
     public static class TextLava extends BlockRules
     {
-        private static final String skin = "L";
 
         @Override
-        public String getSkin(){return skin;}
+        public final String getSkin(){return "L";}
 
     }
 
     public static class Kill extends BlockRules
     {
-        private static final String skin = "K";
 
         @Override
-        public String getSkin(){return skin;}
+        public final String getSkin(){return "K";}
 
     }
 }

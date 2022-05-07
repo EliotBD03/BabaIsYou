@@ -54,17 +54,16 @@ public class Environment {
      */
      public void setMap(String[][] dataList)
      {
-         setStringMap(dataList);
+         setStringMap();
          setObjectMap(dataList);
          actualiseMap();
          new BigAlgorithm();
      }
 
     /**
-     * cette méthode va créer la map de String à partir d'un tableau de donnés
-     * @param dataList le tableau de donnés
+     * cette méthode va créer la map de String de taille 23 * 23
      */
-     private void setStringMap(String[][] dataList)
+     private void setStringMap()
      {
          length = 23;
          width = 23;

@@ -14,11 +14,6 @@ public class Baba extends Item
     private final Rules object = Rules.BABA;
 
     /**
-     * ce à quoi va ressembler Baba dans un tableau de String
-     */
-    private final String skin = "O";
-
-    /**
      * accesseur à l'attribut object
      * @return object
      */
@@ -26,9 +21,10 @@ public class Baba extends Item
     public Rules getObject(){return object;}
 
     /**
-     * accesseur à l'attribut skin
-     * @return skin
+     * méthode servant "d'apparence"
+     * note : mis en final pour ne pas changer l'apparence.
+     * @return l'apparence de baba
      */
     @Override
-    public String getSkin(){return skin;}
+    public  final String getSkin(){return "O";}
 }

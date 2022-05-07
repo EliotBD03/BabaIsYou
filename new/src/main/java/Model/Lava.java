@@ -7,12 +7,10 @@ public class Lava extends Item
 {
     private final Rules object = Rules.LAVA;
 
-    private final String skin = "*";
-
     @Override
     public Rules getObject(){return object;}
 
     @Override
-    public String getSkin(){return skin;}
+    public final String getSkin(){return "*";}
 
 }

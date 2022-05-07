@@ -206,6 +206,5 @@ public class Game
     {
         return level.getCurrentLevel();
     }
-
 }
 

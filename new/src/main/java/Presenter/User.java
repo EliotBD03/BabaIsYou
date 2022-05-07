@@ -79,9 +79,7 @@ public class User
         if(date == null)
             info.writeInfo(id +" " + dtf.format(LocalDateTime.now()));
     }
-    /*
-        Même méthode mais dans score Board
-     */
+
     static void searchUser2()
     {
         Score info2 = new Score(pathScoreboard);

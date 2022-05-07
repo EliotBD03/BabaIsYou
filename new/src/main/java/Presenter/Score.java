@@ -7,7 +7,7 @@ import java.util.TimerTask;
 
 
 /**
- * cette class est la pour calculer et ecrire le score dans un fichier txt
+ * cette classe est faite pour pouvoir accéder aux infos d'un fichier texte
  */
 public class Score {
     private static String id;
@@ -20,6 +20,7 @@ public class Score {
     static Timer myTimer = new Timer();
     TimerTask task = new TimerTask(){
         public void run(){
+
             secondsPassed++;
             System.out.println("Vous avez perdu: "+ secondsPassed+"0 points");
             Scanner sc = new Scanner(System.in);
@@ -28,34 +29,29 @@ public class Score {
             }
         }
     };
+    public String getId()
+    {
+        return id;
+    }
+
 
     public Score() {}
 
-    /*
-        Va sauvergardé le score actuel pris après avoir réussi un niveau
-     */
+
     public static void saveScore(){
         globalScore = globalScore + levelScore - secondsPassed*10;
         User.searchUser2();
     }
-    /*
-    Arrête définitivement le score après avoir fini tout les niveaux ou quit and save le jeu
-     */
     public static void endScore(){
         globalScore = globalScore + levelScore - secondsPassed*10;
         myTimer.cancel();
     }
-    /*
-    Va relancé le chrono après avoir réussis un niveau
- */
     public static void stop(){
         globalScore = globalScore + levelScore - secondsPassed*10;
         System.out.println("Votre score: "+ globalScore+" points");
         secondsPassed = 0;
     }
-    /*
-    lance le chrono avec un délai de une seconde
-     */
+
     public void start(){
         myTimer.scheduleAtFixedRate(task,1000,1000);
 
@@ -66,9 +62,7 @@ public class Score {
         this.fileName = fileName;
     }
 
-    /*
-        écrit les informations dans le fichier txt
-     */
+
     public void writeInfo(String information)
     {
         try {
@@ -87,9 +81,7 @@ public class Score {
             e.printStackTrace();
         }
     }
-    /*
-        Récupère les informations écrite dans le textField du menu connection
-    */
+
     public String getUserInfo(String userId)
     {
         try {

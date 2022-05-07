@@ -503,6 +503,7 @@ public class Item extends Environment implements Entity
     {
         for(int i = 0; i <= mapO.length - 1; i ++)
             for(int j = 0; j <= mapO[i].length - 1; j++)
+                //cette condition va vérifier si on contrôle encore au moins un élément du jeu
                 if(mapO[i][j] != null && mapO[i][j].thingIsYou(BigAlgorithm.getTabperm()))
                     return false;
         return true;

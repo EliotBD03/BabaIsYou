@@ -39,7 +39,6 @@ interface Entity
      * methode permettant de savoir si l'objet peut bouger dans une certaine direction
      * on préconise que le deplacement se fait en y
      * @param tabperm le tableau contenant les permissions issu de la classe BigAlgorithm
-     * @param object l'objet de type Rules correspondant au type de l'instance qui utilise la méthode
      * @param posy la position de l'objet en y (en l'occurence apres mouvement)
      * @param posy la position de l'objet en y (en l'occurence apres mouvement)
      * @return vrai si l'objet peut bouger, faux sinon

@@ -8,12 +8,10 @@ public class Wall extends Item
 {
     private final Rules object = Rules.WALL;
 
-    private final String skin = "w";
-
     @Override
     public Rules getObject(){return object;}
 
     @Override
-    public String getSkin(){return skin;}
+    public final String getSkin(){return "w";}
 
 }
