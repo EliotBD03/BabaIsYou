@@ -9,7 +9,7 @@ import java.util.Map;
  */
 
 public class BigAlgorithm extends Environment {
-    private static Enum[][] tabloc = new Enum[getLength()][getWidth()];
+    private static final Enum[][] tabloc = new Enum[getLength()][getWidth()];
     private static Enum[][] tabperm;
     private static final Enum[] character = {Rules.BABA, Rules.ROCK, Rules.FLAG, Rules.WALL, Rules.GOOP, Rules.LAVA};
     private static final Enum[] actions = {Rules.YOU, Rules.STOP, Rules.WIN, Rules.PUSH, Rules.SINK, Rules.BABA, Rules.ROCK, Rules.FLAG, Rules.WALL, Rules.GOOP, Rules.LAVA, Rules.KILL};
@@ -21,7 +21,7 @@ public class BigAlgorithm extends Environment {
      */
 
     public BigAlgorithm() {
-        setTab(super.mapO);
+        setTab(mapO);
         int[][] current_is = findIS();
         setTabperm(findPermX(current_is), findPermY(current_is));
         dico.put(Rules.BABA, new Baba());
@@ -93,8 +93,6 @@ public class BigAlgorithm extends Environment {
      */
 
     private static int[][] findIS() {
-        int x = -1;
-        int y = -1;
         int[][] res = new int[10][2];
         int k = 0;
         for (int i = 0; i <= tabloc.length - 1; i++)

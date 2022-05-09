@@ -9,9 +9,6 @@ public class BlockRules extends Environment implements Entity
 {
 
     @Override
-    public boolean isItem() {return false;}
-
-    @Override
     public String getSkin() {
         return null;
     }
@@ -49,6 +46,9 @@ public class BlockRules extends Environment implements Entity
     public boolean thingIsWin(Enum[][] tabperm) {
         return false;
     }
+
+    @Override
+    public boolean isItem() {return false;}
 
     //ces classes internes représentent toutes les règles, elles ont toutes le même moyen d'implémentation sauf pour skin(ce qui permet
     //de les différencier dans un tableau de String

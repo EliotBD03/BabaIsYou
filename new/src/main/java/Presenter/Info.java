@@ -27,41 +27,9 @@ public class Info
     }
 
     /**
-     * méthode servant à récupérer la dernière information d'un fichier
-     * @return l'information
-     */
-    public String getLastLine()
-    {
-        try {
-            Scanner scanner = new Scanner(new File(fileName));
-            String line = null;
-            while (scanner.hasNextLine())
-            {
-                line = scanner.nextLine();
-            }
-            scanner.close();
-            String res = "";
-            int i  = 0;
-            while(line.charAt(i) != ' ')
-            {
-                res += line.charAt(i);
-                i ++;
-            }
-            return res;
-        }
-        catch (FileNotFoundException e)
-        {
-            System.out.println(fileName + " not found");
-            e.printStackTrace();
-        }
-        return null;
-    }
-
-    /**
      * méthode servant à écrire une information à la fin d'un fichier
      * @param information l'information à mettre
      */
-
     public void writeInfo(String information)
     {
         try {
@@ -128,12 +96,10 @@ public class Info
     {
         try {
             Scanner scanner = new Scanner(new File(fileName));
-            String line = null;
+            String line;
             String res = "";
-            int tempLine = 0;
             while (scanner.hasNextLine())
             {
-                tempLine += 1;
                 line = scanner.nextLine();
                 for(int i = 0; i <= line.length() - 1; i++)
                 {

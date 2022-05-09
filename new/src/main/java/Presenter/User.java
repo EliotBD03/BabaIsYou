@@ -17,6 +17,7 @@ public class User
     // le format de la date
     private static final DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy/MMMM/dd HH:mm:ss");
 
+
     /**
      * accesseur
      * @return le nom du joueur
@@ -27,6 +28,7 @@ public class User
     }
 
     /**
+     * @effects     Initialise un User this vide
      * constructeur pour les joueurs randoms
      */
     private User()
@@ -84,10 +86,12 @@ public class User
      */
     static void searchUser2()
     {
-        Score info2 = new Score(pathScoreboard);
-        String date2 = info2.getUserInfo(id);
-        if(date2 == null)
-            info2.writeInfo(id +" "+Score.globalScore);
+        if(!(id == null))
+        {
+            Score info2 = new Score(pathScoreboard);
+            String date2 = info2.getUserInfo(id);
+            if(date2 == null)
+                info2.writeInfo(id +" "+Score.globalScore);
+        }
     }
-
 }

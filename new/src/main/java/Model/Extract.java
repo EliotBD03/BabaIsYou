@@ -30,7 +30,7 @@ public class Extract {
         if(validFormat(filename))
             setDataList(filename);
         else
-            System.out.println("unvalid format");
+            System.out.println("invalid format");
     }
 
     /**

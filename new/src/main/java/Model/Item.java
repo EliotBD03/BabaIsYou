@@ -232,8 +232,7 @@ public class Item extends Environment implements Entity
 
 
     /**
-     * cette méthode sert à fusionner la map visible (mapO) avec la map temporaire(tempMapO
-     * )
+     * cette méthode sert à fusionner la map visible (mapO) avec la map temporaire(tempMapO)
      */
     private void actualiseObjectMap()
     {
@@ -309,7 +308,7 @@ public class Item extends Environment implements Entity
                 }
             }
         if(flag)
-            coordonates_win = new ArrayList<int[]>();
+            coordonates_win = new ArrayList<>();
     }
 
 
@@ -322,6 +321,9 @@ public class Item extends Environment implements Entity
     {
         if(winStatus)
         {
+            //On réinitialise le jeu quand on sait qu'on a gagné.
+            //Ça nous permettra de set le niveau suivant sans qu'il
+            //y ait des choses résiduelles de l'ancien niveau.
             winStatus = false;
             tempMapO = new Entity[mapO.length][mapO[0].length];
             coordonates_win = new ArrayList<>();
@@ -331,15 +333,11 @@ public class Item extends Environment implements Entity
     }
 
     @Override
-    public boolean canMoveX(Enum[][] tabperm,int posy, int posx)
-    {
+    public boolean canMoveX(Enum[][] tabperm,int posy, int posx) {
         //vrai si : -posx ne situe pas en dehors des limites de la map
         //          -l'élément se situant à l'endroit indiqué par les coordonnés
         //           est null
-        if(posx < getWidth() - 1 && posx > 0 && mapO[posy][posx] == null)
-            return true;
-        //vrai si : pareil que celle du dessus sauf que l'élément doit avoir "nostatus"
-        if(posx < getWidth() - 1 && posx > 0 && (mapO[posy][posx].noStatus(BigAlgorithm.getTabperm()) || mapO[posy][posx].thingIsSink(BigAlgorithm.getTabperm())))
+        if (posx < getWidth() - 1 && posx > 0 && mapO[posy][posx] == null)
             return true;
         //faux si : aucune des conditions n'est respecté
         return false;
@@ -352,9 +350,6 @@ public class Item extends Environment implements Entity
         //          -l'élément se situant à l'endroit indiqué par les coordonnés
         //           est null
         if(posy < getLength() - 1 && posy > 0 && mapO[posy][posx] == null)
-            return true;
-        //vrai si : pareil que celle du dessus sauf que l'élément doit avoir "nostatus"
-        if(posy < getLength() - 1 && posy > 0 && (mapO[posy][posx].noStatus(BigAlgorithm.getTabperm()) || mapO[posy][posx].thingIsSink(BigAlgorithm.getTabperm())))
             return true;
         //faux si : aucune des conditions n'est respecté
         return false;

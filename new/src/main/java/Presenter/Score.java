@@ -20,6 +20,7 @@ public class Score {
     static Timer myTimer = new Timer();
     TimerTask task = new TimerTask(){
         public void run(){
+
             secondsPassed++;
             System.out.println("Vous avez perdu: "+ secondsPassed+"0 points");
             Scanner sc = new Scanner(System.in);
@@ -94,7 +95,7 @@ public class Score {
     {
         try {
             Scanner scanner = new Scanner(new File(fileName));
-            String line = null;
+            String line;
             String res = "";
             int tempLine = 0;
             while (scanner.hasNextLine())

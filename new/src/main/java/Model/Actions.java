@@ -10,28 +10,24 @@ public class Actions
      * @param mapObject le tableau d'objet de type Entity issu de la classe "Entity"
      * @param posY la position de l'instance en y dans le tableau
      * @param posX la position de l'instance en x dans le tableau
-     * @return la position en y qui a été décrémenté de 1
      */
-    public static  int up(Entity[][] mapObject, int posY, int posX)
+    public static void up(Entity[][] mapObject, int posY, int posX)
     {
          mapObject[posY - 1][posX] = mapObject[posY][posX];
          mapObject[posY][posX] = null;
          posY -= 1;
-         return  posY;
     }
     /**
      * cette methode permet décrémenter la position en y de l'instance qui l'utilise dans le tableau d'objet
      * @param mapObject le tableau d'objet de type Entity issu de la classe "Entity"
      * @param posY la position de l'instance en y dans le tableau
      * @param posX la position de l'instance en x dans le tableau
-     * @return la position en y qui a été incrémenté de 1
      */
-    public static int down(Entity[][] mapObject, int posY, int posX)
+    public static void down(Entity[][] mapObject, int posY, int posX)
     {
         mapObject[posY  + 1][posX] = mapObject[posY][posX];
         mapObject[posY][posX] = null;
         posY += 1;
-        return posY;
     }
 
     /**
@@ -39,14 +35,12 @@ public class Actions
      * @param mapObject le tableau d'objet de type Entity issu de la classe "Entity"
      * @param posY la position de l'instance en y dans le tableau
      * @param posX la position de l'instance en x dans le tableau
-     * @return la position en x qui a été décrémenté de 1
      */
-    public static int left(Entity[][] mapObject, int posY, int posX)
+    public static void left(Entity[][] mapObject, int posY, int posX)
     {
         mapObject[posY][posX - 1] = mapObject[posY][posX];
         mapObject[posY][posX] = null;
         posX -= 1;
-        return posX;
     }
 
     /**
@@ -54,15 +48,13 @@ public class Actions
      * @param mapObject le tableau d'objet de type Entity issu de la classe "Entity"
      * @param posY la position de l'instance en y dans le tableau
      * @param posX la position de l'instance en x dans le tableau
-     * @return la position en x qui a été incrémenté de 1
      */
 
-    public static  int right(Entity[][] mapObject, int posY, int posX)
+    public static void right(Entity[][] mapObject, int posY, int posX)
     {
         mapObject[posY][posX + 1] = mapObject[posY][posX];
         mapObject[posY][posX] = null;
         posX += 1;
-        return posX;
     }
 
     /**
@@ -72,10 +64,9 @@ public class Actions
      * @param posY la position de l'instance en y dans le tableau
      * @param posX la position de l'instance en x dans le tableau
      * @param mapObject le tableau d'objet de type Entity issu de la classe "Entity"
-     * @return la nouvelle position de notre objet qui a poussé
      */
 
-    public static  int pushX(int x, int posY,int posX, Entity[][] mapObject)
+    public static void pushX(int x, int posY, int posX, Entity[][] mapObject)
     {
         //cette variable permettra de savoir jusqu'à quel élément on poussera(voir première boucle while)
         int temp = posX - 1;
@@ -119,7 +110,6 @@ public class Actions
                     temp += 2;
                     break;
         }
-        return  temp;
     }
 
     /**
@@ -129,10 +119,9 @@ public class Actions
      * @param posY la position de l'instance en y dans le tableau
      * @param posX la position de l'instance en x dans le tableau
      * @param mapObject le tableau d'objet de type Entity issu de la classe "Entity"
-     * @return la position de notre objet qui a poussé
      */
 
-    public static  int pushY(int y, int posY, int posX, Entity[][] mapObject)
+    public static void pushY(int y, int posY, int posX, Entity[][] mapObject)
     {
         int temp = posY - 1;
         switch (y)
@@ -172,6 +161,5 @@ public class Actions
                 temp += 2;
                 break;
         }
-        return temp;
     }
 }

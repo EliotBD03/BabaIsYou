@@ -50,7 +50,6 @@ public class Controller {
     private static int count_move = 0;
     @FXML
     private TextField MyTextField;
-    private Media media;
     private MediaPlayer mediaPlayer;
     @FXML
     private TextArea myLabel;
@@ -77,9 +76,6 @@ public class Controller {
     public final Image textLavaImage = new Image(getClass().getResource("/sprite/lavatext.png").toURI().toString());
     public final Image killImage= new Image(getClass().getResource("/sprite/textkill.png").toURI().toString());
     public final Image lavaImage = new Image(getClass().getResource("/sprite/lava.gif").toURI().toString());
-    private String fileName;
-
-    private static int userLine = 0;
 
     private static Game game;
 
@@ -110,7 +106,6 @@ public class Controller {
         mediaPlayer = new MediaPlayer(media);
         mediaPlayer.setAutoPlay(true);
         mediaPlayer.setCycleCount(MediaPlayer.INDEFINITE);
-        MediaView view = new MediaView(mediaPlayer);
     }
     public void cutMusic() {
         mediaPlayer.pause();
@@ -225,14 +220,9 @@ public class Controller {
         stage.setScene(scene);
         stage.show();
     }
-    public void Info(String fileName)
-    {
-        this.fileName = fileName;
-    }
     /*
         Va afficher le score des joueurs dans le textArea
      */
-
 
     public void loadScore(ActionEvent event) {
         File file = new File("src/main/resources/users/scoreboard.txt");
@@ -401,14 +391,6 @@ Méthode qui va être utilisé si le joueur est bloqué et appuie sur la touche 
             settabhbox();
             setvbox();
     }
-public void switchToLevel(ActionEvent event) throws IOException, URISyntaxException {
-            initializeGame(game.getLevel());
-            stage = (Stage)((Node)event.getSource()).getScene().getWindow();
-            scene = new Scene(vbox,500,500,Color.BLACK);
-            stage.setScene(scene);
-            keyInput(event);
-            stage.show();
-}
           /*
     setLevelOne va juste set le level sur le 1er car il est accesible dans tout les cas Sinon pour les autres
     Il faut que le joueur les débloquent le code le vérifie.

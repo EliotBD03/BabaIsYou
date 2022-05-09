@@ -24,8 +24,7 @@ public class Environment {
     {
         String[][] res = new String[map.length][map[0].length];
         for (int i = 0; i <= map.length - 1; i++)
-            for (int j = 0; j <= map[i].length - 1; j++)
-                res[i][j] = map[i][j];
+            System.arraycopy(map[i], 0, res[i], 0, map[i].length);
         return res;
     }
 
