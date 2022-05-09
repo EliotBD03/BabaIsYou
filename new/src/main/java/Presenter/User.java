@@ -28,7 +28,6 @@ public class User
     }
 
     /**
-     * @effects     Initialise un User this vide
      * constructeur pour les joueurs randoms
      */
     private User()
@@ -50,7 +49,7 @@ public class User
     /**
      * méthode faisant office de "constructeur" double
      * @param name le nom du joueur
-     * @return
+     * @return l'instance de User
      */
     public static User getUser(String name)
     {
