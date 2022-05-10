@@ -1,3 +1,2 @@
  /****this file is to contain the name, the date of registration for a player*****/
-
-julien 2022/mai/09 10:15:49
+ 
