@@ -104,6 +104,7 @@ public class Level
     {
         if(currentIndex == levels.length -1)
         {
+            Score.saveScore();
             Score.endScore();
             return false;
         }
