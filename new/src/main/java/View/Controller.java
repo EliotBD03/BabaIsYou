@@ -451,6 +451,13 @@ Méthode qui va être utilisé si le joueur est bloqué et appuie sur la touche 
             System.out.println("you haven't finished the level seven yet");
         }
     }
+    public void setLevelNine(ActionEvent event) throws IOException {
+        if(!game.setLevel(8))
+        {
+            switchToMapChoice(event);
+            System.out.println("you haven't finished the level seven yet");
+        }
+    }
     /*
     Après avoir choisis un niveau le bouton playlevel charge le niveau choisis
     */

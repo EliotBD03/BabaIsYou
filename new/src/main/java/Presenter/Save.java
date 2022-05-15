@@ -34,7 +34,8 @@ public class Save
         dico.put("W", "text_wall");dico.put("?", "goop");
         dico.put("*", "lava");dico.put("K", "kill");dico.put("L", "text_lava");
         dico.put(" ", null); dico.put("X", null);dico.put("M", "text_goop");
-        dico.put("D", "sink");
+        dico.put("D", "sink"); dico.put("$", "glue"); dico.put("T", "sticky");
+        dico.put("C", "text_glue");
 
     }
 
@@ -71,7 +72,7 @@ public class Save
 
     /**
      * méthode servant à trouver le nom de la sauvegarde en fonction
-     * du nombre qu'il y a dans le dossier
+     * du nom du joueur
      * @return le nom de la sauvegarde
      */
     private String getFileName()

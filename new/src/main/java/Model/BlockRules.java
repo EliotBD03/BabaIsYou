@@ -7,6 +7,7 @@ package Model;
  */
 public class BlockRules extends Environment implements Entity
 {
+    //vrai si l'objet est collé, faux sinon
     private boolean stickyStatus = false;
     @Override
     public String getSkin() {
@@ -14,12 +15,6 @@ public class BlockRules extends Environment implements Entity
     }
 
     //Dans le jeu, les règles ne sont pas contrôlables. Cela permet d'implémenter toutes ces méthodes facilement à false
-    @Override
-    public boolean thingIsPush(Enum[][] tabperm){
-        if(stickyStatus)
-            return false;
-        return true;
-    }
     @Override
     public void thingIsGlued()
     {
@@ -64,6 +59,13 @@ public class BlockRules extends Environment implements Entity
 
     @Override
     public boolean isItem() {return false;}
+    //seul cette méthode déroge à la règle
+    @Override
+    public boolean thingIsPush(Enum[][] tabperm){
+        if(stickyStatus)
+            return false;
+        return true;
+    }
 
     //ces classes internes représentent toutes les règles, elles ont toutes le même moyen d'implémentation sauf pour skin(ce qui permet
     //de les différencier dans un tableau de String
