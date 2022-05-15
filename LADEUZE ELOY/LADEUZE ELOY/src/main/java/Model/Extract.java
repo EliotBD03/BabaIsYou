@@ -50,8 +50,9 @@ public class Extract {
 
     public boolean validFormat(String fileName)
     {
-        String extension = fileName.substring(fileName.length() - 4);
-        if(extension.equals(".txt"))
+        int i = fileName.lastIndexOf('.');
+        String extension = fileName.substring(i + 1);
+        if(extension.equals("txt"))
             return true;
         return false;
     }

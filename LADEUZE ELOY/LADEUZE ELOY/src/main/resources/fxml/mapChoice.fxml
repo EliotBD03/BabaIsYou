@@ -54,7 +54,7 @@
       </ImageView>
       <ImageView fitHeight="50.0" fitWidth="150.0" layoutX="254.0" layoutY="384.0" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@../sprite/level8.gif" />
+            <Image url="@../sprite/level9.gif" />
          </image>
       </ImageView>
       <Button layoutX="32.0" layoutY="49.0" mnemonicParsing="false" onAction="#setLevelOne" opacity="0.0" prefHeight="50.0" prefWidth="150.0" text="level 1" />
@@ -66,7 +66,6 @@
       <Button layoutX="32.0" layoutY="298.0" mnemonicParsing="false" onAction="#setLevelSeven" opacity="0.0" prefHeight="50.0" prefWidth="150.0" text="level 7" />
       <Button layoutX="254.0" layoutY="216.0" mnemonicParsing="false" onAction="#setLevelSix" opacity="0.0" prefHeight="50.0" prefWidth="150.0" text="level 6" />
       <Button layoutX="254.0" layoutY="298.0" mnemonicParsing="false" onAction="#setLevelHeight" opacity="0.0" prefHeight="50.0" prefWidth="150.0" text="level 8" />
-      <Button layoutX="254.0" layoutY="384.0" mnemonicParsing="false" onAction="#setLevelHeight" opacity="0.0" prefHeight="50.0" prefWidth="150.0" text="level 9" />
+      <Button layoutX="254.0" layoutY="384.0" mnemonicParsing="false" onAction="#setLevelNine" opacity="0.0" prefHeight="50.0" prefWidth="150.0" text="level 9" />
    </children>
 </AnchorPane>
-

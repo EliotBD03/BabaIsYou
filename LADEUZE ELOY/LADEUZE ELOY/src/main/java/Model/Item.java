@@ -7,6 +7,8 @@ import java.util.ArrayList;
  */
 public class Item extends Environment implements Entity
 {
+    private boolean stickyStatus = false;
+    //représente la règle d'un objet
     protected Rules object = Rules.NONE;
     //représente le status du joueur s'il a atteint l'objectif
     private static boolean winStatus = false;
@@ -125,9 +127,32 @@ public class Item extends Environment implements Entity
     @Override
     public boolean thingIsPush(Enum[][] tabperm)
     {
+        if(this.stickyStatus)
+            return false;
+        else
+        {
+            for(int i = 0; i <= tabperm.length - 1; i++)
+                if(tabperm[i][0] ==  getObject() && tabperm[i][1] == Rules.PUSH)
+                    return true;
+        }
+        return false;
+    }
+
+    @Override
+    public void thingIsGlued()
+    {
+        stickyStatus = true;
+    }
+
+    /**
+     *Même implémentation que thingIsYou()
+     */
+    @Override
+    public boolean thingIsSticky(Enum[][] tabperm)
+    {
         for(int i = 0; i <= tabperm.length - 1; i++)
         {
-            if(tabperm[i][0] ==  getObject() && tabperm[i][1] == Rules.PUSH)
+            if(tabperm[i][0] ==  getObject() && tabperm[i][1] == Rules.STICKY)
             {
                 return true;
             }
@@ -253,6 +278,12 @@ public class Item extends Environment implements Entity
                 {
 
                     mapO[i][j] = tempMapO[i][j];
+                }
+                //si notre objet se trouve sur quelque chose de collant, alors il va rester bloquée
+                else if(mapO[i][j] != null && tempMapO[i][j] != null && tempMapO[i][j].thingIsSticky(BigAlgorithm.getTabperm()))
+                {
+                    tempMapO[i][j] = null;
+                    mapO[i][j].thingIsGlued();
                 }
                 //si l'objet que l'on contrôle est la position d'un objet de temp qui est win, alors on a gagné et le winStatus = true
                 else if(mapO[i][j] != null && tempMapO[i][j] != null && tempMapO[i][j].thingIsWin(BigAlgorithm.getTabperm()) && mapO[i][j].thingIsYou(BigAlgorithm.getTabperm()))
@@ -399,14 +430,12 @@ public class Item extends Environment implements Entity
         //on vérifie si l'instance qui emploie la méthode peut bien être contrôlé
         if(thingIsYou(BigAlgorithm.getTabperm()))
         {
-
             //on va chercher les 4 cas possibles d'entrée
             //car la différence entre les entrées influera sur le comportement des méthodes
             switch (input.charAt(0))
             {
                 //si c'est 'z', on compte aller vers le haut
                 case 'z':
-
                     //les deux boucles for vont nous permettre de parcourir tout le tableau d'objet
                     //pour vérifier à chaque fois si l'objet en position (j,i) est du même type
                     //que l'instance qui utilise cette méthode (voir la première condition)
@@ -415,17 +444,18 @@ public class Item extends Environment implements Entity
                         {
                             if (this.getClass().isInstance(mapO[i][j]))
                             {
-
+                                //on a recours au transtypage pour appliquer stickyStatus
+                                Item item = (Item) mapO[i][j];
                                 //on va vérifier 3 cas:
                                 //                      -est ce que l'objet bouge ?
                                 //                      -est ce que l'objet pousse ?
                                 //                      -est ce que l'objet a gagné ?
                                 //note : on ne peut réaliser qu'une action à la fois(else if)
-                                if (canMoveY(BigAlgorithm.getTabperm(),i - 1, j))
+                                if (canMoveY(BigAlgorithm.getTabperm(),i - 1, j) && !item.stickyStatus)
                                 {
                                     Actions.up(mapO, i, j);
                                 }
-                                else if(thingIsPushingY(BigAlgorithm.getTabperm(),i - 1, j))
+                                else if(thingIsPushingY(BigAlgorithm.getTabperm(),i - 1, j) && !item.stickyStatus)
                                     Actions.pushY(-1, i, j, mapO);
                                if(thingHasWin(i, j))
                                     winStatus = true;
@@ -438,11 +468,12 @@ public class Item extends Environment implements Entity
                         for(int j = mapO[i].length - 1; j >= 0; j--)
                             if (this.getClass().isInstance(mapO[i][j]))
                             {
+                                Item item = (Item) mapO[i][j];
                                 //on regarde si on a le droit d'avancer
-                                if (canMoveY(BigAlgorithm.getTabperm(),i+ 1,j))
+                                if (canMoveY(BigAlgorithm.getTabperm(),i+ 1,j)&& !item.stickyStatus)
                                     Actions.down(mapO, i, j);
                                 //on regarde si on pousse quelque chose
-                                else if(thingIsPushingY(BigAlgorithm.getTabperm(),i + 1, j))
+                                else if(thingIsPushingY(BigAlgorithm.getTabperm(),i + 1, j)&& !item.stickyStatus)
                                     Actions.pushY(1, i, j, mapO);
                                 //on regarde si on a atteint un objet qui est win
                                 if(thingHasWin( i, j))
@@ -455,10 +486,11 @@ public class Item extends Environment implements Entity
                         for(int j = 0; j <= mapO[i].length - 1; j++)
                             if(this.getClass().isInstance(mapO[i][j]))
                             {
-                                if (canMoveX(BigAlgorithm.getTabperm(),i,j - 1))
+                                Item item = (Item) mapO[i][j];
+                                if (canMoveX(BigAlgorithm.getTabperm(),i,j - 1)&& !item.stickyStatus)
                                     Actions.left(mapO, i, j);
 
-                                else if(thingIsPushingX(BigAlgorithm.getTabperm(),i, j - 1))
+                                else if(thingIsPushingX(BigAlgorithm.getTabperm(),i, j - 1)&& !item.stickyStatus)
                                     Actions.pushX(-1, i, j, mapO);
 
                                 if(thingHasWin( i, j))
@@ -471,10 +503,11 @@ public class Item extends Environment implements Entity
                         for(int j = mapO[i].length - 1; j >= 0; j--)
                             if (this.getClass().isInstance(mapO[i][j]))
                             {
-                                if (canMoveX(BigAlgorithm.getTabperm(), i, j + 1))
+                                Item item = (Item) mapO[i][j];
+                                if (canMoveX(BigAlgorithm.getTabperm(), i, j + 1)&& !item.stickyStatus)
                                     Actions.right(mapO, i, j);
 
-                                else if(thingIsPushingX(BigAlgorithm.getTabperm(),i, j + 1))
+                                else if(thingIsPushingX(BigAlgorithm.getTabperm(),i, j + 1)&& !item.stickyStatus)
                                     Actions.pushX(1, i, j, mapO);
 
                                 if(thingHasWin( i, j))

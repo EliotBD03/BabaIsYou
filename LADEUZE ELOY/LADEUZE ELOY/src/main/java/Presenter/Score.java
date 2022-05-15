@@ -22,7 +22,6 @@ public class Score {
         public void run(){
 
             secondsPassed++;
-            System.out.println("Vous avez perdu: "+ secondsPassed+"0 points");
             Scanner sc = new Scanner(System.in);
             if(secondsPassed == 150){
                 secondsPassed = 0;

@@ -133,7 +133,6 @@ public class Actions
                 }
                 int first_entity = temp;
                 temp ++;
-                System.out.println("posy = " + posY +" temp = " + temp);
                 while(temp <= posY  && first_entity - 1 >= 0)
                 {
                     if(mapObject[first_entity][posX] != null && mapObject[first_entity][posX].thingIsStop(BigAlgorithm.getTabperm()))

@@ -29,6 +29,7 @@ public class Game
     private static Wall wall;
     private static Goop goop;
     private static Lava lava;
+    private static Glue glue;
     //la map de String temporaire
     private static  String[][] temp;
     //notre dictionnaire pour faire le lien
@@ -59,7 +60,8 @@ public class Game
         dico.put('G', controller.winImage); dico.put('?', controller.goopImage);
         dico.put('M', controller.textGoopImage); dico.put('D', controller.textSinkImage);
         dico.put('L', controller.textLavaImage);dico.put('K', controller.killImage);
-        dico.put('*', controller.lavaImage);
+        dico.put('*', controller.lavaImage); dico.put('$', controller.glueImage);
+        dico.put('C', controller.textGlueImage); dico.put('T', controller.stickyImage);
     }
 
     /**
@@ -81,6 +83,7 @@ public class Game
         wall = new Wall();
         goop = new Goop();
         lava = new Lava();
+        glue = new Glue();
     }
 
     /**
@@ -90,13 +93,13 @@ public class Game
      */
     public boolean makeMove(String event)
     {
-        System.out.println(map);
         baba.move(event);
         flag.move(event);
         rock.move(event);
         wall.move(event);
         goop.move(event);
         lava.move(event);
+        glue.move(event);
         return Item.win();
     }
 

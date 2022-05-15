@@ -5,6 +5,14 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="50973d8a-fe32-432d-aa49-acae49dce348" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/build/classes/java/main/Model/BlockRules$Sticky.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/build/classes/java/main/Model/BlockRules$TextGlue.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/build/classes/java/main/Model/Glue.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/build/resources/main/level/default/level8.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/build/resources/main/sprite/glue.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/build/resources/main/sprite/level9.gif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/build/resources/main/sprite/sticky.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/build/resources/main/sprite/text_glue.png" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/7.4/executionHistory/executionHistory.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/7.4/executionHistory/executionHistory.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/7.4/executionHistory/executionHistory.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/7.4/executionHistory/executionHistory.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/7.4/fileHashes/fileHashes.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/7.4/fileHashes/fileHashes.bin" afterDir="false" />
@@ -46,6 +54,7 @@
       <change beforePath="$PROJECT_DIR$/build/libs/new.jar" beforeDir="false" afterPath="$PROJECT_DIR$/build/libs/new.jar" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/build/resources/main/fxml/mapChoice.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/build/resources/main/fxml/mapChoice.fxml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/build/resources/main/level/default/level4.txt" beforeDir="false" afterPath="$PROJECT_DIR$/build/resources/main/level/default/level4.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/resources/main/level/default/level7.txt" beforeDir="false" afterPath="$PROJECT_DIR$/build/resources/main/level/default/level7.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/build/resources/main/level/save/history.txt" beforeDir="false" afterPath="$PROJECT_DIR$/build/resources/main/level/save/history.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/build/resources/main/level/save/savetest0.txt" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/build/resources/main/level/save/savetest1.txt" beforeDir="false" />
@@ -57,9 +66,11 @@
       <change beforePath="$PROJECT_DIR$/build/resources/main/users/register.txt" beforeDir="false" afterPath="$PROJECT_DIR$/build/resources/main/users/register.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/build/resources/main/users/scoreboard.txt" beforeDir="false" afterPath="$PROJECT_DIR$/build/resources/main/users/scoreboard.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/build/tmp/compileJava/previous-compilation-data.bin" beforeDir="false" afterPath="$PROJECT_DIR$/build/tmp/compileJava/previous-compilation-data.bin" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Model/Item.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Model/Item.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/View/Controller.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/View/Controller.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/fxml/mapChoice.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/fxml/mapChoice.fxml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/level/default/level7.txt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/level/default/level7.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/users/scoreboard.txt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/users/scoreboard.txt" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -196,6 +207,7 @@
       <workItem from="1652628967529" duration="20000" />
       <workItem from="1652629150414" duration="1086000" />
       <workItem from="1652637255118" duration="851000" />
+      <workItem from="1652638140275" duration="556000" />
     </task>
     <servers />
   </component>

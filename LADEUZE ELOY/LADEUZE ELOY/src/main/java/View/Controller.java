@@ -23,15 +23,12 @@ package View;
         import javafx.scene.layout.VBox;
         import javafx.scene.media.Media;
         import javafx.scene.media.MediaPlayer;
-        import javafx.scene.media.MediaView;
         import javafx.scene.paint.Color;
         import javafx.stage.Stage;
 
         import java.io.File;
         import java.io.IOException;
         import java.net.URISyntaxException;
-
-
         import static Presenter.Game.getSprite;
 
 
@@ -47,7 +44,6 @@ public class Controller {
     //pour romain, c'est pour permettre de logout dans le menu pause
     private static Scene pauseScene;
     private static  Pane[][] tabpane;
-    private static int count_move = 0;
     @FXML
     private TextField MyTextField;
     private MediaPlayer mediaPlayer;
@@ -76,6 +72,9 @@ public class Controller {
     public final Image textLavaImage = new Image(getClass().getResource("/sprite/lavatext.png").toURI().toString());
     public final Image killImage= new Image(getClass().getResource("/sprite/textkill.png").toURI().toString());
     public final Image lavaImage = new Image(getClass().getResource("/sprite/lava.gif").toURI().toString());
+    public final Image glueImage = new Image(getClass().getResource("/sprite/glue.png").toURI().toString());
+    public final Image textGlueImage = new Image(getClass().getResource("/sprite/text_glue.png").toURI().toString());
+    public final Image stickyImage = new Image(getClass().getResource("/sprite/sticky.png").toURI().toString());
 
     private static Game game;
 
@@ -304,7 +303,6 @@ public class Controller {
                             refresh(event);
                     }
                     System.out.println("up");
-                    count_move ++;
                     break;
                 case DOWN:
                     if(game.makeMove("s"))
@@ -316,7 +314,6 @@ public class Controller {
                             refresh(event);
                     }
                     System.out.println("down");
-                    count_move ++;
                     break;
                 case LEFT:
                     if(game.makeMove("q"))
@@ -328,7 +325,6 @@ public class Controller {
                             refresh(event);
                     }
                     System.out.println("left");
-                    count_move ++;
                     break;
                 case RIGHT:
                     if(game.makeMove("d"))
@@ -340,7 +336,6 @@ public class Controller {
                             refresh(event);
                     }
                     System.out.println("right");
-                    count_move ++;
                     break;
             }
             actualise(game.getChanges());
@@ -448,6 +443,13 @@ Méthode qui va être utilisé si le joueur est bloqué et appuie sur la touche 
             System.out.println("you haven't finished the level seven yet");
         }
     }
+    public void setLevelNine(ActionEvent event) throws IOException {
+        if(!game.setLevel(8))
+        {
+            switchToMapChoice(event);
+            System.out.println("you haven't finished the level seven yet");
+        }
+    }
     /*
     Après avoir choisis un niveau le bouton playlevel charge le niveau choisis
     */
@@ -496,13 +498,14 @@ public void playLevel(ActionEvent event)
     @FXML
     private void continu(ActionEvent event)
     {
+        if(Game.getLastSave() == null)
+            return;
         if(stage == null)
         {
             stage = (Stage)((Node)event.getSource()).getScene().getWindow();
             scene = new Scene(vbox,500,500,Color.BLACK);
         }
         try {
-
             initializeGame(Game.getLastSave());
             stage.setScene(scene);
             keyInput(event);

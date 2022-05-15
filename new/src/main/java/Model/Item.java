@@ -279,7 +279,7 @@ public class Item extends Environment implements Entity
 
                     mapO[i][j] = tempMapO[i][j];
                 }
-                //si notre objet n'est pas le personnage et que il se trouve sur quelque chose de collant, alors il va rester bloquée
+                //si notre objet se trouve sur quelque chose de collant, alors il va rester bloquée
                 else if(mapO[i][j] != null && tempMapO[i][j] != null && tempMapO[i][j].thingIsSticky(BigAlgorithm.getTabperm()))
                 {
                     tempMapO[i][j] = null;
@@ -444,6 +444,7 @@ public class Item extends Environment implements Entity
                         {
                             if (this.getClass().isInstance(mapO[i][j]))
                             {
+                                //on a recours au transtypage pour appliquer stickyStatus
                                 Item item = (Item) mapO[i][j];
                                 //on va vérifier 3 cas:
                                 //                      -est ce que l'objet bouge ?

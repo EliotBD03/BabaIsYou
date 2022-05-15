@@ -140,6 +140,8 @@ public class Environment {
                         return new Goop();
                     case "lava":
                         return new Lava();
+                    case "glue":
+                        return new Glue();
                     case "you":
                         return new BlockRules.You();
                     case "win":
@@ -160,6 +162,10 @@ public class Environment {
                         return new BlockRules.TextLava();
                     case "kill":
                         return new BlockRules.Kill();
+                    case "text_glue":
+                        return new BlockRules.TextGlue();
+                    case "sticky":
+                        return new BlockRules.Sticky();
                 }
                 if(thing.equals(""))
                     return null;

@@ -1,2 +1,0 @@
-/****this file is used to contain the name and the score of a player****/
-

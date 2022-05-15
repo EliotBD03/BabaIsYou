@@ -23,15 +23,12 @@ package View;
         import javafx.scene.layout.VBox;
         import javafx.scene.media.Media;
         import javafx.scene.media.MediaPlayer;
-        import javafx.scene.media.MediaView;
         import javafx.scene.paint.Color;
         import javafx.stage.Stage;
 
         import java.io.File;
         import java.io.IOException;
         import java.net.URISyntaxException;
-
-
         import static Presenter.Game.getSprite;
 
 
@@ -47,7 +44,6 @@ public class Controller {
     //pour romain, c'est pour permettre de logout dans le menu pause
     private static Scene pauseScene;
     private static  Pane[][] tabpane;
-    private static int count_move = 0;
     @FXML
     private TextField MyTextField;
     private MediaPlayer mediaPlayer;
@@ -307,7 +303,6 @@ public class Controller {
                             refresh(event);
                     }
                     System.out.println("up");
-                    count_move ++;
                     break;
                 case DOWN:
                     if(game.makeMove("s"))
@@ -319,7 +314,6 @@ public class Controller {
                             refresh(event);
                     }
                     System.out.println("down");
-                    count_move ++;
                     break;
                 case LEFT:
                     if(game.makeMove("q"))
@@ -331,7 +325,6 @@ public class Controller {
                             refresh(event);
                     }
                     System.out.println("left");
-                    count_move ++;
                     break;
                 case RIGHT:
                     if(game.makeMove("d"))
@@ -343,7 +336,6 @@ public class Controller {
                             refresh(event);
                     }
                     System.out.println("right");
-                    count_move ++;
                     break;
             }
             actualise(game.getChanges());
