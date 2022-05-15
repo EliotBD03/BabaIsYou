@@ -50,7 +50,7 @@ public class Save
             String file_name = getFileName();
 
             File file = new File (save_directory+ File.separator + file_name);
-                if (file.createNewFile())
+                if (file.createNewFile() || file.exists())
                 {
                     PrintWriter level = new PrintWriter(file);
                     level.println((tab[0].length - 1 )+ " " + (tab.length - 1));
@@ -76,15 +76,15 @@ public class Save
      */
     private String getFileName()
     {
-        String name = "save";
-        int i = 0;
-        File file = new File(save_directory + File.separator + name + i + ".txt");
-        while(file.exists())
+        Info info = new Info(save_directory + File.separator + "history.txt");
+        String res = info.getUserInfo(User.getId(), false);
+        if(res == null)
         {
-            i++;
-            file = new File(save_directory + File.separator + name + i + ".txt");
+            res = "save" + User.getId() +".txt";
         }
-        return name + i + ".txt";
+        else
+            res = res.substring(0, 8 + User.getId().length());
+        return res;
     }
 
     /**
@@ -94,13 +94,8 @@ public class Save
      * @throws IOException si on ne trouve pas le fichier
      */
     private void writeDate(String fileName) throws IOException {
-        File history = new File(save_directory + File.separator + "history.txt");
-        if(history.exists())
-        {
-            FileWriter fw = new FileWriter(history, true);
-            fw.write("\n"+ fileName + " "+ dtf.format(LocalDateTime.now()));
-            fw.close();
-        }
+        Info info = new Info(save_directory + File.separator + "history.txt");
+        info.writeInfoUser(fileName + " "+ dtf.format(LocalDateTime.now()), User.getId());
     }
 
     /**
@@ -110,28 +105,18 @@ public class Save
      */
 
     public String getLastSave(){
-        try {
-                Scanner scanner = new Scanner(new File(save_directory + File.separator + "history.txt"));
-                String line = null;
-                while (scanner.hasNextLine())
-                {
-                    line = scanner.nextLine();
-                }
-                scanner.close();
-                String res = "";
-                int i  = 0;
-                while(line.charAt(i) != ' ')
-                {
-                    res += line.charAt(i);
-                    i ++;
-                }
-                return save_directory + File.separator + res;
-            }
-        catch (FileNotFoundException e)
+        Info info = new Info(save_directory + File.separator + "history.txt");
+        String res = null;
+        if(User.getId() != null)
+            res = info.getUserInfo(User.getId(), false);
+        if(res == null)
         {
-            System.out.println(save_directory + File.separator + "history.txt" + " not found");
-            e.printStackTrace();
+            System.out.println("You haven't saved yet");
+            return res;
         }
-        return null;
+        res = res.substring(0,8 + User.getId().length());
+        System.out.println(res);
+        return save_directory + File.separator + res;
+
     }
 }

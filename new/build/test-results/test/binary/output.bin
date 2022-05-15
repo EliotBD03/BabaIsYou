@@ -43,7 +43,7 @@
 %before: null null after : null null
 %before: null null after : null null
 %before: null null after : null null
-nC:\Users\julie\OneDrive\Bureau\TheLastFuckingTime!!!!!\BabaIsYou\new\src\main\resources\level\test\test0.txt
+VC:\Users\julie\OneDrive\Bureau\BabaIsYou\new\src\main\resources\level\test\test0.txt
 posy = 3 temp = 2
 $before: WALL STOP after : BABA YOU
 #before: BABA YOU after : BABA YOU
@@ -75,35 +75,25 @@
 level : 6
 level : 7
 INSIDE THE FILE  :
-xC:\Users\julie\OneDrive\Bureau\TheLastFuckingTime!!!!!\BabaIsYou\new\src\main\resources\level\default\level7.txt => OK
-xC:\Users\julie\OneDrive\Bureau\TheLastFuckingTime!!!!!\BabaIsYou\new\src\main\resources\level\default\level6.txt => OK
-xC:\Users\julie\OneDrive\Bureau\TheLastFuckingTime!!!!!\BabaIsYou\new\src\main\resources\level\default\level5.txt => OK
-xC:\Users\julie\OneDrive\Bureau\TheLastFuckingTime!!!!!\BabaIsYou\new\src\main\resources\level\default\level4.txt => OK
-xC:\Users\julie\OneDrive\Bureau\TheLastFuckingTime!!!!!\BabaIsYou\new\src\main\resources\level\default\level3.txt => OK
-xC:\Users\julie\OneDrive\Bureau\TheLastFuckingTime!!!!!\BabaIsYou\new\src\main\resources\level\default\level2.txt => OK
-xC:\Users\julie\OneDrive\Bureau\TheLastFuckingTime!!!!!\BabaIsYou\new\src\main\resources\level\default\level1.txt => OK
-xC:\Users\julie\OneDrive\Bureau\TheLastFuckingTime!!!!!\BabaIsYou\new\src\main\resources\level\default\level0.txt => OK
+`C:\Users\julie\OneDrive\Bureau\BabaIsYou\new\src\main\resources\level\default\level7.txt => OK
+`C:\Users\julie\OneDrive\Bureau\BabaIsYou\new\src\main\resources\level\default\level6.txt => OK
+`C:\Users\julie\OneDrive\Bureau\BabaIsYou\new\src\main\resources\level\default\level5.txt => OK
+`C:\Users\julie\OneDrive\Bureau\BabaIsYou\new\src\main\resources\level\default\level4.txt => OK
+`C:\Users\julie\OneDrive\Bureau\BabaIsYou\new\src\main\resources\level\default\level3.txt => OK
+`C:\Users\julie\OneDrive\Bureau\BabaIsYou\new\src\main\resources\level\default\level2.txt => OK
+`C:\Users\julie\OneDrive\Bureau\BabaIsYou\new\src\main\resources\level\default\level1.txt => OK
+`C:\Users\julie\OneDrive\Bureau\BabaIsYou\new\src\main\resources\level\default\level0.txt => OK
 THE TXT FORMAT :
-wC:\Users\julie\OneDrive\Bureau\TheLastFuckingTime!!!!!\BabaIsYou\new\src\main\resources\level\default\level7.txt=> OK
-wC:\Users\julie\OneDrive\Bureau\TheLastFuckingTime!!!!!\BabaIsYou\new\src\main\resources\level\default\level6.txt=> OK
-wC:\Users\julie\OneDrive\Bureau\TheLastFuckingTime!!!!!\BabaIsYou\new\src\main\resources\level\default\level5.txt=> OK
-wC:\Users\julie\OneDrive\Bureau\TheLastFuckingTime!!!!!\BabaIsYou\new\src\main\resources\level\default\level4.txt=> OK
-wC:\Users\julie\OneDrive\Bureau\TheLastFuckingTime!!!!!\BabaIsYou\new\src\main\resources\level\default\level3.txt=> OK
-wC:\Users\julie\OneDrive\Bureau\TheLastFuckingTime!!!!!\BabaIsYou\new\src\main\resources\level\default\level2.txt=> OK
-wC:\Users\julie\OneDrive\Bureau\TheLastFuckingTime!!!!!\BabaIsYou\new\src\main\resources\level\default\level1.txt=> OK
-wC:\Users\julie\OneDrive\Bureau\TheLastFuckingTime!!!!!\BabaIsYou\new\src\main\resources\level\default\level0.txt=> OK
+_C:\Users\julie\OneDrive\Bureau\BabaIsYou\new\src\main\resources\level\default\level7.txt=> OK
+_C:\Users\julie\OneDrive\Bureau\BabaIsYou\new\src\main\resources\level\default\level6.txt=> OK
+_C:\Users\julie\OneDrive\Bureau\BabaIsYou\new\src\main\resources\level\default\level5.txt=> OK
+_C:\Users\julie\OneDrive\Bureau\BabaIsYou\new\src\main\resources\level\default\level4.txt=> OK
+_C:\Users\julie\OneDrive\Bureau\BabaIsYou\new\src\main\resources\level\default\level3.txt=> OK
+_C:\Users\julie\OneDrive\Bureau\BabaIsYou\new\src\main\resources\level\default\level2.txt=> OK
+_C:\Users\julie\OneDrive\Bureau\BabaIsYou\new\src\main\resources\level\default\level1.txt=> OK
+_C:\Users\julie\OneDrive\Bureau\BabaIsYou\new\src\main\resources\level\default\level0.txt=> OK
 
 	-Before rule established : winStatus = false
-
-	je suis win
-
-	2 2win : 1 1
-
-	je suis win
-
-	2 1win : 1 1
-
-	2 1win : 1 1
 
 	+After rule established : winStatus = true
 

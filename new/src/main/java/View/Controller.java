@@ -496,13 +496,14 @@ public void playLevel(ActionEvent event)
     @FXML
     private void continu(ActionEvent event)
     {
+        if(Game.getLastSave() == null)
+            return;
         if(stage == null)
         {
             stage = (Stage)((Node)event.getSource()).getScene().getWindow();
             scene = new Scene(vbox,500,500,Color.BLACK);
         }
         try {
-
             initializeGame(Game.getLastSave());
             stage.setScene(scene);
             keyInput(event);

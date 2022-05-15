@@ -1,15 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="Model.ItemTest" tests="3" skipped="0" failures="0" errors="0" timestamp="2022-05-05T06:26:16" hostname="LAPTOP-Q42REQGH" time="0.034">
+<testsuite name="Model.ItemTest" tests="3" skipped="0" failures="0" errors="0" timestamp="2022-05-09T08:15:06" hostname="LAPTOP-Q42REQGH" time="0.017">
   <properties/>
-  <testcase name="win()" classname="Model.ItemTest" time="0.018"/>
-  <testcase name="move()" classname="Model.ItemTest" time="0.009"/>
-  <testcase name="isGameOver()" classname="Model.ItemTest" time="0.004"/>
+  <testcase name="win()" classname="Model.ItemTest" time="0.006"/>
+  <testcase name="move()" classname="Model.ItemTest" time="0.006"/>
+  <testcase name="isGameOver()" classname="Model.ItemTest" time="0.003"/>
   <system-out><![CDATA[Before rule established : winStatus = false
-je suis win
-2 2win : 1 1
-je suis win
-2 1win : 1 1
-2 1win : 1 1
 After rule established : winStatus = true
 cannot go up : OK
 cannot go left : OK

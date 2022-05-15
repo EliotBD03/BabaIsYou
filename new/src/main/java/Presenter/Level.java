@@ -120,7 +120,7 @@ public class Level
     private void searchAccess(String id)
     {
         Info info = new Info(pathAccessLevel);
-        String access = info.getUserInfo(id);
+        String access = info.getUserInfo(id, false);
         if(access == null)
             info.writeInfo(id + " 0000000");
         else

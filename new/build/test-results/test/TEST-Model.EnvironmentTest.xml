@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="Model.EnvironmentTest" tests="1" skipped="0" failures="0" errors="0" timestamp="2022-05-05T06:26:16" hostname="LAPTOP-Q42REQGH" time="0.034">
+<testsuite name="Model.EnvironmentTest" tests="1" skipped="0" failures="0" errors="0" timestamp="2022-05-09T08:15:06" hostname="LAPTOP-Q42REQGH" time="0.017">
   <properties/>
-  <testcase name="getMapOTest()" classname="Model.EnvironmentTest" time="0.034"/>
+  <testcase name="getMapOTest()" classname="Model.EnvironmentTest" time="0.017"/>
   <system-out><![CDATA[level : 0
 level : 1
 level : 2

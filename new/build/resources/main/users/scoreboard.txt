@@ -1,1 +1,5 @@
- /********this file is the scoreboard*******/
+
+
+test0 1490
+test1 5940
+test2 1490

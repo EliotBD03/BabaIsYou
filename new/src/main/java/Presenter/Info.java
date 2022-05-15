@@ -64,16 +64,22 @@ public class Info
             //la liste du fichier résultant
             List<String> res = new ArrayList<>();
             int i = 0;
+            boolean flag = true;
             //tant qu'on n'a pas trouvé le nom donné en paramètre
             while(i <= lines.size() - 1)
             {
-                System.out.println(lines.get(i));
                 if(lines.get(i).length() > userName.length() && lines.get(i).substring(0,userName.length()).equals(userName))
+                {
                     res.add(userName + " " + information);
+                    flag = false;
+                }
                 else
                     res.add(lines.get(i));
                 i++;
             }
+            //dans le cas où on n'a pas trouvé le nom
+            if(flag)
+               res.add(userName + " " + information);
             Files.write(path, res);
 
         }
@@ -89,15 +95,19 @@ public class Info
      * méthode servant à récupérer de l'information à partir
      * d'un nom utilisateur
      * @param userId nom utilisateur
+     * @param flag vrai si on veut avoir une limite de ligne d'un fichier, faux sinon
      * @return l'information
      */
 
-    public String getUserInfo(String userId)
+    public String getUserInfo(String userId, boolean flag)
     {
         try {
             Scanner scanner = new Scanner(new File(fileName));
             String line;
             String res = "";
+            //cette variable nous servira à compter le nombre de ligne et de vérifier si
+            //le dépassement de capacité est en dessous. (voir classe User)
+            int lineCount = 0;
             while (scanner.hasNextLine())
             {
                 line = scanner.nextLine();
@@ -109,6 +119,11 @@ public class Info
                     {
                         res += line.charAt(i);
                     }
+                }
+                lineCount++;
+                if(lineCount > 10 && flag)
+                {
+                    return "OvErFl@W";
                 }
             }
             scanner.close();

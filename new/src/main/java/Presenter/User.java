@@ -11,7 +11,7 @@ public class User
 {
     private static final String pathScoreboard = new File("src/main/resources/users/scoreboard.txt").getAbsolutePath();
     // le nom du joueur
-    private static String id;
+    private static String id = null;
     // le chemin du registre des inscriptions
     private static final String pathRegister = new File("src/main/resources/users/register.txt").getAbsolutePath();
     // le format de la date
@@ -22,7 +22,7 @@ public class User
      * accesseur
      * @return le nom du joueur
      */
-    public String getId()
+    public static String getId()
     {
         return id;
     }
@@ -53,20 +53,16 @@ public class User
      */
     public static User getUser(String name)
     {
-        try
+        if(name.length() == 0)
         {
-            if(User.id != null)
-                throw new Exception();
-            if(name.length() == 0)
-                return new User();
-            else
-                return new User(name);
+            System.out.println("je passe1");
+            return new User();
         }
-        catch (Exception e)
+        else
         {
-            System.out.println("An user is already playing");
+            System.out.println("je passe2");
+            return new User(name);
         }
-        return new User();
     }
 
     /**
@@ -76,8 +72,13 @@ public class User
     private void searchUser()
     {
         Info info = new Info(pathRegister);
-        String date = info.getUserInfo(id);
-        if(date == null)
+        String date = info.getUserInfo(id, true);
+        if(date != null && date.equals("OvErFl@W"))
+        {
+            id = null;
+            System.out.println("you reached the number of player available : 10");
+        }
+        else if(date == null)
             info.writeInfo(id +" " + dtf.format(LocalDateTime.now()));
     }
     /*

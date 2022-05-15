@@ -1,18 +1,65 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.control.Button?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="450.0" style="-fx-background-color: BLACK;" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="View.Controller">
    <children>
-      <Button layoutX="32.0" layoutY="49.0" mnemonicParsing="false" onAction="#setLevelOne" prefHeight="50.0" prefWidth="150.0" text="level 1" />
-      <Button layoutX="254.0" layoutY="49.0" mnemonicParsing="false" onAction="#setLevelTwo" prefHeight="50.0" prefWidth="150.0" text="level 2" />
-      <Button layoutX="32.0" layoutY="130.0" mnemonicParsing="false" onAction="#setLevelThree" prefHeight="50.0" prefWidth="150.0" text="level 3" />
-      <Button layoutX="254.0" layoutY="130.0" mnemonicParsing="false" onAction="#setLevelFour" prefHeight="50.0" prefWidth="150.0" text="level 4" />
-      <Button layoutX="206.0" layoutY="396.0" mnemonicParsing="false" onAction="#playLevel" text="play" />
-      <Button layoutX="32.0" layoutY="216.0" mnemonicParsing="false" onAction="#setLevelFive" prefHeight="50.0" prefWidth="150.0" text="level 5" />
-      <Button layoutX="32.0" layoutY="298.0" mnemonicParsing="false" onAction="#setLevelSeven" prefHeight="50.0" prefWidth="150.0" text="level 7" />
-      <Button layoutX="254.0" layoutY="216.0" mnemonicParsing="false" onAction="#setLevelSix" prefHeight="50.0" prefWidth="150.0" text="level 6" />
-      <Button layoutX="254.0" layoutY="298.0" mnemonicParsing="false" onAction="#setLevelHeight" prefHeight="50.0" prefWidth="150.0" text="level 8" />
+      <ImageView fitHeight="50.0" fitWidth="150.0" layoutX="32.0" layoutY="49.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../sprite/level1.gif" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="50.0" fitWidth="150.0" layoutX="32.0" layoutY="130.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../sprite/level3.gif" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="50.0" fitWidth="150.0" layoutX="32.0" layoutY="216.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../sprite/level5.gif" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="50.0" fitWidth="150.0" layoutX="32.0" layoutY="298.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../sprite/level7.gif" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="50.0" fitWidth="150.0" layoutX="254.0" layoutY="49.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../sprite/level2.gif" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="50.0" fitWidth="150.0" layoutX="254.0" layoutY="130.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../sprite/level4.gif" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="50.0" fitWidth="150.0" layoutX="254.0" layoutY="216.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../sprite/level6.gif" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="50.0" fitWidth="150.0" layoutX="254.0" layoutY="298.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../sprite/level8.gif" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="50.0" fitWidth="150.0" layoutX="151.0" layoutY="384.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../sprite/play.gif" />
+         </image>
+      </ImageView>
+      <Button layoutX="32.0" layoutY="49.0" mnemonicParsing="false" onAction="#setLevelOne" opacity="0.0" prefHeight="50.0" prefWidth="150.0" text="level 1" />
+      <Button layoutX="254.0" layoutY="49.0" mnemonicParsing="false" onAction="#setLevelTwo" opacity="0.0" prefHeight="50.0" prefWidth="150.0" text="level 2" />
+      <Button layoutX="32.0" layoutY="130.0" mnemonicParsing="false" onAction="#setLevelThree" opacity="0.0" prefHeight="50.0" prefWidth="150.0" text="level 3" />
+      <Button layoutX="254.0" layoutY="130.0" mnemonicParsing="false" onAction="#setLevelFour" opacity="0.0" prefHeight="50.0" prefWidth="150.0" text="level 4" />
+      <Button layoutX="150.0" layoutY="383.0" mnemonicParsing="false" onAction="#playLevel" opacity="0.0" prefHeight="50.0" prefWidth="150.0" text="play" />
+      <Button layoutX="32.0" layoutY="216.0" mnemonicParsing="false" onAction="#setLevelFive" opacity="0.0" prefHeight="50.0" prefWidth="150.0" text="level 5" />
+      <Button layoutX="32.0" layoutY="298.0" mnemonicParsing="false" onAction="#setLevelSeven" opacity="0.0" prefHeight="50.0" prefWidth="150.0" text="level 7" />
+      <Button layoutX="254.0" layoutY="216.0" mnemonicParsing="false" onAction="#setLevelSix" opacity="0.0" prefHeight="50.0" prefWidth="150.0" text="level 6" />
+      <Button layoutX="254.0" layoutY="298.0" mnemonicParsing="false" onAction="#setLevelHeight" opacity="0.0" prefHeight="50.0" prefWidth="150.0" text="level 8" />
    </children>
 </AnchorPane>

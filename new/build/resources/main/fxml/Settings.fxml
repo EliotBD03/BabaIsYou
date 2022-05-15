@@ -8,12 +8,12 @@
 
 <AnchorPane prefHeight="500.0" prefWidth="450.0" style="-fx-background-color: BLACK;" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="View.Controller">
     <children>
-      <ImageView fitHeight="50.0" fitWidth="150.0" layoutX="150.0" layoutY="372.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fitHeight="50.0" fitWidth="150.0" layoutX="150.0" layoutY="406.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../sprite/quitsettings.gif" />
          </image>
       </ImageView>
-        <Button layoutX="150.0" layoutY="372.0" mnemonicParsing="false" onAction="#switchToScene1" opacity="0.0" prefHeight="50.0" prefWidth="150.0" text="Quit Settings">
+        <Button layoutX="151.0" layoutY="406.0" mnemonicParsing="false" onAction="#switchToScene1" opacity="0.0" prefHeight="50.0" prefWidth="150.0" text="Quit Settings">
             <font>
                 <Font size="21.0" />
             </font>
@@ -45,5 +45,10 @@
       </ImageView>
       <Button layoutX="167.0" layoutY="135.0" mnemonicParsing="false" onAction="#cutMusic" opacity="0.0" prefHeight="42.0" prefWidth="110.0" text="Button" />
       <Button layoutX="171.0" layoutY="82.0" mnemonicParsing="false" onAction="#setMusic" opacity="0.0" prefHeight="42.0" prefWidth="103.0" text="Button" />
+      <ImageView fitHeight="96.0" fitWidth="281.0" layoutX="63.0" layoutY="327.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../sprite/things.png" />
+         </image>
+      </ImageView>
     </children>
 </AnchorPane>
