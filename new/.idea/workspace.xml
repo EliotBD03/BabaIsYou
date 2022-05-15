@@ -11,13 +11,9 @@
       <change beforePath="$PROJECT_DIR$/.gradle/7.4/fileHashes/fileHashes.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/7.4/fileHashes/fileHashes.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/7.4/fileHashes/resourceHashesCache.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/7.4/fileHashes/resourceHashesCache.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/outputFiles.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/outputFiles.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/file-system.probe" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/file-system.probe" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/modules/new.main.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules/new.main.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/modules/new.test.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules/new.test.iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/build/classes/java/main/Model/Actions.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/Model/Actions.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/java/main/Model/Baba.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/Model/Baba.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/build/classes/java/main/Model/BigAlgorithm.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/Model/BigAlgorithm.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/build/classes/java/main/Model/BlockRules$Is.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/Model/BlockRules$Is.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/build/classes/java/main/Model/BlockRules$Kill.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/Model/BlockRules$Kill.class" afterDir="false" />
@@ -33,14 +29,11 @@
       <change beforePath="$PROJECT_DIR$/build/classes/java/main/Model/BlockRules$Win.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/Model/BlockRules$Win.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/build/classes/java/main/Model/BlockRules$You.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/Model/BlockRules$You.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/build/classes/java/main/Model/BlockRules.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/Model/BlockRules.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/Model/Entity.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/Model/Entity.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/build/classes/java/main/Model/Environment.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/Model/Environment.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/build/classes/java/main/Model/Extract.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/Model/Extract.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/java/main/Model/Flag.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/Model/Flag.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/java/main/Model/Goop.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/Model/Goop.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/build/classes/java/main/Model/Item.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/Model/Item.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/java/main/Model/Lava.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/Model/Lava.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/java/main/Model/Rock.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/Model/Rock.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/java/main/Model/Wall.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/Model/Wall.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/Model/Rules.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/Model/Rules.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/build/classes/java/main/Presenter/Game.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/Presenter/Game.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/build/classes/java/main/Presenter/Info.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/Presenter/Info.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/build/classes/java/main/Presenter/Level.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/Presenter/Level.class" afterDir="false" />
@@ -50,46 +43,23 @@
       <change beforePath="$PROJECT_DIR$/build/classes/java/main/Presenter/User.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/Presenter/User.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/build/classes/java/main/View/Controller$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/View/Controller$1.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/build/classes/java/main/View/Controller.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/View/Controller.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/java/main/module-info.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/module-info.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/distributions/new.tar" beforeDir="false" afterPath="$PROJECT_DIR$/build/distributions/new.tar" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/distributions/new.zip" beforeDir="false" afterPath="$PROJECT_DIR$/build/distributions/new.zip" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/build/libs/new.jar" beforeDir="false" afterPath="$PROJECT_DIR$/build/libs/new.jar" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/reports/tests/test/classes/Model.BigAlgorithmTest.html" beforeDir="false" afterPath="$PROJECT_DIR$/build/reports/tests/test/classes/Model.BigAlgorithmTest.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/reports/tests/test/classes/Model.EnvironmentTest.html" beforeDir="false" afterPath="$PROJECT_DIR$/build/reports/tests/test/classes/Model.EnvironmentTest.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/reports/tests/test/classes/Model.ExtractTest.html" beforeDir="false" afterPath="$PROJECT_DIR$/build/reports/tests/test/classes/Model.ExtractTest.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/reports/tests/test/classes/Model.ItemTest.html" beforeDir="false" afterPath="$PROJECT_DIR$/build/reports/tests/test/classes/Model.ItemTest.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/reports/tests/test/css/base-style.css" beforeDir="false" afterPath="$PROJECT_DIR$/build/reports/tests/test/css/base-style.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/reports/tests/test/css/style.css" beforeDir="false" afterPath="$PROJECT_DIR$/build/reports/tests/test/css/style.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/reports/tests/test/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/build/reports/tests/test/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/reports/tests/test/js/report.js" beforeDir="false" afterPath="$PROJECT_DIR$/build/reports/tests/test/js/report.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/reports/tests/test/packages/Model.html" beforeDir="false" afterPath="$PROJECT_DIR$/build/reports/tests/test/packages/Model.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/resources/main/fxml/Settings.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/build/resources/main/fxml/Settings.fxml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/build/resources/main/fxml/mapChoice.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/build/resources/main/fxml/mapChoice.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/resources/main/level/default/level4.txt" beforeDir="false" afterPath="$PROJECT_DIR$/build/resources/main/level/default/level4.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/build/resources/main/level/save/history.txt" beforeDir="false" afterPath="$PROJECT_DIR$/build/resources/main/level/save/history.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/resources/main/level/save/savetest0.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/resources/main/level/save/savetest1.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/resources/main/level/save/savetest2.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/resources/main/music/music.mp3" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/resources/main/sprite/baba.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/resources/main/sprite/baba2.png" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/build/resources/main/users/access_level.txt" beforeDir="false" afterPath="$PROJECT_DIR$/build/resources/main/users/access_level.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/build/resources/main/users/register.txt" beforeDir="false" afterPath="$PROJECT_DIR$/build/resources/main/users/register.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/build/resources/main/users/scoreboard.txt" beforeDir="false" afterPath="$PROJECT_DIR$/build/resources/main/users/scoreboard.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/scripts/new" beforeDir="false" afterPath="$PROJECT_DIR$/build/scripts/new" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/scripts/new.bat" beforeDir="false" afterPath="$PROJECT_DIR$/build/scripts/new.bat" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/test-results/test/TEST-Model.BigAlgorithmTest.xml" beforeDir="false" afterPath="$PROJECT_DIR$/build/test-results/test/TEST-Model.BigAlgorithmTest.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/test-results/test/TEST-Model.EnvironmentTest.xml" beforeDir="false" afterPath="$PROJECT_DIR$/build/test-results/test/TEST-Model.EnvironmentTest.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/test-results/test/TEST-Model.ExtractTest.xml" beforeDir="false" afterPath="$PROJECT_DIR$/build/test-results/test/TEST-Model.ExtractTest.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/test-results/test/TEST-Model.ItemTest.xml" beforeDir="false" afterPath="$PROJECT_DIR$/build/test-results/test/TEST-Model.ItemTest.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/test-results/test/binary/output.bin" beforeDir="false" afterPath="$PROJECT_DIR$/build/test-results/test/binary/output.bin" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/test-results/test/binary/output.bin.idx" beforeDir="false" afterPath="$PROJECT_DIR$/build/test-results/test/binary/output.bin.idx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/test-results/test/binary/results.bin" beforeDir="false" afterPath="$PROJECT_DIR$/build/test-results/test/binary/results.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/build/tmp/compileJava/previous-compilation-data.bin" beforeDir="false" afterPath="$PROJECT_DIR$/build/tmp/compileJava/previous-compilation-data.bin" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/tmp/compileTestJava/previous-compilation-data.bin" beforeDir="false" afterPath="$PROJECT_DIR$/build/tmp/compileTestJava/previous-compilation-data.bin" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Model/Extract.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Model/Extract.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Presenter/Info.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Presenter/Info.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Presenter/Level.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Presenter/Level.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Presenter/Save.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Presenter/Save.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Presenter/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Presenter/User.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/View/Controller.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/View/Controller.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/level/save/history.txt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/level/save/history.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/users/access_level.txt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/users/access_level.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/users/register.txt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/users/register.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/users/scoreboard.txt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/users/scoreboard.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/fxml/mapChoice.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/fxml/mapChoice.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/level/default/level7.txt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/level/default/level7.txt" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -121,6 +91,13 @@
       </state>
     </system>
   </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Class" />
+      </list>
+    </option>
+  </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
   </component>
@@ -145,6 +122,7 @@
   </component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\julie\OneDrive\Bureau\BabaIsYou\new\src\main\resources\sprite" />
       <recent name="$PROJECT_DIR$/src/main/java" />
     </key>
   </component>
@@ -213,6 +191,11 @@
       <workItem from="1651732116209" duration="1286000" />
       <workItem from="1651734798027" duration="1420000" />
       <workItem from="1652605645967" duration="9178000" />
+      <workItem from="1652617384100" duration="7243000" />
+      <workItem from="1652625767891" duration="1044000" />
+      <workItem from="1652628967529" duration="20000" />
+      <workItem from="1652629150414" duration="1086000" />
+      <workItem from="1652637255118" duration="851000" />
     </task>
     <servers />
   </component>

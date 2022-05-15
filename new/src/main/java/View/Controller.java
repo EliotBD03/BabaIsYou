@@ -76,8 +76,8 @@ public class Controller {
     public final Image textLavaImage = new Image(getClass().getResource("/sprite/lavatext.png").toURI().toString());
     public final Image killImage= new Image(getClass().getResource("/sprite/textkill.png").toURI().toString());
     public final Image lavaImage = new Image(getClass().getResource("/sprite/lava.gif").toURI().toString());
-    public final Image glueImage = new Image(getClass().getResource("/sprite/glue.jpg").toURI().toString());
-    public final Image textGlueImage = new Image(getClass().getResource("/sprite/text_glue.jpg").toURI().toString());
+    public final Image glueImage = new Image(getClass().getResource("/sprite/glue.png").toURI().toString());
+    public final Image textGlueImage = new Image(getClass().getResource("/sprite/text_glue.png").toURI().toString());
     public final Image stickyImage = new Image(getClass().getResource("/sprite/sticky.png").toURI().toString());
 
     private static Game game;

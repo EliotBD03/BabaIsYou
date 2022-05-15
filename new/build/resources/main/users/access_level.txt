@@ -1,7 +1,1 @@
  /*******this file is to know which level a user can play*********/
-
-test0 101
-
-test1 30123
-
-test2 00

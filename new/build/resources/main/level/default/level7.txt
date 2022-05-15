@@ -24,6 +24,7 @@ flag 9 3
 lava 1 4
 lava 5 4
 flag 9 4
+baba 11 4
 lava 4 5
 flag 9 5
 rock 16 5
@@ -75,10 +76,10 @@ wall 6 14
 wall 7 14
 wall 8 14
 wall 9 14
-rock 10 14
-rock 11 14
-rock 12 14
-rock 13 14
+wall 10 14
+wall 11 14
+wall 12 14
+wall 13 14
 wall 14 14
 wall 15 14
 wall 16 14
