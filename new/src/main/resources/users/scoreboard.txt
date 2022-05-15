@@ -1,5 +1,1 @@
-
-
-test0 1490
-test1 5940
-test2 1490
+ /*******this file is used for the scoreboard*********/

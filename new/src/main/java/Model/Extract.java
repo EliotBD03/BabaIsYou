@@ -52,7 +52,6 @@ public class Extract {
     {
         int i = fileName.lastIndexOf('.');
         String extension = fileName.substring(i + 1);
-        System.out.println(extension);
         if(extension.equals("txt"))
             return true;
         return false;

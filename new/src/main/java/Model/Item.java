@@ -282,7 +282,6 @@ public class Item extends Environment implements Entity
                 //si notre objet n'est pas le personnage et que il se trouve sur quelque chose de collant, alors il va rester bloquée
                 else if(mapO[i][j] != null && tempMapO[i][j] != null && tempMapO[i][j].thingIsSticky(BigAlgorithm.getTabperm()))
                 {
-                    System.out.println("je passe dans la condition");
                     tempMapO[i][j] = null;
                     mapO[i][j].thingIsGlued();
                 }
@@ -446,7 +445,6 @@ public class Item extends Environment implements Entity
                             if (this.getClass().isInstance(mapO[i][j]))
                             {
                                 Item item = (Item) mapO[i][j];
-                                System.out.println("est ce que je suis collé ? " + stickyStatus);
                                 //on va vérifier 3 cas:
                                 //                      -est ce que l'objet bouge ?
                                 //                      -est ce que l'objet pousse ?
@@ -470,7 +468,6 @@ public class Item extends Environment implements Entity
                             if (this.getClass().isInstance(mapO[i][j]))
                             {
                                 Item item = (Item) mapO[i][j];
-                                System.out.println(stickyStatus);
                                 //on regarde si on a le droit d'avancer
                                 if (canMoveY(BigAlgorithm.getTabperm(),i+ 1,j)&& !item.stickyStatus)
                                     Actions.down(mapO, i, j);
@@ -489,7 +486,6 @@ public class Item extends Environment implements Entity
                             if(this.getClass().isInstance(mapO[i][j]))
                             {
                                 Item item = (Item) mapO[i][j];
-                                System.out.println(stickyStatus);
                                 if (canMoveX(BigAlgorithm.getTabperm(),i,j - 1)&& !item.stickyStatus)
                                     Actions.left(mapO, i, j);
 
@@ -507,7 +503,6 @@ public class Item extends Environment implements Entity
                             if (this.getClass().isInstance(mapO[i][j]))
                             {
                                 Item item = (Item) mapO[i][j];
-                                System.out.println(stickyStatus);
                                 if (canMoveX(BigAlgorithm.getTabperm(), i, j + 1)&& !item.stickyStatus)
                                     Actions.right(mapO, i, j);
 

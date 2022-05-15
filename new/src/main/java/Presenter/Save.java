@@ -116,7 +116,6 @@ public class Save
             return res;
         }
         res = res.substring(0,8 + User.getId().length());
-        System.out.println(res);
         return save_directory + File.separator + res;
 
     }

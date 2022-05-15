@@ -93,7 +93,6 @@ public class Game
      */
     public boolean makeMove(String event)
     {
-        System.out.println(map);
         baba.move(event);
         flag.move(event);
         rock.move(event);

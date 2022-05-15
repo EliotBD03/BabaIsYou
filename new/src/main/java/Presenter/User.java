@@ -55,12 +55,10 @@ public class User
     {
         if(name.length() == 0)
         {
-            System.out.println("je passe1");
             return new User();
         }
         else
         {
-            System.out.println("je passe2");
             return new User(name);
         }
     }
@@ -76,7 +74,7 @@ public class User
         if(date != null && date.equals("OvErFl@W"))
         {
             id = null;
-            System.out.println("you reached the number of player available : 10");
+            System.out.println("you reached the number of registration : 10");
         }
         else if(date == null)
             info.writeInfo(id +" " + dtf.format(LocalDateTime.now()));
