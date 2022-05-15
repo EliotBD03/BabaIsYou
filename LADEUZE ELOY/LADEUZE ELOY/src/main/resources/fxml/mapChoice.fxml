@@ -47,19 +47,26 @@
             <Image url="@../sprite/level8.gif" />
          </image>
       </ImageView>
-      <ImageView fitHeight="50.0" fitWidth="150.0" layoutX="151.0" layoutY="384.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fitHeight="50.0" fitWidth="150.0" layoutX="32.0" layoutY="384.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../sprite/play.gif" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="50.0" fitWidth="150.0" layoutX="254.0" layoutY="384.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../sprite/level8.gif" />
          </image>
       </ImageView>
       <Button layoutX="32.0" layoutY="49.0" mnemonicParsing="false" onAction="#setLevelOne" opacity="0.0" prefHeight="50.0" prefWidth="150.0" text="level 1" />
       <Button layoutX="254.0" layoutY="49.0" mnemonicParsing="false" onAction="#setLevelTwo" opacity="0.0" prefHeight="50.0" prefWidth="150.0" text="level 2" />
       <Button layoutX="32.0" layoutY="130.0" mnemonicParsing="false" onAction="#setLevelThree" opacity="0.0" prefHeight="50.0" prefWidth="150.0" text="level 3" />
       <Button layoutX="254.0" layoutY="130.0" mnemonicParsing="false" onAction="#setLevelFour" opacity="0.0" prefHeight="50.0" prefWidth="150.0" text="level 4" />
-      <Button layoutX="150.0" layoutY="383.0" mnemonicParsing="false" onAction="#playLevel" opacity="0.0" prefHeight="50.0" prefWidth="150.0" text="play" />
+      <Button layoutX="32.0" layoutY="384.0" mnemonicParsing="false" onAction="#playLevel" opacity="0.0" prefHeight="50.0" prefWidth="150.0" text="play" />
       <Button layoutX="32.0" layoutY="216.0" mnemonicParsing="false" onAction="#setLevelFive" opacity="0.0" prefHeight="50.0" prefWidth="150.0" text="level 5" />
       <Button layoutX="32.0" layoutY="298.0" mnemonicParsing="false" onAction="#setLevelSeven" opacity="0.0" prefHeight="50.0" prefWidth="150.0" text="level 7" />
       <Button layoutX="254.0" layoutY="216.0" mnemonicParsing="false" onAction="#setLevelSix" opacity="0.0" prefHeight="50.0" prefWidth="150.0" text="level 6" />
       <Button layoutX="254.0" layoutY="298.0" mnemonicParsing="false" onAction="#setLevelHeight" opacity="0.0" prefHeight="50.0" prefWidth="150.0" text="level 8" />
+      <Button layoutX="254.0" layoutY="384.0" mnemonicParsing="false" onAction="#setLevelHeight" opacity="0.0" prefHeight="50.0" prefWidth="150.0" text="level 9" />
    </children>
 </AnchorPane>
+
