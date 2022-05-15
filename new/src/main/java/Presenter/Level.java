@@ -25,9 +25,10 @@ public class Level
     private static final String level5 = pathLevel + File.separator + "level5.txt";
     private static final String level6 = pathLevel + File.separator + "level6.txt";
     private static final String level7 = pathLevel + File.separator + "level7.txt";
+    private static final String level8 = pathLevel + File.separator + "level8.txt";
 
     //tableau comprenant tous les niveaux disponibles
-    private static final String[] levels = {level0,level1,level2,level3,level4,level5,level6,level7};
+    private static final String[] levels = {level0,level1,level2,level3,level4,level5,level6,level7, level8};
 
     /**
      * constructeur qui va établir le niveau courant

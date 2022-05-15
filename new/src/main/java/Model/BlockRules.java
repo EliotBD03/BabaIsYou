@@ -7,7 +7,7 @@ package Model;
  */
 public class BlockRules extends Environment implements Entity
 {
-
+    private boolean stickyStatus = false;
     @Override
     public String getSkin() {
         return null;
@@ -15,7 +15,16 @@ public class BlockRules extends Environment implements Entity
 
     //Dans le jeu, les règles ne sont pas contrôlables. Cela permet d'implémenter toutes ces méthodes facilement à false
     @Override
-    public boolean thingIsPush(Enum[][] tabperm){return true;}
+    public boolean thingIsPush(Enum[][] tabperm){
+        if(stickyStatus)
+            return false;
+        return true;
+    }
+    @Override
+    public void thingIsGlued()
+    {
+        stickyStatus = true;
+    }
     @Override
     public boolean canMoveX(Enum[][] tabperm,int posy, int posx){return false;}
     @Override
@@ -44,6 +53,12 @@ public class BlockRules extends Environment implements Entity
 
     @Override
     public boolean thingIsWin(Enum[][] tabperm) {
+        return false;
+    }
+
+    @Override
+    public boolean thingIsSticky(Enum[][] tabperm)
+    {
         return false;
     }
 
@@ -148,5 +163,17 @@ public class BlockRules extends Environment implements Entity
         @Override
         public final String getSkin(){return "K";}
 
+    }
+
+    public static class TextGlue extends BlockRules
+    {
+        @Override
+        public final String getSkin(){return "C";}
+    }
+
+    public static class Sticky extends BlockRules
+    {
+        @Override
+        public final String getSkin(){return "T";}
     }
 }

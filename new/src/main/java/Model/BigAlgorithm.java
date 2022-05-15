@@ -11,8 +11,8 @@ import java.util.Map;
 public class BigAlgorithm extends Environment {
     private static final Enum[][] tabloc = new Enum[getLength()][getWidth()];
     private static Enum[][] tabperm;
-    private static final Enum[] character = {Rules.BABA, Rules.ROCK, Rules.FLAG, Rules.WALL, Rules.GOOP, Rules.LAVA};
-    private static final Enum[] actions = {Rules.YOU, Rules.STOP, Rules.WIN, Rules.PUSH, Rules.SINK, Rules.BABA, Rules.ROCK, Rules.FLAG, Rules.WALL, Rules.GOOP, Rules.LAVA, Rules.KILL};
+    private static final Enum[] character = {Rules.BABA, Rules.ROCK, Rules.FLAG, Rules.WALL, Rules.GOOP, Rules.LAVA, Rules.GLUE};
+    private static final Enum[] actions = {Rules.YOU, Rules.STOP, Rules.WIN, Rules.PUSH, Rules.SINK, Rules.BABA, Rules.ROCK, Rules.FLAG, Rules.WALL, Rules.GOOP, Rules.LAVA, Rules.KILL, Rules.GLUE, Rules.STICKY};
     public static final Map<Rules, Entity> dico = new HashMap<Rules, Entity>();
 
 
@@ -228,6 +228,8 @@ public class BigAlgorithm extends Environment {
         }else if (BlockRules.Sink.class.equals(thing)){return Rules.SINK;}
         else if (BlockRules.TextLava.class.equals(thing)){return Rules.LAVA;}
         else if (BlockRules.Kill.class.equals(thing)){return Rules.KILL;}
+        else if (BlockRules.Sticky.class.equals(thing)){return Rules.STICKY;}
+        else if (BlockRules.TextGlue.class.equals(thing)){return Rules.GLUE;}
 
         return Rules.NONE;
     }

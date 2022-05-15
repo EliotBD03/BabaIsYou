@@ -8,6 +8,10 @@ package Model;
 interface Entity
 {
     /**
+     * cette méthode sert à passer le status de collé à vrai
+     */
+    void thingIsGlued();
+    /**
      * méthode qui permet de savoir l'objet qui l'instancie est un objet
      * issu de la classe Item
      */
@@ -109,4 +113,11 @@ interface Entity
      * @return vrai si c'est le cas, faux sinon
      */
      boolean thingIsWin(Enum[][] tabperm);
+
+    /**
+     * methode permettant de savoir si un objet a la caractéristique "sticky"
+     * ie: si un objet le touche, alors il reste bloqué
+     * @return vrai si c'est le cas, faux sinon
+     */
+     boolean thingIsSticky(Enum[][] tabperm);
     }
