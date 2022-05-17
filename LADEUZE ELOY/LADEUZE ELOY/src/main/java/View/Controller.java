@@ -256,6 +256,16 @@ public class Controller {
         stage.setScene(pauseScene);
         stage.show();
     }
+    public void switchToScene3()throws IOException{
+
+        FXMLLoader loader = new FXMLLoader();
+        loader.setLocation(getClass().getResource("/fxml/Score2.fxml"));
+        Parent root = loader.load();
+        pauseScene = new Scene(root, 450, 500, Color.BLACK);
+        stage.setScene(pauseScene);
+        stage.show();
+    }
+
         /**
  * lance la partie
  */
@@ -274,6 +284,8 @@ public class Controller {
             e.printStackTrace();
         }
     }
+
+
     /*
         Méthode pour tout les event crée par les touches au clavier
      */
@@ -297,7 +309,11 @@ public class Controller {
                         Score.stop();
                         if(!(game.nextLevel()))
                         {
-                            stage.close();
+                            try {
+                                switchToScene3();
+                            } catch (IOException e) {
+                                e.printStackTrace();
+                            }
                             System.out.println("CONGRATS ! you can restart the game to get a better score");
                         }
                         else
@@ -311,8 +327,12 @@ public class Controller {
                         Score.stop();
                         if(!(game.nextLevel()))
                         {
+                            try {
+                                switchToScene3();
+                            } catch (IOException e) {
+                                e.printStackTrace();
+                            }
                             System.out.println("CONGRATS ! you can restart the game to get a better score");
-                            stage.close();
                         }
                         else
                             refresh();
@@ -325,8 +345,12 @@ public class Controller {
                         Score.stop();
                         if(!(game.nextLevel()))
                         {
+                            try {
+                                switchToScene3();
+                            } catch (IOException e) {
+                                e.printStackTrace();
+                            }
                             System.out.println("CONGRATS ! you can restart the game to get a better score");
-                            stage.close();
                         }
                         else
                             refresh();
@@ -339,8 +363,12 @@ public class Controller {
                         Score.stop();
                         if(!(game.nextLevel()))
                         {
+                            try {
+                                switchToScene3();
+                            } catch (IOException e) {
+                                e.printStackTrace();
+                            }
                             System.out.println("CONGRATS ! you can restart the game to get a better score");
-                            stage.close();
                         }
                         else
                             refresh();
@@ -526,6 +554,4 @@ public void playLevel(ActionEvent event)
         }
     }
 }
-
-
 
