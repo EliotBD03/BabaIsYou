@@ -1,4 +1,0 @@
-/*******this file is to reference the date of a save file********/
-
-julien savejulien.txt 2022/mai/17 13:19:02
-test savetest.txt 2022/mai/17 19:34:19
