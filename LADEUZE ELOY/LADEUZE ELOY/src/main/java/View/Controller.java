@@ -261,8 +261,8 @@ public class Controller {
         FXMLLoader loader = new FXMLLoader();
         loader.setLocation(getClass().getResource("/fxml/Score2.fxml"));
         Parent root = loader.load();
-        pauseScene = new Scene(root, 450, 500, Color.BLACK);
-        stage.setScene(pauseScene);
+        scene = new Scene(root, 450, 500, Color.BLACK);
+        stage.setScene(scene);
         stage.show();
     }
 
