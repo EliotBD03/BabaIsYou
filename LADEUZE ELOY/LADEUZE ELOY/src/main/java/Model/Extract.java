@@ -1,19 +1,8 @@
 package Model;
-/**
- * permet de lire notre fichier
- */
+
 import java.io.BufferedReader;
-/**
- * permet de savoir si on peut lire le fichier
- */
 import java.io.FileReader;
-/**
- * permet de générer une exception au cas où ça ne marche pas
- */
 import java.io.IOException;
-/**
- * cette classe a pour but d'extraire les donnees d'un fichier texte
- */
 
 /**
  * cette classe permet à partir d'un fichier texte, d'extraire les données afin de jouer correctement au jeu
@@ -68,7 +57,7 @@ public class Extract {
 
             //on évalue le nombre de lignes pour notre tableau à deux dimensions
             int i = 0;
-            while ((line = r1.readLine()) != null)
+            while (r1.readLine() != null)
                 ++i;
 
             //on instancie ce le tableau de String
@@ -76,13 +65,12 @@ public class Extract {
 
             r1.close();
 
-            //on instancie une deuxieme fois pour "réouvrir" le fichier
+            //on instancie une deuxieme fois pour "rouvrir" le fichier
             FileReader file2 = new FileReader(map);
             BufferedReader r2 = new BufferedReader(file2);
 
             int k = 0; // la ligne de res
             //tant qu'on n'a pas atteint la fin de notre fichier
-            boolean flag = true;
             while ((line = r2.readLine()) != null) {
                 int j = 0; // évaluer la longueur de la chaine de la ligne "line" de notre fichier map
                 int l = 0; //la colonne de res

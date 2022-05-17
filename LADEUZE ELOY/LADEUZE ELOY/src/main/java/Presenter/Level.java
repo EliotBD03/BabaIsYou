@@ -80,23 +80,6 @@ public class Level
     }
 
     /**
-     * accesseur
-     * note : pas utilisé, mais peut être dans un futur proche
-     * @return l'index courant
-     */
-    public int getCurrentIndex(){return currentIndex;}
-
-    /**
-     * accesseur
-     * note : pas utilisé, mais peut être dans un futur proche
-     * @return le dernier niveau jouable
-     */
-    public String getLastLevel()
-    {
-        return levels[lastIndex];
-    }
-
-    /**
      * méthode utilisée pour passer au
      * niveau suivant
      * @return vrai si on a pu passer au niveau suivant, faux sinon

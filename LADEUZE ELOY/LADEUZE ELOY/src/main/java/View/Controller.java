@@ -12,12 +12,11 @@ package View;
         import javafx.scene.Node;
         import javafx.scene.Parent;
         import javafx.scene.Scene;
-        import javafx.scene.control.Button;
         import javafx.scene.control.TextArea;
         import javafx.scene.control.TextField;
         import javafx.scene.image.Image;
         import javafx.scene.image.ImageView;
-        import javafx.scene.layout.AnchorPane;
+
         import javafx.scene.layout.HBox;
         import javafx.scene.layout.Pane;
         import javafx.scene.layout.VBox;
@@ -31,15 +30,9 @@ package View;
 
 
 public class Controller {
-    @FXML
-    private Button logoutButton;
-    @FXML
-    private AnchorPane scenePane;
-    @FXML
-    private Button playButton;
+
     private Stage stage;
     private static Scene scene;
-    //pour romain, c'est pour permettre de logout dans le menu pause
     private static Scene pauseScene;
     private static  Pane[][] tabpane;
     @FXML
@@ -83,7 +76,7 @@ public class Controller {
     private static VBox vbox = new VBox();
 
     @FXML
-       /**
+    /**
  * Méthode pour rejoindre le Menu après s'être connecter avec son pseudo
  */
     private void inputUser(ActionEvent event) throws IOException, URISyntaxException {
@@ -314,12 +307,10 @@ public class Controller {
                             } catch (IOException e) {
                                 e.printStackTrace();
                             }
-                            System.out.println("CONGRATS ! you can restart the game to get a better score");
                         }
                         else
                             refresh();
                     }
-                    System.out.println("up");
                     break;
                 case DOWN:
                     if(game.makeMove("s"))
@@ -332,12 +323,10 @@ public class Controller {
                             } catch (IOException e) {
                                 e.printStackTrace();
                             }
-                            System.out.println("CONGRATS ! you can restart the game to get a better score");
                         }
                         else
                             refresh();
                     }
-                    System.out.println("down");
                     break;
                 case LEFT:
                     if(game.makeMove("q"))
@@ -350,12 +339,10 @@ public class Controller {
                             } catch (IOException e) {
                                 e.printStackTrace();
                             }
-                            System.out.println("CONGRATS ! you can restart the game to get a better score");
                         }
                         else
                             refresh();
                     }
-                    System.out.println("left");
                     break;
                 case RIGHT:
                     if(game.makeMove("d"))
@@ -368,12 +355,10 @@ public class Controller {
                             } catch (IOException e) {
                                 e.printStackTrace();
                             }
-                            System.out.println("CONGRATS ! you can restart the game to get a better score");
                         }
                         else
                             refresh();
                     }
-                    System.out.println("right");
                     break;
             }
             actualise(game.getChanges());
@@ -522,7 +507,7 @@ public void playLevel(ActionEvent event)
  * Sauvegarde le niveau et quitte le jeu
  */
     @FXML
-    private void quitAndSave(ActionEvent event) {
+    private void quitAndSave() {
         Score.saveScore();
         Score.endScore();
         saveLevel();

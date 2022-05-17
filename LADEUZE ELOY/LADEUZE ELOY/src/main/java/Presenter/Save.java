@@ -111,7 +111,7 @@ public class Save
         if(res == null)
         {
             System.out.println("You haven't saved yet");
-            return res;
+            return null;
         }
         res = res.substring(0,8 + User.getId().length());
         return save_directory + File.separator + res;

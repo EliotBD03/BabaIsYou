@@ -50,7 +50,6 @@ public class Score {
  */
     public static void stop(){
         globalScore = globalScore + levelScore - secondsPassed*10;
-        System.out.println("Your score: "+ globalScore+" points");
         secondsPassed = 0;
     }
     /*

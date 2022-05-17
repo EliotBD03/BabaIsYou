@@ -15,7 +15,6 @@ public class Actions
     {
          mapObject[posY - 1][posX] = mapObject[posY][posX];
          mapObject[posY][posX] = null;
-         posY -= 1;
     }
     /**
      * cette methode permet décrémenter la position en y de l'instance qui l'utilise dans le tableau d'objet
@@ -27,7 +26,6 @@ public class Actions
     {
         mapObject[posY  + 1][posX] = mapObject[posY][posX];
         mapObject[posY][posX] = null;
-        posY += 1;
     }
 
     /**
@@ -40,7 +38,6 @@ public class Actions
     {
         mapObject[posY][posX - 1] = mapObject[posY][posX];
         mapObject[posY][posX] = null;
-        posX -= 1;
     }
 
     /**
@@ -54,7 +51,6 @@ public class Actions
     {
         mapObject[posY][posX + 1] = mapObject[posY][posX];
         mapObject[posY][posX] = null;
-        posX += 1;
     }
 
     /**
@@ -91,7 +87,6 @@ public class Actions
                         mapObject[posY][temp] = null;
                         temp ++;
                     }
-                    temp --;
                     break;
             case 1:
                     temp = posX + 1;
@@ -107,7 +102,6 @@ public class Actions
                             mapObject[posY][temp] = null;
                             temp--;
                     }
-                    temp += 2;
                     break;
         }
     }
@@ -141,7 +135,6 @@ public class Actions
                     mapObject[temp][posX] = null;
                     temp ++;
                 }
-                temp -= 2;
                 break;
             case 1:
                 temp = posY + 1;
@@ -157,7 +150,6 @@ public class Actions
                     mapObject[temp][posX] = null;
                     temp--;
                 }
-                temp += 2;
                 break;
         }
     }

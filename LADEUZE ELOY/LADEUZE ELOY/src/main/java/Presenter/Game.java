@@ -14,14 +14,10 @@ import java.util.ArrayList;
  */
 public class Game
 {
-    //notre utilisateur
-    private static User player;
     //le niveau en cours (le chemin du fichier)
     private static Level level;
     //la carte du jeu
     private static Environment map;
-    //lien avec l'interface graphique
-    private static Controller controller;
     //les différents objets du jeu (Item)
     private static Baba baba;
     private static Flag flag;
@@ -30,11 +26,9 @@ public class Game
     private static Goop goop;
     private static Lava lava;
     private static Glue glue;
-    //la map de String temporaire
-    private static  String[][] temp;
     //notre dictionnaire pour faire le lien
     //entre les Strings et les images
-    private static final Map<Character, Image> dico = new HashMap<Character, Image>();
+    private static final Map<Character, Image> dico = new HashMap<>();
     //la taille de la map (en longueur et largeur)
     public static int getLength(){return map.getMap().length;}
 
@@ -46,11 +40,13 @@ public class Game
      */
     public Game(String userName) throws URISyntaxException
     {
-        player =  User.getUser(userName);
+        //notre utilisateur
+        User.getUser(userName);
         level = new Level(User.getId());
-        controller = new Controller();
+        //lien avec l'interface graphique
+        Controller controller = new Controller();
 
-        dico.put(' ',controller.fonfImage); dico.put('X',controller.borderImage);
+        dico.put(' ', controller.fonfImage); dico.put('X', controller.borderImage);
         dico.put('O', controller.babaImage); dico.put('w', controller.wallImage);
         dico.put('@', controller.flagImage); dico.put('#', controller.rockImage);
         dico.put('B', controller.textBabaImage); dico.put('I', controller.isImage);
@@ -127,7 +123,8 @@ public class Game
     public ArrayList<int[]> getChanges()
     {
         ArrayList<int[]> changeCoord = new ArrayList<>();
-        temp = Environment.getStringMap(map.getMap());
+        //la map de String temporaire
+        String[][] temp = Environment.getStringMap(map.getMap());
         map.actualiseMap();
         String[][] actual = map.getMap();
         for(int i = 0; i <= actual.length -1; i++)

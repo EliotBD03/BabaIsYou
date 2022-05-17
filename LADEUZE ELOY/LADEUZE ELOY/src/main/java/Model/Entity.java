@@ -44,7 +44,7 @@ interface Entity
      * on préconise que le deplacement se fait en y
      * @param tabperm le tableau contenant les permissions issu de la classe BigAlgorithm
      * @param posy la position de l'objet en y (en l'occurence apres mouvement)
-     * @param posy la position de l'objet en y (en l'occurence apres mouvement)
+     * @param posx la position de l'objet en x (en l'occurence apres mouvement)
      * @return vrai si l'objet peut bouger, faux sinon
      */
     boolean canMoveY(Enum[][] tabperm,int posy, int posx);

@@ -7,13 +7,14 @@ import java.util.ArrayList;
  */
 public class Item extends Environment implements Entity
 {
+    //représente le status d'un objet à être collé
     private boolean stickyStatus = false;
     //représente la règle d'un objet
     protected final Rules object = Rules.NONE;
     //représente le status du joueur s'il a atteint l'objectif
     private static boolean winStatus = false;
     //représente les coordonnés de tous les objets qui sont win
-    private static ArrayList<int[]> coordonates_win = new ArrayList<int[]>();
+    private static ArrayList<int[]> coordonates_win = new ArrayList<>();
     //la map temporaire contenant tous les objets qui n'ont pas de status
     private static Entity[][] tempMapO = new Entity[mapO.length][mapO[0].length];
 
@@ -122,11 +123,13 @@ public class Item extends Environment implements Entity
         return false;
     }
     /**
-     *Même implémentation que thingIsYou()
+     *Quasiment la même implémentation que thingIsYou()
      */
     @Override
     public boolean thingIsPush(Enum[][] tabperm)
     {
+        //on vérifie si l'objet est collé ou pas
+        //si alors il ne peut pas être poussé
         if(this.stickyStatus)
             return false;
         else
@@ -182,7 +185,7 @@ public class Item extends Environment implements Entity
 
     /**
      * cette méthode permet de récupérer l'élément qui compte remplacer l'objet
-     * qui a comme regle : objet + is + remplacent
+     * qui a comme règle : objet + is + remplacent
      * @param tabperm tableau des permissions
      * @return l'élément qui remplace object
      */
@@ -233,8 +236,7 @@ public class Item extends Environment implements Entity
                 if(mapO[i][j] != null)
                 {
                     boolean mapOcondition  = !mapO[i][j].thingIsYou(BigAlgorithm.getTabperm()) && !mapO[i][j].thingIsStop(BigAlgorithm.getTabperm()) && !mapO[i][j].thingIsPush(BigAlgorithm.getTabperm());
-                    //si un objet qui se trouve sur un element de la map temp, on ajoute l'
-                    // élément de la map temp à res (ie: on ne change rien)
+                    //si un objet qui se trouve sur un element de la map temp, on ajoute l'élément de la map temp à res (ie: on ne change rien)
                     //car on pourrait écraser l'objet de temp par l'objet de mapO
                     if(tempMapO[i][j] != null && mapO[i][j] != tempMapO[i][j])
                     {
