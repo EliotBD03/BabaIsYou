@@ -1,5 +1,1 @@
  /*******this file is to know which level a user can play*********/
-
-julien 60123456
-
-test 401234
