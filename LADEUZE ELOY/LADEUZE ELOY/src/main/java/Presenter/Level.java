@@ -149,14 +149,14 @@ public class Level
         if(lastIndex < currentIndex)
             lastIndex = currentIndex;
         Info info = new Info(pathAccessLevel);
-        String res = "";
+        StringBuilder res = new StringBuilder();
         int i = 0;
         while(i <= lastIndex)
         {
-            res += i;
+            res.append(i);
             i++;
         }
-        info.writeInfoUser(currentIndex + res, id);
+        info.writeInfoUser(currentIndex + res.toString(), id);
     }
 
 }

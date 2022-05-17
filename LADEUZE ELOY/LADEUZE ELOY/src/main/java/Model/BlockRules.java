@@ -62,9 +62,7 @@ public class BlockRules extends Environment implements Entity
     //seul cette méthode déroge à la règle
     @Override
     public boolean thingIsPush(Enum[][] tabperm){
-        if(stickyStatus)
-            return false;
-        return true;
+        return !stickyStatus;
     }
 
     //ces classes internes représentent toutes les règles, elles ont toutes le même moyen d'implémentation sauf pour skin(ce qui permet

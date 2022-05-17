@@ -178,13 +178,13 @@ public class Environment {
 
         @Override
         public String toString() {
-            String res = "";
+            StringBuilder res = new StringBuilder();
             for (int i = 0; i <= length - 1; i++) {
                 for (int j = 0; j <= width - 1; j++)
-                    res += map[i][j];
-                res += "\n";
+                    res.append(map[i][j]);
+                res.append("\n");
             }
-            return res;
+            return res.toString();
         }
 
     }

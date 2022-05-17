@@ -16,9 +16,9 @@ public class Score {
     private static int userLine = 0;
     static int secondsPassed = 0;
     static int globalScore;
-    static int levelScore = 1500;
-    static Timer myTimer = new Timer();
-    TimerTask task = new TimerTask(){
+    static final int levelScore = 1500;
+    static final Timer myTimer = new Timer();
+    final TimerTask task = new TimerTask(){
         public void run(){
 
             secondsPassed++;
@@ -95,7 +95,7 @@ public class Score {
         try {
             Scanner scanner = new Scanner(new File(fileName));
             String line;
-            String res = "";
+            StringBuilder res = new StringBuilder();
             int tempLine = 0;
             while (scanner.hasNextLine())
             {
@@ -107,15 +107,15 @@ public class Score {
                         break;
                     else if(i > userId.length() - 1 && line.charAt(i) != ' ')
                     {
-                        res += line.charAt(i);
+                        res.append(line.charAt(i));
                         userLine = tempLine - 1;
                     }
                 }
             }
             scanner.close();
-            if(res.equals(""))
+            if(res.toString().equals(""))
                 return null;
-            return res;
+            return res.toString();
         }
         catch (FileNotFoundException e)
         {

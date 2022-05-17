@@ -47,7 +47,7 @@ public class Game
     public Game(String userName) throws URISyntaxException
     {
         player =  User.getUser(userName);
-        level = new Level(player.getId());
+        level = new Level(User.getId());
         controller = new Controller();
 
         dico.put(' ',controller.fonfImage); dico.put('X',controller.borderImage);
@@ -173,9 +173,9 @@ public class Game
 
     public void getSave()
     {
-        if(player.getId() == null)
+        if(User.getId() == null)
             return;
-        level.writeLevelAccess(player.getId());
+        level.writeLevelAccess(User.getId());
         Save save = new Save();
         save.newSave(map.getMap());
     }

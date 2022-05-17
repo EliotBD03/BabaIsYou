@@ -1,7 +1,6 @@
 package Presenter;
 
 import java.io.*;
-import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
@@ -15,7 +14,7 @@ import java.util.Scanner;
 public class Info
 {
     //le nom du fichier
-    private String fileName;
+    private final String fileName;
 
     /**
      * constructeur
@@ -104,7 +103,7 @@ public class Info
         try {
             Scanner scanner = new Scanner(new File(fileName));
             String line;
-            String res = "";
+            StringBuilder res = new StringBuilder();
             //cette variable nous servira à compter le nombre de ligne et de vérifier si
             //le dépassement de capacité est en dessous. (voir classe User)
             int lineCount = 0;
@@ -117,7 +116,7 @@ public class Info
                         break;
                     else if(i > userId.length() - 1 && line.charAt(i) != ' ')
                     {
-                        res += line.charAt(i);
+                        res.append(line.charAt(i));
                     }
                 }
                 lineCount++;
@@ -127,9 +126,9 @@ public class Info
                 }
             }
             scanner.close();
-            if(res.equals(""))
+            if(res.toString().equals(""))
                 return null;
-            return res;
+            return res.toString();
         }
         catch (FileNotFoundException e)
         {

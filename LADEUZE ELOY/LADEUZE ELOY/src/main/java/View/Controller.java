@@ -26,8 +26,6 @@ package View;
         import javafx.scene.paint.Color;
         import javafx.stage.Stage;
 
-        import java.io.File;
-        import java.io.IOException;
         import java.net.URISyntaxException;
         import static Presenter.Game.getSprite;
 
@@ -223,7 +221,7 @@ public class Controller {
         Va afficher le score des joueurs dans le textArea
      */
 
-    public void loadScore(ActionEvent event) {
+    public void loadScore() {
         File file = new File("src/main/resources/users/scoreboard.txt");
 
         try (FileInputStream fis = new FileInputStream(file)) {
@@ -249,7 +247,7 @@ public class Controller {
         /**
  * permet de faire pause en partie
  */
-    public void switchToPause(ActionEvent event)throws IOException{
+    public void switchToPause()throws IOException{
 
         FXMLLoader loader = new FXMLLoader();
         loader.setLocation(getClass().getResource("/fxml/Pause.fxml"));
@@ -284,11 +282,11 @@ public class Controller {
         scene.setOnKeyPressed(event1 -> {
             switch (event1.getCode()) {
                 case SPACE:
-                    refresh(event);
+                    refresh();
                     break;
                 case ESCAPE:
                     try {
-                        switchToPause(event);
+                        switchToPause();
                     } catch (IOException e) {
                         e.printStackTrace();
                     }
@@ -298,9 +296,12 @@ public class Controller {
                     {
                         Score.stop();
                         if(!(game.nextLevel()))
+                        {
                             stage.close();
+                            System.out.println("CONGRATS ! you can restart the game to get a better score");
+                        }
                         else
-                            refresh(event);
+                            refresh();
                     }
                     System.out.println("up");
                     break;
@@ -309,9 +310,12 @@ public class Controller {
                     {
                         Score.stop();
                         if(!(game.nextLevel()))
+                        {
+                            System.out.println("CONGRATS ! you can restart the game to get a better score");
                             stage.close();
+                        }
                         else
-                            refresh(event);
+                            refresh();
                     }
                     System.out.println("down");
                     break;
@@ -320,9 +324,12 @@ public class Controller {
                     {
                         Score.stop();
                         if(!(game.nextLevel()))
+                        {
+                            System.out.println("CONGRATS ! you can restart the game to get a better score");
                             stage.close();
+                        }
                         else
-                            refresh(event);
+                            refresh();
                     }
                     System.out.println("left");
                     break;
@@ -331,9 +338,12 @@ public class Controller {
                     {
                         Score.stop();
                         if(!(game.nextLevel()))
+                        {
+                            System.out.println("CONGRATS ! you can restart the game to get a better score");
                             stage.close();
+                        }
                         else
-                            refresh(event);
+                            refresh();
                     }
                     System.out.println("right");
                     break;
@@ -345,7 +355,7 @@ public class Controller {
         Va appeler tout les méthodes qui permet de charger la map
  */
 
-    private void initializeGame(String fileName) throws URISyntaxException {
+    private void initializeGame(String fileName) {
         game.makeTheGame(fileName);
         //System.out.println("1");
         setTabpane();
@@ -376,7 +386,7 @@ public class Controller {
     /*
 Méthode qui va être utilisé si le joueur est bloqué et appuie sur la touche espace
  */
-    public void refresh(ActionEvent event) {
+    public void refresh() {
             vbox.getChildren().clear();
             tabhbox = null;
             tabpane = null;
@@ -390,7 +400,7 @@ Méthode qui va être utilisé si le joueur est bloqué et appuie sur la touche 
     setLevelOne va juste set le level sur le 1er car il est accesible dans tout les cas Sinon pour les autres
     Il faut que le joueur les débloquent le code le vérifie.
      */
-    public void setLevelOne(ActionEvent event)
+    public void setLevelOne()
     {
         game.setLevel(0);
     }
@@ -470,7 +480,7 @@ public void playLevel(ActionEvent event)
         /**
  * permet de quitter 
  */
-    public void logout(ActionEvent event){
+    public void logout(){
         stage = (Stage)scene.getWindow();
         System.out.println("logout");
         stage.close();
@@ -484,7 +494,7 @@ public void playLevel(ActionEvent event)
  * Sauvegarde le niveau et quitte le jeu
  */
     @FXML
-    private void quitAndSave(ActionEvent event) throws IOException {
+    private void quitAndSave(ActionEvent event) {
         Score.saveScore();
         Score.endScore();
         saveLevel();

@@ -6,7 +6,6 @@ import java.util.HashMap;
 import java.util.Map;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
-import java.util.Scanner;
 
 /**
  * classe ayant pour but d'effectuer des sauvegardes et d'en charger
@@ -92,9 +91,8 @@ public class Save
      * méthode servant à écrire le nom de la sauvegarde + sa date de création
      * dans l'historique des sauvegardes (history.txt)
      * @param fileName le nom de la sauvegarde
-     * @throws IOException si on ne trouve pas le fichier
      */
-    private void writeDate(String fileName) throws IOException {
+    private void writeDate(String fileName) {
         Info info = new Info(save_directory + File.separator + "history.txt");
         info.writeInfoUser(fileName + " "+ dtf.format(LocalDateTime.now()), User.getId());
     }

@@ -9,7 +9,7 @@ public class Item extends Environment implements Entity
 {
     private boolean stickyStatus = false;
     //représente la règle d'un objet
-    protected Rules object = Rules.NONE;
+    protected final Rules object = Rules.NONE;
     //représente le status du joueur s'il a atteint l'objectif
     private static boolean winStatus = false;
     //représente les coordonnés de tous les objets qui sont win
@@ -368,10 +368,8 @@ public class Item extends Environment implements Entity
         //vrai si : -posx ne situe pas en dehors des limites de la map
         //          -l'élément se situant à l'endroit indiqué par les coordonnés
         //           est null
-        if (posx < getWidth() - 1 && posx > 0 && mapO[posy][posx] == null)
-            return true;
+        return posx < getWidth() - 1 && posx > 0 && mapO[posy][posx] == null;
         //faux si : aucune des conditions n'est respecté
-        return false;
     }
 
     @Override
@@ -380,10 +378,8 @@ public class Item extends Environment implements Entity
         //vrai si : -posy ne situe pas en dehors des limites de la map
         //          -l'élément se situant à l'endroit indiqué par les coordonnés
         //           est null
-        if(posy < getLength() - 1 && posy > 0 && mapO[posy][posx] == null)
-            return true;
+        return posy < getLength() - 1 && posy > 0 && mapO[posy][posx] == null;
         //faux si : aucune des conditions n'est respecté
-        return false;
     }
 
     @Override
@@ -392,10 +388,8 @@ public class Item extends Environment implements Entity
         //vrai si : -posx se situe dans les limites de la map
         //          -l'élément se situant à l'endroit indiqué par les coordonnés
         //           peut être poussé
-        if(posx+ 1 <= getWidth() - 1 && posx - 1 >= 0 && mapO[posy][posx] != null && mapO[posy][posx].thingIsPush(tabperm))
-            return true;
+        return posx + 1 <= getWidth() - 1 && posx - 1 >= 0 && mapO[posy][posx] != null && mapO[posy][posx].thingIsPush(tabperm);
         //faux si : la condition n'est pas respectée
-        return false;
     }
 
     @Override
@@ -404,10 +398,8 @@ public class Item extends Environment implements Entity
         //vrai si : -posy se situe dans les limites de la map
         //          -l'élément se situant à l'endroit indiqué par les coordonnés
         //           peut être poussé
-        if( posy + 1 <= getLength() - 1 && posy  - 1>= 0 && mapO[posy][posx] != null && mapO[posy][posx].thingIsPush(tabperm))
-            return true;
+        return posy + 1 <= getLength() - 1 && posy - 1 >= 0 && mapO[posy][posx] != null && mapO[posy][posx].thingIsPush(tabperm);
         //faux si : la condition n'est pas respectée
-        return false;
     }
 
     /**

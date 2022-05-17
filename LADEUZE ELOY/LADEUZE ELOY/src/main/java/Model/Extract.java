@@ -14,7 +14,6 @@ import java.io.IOException;
 /**
  * cette classe a pour but d'extraire les donnees d'un fichier texte
  */
-import java.io.File;
 
 /**
  * cette classe permet à partir d'un fichier texte, d'extraire les données afin de jouer correctement au jeu
@@ -52,9 +51,7 @@ public class Extract {
     {
         int i = fileName.lastIndexOf('.');
         String extension = fileName.substring(i + 1);
-        if(extension.equals("txt"))
-            return true;
-        return false;
+        return extension.equals("txt");
     }
     /**
      * on extrait les donnés de notre fichier pour les mettre sous la forme d'un tableau a deux dimensions
