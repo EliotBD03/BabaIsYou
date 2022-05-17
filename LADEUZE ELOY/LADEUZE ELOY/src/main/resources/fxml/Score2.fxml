@@ -18,9 +18,13 @@
       <Button layoutX="150.0" layoutY="389.0" mnemonicParsing="false" onAction="#logout" opacity="0.0" prefHeight="50.0" prefWidth="150.0" text="Menu" />
       <Button layoutX="131.0" layoutY="317.0" mnemonicParsing="false" onAction="#loadScore" text="Load Score" />
       <TextArea fx:id="myLabel" layoutX="91.0" layoutY="109.0" prefHeight="200.0" prefWidth="200.0" />
-      <Text fill="WHITE" layoutX="12.0" layoutY="75.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Congratulation! You finished the Game !">
+      <Text fill="#f2f4f3" layoutY="42.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Congratulation! You finished the Game !" wrappingWidth="474.13983154296875">
          <font>
+<<<<<<< HEAD
+            <Font name="System Bold Italic" size="26.0" />
+=======
             <Font size="24.0" />
+>>>>>>> d749c78def3ee007feb224d5e43f5b8efd144c36
          </font>
       </Text>
    </children>
