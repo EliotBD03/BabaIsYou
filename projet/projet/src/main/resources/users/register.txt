@@ -1,0 +1,2 @@
+ /****this file is to contain the name, the date of registration for a player*****/
+
