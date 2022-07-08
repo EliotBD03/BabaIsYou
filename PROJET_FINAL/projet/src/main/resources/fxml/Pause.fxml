@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="450.0" style="-fx-background-color: BLACK;" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="View.Controller">
+   <children>
+      <ImageView fitHeight="50.0" fitWidth="150.0" layoutX="150.0" layoutY="250.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../sprite/quitandsave.gif" />
+         </image>
+      </ImageView>
+      <Button layoutX="150.0" layoutY="250.0" mnemonicParsing="false" onAction="#quitAndSave" opacity="0.0" prefHeight="50.0" prefWidth="150.0" text="Quit and Save" />
+      <ImageView fitHeight="50.0" fitWidth="150.0" layoutX="150.0" layoutY="100.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../sprite/resume.gif" />
+         </image>
+      </ImageView>
+      <Button layoutX="146.0" layoutY="95.0" mnemonicParsing="false" onAction="#resume" opacity="0.0" prefHeight="59.0" prefWidth="158.0" text="Resume" />
+   </children>
+</AnchorPane>
