@@ -1,10 +1,12 @@
 # BabaIsYou
-This repository is for the CS Project : "BabaIsYou" 
-
-Ce dépôt servira d'espace pour mettre à jour le code source de manière simple et efficace.
-
-Il y a deux vidéos ci-dessous qui sont bien faites pour apprendre le fonctionnement de GIT.
-
-1) https://www.youtube.com/watch?v=gp_k0UVOYMw
-
-2) https://www.youtube.com/watch?v=CEb_JM_hsFw (plus longue)
+## Introduction
+  This project was made for the course "Computer project" from the University of Mons (UMONS).
+## Tools
+  We used the programming language Java for the object oriented aspect and Gradle for a better organisation. For the unit tests, we use JUnit5.
+## Let's play !
+### Menu
+  In the menu, you can login or register if you haven't already. After that, in the settings, you can look at the possible moves in the game or even put some music. For the levels, depending on if you have already played and saved, you can select the level that you want. And the last important thing in the menu is the score.
+### Score
+  The scoring system is designed to have the shortest time to finish the game. In fact, a stopwatch is running when you are playing.
+### The game
+  go check this link if you want more information about our game -> https://fr.wikipedia.org/wiki/Baba_Is_You
